@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header id="SCL File" version="0" revision="1" toolID="OpenSCLConfigurator" nameStructure="IEDName" />
+  <Communication>
+    <SubNetwork name="Net1" desc="Network1">
+      <ConnectedAP iedName="IED1" apName="AccessPoint1">
+        <Address>
+          <P xsi:type="tP_IP" type="IP">19A.168.1.1</P>
+          <P type="IP-SUBNET">255.255.255.0</P>
+          <P type="IP-GATEWAY" />
+          <P type="OSI-TSEL" />
+          <P type="OSI-PSEL" />
+          <P type="OSI-SSEL" />
+        </Address>
+        <GSE ldInst="LDevice1" cbName="gcb">
+          <Address>
+            <P type="VLAN-ID">000</P>
+            <P type="VLAN-PRIORITY">4</P>
+            <P type="MAC-Address">01-0C-CD-01-00-04</P>
+            <P type="APPID">0001</P>
+        </Address>
+        </GSE>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+  <IED name="IED1" configVersion="0" type="TEMPLATE" manufacturer="LibreSCLEditor" >
+    <Services>
+      <DynAssociation/>
+      <GetDirectory/>
+      <GetDataObjectDefinition/>
+      <DataObjectDirectory/>
+      <GetDataSetValue/>
+      <DataSetDirectory/>
+      <ConfDataSet max="8" maxAttributes="64"/>
+      <ReadWrite/>
+      <ConfReportControl max="6"/>
+      <GetCBValues/>
+      <ReportSettings cbName="Fix" datSet="Fix" rptID="Dyn" optFields="Dyn" bufTime="Dyn" trgOps="Dyn" intgPd="Dyn"/>
+      <GSESettings appID="Dyn"/>
+      <ConfLNs fixPrefix="false" fixLnInst="true"/>
+      <GOOSE max="9"/>
+      <GSSE max="1"/>
+      <FileHandling/>
+    </Services>
+    <AccessPoint name="AccessPoint1" router="false" clock="true">
+      <Server timeout="30">
+        <Authentication none="true" password="false" weak="false" strong="false" certificate="false" />
+        <Association kind ="preestablished" associationID="0" iedName="None" ldInst="NoneLd" prefix="" lnClass="XCBR" lnInst="1" />
+        <LDevice inst="LDevice1">
+          <LN0 desc="Logical Device Supervision" lnType="LLN01" lnClass="LLN0" inst="1">
+            <DataSet name="GOOSE1">
+              <FCDA ldInst="LDevice1" prefix="" lnClass="XCBR" lnInst="5" fc="ST" doName="Pos" daName="stVal"/>
+              <FCDA ldInst="LDevice1" prefix="" lnClass="XCBR" lnInst="5" fc="ST" doName="Pos" daName="q"/>
+              <FCDA ldInst="LDevice1" prefix="" lnClass="XCBR" lnInst="5" fc="ST" doName="Pos" daName="t"/>
+            </DataSet>
+            <DataSet name="Report1">
+              <FCDA ldInst="LDevice1" prefix="" lnClass="XCBR" lnInst="5" fc="ST" doName="Pos" daName="stVal"/>
+            </DataSet>
+            <GSEControl name="gcb" type="GOOSE" appID="DISPARO" datSet="GOOSE1" confRev="1"/>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN0>
+          <LN desc="Supervision of the Phycal device." lnType="LPHD1" lnClass="LPHD" inst="1" prefix="">
+            <DOI name="PhyNam">
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+            <DOI name="PhyHealth">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Proxy">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Braker supervision" lnType="XCBR5" lnClass="XCBR" inst="5" prefix="">
+            <DOI name="Pos">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="OpCnt">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="CBOpCap">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="BlkOpn">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+            </DOI>
+            <DOI name="BlkCls">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+            </DOI>
+            <DOI name="Loc">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Switchgear control ejecution object. This can control the braker supervised by the XCBR object" lnType="CSWI7" lnClass="CSWI" inst="7" prefix="">
+            <DOI name="Pos">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Logic status. This can be used by CSWI object to know if it can execute a control command (interloking represented by this object)" lnType="CILO9" lnClass="CILO" inst="9" prefix="">
+            <DOI name="EnaCls">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="EnaOpn">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Time Overcurrent protection" lnType="PTOC11" lnClass="PTOC" inst="11" prefix="">
+            <DOI name="Str">
+              <DAI name="dirGeneral" valKind="Set">
+                <Val>unknown</Val>
+              </DAI>
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Op">
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Reclose Function. This can be used to reclose the braker, using CSWI" lnType="RREC13" lnClass="RREC" inst="13" prefix="">
+            <DOI name="Op">
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="AutoRecSt">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+        </LDevice>
+      </Server>
+    </AccessPoint>
+  </IED>
+</SCL>

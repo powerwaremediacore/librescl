@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <DataTypeTemplates>
+    <DAType id="LLN01ModctlModel" iedType="">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="LPHD1ModctlModel" iedType="">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5PosctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5BlkOpnctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5BlkClsctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CSWI7PosctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CSWI7ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CILO9ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="PTOC11ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="RREC13ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="RRECRecModStruct">
+      <BDA name="unit" bType="INT8" valKind="Set" count="0">
+        <Val>1</Val>
+      </BDA>
+      <BDA name="SinglePhase" bType="BOOLEAN" valKind="Set" count="0">
+        <Val>single_contact</Val>
+      </BDA>
+      <BDA name="SingleBraker" bType="BOOLEAN" valKind="Conf" count="0">
+        <Val>single_contact</Val>
+      </BDA>
+      <BDA name="Operated" bType="BOOLEAN" valKind="RO" count="2">
+        <Val>TRUE</Val>
+        <Val>FALSE</Val>
+      </BDA>
+      <BDA name="Operated" bType="BOOLEAN" valKind="RO" count="2">
+        <Val>FALSE</Val>
+        <Val>TRUE</Val>
+      </BDA>
+    </DAType>
+    <DAType id="RRECRecModStruct">
+      <BDA name="unit" bType="INT8" valKind="Set" count="0">
+        <Val>2</Val>
+      </BDA>
+      <BDA name="SinglePhase" bType="BOOLEAN" valKind="Set" count="0">
+        <Val>multiple_contact</Val>
+      </BDA>
+      <BDA name="SingleBraker" bType="BOOLEAN" valKind="Conf" count="0">
+        <Val>single_contact</Val>
+      </BDA>
+      <BDA name="Operated" bType="BOOLEAN" valKind="RO" count="2">
+        <Val>FALSE</Val>
+        <Val>FALSE</Val>
+      </BDA>
+      <BDA name="Operated" bType="BOOLEAN" valKind="RO" count="2">
+        <Val>FALSE</Val>
+        <Val>TRUE</Val>
+      </BDA>
+    </DAType>
+  </DataTypeTemplates>
+</SCL>

@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header id="SCL File" version="0" revision="1" toolID="OpenSCLConfigurator" nameStructure="IEDName" />
+  <Communication>
+    <SubNetwork name="Net1" desc="Network1">
+      <ConnectedAP iedName="IED1" apName="AccessPoint1">
+        <Address>
+          <P xsi:type="tP_IP" type="IP">19A.168.1.1</P>
+          <P type="IP-SUBNET">255.255.255.0</P>
+          <P type="IP-GATEWAY" />
+          <P type="OSI-TSEL" />
+          <P type="OSI-PSEL" />
+          <P type="OSI-SSEL" />
+        </Address>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+  <IED name="IED1" configVersion="0">
+    <AccessPoint name="AccessPoint1" router="false" clock="false">
+      <Server timeout="30">
+        <Authentication none="true" password="false" weak="false" strong="false" certificate="false" />
+        <LDevice inst="LDevice1">
+          <LN0 desc="Logical Device Supervision" lnType="LLN01" lnClass="LLN0" inst="1">
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN0>
+          <LN desc="Supervision of the Phycal device." lnType="LPHD1" lnClass="LPHD" inst="1" prefix="">
+            <DOI name="PhyNam">
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+            <DOI name="PhyHealth">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Proxy">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Braker supervision" lnType="XCBR5" lnClass="XCBR" inst="5" prefix="">
+            <DOI name="Pos">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="OpCnt">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="CBOpCap">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="BlkOpn">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+            </DOI>
+            <DOI name="BlkCls">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+            </DOI>
+            <DOI name="Loc">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Switchgear control ejecution object. This can control the braker supervised by the XCBR object" lnType="CSWI7" lnClass="CSWI" inst="7" prefix="">
+            <DOI name="Pos">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Logic status. This can be used by CSWI object to know if it can execute a control command (interloking represented by this object)" lnType="CILO9" lnClass="CILO" inst="9" prefix="">
+            <DOI name="EnaCls">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="EnaOpn">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Time Overcurrent protection" lnType="PTOC11" lnClass="PTOC" inst="11" prefix="">
+            <DOI name="Str">
+              <DAI name="dirGeneral" valKind="Set">
+                <Val>unknown</Val>
+              </DAI>
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Op">
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+          <LN desc="Reclose Function. This can be used to reclose the braker, using CSWI" lnType="RREC13" lnClass="RREC" inst="13" prefix="">
+            <DOI name="Op">
+              <DAI name="general" valKind="Set" />
+              <DAI name="q" valKind="Set" />
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="AutoRecSt">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Mod">
+              <SDI name="ctlModel">
+                <DAI name="ctlModels" valKind="Set">
+                  <Val>status_only</Val>
+                </DAI>
+              </SDI>
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Beh">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="Health">
+              <DAI name="q" valKind="Set" />
+              <DAI name="stVal" valKind="Set">
+                <Val>on</Val>
+              </DAI>
+              <DAI name="t" valKind="Set" />
+            </DOI>
+            <DOI name="NamPlt">
+              <DAI name="d" valKind="Set" />
+              <DAI name="swRev" valKind="Set" />
+              <DAI name="vendor" valKind="Set" />
+            </DOI>
+          </LN>
+        </LDevice>
+      </Server>
+    </AccessPoint>
+  </IED>
+  <DataTypeTemplates>
+    <LNodeType id="LLN01" iedType="" lnClass="LLN0">
+      <DO name="Mod" type="LLN01Mod" transient="false" />
+      <DO name="Beh" type="LLN01Beh" transient="false" />
+      <DO name="Health" type="LLN01Health" transient="false" />
+      <DO name="NamPlt" type="LLN01NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="LPHD1" iedType="" lnClass="LPHD">
+      <DO name="PhyNam" type="LPHD1PhyNam" transient="false" />
+      <DO name="PhyHealth" type="LPHD1PhyHealth" transient="false" />
+      <DO name="Proxy" type="LPHD1Proxy" transient="false" />
+      <DO name="Mod" type="LPHD1Mod" transient="false" />
+      <DO name="Beh" type="LPHD1Beh" transient="false" />
+      <DO name="Health" type="LPHD1Health" transient="false" />
+      <DO name="NamPlt" type="LPHD1NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="XCBR5" lnClass="XCBR">
+      <DO name="Pos" type="XCBR5Pos" transient="false" />
+      <DO name="OpCnt" type="XCBR5OpCnt" transient="false" />
+      <DO name="CBOpCap" type="XCBR5CBOpCap" transient="false" />
+      <DO name="BlkOpn" type="XCBR5BlkOpn" transient="false" />
+      <DO name="BlkCls" type="XCBR5BlkCls" transient="false" />
+      <DO name="Loc" type="XCBR5Loc" transient="false" />
+      <DO name="Mod" type="XCBR5Mod" transient="false" />
+      <DO name="Beh" type="XCBR5Beh" transient="false" />
+      <DO name="Health" type="XCBR5Health" transient="false" />
+      <DO name="NamPlt" type="XCBR5NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="CSWI7" lnClass="CSWI">
+      <DO name="Pos" type="CSWI7Pos" transient="false" />
+      <DO name="Mod" type="CSWI7Mod" transient="false" />
+      <DO name="Beh" type="CSWI7Beh" transient="false" />
+      <DO name="Health" type="CSWI7Health" transient="false" />
+      <DO name="NamPlt" type="CSWI7NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="CILO9" lnClass="CILO">
+      <DO name="EnaCls" type="CILO9EnaCls" transient="false" />
+      <DO name="EnaOpn" type="CILO9EnaOpn" transient="false" />
+      <DO name="Mod" type="CILO9Mod" transient="false" />
+      <DO name="Beh" type="CILO9Beh" transient="false" />
+      <DO name="Health" type="CILO9Health" transient="false" />
+      <DO name="NamPlt" type="CILO9NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="PTOC11" lnClass="CCGR">
+      <DO name="Str" type="PTOC11Str" transient="false" />
+      <DO name="Op" type="PTOC11Op" transient="false" />
+      <DO name="Mod" type="PTOC11Mod" transient="false" />
+      <DO name="Beh" type="PTOC11Beh" transient="false" />
+      <DO name="Health" type="PTOC11Health" transient="false" />
+      <DO name="NamPlt" type="PTOC11NamPlt" transient="false" />
+    </LNodeType>
+    <LNodeType id="RREC13" lnClass="RREC">
+      <DO name="Op" type="RREC13Op" transient="false" />
+      <DO name="AutoRecSt" type="RREC13AutoRecSt" transient="false" />
+      <DO name="Mod" type="RREC13Mod" transient="false" />
+      <DO name="Beh" type="RREC13Beh" transient="false" />
+      <DO name="Health" type="RREC13Health" transient="false" />
+      <DO name="NamPlt" type="RREC13NamPlt" transient="false" />
+    </LNodeType>
+    <DOType id="LLN01Mod" iedType="" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="LLN01ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LLN01Beh" iedType="" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LLN01Health" iedType="" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LLN01NamPlt" iedType="" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="LPHD1PhyNam" iedType="" cdc="DPL">
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="LPHD1PhyHealth" iedType="" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LPHD1Proxy" iedType="" cdc="SPS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LPHD1Mod" iedType="" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="LPHD1ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LPHD1Beh" iedType="" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LPHD1Health" iedType="" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="LPHD1NamPlt" iedType="" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="XCBR5Pos" cdc="DPC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="XCBR5PosctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5OpCnt" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5CBOpCap" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5BlkOpn" cdc="SPC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="XCBR5BlkOpnctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+    </DOType>
+    <DOType id="XCBR5BlkCls" cdc="SPC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="XCBR5BlkClsctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+    </DOType>
+    <DOType id="XCBR5Loc" cdc="SPS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5Mod" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="XCBR5ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5Beh" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5Health" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="XCBR5NamPlt" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="CSWI7Pos" cdc="DPC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="CSWI7PosctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CSWI7Mod" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="CSWI7ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CSWI7Beh" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CSWI7Health" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CSWI7NamPlt" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="CILO9EnaCls" cdc="SPS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CILO9EnaOpn" cdc="SPS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CILO9Mod" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="CILO9ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CILO9Beh" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CILO9Health" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="CILO9NamPlt" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="PTOC11Str" cdc="ACD">
+      <DA name="dirGeneral" bType="Enum" valKind="Set" type="dirGeneralEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>unknown</Val>
+      </DA>
+      <DA name="general" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="PTOC11Op" cdc="ACT">
+      <DA name="general" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="PTOC11Mod" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="PTOC11ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="PTOC11Beh" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="PTOC11Health" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="PTOC11NamPlt" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DOType id="RREC13Op" cdc="ACT">
+      <DA name="general" bType="BOOLEAN" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="RREC13AutoRecSt" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="RREC13Mod" cdc="INC">
+      <DA name="ctlModel" bType="Struct" valKind="Set" type="RREC13ModctlModel" count="0" dchg="false" qchg="false" dupd="false" fc="CF" />
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="RREC13Beh" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="RREC13Health" cdc="INS">
+      <DA name="q" bType="Quality" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+      <DA name="stVal" bType="Enum" valKind="Set" type=" stValEnum" count="0" dchg="false" qchg="false" dupd="false" fc="ST">
+        <Val>on</Val>
+      </DA>
+      <DA name="t" bType="Timestamp" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="ST" />
+    </DOType>
+    <DOType id="RREC13NamPlt" cdc="LPL">
+      <DA name="d" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="swRev" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+      <DA name="vendor" bType="VisString255" valKind="Set" count="0" dchg="false" qchg="false" dupd="false" fc="DC" />
+    </DOType>
+    <DAType id="LLN01ModctlModel" iedType="">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="LPHD1ModctlModel" iedType="">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5PosctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5BlkOpnctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5BlkClsctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="XCBR5ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CSWI7PosctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CSWI7ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="CILO9ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="PTOC11ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <DAType id="RREC13ModctlModel">
+      <BDA name="ctlModels" bType="Enum" valKind="Set" type="ctlModelsEnum" count="0">
+        <Val>status_only</Val>
+      </BDA>
+    </DAType>
+    <EnumType id="ctlModelsEnum">
+      <EnumVal ord="0">status_only</EnumVal>
+      <EnumVal ord="1">direct_with_normal_security</EnumVal>
+      <EnumVal ord="2">sbo_with_normal_security</EnumVal>
+      <EnumVal ord="3">sbo_with_enhanced_security</EnumVal>
+      <EnumVal ord="4">direct_with_enhanced_security</EnumVal>
+    </EnumType>
+    <EnumType id=" stValEnum">
+      <EnumVal ord="0">on</EnumVal>
+      <EnumVal ord="1">blocked</EnumVal>
+      <EnumVal ord="2">test</EnumVal>
+      <EnumVal ord="3">test_blocked</EnumVal>
+      <EnumVal ord="4">off</EnumVal>
+    </EnumType>
+    <EnumType id="dirGeneralEnum">
+      <EnumVal ord="0">unknown</EnumVal>
+      <EnumVal ord="1">forward</EnumVal>
+      <EnumVal ord="2">backward</EnumVal>
+      <EnumVal ord="3">both</EnumVal>
+    </EnumType>
+  </DataTypeTemplates>
+</SCL>

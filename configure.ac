@@ -1,0 +1,111 @@
+m4_define([project_major_version], [0])
+m4_define([project_minor_version], [2])
+m4_define([project_micro_version], [0])
+
+# LT_VERSION
+#   If library source has changed since last release, increment revision
+#   If public symbols have been added, removed or changed since last release,
+#     increment current and set revision to 0
+#   If public symbols have been added since last release, increment age
+#   If public symbols have been removed since last release, set age to 0
+m4_define([project_lt_current], [2])
+m4_define([project_lt_revision], [0])
+m4_define([project_lt_age], [0])
+
+m4_define([project_version],project_major_version.project_minor_version.project_micro_version)
+
+AC_INIT([LibreSCL],[project_version],[liblscl])
+AC_SUBST(LSCL_ABI_MAJOR_VERSION, project_major_version)
+AC_SUBST(LSCL_ABI_MINOR_VERSION, project_minor_version)
+AC_SUBST(LSCL_ABI_MICRO_VERSION, project_micro_version)
+AC_CONFIG_MACRO_DIR([m4])
+
+AC_CONFIG_HEADERS([config.h])
+
+AM_INIT_AUTOMAKE
+
+AM_SILENT_RULES([yes])
+
+AC_PROG_CC
+
+
+LT_INIT(win32-dll)
+
+LT_CURRENT=project_lt_current
+LT_REVISION=project_lt_revision
+LT_AGE=project_lt_age
+AC_SUBST([LT_CURRENT])
+AC_SUBST([LT_REVISION])
+AC_SUBST([LT_AGE])
+
+LIBRESCL_VERSION=project_version
+AC_SUBST(LIBRESCL_VERSION)
+API_VERSION=project_major_version.project_minor_version
+AC_SUBST(API_VERSION)
+IT_PROG_INTLTOOL([0.35.0])
+
+GETTEXT_PACKAGE=librescl-project_version
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
+                   [The domain to use with gettext])
+AM_GLIB_GNU_GETTEXT
+
+LIBRESCL_LOCALEDIR=[${datadir}/locale]
+AC_SUBST(LIBRESCL_LOCALEDIR)
+
+case "$host" in
+*-mingw*)
+    platform_win32=yes
+    ;;
+*)
+esac
+AM_CONDITIONAL(PLATFORM_WIN32, [test $platform_win32 = yes])
+
+debug=no
+AC_ARG_ENABLE(debug,
+	AS_HELP_STRING([--enable-debug], [Enable Debug options [default=no]]),
+        [debug=$enableval], [debug="no"])
+
+AM_CONDITIONAL(DEBUG, [test $debug = yes])
+
+
+dnl Check for vala
+vala_version="0.20"
+vala_pkg="libvala-"$vala_version
+PKG_CHECK_MODULES(VALA,$vala_pkg)
+VALAC_BIN=`pkg-config $vala_pkg --variable=bindir`
+VALAC=$VALAC_BIN/valac-$vala_version
+VAPIDIR=`pkg-config $vala_pkg --variable=vapidir`
+AC_SUBST(VALAC_BIN)
+AC_SUBST(VALAC)
+AC_SUBST(VAPIDIR)
+AM_PROG_VALAC([0.20])
+
+dnl Test directory
+
+PKG_CHECK_MODULES(XOM,gio-2.0
+glib-2.0
+gobject-2.0
+gee-0.8 >= 0.10
+gxml-0.4)
+
+
+GOBJECT_INTROSPECTION_CHECK([1.30.0])
+
+AC_OUTPUT([ po/Makefile.in
+Makefile
+vapi/Makefile
+librescl/namespace-info.vala
+librescl/Makefile
+librescl/lscl-0.2.pc
+test/Makefile
+test/tests-config.vala
+
+])
+
+echo ""
+echo " Configuration summary for LibreSCL Version: $API_VERSION"
+echo "   Installation prefix:  $prefix"
+echo "   GObject Introspection $found_introspection"
+echo "   Documentation:        $have_valadoc"
+echo ""

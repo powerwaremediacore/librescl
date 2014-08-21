@@ -1,0 +1,4 @@
+[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
+namespace LsclTest {
+  public static const string TEST_DIR = "@top_srcdir@/test";
+}

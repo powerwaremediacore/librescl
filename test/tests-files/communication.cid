@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header id="SCL File" version="0" revision="1" toolID="OpenSCLConfigurator" nameStructure="IEDName" />
+  <Communication>
+    <SubNetwork name="Net1" desc="Network1">
+      <ConnectedAP iedName="IED1" apName="AccessPoint1">
+        <Address>
+          <P xsi:type="tP_IP" type="IP">19A.168.1.1</P>
+          <P type="IP-SUBNET">255.255.255.0</P>
+          <P type="IP-GATEWAY" />
+          <P type="OSI-TSEL" />
+          <P type="OSI-PSEL" />
+          <P type="OSI-SSEL" />
+        </Address>
+        <GSE ldInst="LDevice1" cbName="gcb">
+          <Address>
+            <P type="VLAN-ID">000</P>
+            <P type="VLAN-PRIORITY">4</P>
+            <P type="MAC-Address" xsi:type="tP_MAC-Address">01-0C-CD-01-00-04</P>
+            <P type="APPID">0001</P>
+        </Address>
+        </GSE>
+        <SMV ldInst="LDevice1" cbName="svcb">
+          <Address>
+            <P type="VLAN-ID">001</P>
+            <P type="VLAN-PRIORITY">1</P>
+            <P type="MAC-Address">01-0C-CD-01-00-03</P>
+            <P type="APPID">0002</P>
+        </Address>
+        </SMV>
+        <PhysConn type="PLUG">
+          <P type="VLAN-ID">000</P>
+          <P type="VLAN-PRIORITY">4</P>
+          <P type="MAC-Address">01-0C-CD-01-00-04</P>
+          <P type="APPID">0001</P>
+        </PhysConn>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+</SCL>

@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LibreSCL 0.2\n"
+"Report-Msgid-Bugs-To: support@powermedia.com\n"
+"POT-Creation-Date: 2014-04-23 18:01-0500\n"
+"PO-Revision-Date: 2014-04-23 18:05-0500\n"
+"Last-Translator: Daniel Espinosa <esodan@gmail.com>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: ../librescl/SCL.vala:57
+msgid "Version: "
+msgstr "Versión: "
+
+#: ../src/lscl_editor.ui.h:1
+msgid "LibreSCL Editor"
+msgstr "Editor LibreSCL"
+
+#: ../src/view-selector.ui.h:1
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: ../src/view-selector.ui.h:2
+msgid "Communications"
+msgstr "Comunicaciones"
+
+#: ../src/view-selector.ui.h:3
+msgid "Templates"
+msgstr "Plantillas"
