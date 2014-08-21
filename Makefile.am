@@ -1,5 +1,3 @@
-## Process this file with automake to produce Makefile.in
-## Created by Anjuta
 
 SUBDIRS = \
 	vapi \
@@ -11,7 +9,7 @@ INTLTOOL_FILES = intltool-extract.in \
                  intltool-merge.in \
                  intltool-update.in
 
-librescldocdir = ${prefix}/doc/scl_viewer
+librescldocdir = ${prefix}/doc/lscl
 librescldoc_DATA = \
 	README\
 	COPYING\

@@ -1,4 +1,2 @@
 # List of source files which contain translatable strings.
 librescl/SCL.vala
-src/lscl_editor.ui
-src/view-selector.ui
