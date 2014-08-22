@@ -1,7 +1,15 @@
 /* -*- Mode: vala; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2 -*-  */
 /*
- * tExtRef.vala
- * Copyright (C) 2014 Daniel Espinosa <esodan@gmail.com>
+ * Lscl
+ *
+ *  Authors:
+ *
+ *       Daniel Espinosa <esodan@gmail.com>
+ *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
+ *
+ *
+ *  Copyright (c) 2014 Daniel Espinosa
+ *  Copyright (c) 2014 PowerMedia Consulting
  *
  * librescl is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published

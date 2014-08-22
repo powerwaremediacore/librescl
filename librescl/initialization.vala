@@ -1,6 +1,14 @@
 /**
- *  LibOpenSCL
- *  Copyright (C) 2013, 2014 Daniel Espinosa <esodan@gmail.com>
+ *  LibreSCL
+ *
+ *  Authors:
+ *
+ *       Daniel Espinosa <esodan@gmail.com>
+ *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
+ *
+ *
+ *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2014 PowerMedia Consulting
  *  
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public

@@ -2,9 +2,13 @@
  *  LibreSCL
  *
  *  Author:
+ *
  *       Daniel Espinosa <esodan@gmail.com>
+ *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
+ *
  *
  *  Copyright (c) 2011 Daniel Espinosa
+ *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
