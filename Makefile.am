@@ -11,7 +11,7 @@ INTLTOOL_FILES = intltool-extract.in \
 
 librescldocdir = ${prefix}/doc/lscl
 librescldoc_DATA = \
-	README\
+	README.md\
 	COPYING\
 	AUTHORS\
 	ChangeLog\
