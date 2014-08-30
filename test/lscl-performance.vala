@@ -25,12 +25,18 @@ public class Performance
   {
     Test.add_func ("/librescl-test-suite/performance/read", 
     () => {
-      double time;
-      Test.timer_start ();
-      var scl = new SclDocument ();
-      scl.read (LsclTest.TEST_DIR + "/tests-files/generic.cid");
-      time = Test.timer_elapsed ();
-      Test.minimized_result (time, "Read generic.cid: %g seconds", time);
+      try {
+        double time;
+        Test.timer_start ();
+        var scl = new SclDocument ();
+        scl.read (LsclTest.TEST_DIR + "/tests-files/generic.cid");
+        time = Test.timer_elapsed ();
+        Test.minimized_result (time, "Read generic.cid: %g seconds", time);
+      }
+      catch (GLib.Error e) {
+        Test.message (e.message);
+        assert_not_reached ();
+      }
     });
     Test.add_func ("/librescl-test-suite/performance/treemap", 
     () => {

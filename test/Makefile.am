@@ -9,7 +9,7 @@ AM_CPPFLAGS = \
 
 AM_CFLAGS = \
 	-g \
-	$(XOM_CFLAGS) \
+	$(GXML_CFLAGS) \
 	-I$(top_builddir)
 
 noinst_PROGRAMS = $(TEST_PROGS)
@@ -26,6 +26,7 @@ sources = \
 AM_VALAFLAGS = \
 	--vapidir=$(top_builddir)/librescl \
 	$(top_srcdir)/vapi/config.vapi \
+	--pkg glib-2.0 \
 	--pkg gio-2.0 \
 	--pkg gee-0.8 \
 	--pkg gxml-0.4 \
@@ -42,7 +43,7 @@ $(sources:.vala=.c): lscl_test.stamp
 librescl_test_SOURCES = $(sources:.vala=.c)
 
 librescl_test_LDFLAGS = \
-	$(XOM_LIBS) \
+	$(GXML_LIBS) \
 	$(top_builddir)/librescl/liblscl-0.2.la
 
 BUILT_SOURCES = \

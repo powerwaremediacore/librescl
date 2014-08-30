@@ -317,7 +317,7 @@ class LsclTest.XmlGeneration
          iscl.deserialize (idoc);
          {
            if (iscl.data_type_templates.data_attribute_types.duplicated != null) {
-             var datd = iscl.data_type_templates.data_attribute_types.duplicated.size;
+             //var datd = iscl.data_type_templates.data_attribute_types.duplicated.size;
              //stdout.printf (@"INITIAL SCL: datypes size $(datd)\n");
              foreach (tDAType d in iscl.data_type_templates.data_attribute_types.values)
              {

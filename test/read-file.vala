@@ -502,8 +502,8 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         string[] danames = {"d","swRev","vendor"};
-        string[] dabtypes = {"VisString255","VisString255","VisString255"};
-        string[] davkinds = {"Set","Set","Set"};
+        //string[] dabtypes = {"VisString255","VisString255","VisString255"};
+        //string[] davkinds = {"Set","Set","Set"};
         int[] dacounts = {1,2,3};
         bool[] dadchgs = {false,true,false};
         bool[] daqchgs = {false,false,true};
@@ -573,7 +573,7 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         string[] bdas = {"SinglePhase","SingleBraker"};
-        string[] values = {"single_contact","single_contact"};
+        //string[] values = {"single_contact","single_contact"};
         tValKindEnum[] vkinds = {tValKindEnum.SET, tValKindEnum.CONF};
         int[] counts = {0,0};
         for (int i = 0; i < bdas.length; i++) {

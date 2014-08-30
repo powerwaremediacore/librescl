@@ -124,7 +124,7 @@ AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"lscl\"
 
 AM_CFLAGS = \
-	$(XOM_CFLAGS)
+	$(GXML_CFLAGS)
 
 liblscl_0_2_la_LDFLAGS= \
 	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)"
@@ -143,7 +143,7 @@ AM_VALAFLAGS += \
 	-C -H lscl.h \
 	--library lscl-0.2
 
-liblscl_0_2_la_LIBADD = $(XOM_LIBS)
+liblscl_0_2_la_LIBADD = $(GXML_LIBS)
 
 lscl_0_2_la_vala.stamp: $(sources)
 	$(VALAC) $(AM_VALAFLAGS) $^
