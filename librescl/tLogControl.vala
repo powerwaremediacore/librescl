@@ -32,9 +32,29 @@ namespace Lscl
     [Description (nick="logName", blurb="Reference to the LD, which is the owner of the log.")]
     public string log_name { get; set; }
     [Description (nick="logEna", blurb="Logging is enable if TRUE")]
-    public bool logEna { get; set; default = true;}
+    public bool log_ena { get; set; default = true;}
     [Description (nick="reasonCode", blurb="If true this Logging Control Block have Trigger Options")]
-    public bool reasonCode { get; set; default = true; }
+    public bool reason_code { get; set; default = true; }
+    // Edition 2.0
+    [Description (nick="ldInst", blurb="Logical Device instance for this log control block")]
+    public string ld_inst { get; set; }
+    [Description (nick="prefix", blurb="Logical Node prefix")]
+    public string prefix { get; set; }
+    [Description (nick="lnClass", blurb="Logical Node class")]
+    public string ln_class { get; set; }
+    [Description (nick="lnInst", blurb="Logical Node instance")]
+    public string ln_inst { get; set; }
+    [Description(nick="bufTime", blurb="Buffer time")]
+    public string buf_time { get; set; default = "0"; }
+
+    public tLogControl ()
+    {
+      _property_edition.set ("ld-inst", Edition.SECOND);
+      _property_edition.set ("prefix", Edition.SECOND);
+      _property_edition.set ("ln-class", Edition.SECOND);
+      _property_edition.set ("ln-inst", Edition.SECOND);
+      _property_edition.set ("buf-time", Edition.SECOND);
+    }
 
     public string get_map_key () { return name; }
     public class Collection : GXml.SerializableHashMap<string, tLogControl>

@@ -62,7 +62,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: bad tood id header\n$(doc)");
           assert_not_reached ();
         }
-        if (scl.header.name_structure != tHeader.NameStructure.IEDName) {
+        if (scl.header.name_structure != tHeader.NameStructure.IED_NAME) {
           stdout.printf (@"ERROR: bad name structure header\n$(doc)");
           assert_not_reached ();
         }
@@ -943,6 +943,70 @@ public class LsclTest.ReadFile
         stdout.printf (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
+    });
+    Test.add_func ("/librescl-test-suite/read-scd/initial-comments", 
+    () => {
+      try {
+        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
+        var scl = new Scl ();
+        scl.deserialize (doc);
+        // TODO: Add test for SDO y SDA in templates
+      }
+      catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
+    });
+    Test.add_func ("/librescl-test-suite/read-scd/communication-tp-ns", 
+    () => {
+      try {
+        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
+        var scl = new Scl ();
+        scl.deserialize (doc);
+        assert (scl.communication != null);
+        assert (scl.communication.subnetworks != null);
+        var sn = scl.communication.subnetworks.get ("test");
+        assert (sn != null);
+        assert (sn.connected_aps != null);
+        var cap = sn.connected_aps.get ("TEMPLATE", "AP");
+        assert (cap != null);
+        assert (cap.address != null);
+        assert (cap.address.ps != null);
+        foreach (tP p in cap.address.ps) {
+          Test.message ("AP: "+p.to_string ());
+        }
+      }
+      catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
+    });
+    Test.add_func ("/librescl-test-suite/read-ied/logcontrol", 
+    () => {
+      try {
+        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
+        var scl = new Scl ();
+        scl.deserialize (doc);
+        assert (scl.ieds != null);
+        var ied = scl.ieds.get ("TEMPLATE");
+        assert (ied != null);
+        assert (ied.services != null);
+        assert (ied.access_points != null);
+        var ap = ied.access_points.get ("AP");
+        assert (ap.server != null);
+        assert (ap.server.authentication != null);
+        assert (ap.server.logical_devices != null);
+        var ld = ap.server.logical_devices.get ("LD");
+        assert (ld != null);
+        assert (ld.ln0 != null);
+        assert (ld.logical_nodes != null);
+        var ln = ld.logical_nodes.get ("GGIO", "1", "GENERIC");
+        assert (ln != null);
+        // Check LogControl
+        assert (ld.ln0.log_controls != null);
+        var logc = ld.ln0.log_controls.get ("GeneralLog");
+        assert (logc != null);
+        assert (logc.desc == "Test Logs");
+        assert (logc.log_name == "LD");
+        assert (logc.log_ena == true);
+        assert (logc.intg_pd == "5000");
+        assert (logc.reason_code = true);
+      }
+      catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });
   }
 }

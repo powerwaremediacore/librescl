@@ -31,8 +31,8 @@ namespace Lscl
   {
     public tBitRateInMbPerSec()
     {
-      this.unit = tSIUnitEnum.bs;
-      this.multiplier = tUnitMultiplierEnum.M;
+      this.unit = "b/s";
+      this.multiplier = "M";
     }
   }
 }

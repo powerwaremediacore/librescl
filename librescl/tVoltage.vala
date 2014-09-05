@@ -31,8 +31,8 @@ namespace Lscl
 	{
 		public tVoltage()
 		{
-			unit = tSIUnitEnum.V;
-			multiplier = tUnitMultiplierEnum.Item;
+			unit = "V";
+			multiplier = "k";
 		}
 	}
 }

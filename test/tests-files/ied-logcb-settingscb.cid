@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Coment -->
+<!-- Coment 2 -->
+<SCL xmlns:lscl="http://www.librescl.org/SCL" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<IED name="TEMPLATE" desc="TEMPLATE DEVICE" type="LIBRESCL" manufacturer="LibreSCL" configVersion="0.2">
+		<Services>
+			<FileHandling/>
+			<DynAssociation/>
+			<GetDirectory/>
+			<GetDataObjectDefinition/>
+			<DataObjectDirectory/>
+			<GetDataSetValue/>
+			<DataSetDirectory/>
+			<ReadWrite/>
+			<GetCBValues/>
+			<LogSettings cbName="Fix" datSet="Conf" intgPd="Dyn" logEna="Dyn" trgOps="Dyn"/>
+			<ConfLNs fixLnInst="true" fixPrefix="true"/>
+			<ConfReportControl max="14"/>
+			<ConfLogControl max="1"/>
+			<ConfDataSet max="8" maxAttributes="750" modify="true"/>
+			<ReportSettings cbName="Fix" datSet="Fix" rptID="Dyn" optFields="Dyn" bufTime="Dyn" trgOps="Dyn" intgPd="Dyn"/>
+			<GOOSE max="3"/>
+		</Services>
+		<AccessPoint name="AP">
+			<Private xmlns="http://www.iec.ch/61850/2003/SCL" lscl:Test="true">LibreSCL</Private>
+			<Server>
+				<Authentication none="true"/>
+				<LDevice desc="Only One LD" inst="LD">
+					<LN0 desc="Logical Node Zero" inst="" lnClass="LLN0" lnType="TEMPLATE_LLN0">
+						<DataSet name="PROTECTIONS" desc="Protection signals">
+							<FCDA daName="phsA" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsB" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsC" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsA" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="phsB" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="phsC" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="1" prefix="GND"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="2" prefix="GND"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PIOC" lnInst="3" prefix="GND"/>
+							<FCDA daName="phsA" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsB" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsC" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="1" prefix="PHS"/>
+							<FCDA daName="phsA" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="phsB" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="phsC" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="2" prefix="PHS"/>
+							<FCDA daName="phsA" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="3" prefix="PHS"/>
+							<FCDA daName="phsB" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="3" prefix="PHS"/>
+							<FCDA daName="phsC" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="3" prefix="PHS"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="1" prefix="GND"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="2" prefix="GND"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="3" prefix="GND"/>
+							<FCDA daName="neut" doName="Str" fc="ST" ldInst="LD1" lnClass="PTOC" lnInst="4" prefix="GND"/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PTUF" lnInst="1" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PTUF" lnInst="2" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PTUF" lnInst="3" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PTUF" lnInst="4" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PFRC" lnInst="1" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PFRC" lnInst="2" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PFRC" lnInst="3" prefix=""/>
+							<FCDA daName="general" doName="Str" fc="ST" ldInst="LD1" lnClass="PFRC" lnInst="4" prefix=""/>
+						</DataSet>
+						<DataSet name="GOOSE" desc="GOOSE">
+							<FCDA daName="stVal" doName="Ind01" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="q" doName="Ind01" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="stVal" doName="Ind02" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="stVal" doName="Ind03" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="q" doName="Ind03" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="stVal" doName="Ind04" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="q" doName="Ind04" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="stVal" doName="Ind05" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+							<FCDA daName="q" doName="Ind05" fc="ST" ldInst="LD1" lnClass="GGIO" lnInst="2" prefix="GEN"/>
+						</DataSet>
+						<ReportControl bufTime="100" name="brcb" desc="Buffered Report" rptID="brcb01" intgPd="0" confRev="0.2" buffered="true" datSet="Estados">
+							<TrgOps period="false" dchg="true" qchg="true" dupd="false"/>
+							<OptFields seqNum="false" timeStamp="false" reasonCode="false" dataSet="true" dataRef="false" entryID="true" configRef="false"/>
+						</ReportControl>
+						<LogControl name="GeneralLog" desc="Test Logs" logName="LD" logEna="true" intgPd="5000" reasonCode="true"/>
+						<DOI desc="Logical Node Zero" name="NamPlt">
+							<DAI name="vendor" valKind="RO">
+								<Val>LibreSCL</Val>
+							</DAI>
+							<DAI name="Test01" valKind="RO">
+								<Val>Store01</Val>
+							</DAI>
+							<DAI name="Test02" valKind="Set">
+								<Val>Store02</Val>
+							</DAI>
+							<DAI name="configRev" valKind="RO">
+								<Val>0.2</Val>
+							</DAI>
+						</DOI>
+						<GSEControl name="gcb01" desc="Salida de GOOSE 1" confRev="10001" type="GOOSE" appID="TRIP" datSet="GOOSE"/>
+						<SettingControl desc="Setting Groups" actSG="1" numOfSGs="4"/>
+					</LN0>
+					<LN desc="GOOSE inputs" lnType="TEMPLATE_GGIO" lnClass="GGIO" inst="1" prefix="GENERIC">
+						<DOI name="NamPlt">
+							<DAI name="d" valKind="Set">
+								<Val>GOOSE inputs</Val>
+							</DAI>
+							<DAI name="configRev" valKind="RO">
+								<Val/>
+							</DAI>
+							<DAI name="paramRev" valKind="RO">
+								<Val>0.2</Val>
+							</DAI>
+						</DOI>
+						<DOI name="SPCSO">
+							<SDI name="pulseConfig">
+								<DAI name="cmdQual" valKind="RO">
+									<Val>0</Val>
+								</DAI>
+								<DAI name="onDur" valKind="RO">
+									<Val>0</Val>
+								</DAI>
+								<DAI name="offDur" valKind="RO">
+									<Val>0</Val>
+								</DAI>
+								<DAI name="numPls" valKind="RO">
+									<Val>0</Val>
+								</DAI>
+							</SDI>
+							<DAI name="ctlModel" valKind="RO">
+								<Val>0</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind01">
+							<DAI name="d" valKind="Set">
+								<Val>interlock</Val>
+							</DAI>
+						</DOI>
+						<DOI name="InRef1">
+							<DAI name="setRef" valKind="Set">
+								<Val>MAC:01-0C-CD-01-00-23;APPID:4;GCBREF:ORC02A1LD1/LLN0$GO$gcb01;GOID:ORC02A1;POS:1</Val>
+							</DAI>
+							<DAI name="intAddr" valKind="Set">
+								<Val>GIGGIO1.Ind01.stVal[ST]</Val>
+							</DAI>
+							<DAI name="d" valKind="Set">
+								<Val>GOOSE suscription input</Val>
+							</DAI>
+						</DOI>
+					</LN>
+				</LDevice>
+			</Server>
+		</AccessPoint>
+	</IED>
+</SCL>

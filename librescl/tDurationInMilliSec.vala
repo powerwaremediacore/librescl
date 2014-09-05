@@ -31,8 +31,8 @@ namespace Lscl
   {
     public tDurationInMilliSec()
     {
-      this.unit = tSIUnitEnum.s;
-      this.multiplier = tUnitMultiplierEnum.m;
+      this.unit = "s";
+      this.multiplier = "m";
     }
   }
 }

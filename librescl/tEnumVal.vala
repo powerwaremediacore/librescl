@@ -31,9 +31,10 @@ namespace Lscl
   {
     [Description(nick="ord", blurb="It contains the order of the values")]
     public int ord { get; set; }
-
-    public string get_value () { return serialized_xml_node_value; }
+    // Enable set Element contents
     public void set_value (string val) { serialized_xml_node_value = val; }
+    public string get_value () { return serialized_xml_node_value; }
+    public override bool serialize_use_xml_node_value () { return true; }
 
     public class Array : SerializableArrayList<tEnumVal> {}
   }

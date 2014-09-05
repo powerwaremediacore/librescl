@@ -31,13 +31,11 @@ public class Lscl.SclDocument : Scl
 {
   private string _file_name;
   private bool _backup;
-
   
   public string get_file_name () { return _file_name; }
   public void set_file_name (string file) { _file_name = file; }
   public bool get_backup () { return _backup; }
   public void set_backup (bool backup) { _backup = false; }
-
   /**
    * Signal for operation on a file.
    *

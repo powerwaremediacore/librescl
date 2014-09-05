@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="TrgOps", blurb="Trigger options")]
     public tTrgOps trg_ops { get; set; }
     [Description(nick="intgPd", blurb="Integrity period")]
-    public uint intg_pd { get; set; default  = ((uint)(0)); }
+    public string intg_pd { get; set; default  = "0"; }
   }
 }
 

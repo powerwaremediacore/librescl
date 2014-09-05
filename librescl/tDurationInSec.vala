@@ -31,8 +31,8 @@ namespace Lscl
   {
     public tDurationInSec()
     {
-      this.unit = tSIUnitEnum.s;
-      this.multiplier = tUnitMultiplierEnum.Item;
+      this.unit = "s";
+      this.multiplier = "Item";
     }
   }
 }

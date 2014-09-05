@@ -50,16 +50,16 @@ public class Lscl.tHeader : Lscl.Serializable
 
   public enum NameStructure 
   {
-    IEDName,
-    FuncName;
+    IED_NAME,
+    FUNC_NAME;
     public string to_string ()
     {
       string str = "<<INVALID NAME STRUCTURE>>";
       switch (this) {
-        case IEDName:
+        case IED_NAME:
           str = "IEDName";
           break;
-        case FuncName:
+        case FUNC_NAME:
           str =  "FuncName";
           break;
         default:

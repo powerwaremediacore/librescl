@@ -30,18 +30,18 @@ namespace Lscl
 {
   public class tReportControl : tControlWithTriggerOpt, SerializableMapKey<string>
   {
-    [Description(nick="OptFields", blurb="Contains the list of client LNs for which this report shall be enabled.")]
+    [Description(nick="OptFields", blurb="Contains the list of client LNs for which this report shall be enabled")]
     public tReportControlOptFields opt_fields { get; set; }
-    [Description(nick="RptEnabled", blurb="Contains the list of client LNs for which this report shall be enabled.")]
+    [Description(nick="RptEnabled", blurb="Contains the list of client LNs for which this report shall be enabled")]
     public tRptEnabled rpt_enabled  { get; set; }
-    [Description(nick="rptID", blurb="Identifier for the report control block.")]
+    [Description(nick="rptID", blurb="Identifier for the report control block")]
     public string rpt_id  { get; set; }
-    [Description(nick="confRev", blurb="The configuration revision number of this report control block.")]
-    public uint conf_rev { get; set; default = ((uint)(0)); }
-    [Description(nick="buffered",blurb="Specifies if reports are buffered or no.")]
+    [Description(nick="confRev", blurb="The configuration revision number of this report control block")]
+    public string conf_rev { get; set; default = "0"; }
+    [Description(nick="buffered",blurb="Specifies if reports are buffered or no")]
     public bool buffered { get; set; default = false; }
-    [Description(nick="bufTime", blurb="Buffer time.")]
-    public uint buf_time { get; set; default = ((uint)(0)); }
+    [Description(nick="bufTime", blurb="Buffer time")]
+    public string buf_time { get; set; default = "0"; }
 
     public string get_map_key () { return name; }
     public class Collection : GXml.SerializableHashMap<string, tReportControl>

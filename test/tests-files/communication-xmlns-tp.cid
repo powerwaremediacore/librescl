@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns:lscl="http://www.librescl.org/SCL" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Communication>
+		<SubNetwork name="test" type="8-MMS/TCP">
+			<BitRate unit="b/s" multiplier="M">100</BitRate>
+			<ConnectedAP iedName="TEMPLATE" apName="AP">
+				<Address>
+					<P type="IP">192.168.8.41</P>
+					<P type="IP-SUBNET">255.255.255.0</P>
+					<P type="IP-GATEWAY">192.168.8.200</P>
+					<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_OSI-PSEL" type="OSI-PSEL">00000001</P>
+					<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_OSI-SSEL" type="OSI-SSEL">0001</P>
+					<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_OSI-TSEL" type="OSI-TSEL">0001</P>
+					<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_OSI-AE-Qualifier" type="OSI-AE-Qualifier">12</P>
+					<P type="OSI-AP-Title">41,1,999,1</P>
+				</Address>
+				<GSE ldInst="LD1" cbName="gcb01">
+					<Address>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-ID" type="VLAN-ID">000</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-PRIORITY" type="VLAN-PRIORITY">1</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_MAC-Address" type="MAC-Address">01-0C-CD-01-00-29</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_APPID" type="APPID">0004</P>
+					</Address>
+					<MinTime unit="s" multiplier="m">10</MinTime>
+					<MaxTime unit="s" multiplier="m">2000</MaxTime>
+				</GSE>
+				<GSE ldInst="LD1" cbName="gcb02">
+					<Address>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-ID" type="VLAN-ID">000</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-PRIORITY" type="VLAN-PRIORITY">0</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_MAC-Address" type="MAC-Address">01-0C-CD-01-00-C2</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_APPID" type="APPID">0000</P>
+					</Address>
+					<MinTime unit="s" multiplier="m">10</MinTime>
+					<MaxTime unit="s" multiplier="m">2000</MaxTime>
+				</GSE>
+				<GSE ldInst="LD1" cbName="gcb03">
+					<Address>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-ID" type="VLAN-ID">000</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_VLAN-PRIORITY" type="VLAN-PRIORITY">0</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_MAC-Address" type="MAC-Address">01-0C-CD-01-00-C3</P>
+						<P xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tP_APPID" type="APPID">0000</P>
+					</Address>
+					<MinTime unit="s" multiplier="m">10</MinTime>
+					<MaxTime unit="s" multiplier="m">2000</MaxTime>
+				</GSE>
+			</ConnectedAP>
+		</SubNetwork>
+	</Communication>
+</SCL>

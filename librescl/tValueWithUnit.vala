@@ -30,11 +30,13 @@ namespace Lscl
 	public class tValueWithUnit : Serializable
 	{
 		[Description(nick="unit", blurb="Units derived from ISO 1000 to represent a measurement")]
-		public tSIUnitEnum unit { get; set; default = tSIUnitEnum.V; }
+		public string unit { get; set; default = "V"; }
 		[Description(nick="multiplier", blurb="It shall define the multiplier value")]
-		public tUnitMultiplierEnum multiplier{ get; set; }
-		[Description(nick="Value", blurb="Value assigned")]
-		public uint @value  { get; set; }
+		public string multiplier{ get; set; }
+    // Enable set Element contents
+    public void set_value (string val) { serialized_xml_node_value = val; }
+    public string get_value () { return serialized_xml_node_value; }
+    public override bool serialize_use_xml_node_value () { return true; }
 	}
 }
 

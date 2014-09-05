@@ -23,9 +23,45 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using Gee;
 
 namespace Lscl
 {
+  public class StringArray : ArrayList<string>
+  {
+    public new string get (int index)
+    {
+      return base.get (index);
+    }
+  }
+  public class Enum
+  {
+    public StringArray values { get; set; default = new StringArray (); }
+    public StringArray alias { get; set; default = new StringArray (); }
+  }
+
+  public class tSIUnitEnum : Enum
+  {
+    public tSIUnitEnum () {
+      values.add_all_array ({ "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
+                         "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
+                         "lx","Lm","Wb","T","W","Pa","m^2","m^3","m/s","m/s^2",
+                         "m^3/s","m/m^3","M","kg/m^3","m^2/s","W/m K","J/K","ppm",
+                         "s^-1","rad/s","VA","Watts","VAr","phi","cos_phi","Vs",
+                         "V^2","As","A^2","A^2 s","VAh","Wh","VArh","V/Hz","b/s" });
+ 
+      alias.add_all_array ( { "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
+                         "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
+                         "lx","Lm","Wb","T","W","Pa","m²","m³","m/s","m/s²",
+                         "m³/s","m/m³","M","kg/m³","m²/s","W/m K","J/K","ppm",
+                         "1/s","rad/s","VA","Watts","VAr","phi","cos(phi)","Vs",
+                         "V²","As","A²","A²t","VAh","Wh","VArh","V/Hz","b/s",
+                         // Edition 2.0
+                         "Hz/s","char","char/s","kgm²","dB"});
+    }
+  }
+
+  
   public enum tStatusEnum
   {
 		Valid,
@@ -51,69 +87,6 @@ namespace Lscl
 	{
 		preestablished,
 		predefined,
-	}
-
-  public enum tSIUnitEnum
-	{
-		none = 1,
-		m = 2,
-		kg = 3,
-		s = 4,
-		A = 5,
-		K = 6,
-		mol = 7,
-		cd = 8,
-		deg = 9,
-		rad = 10,
-		sr = 11,
-		Gy = 21,
-		q = 22,
-		C = 23,
-		Sv = 24,
-		F = 25,
-		C1 = 26,
-		S = 27,
-		H = 28,
-		V = 29,
-		ohm = 30,
-		J = 31,
-		N = 32,
-		Hz = 33,
-		lx = 34,
-		Lm = 35,
-		Wb = 36,
-		T = 37,
-		W = 38,
-		Pa = 39,
-		m2 = 41,
-		m3 = 42,
-		ms = 43,
-		ms2 = 44,
-		m3s = 45,
-		mm3 = 46,
-		M = 47,
-		kgm3 = 48,
-		m2s = 49,
-		WmK = 50,
-		JK = 51,
-		ppm = 52,
-		s1 = 53,
-		rads = 54,
-		VA = 61,
-		Watts = 62,
-		VAr = 63,
-		phi = 64,
-		cos_phi = 65,
-		Vs = 66,
-		V2 = 67,
-		As = 68,
-		A2 = 69,
-		A2s = 70,
-		VAh = 71,
-		Wh = 72,
-		VArh = 73,
-		VHz = 74,
-		bs = 75
 	}
 
 	public enum tUnitMultiplierEnum
