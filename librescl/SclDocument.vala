@@ -57,7 +57,7 @@ public class Lscl.SclDocument : Scl
   /**
    * Saves SCL Document to the current file using the given IEC 61850 Edition version.
    */
-  public void save (int edition = 1) 
+  public async void save (int edition = 1) 
     throws GLib.Error
   {
     var document = new GXml.Document ();
@@ -76,14 +76,14 @@ public class Lscl.SclDocument : Scl
   public void save_as (string file, int edition = 1) throws GLib.Error
   {
     _file_name = file;
-    save (edition);
+    save.begin (edition);
   }
 
   /**
    * Read an {@link Lscl.Scl} document from path in file.
    *
    */
-  public void read (string file) throws GLib.Error
+  public async void read (string file) throws GLib.Error
   {
     // FIXME: firts create a File to check path is valid
     _file_name = file;
@@ -95,7 +95,7 @@ public class Lscl.SclDocument : Scl
   /**
    * Read SCL Document from given {@link GLib.File}.
    */
-  public void read_from_file (File file) throws GLib.Error
+  public async void read_from_file (File file) throws GLib.Error
   {
     if (file.get_path () != null) {
       _file_name = file.get_path ();
@@ -109,7 +109,7 @@ public class Lscl.SclDocument : Scl
   /**
    * Read an {@link Lscl.Scl} document in a string
    */
-  public void read_from_string (string str) throws GLib.Error
+  public async void read_from_string (string str) throws GLib.Error
   {
     file_operation_start (_file_name);
     var document = new Document.from_string (str);

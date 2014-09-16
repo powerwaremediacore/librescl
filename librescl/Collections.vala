@@ -40,7 +40,7 @@ namespace Lscl
     {
       if (!(value_type.is_a (typeof (GXml.Serializable)) &&
           value_type.is_a (typeof (SerializableMapKey)))) {
-        throw new SerializableError.UNSUPPORTED_TYPE ("%s: Value type '%s' is unsupported", 
+        throw new SerializableError.UNSUPPORTED_TYPE_ERROR ("%s: Value type '%s' is unsupported", 
                                                       this.get_type ().name (), value_type.name ());
       }
       if (node is Element) {
@@ -270,7 +270,7 @@ namespace Lscl
     {
       if (!(value_type.is_a (typeof (GXml.Serializable)) &&
             value_type.is_a (typeof (SerializableMapThreeKey)))) {
-        throw new SerializableError.UNSUPPORTED_TYPE ("%s: Value type '%s' is unsupported", 
+        throw new SerializableError.UNSUPPORTED_TYPE_ERROR ("%s: Value type '%s' is unsupported", 
                                                       this.get_type ().name (), value_type.name ());
       }
       foreach (GXml.Node n in node.child_nodes) {
