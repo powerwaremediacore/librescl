@@ -1,0 +1,17 @@
+2014-03-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+
+2014-03-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+
+2014-03-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po.
+	(ACLOCAL_AMFLAGS): New variable.
+	(EXTRA_DIST): Add m4/ChangeLog.
+	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+
+
+

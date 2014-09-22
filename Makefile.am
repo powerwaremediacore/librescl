@@ -19,7 +19,7 @@ librescldoc_DATA = \
 	NEWS
 
 
-EXTRA_DIST = m4/ChangeLog \
+EXTRA_DIST = \
 	$(librescldoc_DATA) \
 	$(INTLTOOL_FILES)
 
