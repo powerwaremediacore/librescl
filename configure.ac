@@ -61,6 +61,13 @@ case "$host" in
 esac
 AM_CONDITIONAL(PLATFORM_WIN32, [test $platform_win32 = yes])
 
+gi_system_install=no
+AC_ARG_ENABLE(gi-system-install,
+	AS_HELP_STRING([--enable-gi-system-install], [Enable Intalling GIR/TYPELIB GI to System [default=no]]),
+        [gi_system_install=$enableval], [gi_system_install="no"])
+
+AM_CONDITIONAL(GI_SYSTEM_INSTALL, [test $gi_system_install = yes])
+
 debug=no
 AC_ARG_ENABLE(debug,
 	AS_HELP_STRING([--enable-debug], [Enable Debug options [default=no]]),

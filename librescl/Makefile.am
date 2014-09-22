@@ -198,10 +198,17 @@ Lscl-0.2.gir: lscl_0_2_la_vala.stamp
 Lscl-0.2.typelib: $(INTROSPECTION_GIRS)
 	$(INTROSPECTION_COMPILER) $(INTROSPECTION_COMPILER_ARGS)  $< -o $@
 
+if GI_SYSTEM_INSTALL
 girdir = $(INTROSPECTION_GIRDIR)
-gir_DATA = $(INTROSPECTION_GIRS)
 typelibsdir = $(INTROSPECTION_TYPELIBDIR)
+else
+girdir = $(datadir)/gir-1.0
+typelibsdir = $(libdir)/girepository-1.0
+endif
+
+gir_DATA = $(INTROSPECTION_GIRS)
 typelibs_DATA= Lscl-0.2.typelib
+
 CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 
 endif
