@@ -96,6 +96,8 @@ gobject-2.0
 gee-0.8 >= 0.10
 gxml-0.4)
 
+PKG_CHECK_MODULES(GMODULE,gmodule-2.0)
+
 
 GOBJECT_INTROSPECTION_CHECK([1.30.0])
 
@@ -107,6 +109,8 @@ librescl/Makefile
 librescl/lscl-0.2.pc
 test/Makefile
 test/tests-config.vala
+plugins/Makefile
+plugins/default/Makefile
 
 ])
 

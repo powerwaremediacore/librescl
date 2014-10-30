@@ -3,6 +3,7 @@ SUBDIRS = \
 	vapi \
 	librescl \
 	test \
+	plugins \
 	po
 
 INTLTOOL_FILES = intltool-extract.in \

@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="100cm" height="140cm" viewBox="484 -942 1984 2799" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100cm" height="140cm" viewBox="484 -942 1984 2783" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffffff" x="636.057" y="-165.022" width="402.7" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.057" y="-165.022" width="402.7" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="837.407" y="-149.022">&lt;&lt;interface&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="837.407" y="-130.022">Device</text>
-    <rect style="fill: #ffffff" x="636.057" y="-121.022" width="402.7" height="170"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.057" y="-121.022" width="402.7" height="170"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="-107.022">+gooses: Array&lt;DeviceGoose&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="-91.022">+reports: Array&lt;DeviceReport&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="-75.022">+datasets: Array&lt;DeviceDataset&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="-59.022">+goose_suscriptions: Array&lt;DeviceGooseSuscrioption&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="-43.022">+connection: DeviceConnection</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="-28.522">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="-14.522">readonly}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="7.97796">+conf_editor: DeviceConfEditor</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="22.478">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="36.478">readonly}</text>
-    <rect style="fill: #ffffff" x="636.057" y="48.978" width="402.7" height="390"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.057" y="48.978" width="402.7" height="390"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.057" y="62.978">+create_goose(): DeviceGoose</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="77.478">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="91.478">Creates a new</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="105.478">Goose</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="119.478">with/without</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="133.478">configuration.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.057" y="155.978">+create_dataset(): DeviceDataSet</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="170.478">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="184.478">Creates a new</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="198.478">DataSet</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="212.478">with/without</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="226.478">configuration.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.057" y="248.978">+create_report(): DeviceReport</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="263.478">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="277.478">Creates a new</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="291.478">Report</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="305.478">with/without</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="319.478">configuration.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.057" y="341.978">+create_goexref(): DeviceGoExtRef</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="356.478">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="370.478">Creates a new</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="384.478">Goose External</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="398.478">Reference</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="412.478">with/without</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.057" y="426.478">configuration.}</text>
+    <rect style="fill: #ffffff" x="636.056" y="-165.022" width="402.7" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.056" y="-165.022" width="402.7" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="837.406" y="-149.022">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="837.406" y="-130.022">Device</text>
+    <rect style="fill: #ffffff" x="636.056" y="-121.022" width="402.7" height="170"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.056" y="-121.022" width="402.7" height="170"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="-107.022">+gooses: Array&lt;DeviceGoose&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="-91.022">+reports: Array&lt;DeviceReport&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="-75.022">+datasets: Array&lt;DeviceDataset&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="-59.022">+goose_suscriptions: Array&lt;DeviceGooseSuscrioption&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="-43.022">+connection: DeviceConnection</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="-28.522">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="-14.522">readonly}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="7.978">+conf_editor: DeviceConfEditor</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="22.478">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="36.478">readonly}</text>
+    <rect style="fill: #ffffff" x="636.056" y="48.978" width="402.7" height="454"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="636.056" y="48.978" width="402.7" height="454"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.056" y="62.978">+create_goose(): DeviceGoose</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="77.478">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="91.478">Creates a new</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="105.478">Goose</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="119.478">with/without</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="133.478">configuration.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="155.978">+remove_goose(goose:DeviceGoose): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.056" y="171.978">+create_dataset(): DeviceDataSet</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="186.478">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="200.478">Creates a new</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="214.478">DataSet</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="228.478">with/without</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="242.478">configuration.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="264.978">+remove_dataset(dataset:DeviceDataSet): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="280.978">+create_report(): DeviceReport</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="295.478">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="309.478">Creates a new</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="323.478">Report</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="337.478">with/without</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="351.478">configuration.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="373.978">+remove_report(report:DeviceReport): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="639.056" y="389.978">+create_goexref(): DeviceGoExtRef</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="404.478">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="418.478">Creates a new</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="432.478">Goose External</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="446.478">Reference</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="460.478">with/without</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="639.056" y="474.478">configuration.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="639.056" y="496.978">+remove_goexref(goexref:DeviceGoExtRef): bool</text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="1272.05" y="-907.632" width="171.9" height="44"/>
@@ -89,19 +93,19 @@
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1275.05" y="-367.132">actions.}</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="1363.13" y="-45.1423" width="456.6" height="98"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1363.13" y="-45.1423" width="456.6" height="98"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1591.43" y="-26.1423">DeviceGoExtRef</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="-10.6423">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="3.35766">Holds data</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="17.3577">reference to</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="31.3577">data from GOOSE</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="45.3577">and SV messages.}</text>
-    <rect style="fill: #ffffff" x="1363.13" y="52.8577" width="456.6" height="739"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1363.13" y="52.8577" width="456.6" height="739"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1366.13" y="66.8577">+gcb_ref: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="81.3577">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="95.3577">GOOSE control</text>
+    <rect style="fill: #ffffff" x="1363.13" y="-45.1424" width="456.6" height="98"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1363.13" y="-45.1424" width="456.6" height="98"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1591.43" y="-26.1424">DeviceGoExtRef</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="-10.6424">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="3.3576">Holds data</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="17.3576">reference to</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="31.3576">data from GOOSE</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="1591.43" y="45.3576">and SV messages.}</text>
+    <rect style="fill: #ffffff" x="1363.13" y="52.8576" width="456.6" height="739"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1363.13" y="52.8576" width="456.6" height="739"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1366.13" y="66.8576">+gcb_ref: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="81.3576">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="95.3576">GOOSE control</text>
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="109.358">block reference.}</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1366.13" y="131.858">+datset: string</text>
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1366.13" y="146.358">{documentation = </text>
@@ -152,32 +156,32 @@
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1363.13" y="791.858" width="456.6" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="1073.57" y="626.739" width="241" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1073.57" y="626.739" width="241" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1194.07" y="645.739">DeviceGoose</text>
-    <rect style="fill: #ffffff" x="1073.57" y="654.739" width="241" height="445"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1073.57" y="654.739" width="241" height="445"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="668.739">+enable: bool</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="683.239">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="697.239">If the given</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="711.239">GOOSE is</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="725.239">publishing.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="747.739">+mac: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="762.239">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="776.239">Destiny MAC</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="790.239">Address}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="812.739">+vlanid: string = ([0-9][A-F])</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="827.239">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="841.239">VLAN ID}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="863.739">+vlanp: string = ([0-7])</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="878.239">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="892.239">VLAN priority}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="914.739">+appid: string = ([0-9][A-F])</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="929.239">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="943.239">Application ID</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="957.239">in hexadecimal.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="979.739">+revision: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="994.239">{documentation = </text>
+    <rect style="fill: #ffffff" x="1073.57" y="626.74" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1073.57" y="626.74" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1194.07" y="645.74">DeviceGoose</text>
+    <rect style="fill: #ffffff" x="1073.57" y="654.74" width="241" height="445"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1073.57" y="654.74" width="241" height="445"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="668.74">+enable: bool</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="683.24">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="697.24">If the given</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="711.24">GOOSE is</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="725.24">publishing.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="747.74">+mac: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="762.24">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="776.24">Destiny MAC</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="790.24">Address}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="812.74">+vlanid: string = ([0-9][A-F])</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="827.24">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="841.24">VLAN ID}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="863.74">+vlanp: string = ([0-7])</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="878.24">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="892.24">VLAN priority}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="914.74">+appid: string = ([0-9][A-F])</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="929.24">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="943.24">Application ID</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="957.24">in hexadecimal.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="979.74">+revision: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="994.24">{documentation = </text>
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="1008.24">Revision number}</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1076.57" y="1030.74">+dataset: DeviceDataSet</text>
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1076.57" y="1045.24">{documentation = </text>
@@ -188,14 +192,14 @@
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1073.57" y="1099.74" width="241" height="8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1063.93,-63.022 1144.61,-63.022 1144.61,490.037 950.614,490.037 950.614,640.739 1069.1,640.739 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1063.93,-63.022 1144.61,-63.022 1144.61,539.953 950.614,539.953 950.614,640.74 1069.1,640.74 "/>
     <polygon style="fill: #000000" points="1038.76,-63.022 1052.76,-67.822 1066.76,-63.022 1052.76,-58.222 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1038.76,-63.022 1052.76,-67.822 1066.76,-63.022 1052.76,-58.222 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1055.33,648.739 1071.33,640.739 1055.33,632.739 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1047.61" y="486.037"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1055.33,648.74 1071.33,640.74 1055.33,632.74 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1047.61" y="535.953"/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-67.022">+gooses</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-51.022">1</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1053.57" y="636.739">1..*</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1053.57" y="636.74">1..*</text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="1476.91" y="931.55" width="164" height="84"/>
@@ -248,7 +252,7 @@
   <g>
     <rect style="fill: #ffffff" x="1866.52" y="1526.32" width="333.4" height="28"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1866.52" y="1526.32" width="333.4" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="2033.22" y="1545.32">DeviceDataSet</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="2033.22" y="1545.32">DeviceDataSet</text>
     <rect style="fill: #ffffff" x="1866.52" y="1554.32" width="333.4" height="36"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1866.52" y="1554.32" width="333.4" height="36"/>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1869.52" y="1568.32">+datarefs: Array&lt;DeviceDataRef&gt;</text>
@@ -266,195 +270,202 @@
     <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1869.52" y="1716.82">device.}</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="768.037" y="-940.133" width="233.3" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.037" y="-940.133" width="233.3" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="884.687" y="-924.133">&lt;&lt;interface&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="884.687" y="-905.133">DeviceObject</text>
-    <rect style="fill: #ffffff" x="768.037" y="-896.133" width="233.3" height="36"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.037" y="-896.133" width="233.3" height="36"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="771.037" y="-882.133">+connection: DeviceConnection</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="771.037" y="-866.133">+description: string</text>
-    <rect style="fill: #ffffff" x="768.037" y="-860.133" width="233.3" height="437"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.037" y="-860.133" width="233.3" height="437"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.037" y="-846.133">+read(): bool</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-831.633">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-817.633">Reads actual</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-803.633">configuration on</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-789.633">Device using</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-775.633">active</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-761.633">DeviceConnection}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.037" y="-739.133">+save(): bool</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-724.633">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-710.633">Prepare to send</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-696.633">configuration to</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-682.633">a device using</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-668.633">the active</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-654.633">DeviceConnection.</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-640.633">No changes are</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-626.633">performed until</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-612.633">update() is</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-598.633">colled on active</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-584.633">DeviceConnection.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.037" y="-562.133">+is_valid(): bool</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-547.633">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-533.633">Returns true if</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-519.633">the specified</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-505.633">parameters are</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-491.633">valid to be</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-477.633">read/write to</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-463.633">the device,</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-449.633">using the active</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.037" y="-435.633">DeviceConnection.}</text>
+    <rect style="fill: #ffffff" x="768.038" y="-940.132" width="233.3" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.038" y="-940.132" width="233.3" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="884.688" y="-924.132">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="884.688" y="-905.132">DeviceObject</text>
+    <rect style="fill: #ffffff" x="768.038" y="-896.132" width="233.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.038" y="-896.132" width="233.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="771.038" y="-882.132">+connection: DeviceConnection</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="771.038" y="-866.132">+description: string</text>
+    <rect style="fill: #ffffff" x="768.038" y="-860.132" width="233.3" height="437"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="768.038" y="-860.132" width="233.3" height="437"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.038" y="-846.132">+read(): bool</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-831.632">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-817.632">Reads actual</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-803.632">configuration on</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-789.632">Device using</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-775.632">active</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-761.632">DeviceConnection}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.038" y="-739.132">+save(): bool</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-724.632">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-710.632">Prepare to send</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-696.632">configuration to</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-682.632">a device using</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-668.632">the active</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-654.632">DeviceConnection.</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-640.632">No changes are</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-626.632">performed until</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-612.632">update() is</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-598.632">colled on active</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-584.632">DeviceConnection.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:italic;font-weight:700" x="771.038" y="-562.132">+is_valid(): bool</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-547.632">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-533.632">Returns true if</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-519.632">the specified</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-505.632">parameters are</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-491.632">valid to be</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-477.632">read/write to</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-463.632">the device,</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-449.632">using the active</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="771.038" y="-435.632">DeviceConnection.}</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.687,-404.897 884.687,-139.771 837.407,-139.771 837.407,-165.022 "/>
-    <polygon style="fill: #ffffff" points="892.687,-404.897 884.687,-420.897 876.687,-404.897 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="892.687,-404.897 884.687,-420.897 876.687,-404.897 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.688,-404.896 884.688,-139.771 837.406,-139.771 837.406,-165.022 "/>
+    <polygon style="fill: #ffffff" points="892.688,-404.896 884.688,-420.896 876.688,-404.896 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="892.688,-404.896 884.688,-420.896 876.688,-404.896 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="2182.2" y="294.819" width="187.1" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="294.819" width="187.1" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="2275.75" y="313.819">DeviceReport</text>
-    <rect style="fill: #ffffff" x="2182.2" y="322.819" width="187.1" height="100"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="322.819" width="187.1" height="100"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="336.819">+name: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="352.819">+enable: true</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="368.819">+buffered: true</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="384.819">+id: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="400.819">+revision: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="416.819">+dataset: DeviceDataSet</text>
-    <rect style="fill: #ffffff" x="2182.2" y="422.819" width="187.1" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="422.819" width="187.1" height="8"/>
+    <rect style="fill: #ffffff" x="2182.2" y="294.818" width="187.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="294.818" width="187.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="2275.75" y="313.818">DeviceReport</text>
+    <rect style="fill: #ffffff" x="2182.2" y="322.818" width="187.1" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="322.818" width="187.1" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="336.818">+name: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="352.818">+enable: true</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="368.818">+buffered: true</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="384.818">+id: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="400.818">+revision: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2185.2" y="416.818">+dataset: DeviceDataSet</text>
+    <rect style="fill: #ffffff" x="2182.2" y="422.818" width="187.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="2182.2" y="422.818" width="187.1" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="1932.19" y="-799.617" width="200.9" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-799.617" width="200.9" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:700" x="2032.64" y="-780.617">DeviceObjectRefence</text>
-    <rect style="fill: #ffffff" x="1932.19" y="-771.617" width="200.9" height="436"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-771.617" width="200.9" height="436"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-757.617">+ied: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-743.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-729.117">IED's name in</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-715.117">the system.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-692.617">+ap: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-678.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-664.117">Access Point to</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-650.117">access data to</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-636.117">in a IED.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-613.617">+ld_inst: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-599.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-585.117">Logical Device's</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-571.117">name reference</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-557.117">to get data</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-543.117">from.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-520.617">+ln_class: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-506.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-492.117">Logical Node</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-478.117">class' name.}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-455.617">+ln_prefix: sting</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-441.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-427.117">Logical Node's</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-413.117">prefix}</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-390.617">+ln_inst: string</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-376.117">{documentation = </text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-362.117">Logical Node's</text>
-    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-348.117">instance.}</text>
-    <rect style="fill: #ffffff" x="1932.19" y="-335.617" width="200.9" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-335.617" width="200.9" height="8"/>
+    <rect style="fill: #ffffff" x="1932.19" y="-799.618" width="201.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-799.618" width="201.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="2033.04" y="-780.618">DeviceObjectRefence</text>
+    <rect style="fill: #ffffff" x="1932.19" y="-771.618" width="201.7" height="436"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-771.618" width="201.7" height="436"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-757.618">+ied: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-743.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-729.118">IED's name in</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-715.118">the system.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-692.618">+ap: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-678.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-664.118">Access Point to</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-650.118">access data to</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-636.118">in a IED.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-613.618">+ld_inst: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-599.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-585.118">Logical Device's</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-571.118">name reference</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-557.118">to get data</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-543.118">from.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-520.618">+ln_class: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-506.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-492.118">Logical Node</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-478.118">class' name.}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-455.618">+ln_prefix: sting</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-441.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-427.118">Logical Node's</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-413.118">prefix}</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1935.19" y="-390.618">+ln_inst: string</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-376.118">{documentation = </text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-362.118">Logical Node's</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:italic;font-weight:normal" x="1935.19" y="-348.118">instance.}</text>
+    <rect style="fill: #ffffff" x="1932.19" y="-335.618" width="201.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1932.19" y="-335.618" width="201.7" height="8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2032.64,-309.381 2032.64,174.359 2032.32,174.359 2032.32,859.739 1314.57,859.739 "/>
-    <polygon style="fill: #ffffff" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2033.04,-309.382 2033.04,174.359 2032.32,174.359 2032.32,859.74 1314.57,859.74 "/>
+    <polygon style="fill: #ffffff" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2032.64,-309.381 2032.64,602.425 2033.22,602.425 2033.22,1526.32 "/>
-    <polygon style="fill: #ffffff" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2033.04,-309.382 2033.04,602.426 2033.22,602.426 2033.22,1526.32 "/>
+    <polygon style="fill: #ffffff" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.687,-403.894 884.687,-207.761 2275.75,-207.761 2275.75,294.819 "/>
-    <polygon style="fill: #ffffff" points="892.687,-403.894 884.687,-419.894 876.687,-403.894 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="892.687,-403.894 884.687,-419.894 876.687,-403.894 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.688,-403.893 884.688,-207.76 2275.76,-207.76 2275.76,294.818 "/>
+    <polygon style="fill: #ffffff" points="892.688,-403.893 884.688,-419.893 876.688,-403.893 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="892.688,-403.893 884.688,-419.893 876.688,-403.893 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2032.64,-309.381 2032.64,973.55 1640.91,973.55 "/>
-    <polygon style="fill: #ffffff" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2033.04,-309.382 2033.04,973.55 1640.91,973.55 "/>
+    <polygon style="fill: #ffffff" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2032.64,-309.381 2032.64,364.819 2182.2,364.819 "/>
-    <polygon style="fill: #ffffff" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2040.64,-309.381 2032.64,-325.381 2024.64,-309.381 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2033.04,-309.382 2033.04,364.818 2182.2,364.818 "/>
+    <polygon style="fill: #ffffff" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2041.04,-309.382 2033.04,-325.382 2025.04,-309.382 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2369.3,412.819 2466.56,412.819 2466.56,1600.32 2204.39,1600.32 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2369.3,412.818 2466.56,412.818 2466.56,1600.32 2204.39,1600.32 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2218.16,1592.32 2202.16,1600.32 2218.16,1608.32 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2373.3" y="408.819">+dataset</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2373.3" y="424.819">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2468.56" y="1002.57"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2373.3" y="408.818">+dataset</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2373.3" y="424.818">1</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2219.92" y="1596.32">1</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1001.34,-886.133 1136.69,-886.133 1136.69,-885.632 1272.05,-885.632 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1005.34" y="-890.133">+connection</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1005.34" y="-874.133">1</text>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1001.34,-886.132 1136.69,-886.132 1136.69,-885.632 1272.05,-885.632 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1138.69" y="-889.882"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1005.34" y="-890.132">+connection</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1005.34" y="-874.132">1</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1268.05" y="-889.632">1</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="749.801,-850.133 486.302,-850.133 486.302,1825.38 2033.22,1825.38 2033.22,1729.32 "/>
-    <polygon style="fill: #ffffff" points="749.801,-842.133 765.801,-850.133 749.801,-858.133 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="749.801,-842.133 765.801,-850.133 749.801,-858.133 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="749.802,-850.132 486.302,-850.132 486.302,1825.38 2033.22,1825.38 2033.22,1729.32 "/>
+    <polygon style="fill: #ffffff" points="749.802,-842.132 765.802,-850.132 749.802,-858.132 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="749.802,-842.132 765.802,-850.132 749.802,-858.132 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="749.801,-850.133 485.994,-850.133 485.994,859.739 1073.57,859.739 "/>
-    <polygon style="fill: #ffffff" points="749.801,-842.133 765.801,-850.133 749.801,-858.133 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="749.801,-842.133 765.801,-850.133 749.801,-858.133 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="749.802,-850.132 485.994,-850.132 485.994,859.74 1073.57,859.74 "/>
+    <polygon style="fill: #ffffff" points="749.802,-842.132 765.802,-850.132 749.802,-858.132 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="749.802,-842.132 765.802,-850.132 749.802,-858.132 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1819.73,522.858 1905.58,522.858 1905.58,827.093 1558.91,827.093 1558.91,927.078 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1819.73,522.858 1905.58,522.858 1905.58,827.092 1558.91,827.092 1558.91,927.078 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1550.91,913.314 1558.91,929.314 1566.91,913.314 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1732.24" y="823.092"/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1823.73" y="518.858">+datarefs</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1823.73" y="534.858">1</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1569.91" y="927.55">1..*</text>
   </g>
   <g>
-    <ellipse style="fill: #000000" cx="2034.5" cy="365.677" rx="6.80829" ry="6.15988"/>
-    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="2034.5" cy="365.677" rx="6.80829" ry="6.15988"/>
+    <ellipse style="fill: #000000" cx="2034.51" cy="365.678" rx="6.80829" ry="6.15988"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="2034.51" cy="365.678" rx="6.80829" ry="6.15988"/>
   </g>
   <g>
-    <ellipse style="fill: #000000" cx="2032.82" cy="855.93" rx="6.80829" ry="6.15988"/>
-    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="2032.82" cy="855.93" rx="6.80829" ry="6.15988"/>
+    <ellipse style="fill: #000000" cx="2032.81" cy="855.93" rx="6.80829" ry="6.15988"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="2032.81" cy="855.93" rx="6.80829" ry="6.15988"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1063.93,-143.022 2073.76,-143.022 2073.76,308.819 2177.73,308.819 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1063.93,-143.022 2073.76,-143.022 2073.76,308.818 2177.73,308.818 "/>
     <polygon style="fill: #000000" points="1038.76,-143.022 1052.76,-147.822 1066.76,-143.022 1052.76,-138.222 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1038.76,-143.022 1052.76,-147.822 1066.76,-143.022 1052.76,-138.222 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2163.97,316.819 2179.97,308.819 2163.97,300.819 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="2163.96,316.818 2179.96,308.818 2163.96,300.818 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2075.76" y="78.898"/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-147.022">+reports</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-131.022">1</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="2162.2" y="304.819">1..*</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="2162.2" y="304.818">1..*</text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1063.93,-111.022 1193.44,-111.022 1193.44,3.85766 1358.66,3.85766 "/>
     <polygon style="fill: #000000" points="1038.76,-111.022 1052.76,-115.822 1066.76,-111.022 1052.76,-106.222 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1038.76,-111.022 1052.76,-115.822 1066.76,-111.022 1052.76,-106.222 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1344.89,11.8577 1360.89,3.85766 1344.89,-4.14234 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1195.44" y="-57.5822"/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-115.022">+goose_suscriptions</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1070.76" y="-99.022">1</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1343.13" y="-0.142335">1..*</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1343.13" y="-0.14234">1..*</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="610.885,-79.022 531.151,-79.022 531.151,1600.32 1862.05,1600.32 "/>
-    <polygon style="fill: #000000" points="636.057,-79.022 622.057,-74.222 608.057,-79.022 622.057,-83.822 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="636.057,-79.022 622.057,-74.222 608.057,-79.022 622.057,-83.822 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="610.884,-79.022 531.152,-79.022 531.152,1600.32 1862.05,1600.32 "/>
+    <polygon style="fill: #000000" points="636.056,-79.022 622.056,-74.222 608.056,-79.022 622.056,-83.822 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="636.056,-79.022 622.056,-74.222 608.056,-79.022 622.056,-83.822 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1848.29,1608.32 1864.29,1600.32 1848.29,1592.32 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="604.057" y="-83.022">+datasets</text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="604.057" y="-67.022">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="533.152" y="756.647"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="604.056" y="-83.022">+datasets</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="604.056" y="-67.022">1</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1846.52" y="1596.32">1..*</text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1866.52,1540.32 1746.74,1540.32 1746.74,1337.55 1645.38,1337.55 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1659.14,1329.55 1643.14,1337.55 1659.14,1345.55 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1748.74" y="1434.93"/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1862.52" y="1536.32"> datarefs</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1862.52" y="1552.32">1</text>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1660.91" y="1333.55">1..*</text>
@@ -462,5 +473,10 @@
   <g>
     <ellipse style="fill: #000000" cx="2034.01" cy="970.684" rx="6.80829" ry="6.15988"/>
     <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="2034.01" cy="970.684" rx="6.80829" ry="6.15988"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="884.688,-404.896 884.688,-207.459 1591.43,-207.459 1591.43,-45.1424 "/>
+    <polygon style="fill: #ffffff" points="892.688,-404.896 884.688,-420.896 876.688,-404.896 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="892.688,-404.896 884.688,-420.896 876.688,-404.896 "/>
   </g>
 </svg>

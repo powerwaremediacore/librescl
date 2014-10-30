@@ -5,115 +5,125 @@ lib_LTLIBRARIES =  liblscl-0.2.la
 
 sources = \
 	namespace-info.vala \
-	initialization.vala \
-	Collections.vala \
-	Serializable.vala \
-	tAnyLN.vala \
-	tLN0.vala \
-	SclDocument.vala \
-	Enums.vala \
 	defaults.vala \
-	tLnClassEnum.vala \
-	tGSEControl.vala \
-	tSampledValueControl.vala \
-	tSettingControl.vala \
-	tSCLControl.vala \
-	tLog.vala \
-	tSampledValueControlSmvOpts.vala \
-	tUnNaming.vala \
-	tDataSet.vala \
-	tReportControl.vala \
-	tLogControl.vala \
-	tDOI.vala \
-	tInputs.vala \
-	tBaseElement.vala \
-	tNaming.vala \
-	tFCDA.vala \
-	tControlWithTriggerOpt.vala \
-	tReportControlOptFields.vala \
-	tRptEnabled.vala \
-	tSDI.vala \
-	tDAI.vala \
-	tText.vala \
-	tControl.vala \
-	tPrivate.vala \
-	tLDevice.vala \
-	tTrgOps.vala \
-	tClientLN.vala \
-	tVal.vala \
-	tAccessControl.vala \
+	initialization.vala \
+	Device.vala \
+	DeviceConnection.vala \
+	DeviceDataRef.vala \
+	DeviceDataSet.vala \
+	DeviceGoExtRef.vala \
+	DeviceGoose.vala \
+	DeviceObject.vala \
+	DeviceObjectRefence.vala \
+	DeviceReport.vala \
+	Collections.vala \
+	Enums.vala \
 	LN0.vala \
-	tLN.vala \
 	SCL.vala \
+	SclDocument.vala \
+	Serializable.vala \
 	tAbstractConductingEquipment.vala \
 	tAbstractDataAttribute.vala \
+	tAccessControl.vala \
 	tAccessPoint.vala \
 	tAddress.vala \
+	tAnyContentFromOtherNamespace.vala \
+	tAnyLN.vala \
 	tAssociation.vala \
+	tBaseElement.vala \
 	tBasicType.vala \
 	tBay.vala \
 	tBDA.vala \
 	tBitRateInMbPerSec.vala \
+	tClientLN.vala \
 	tCommunication.vala \
 	tConductingEquipment.vala \
 	tConfLNs.vala \
+	tControl.vala \
 	tConnectedAP.vala \
 	tConnectivityNode.vala \
 	tControlBlock.vala \
 	tControlWithIEDName.vala \
-	tDA.vala \
+	tControlWithTriggerOpt.vala \
+	tDAI.vala \
+	tDataSet.vala \
 	tDataTypeTemplates.vala \
 	tDAType.vala \
-	tDO.vala \
+	tDA.vala \
+	tDOI.vala \
 	tDOType.vala \
+	tDO.vala \
 	tDurationInMilliSec.vala \
 	tDurationInSec.vala \
 	tEnumType.vala \
 	tEnumVal.vala \
-	tEquipment.vala \
 	tEquipmentContainer.vala \
+	tEquipment.vala \
+	tExtRef.vala \
+	tFCDA.vala \
 	tFunction.vala \
 	tGeneralEquipment.vala \
-	tGSE.vala \
+	tGSEControl.vala \
 	tGSESettings.vala \
+	tGSE.vala \
 	tHeader.vala \
 	tHitem.vala \
 	tIDNaming.vala \
 	tIED.vala \
-	tLNode.vala \
+	tInputs.vala \
+	tLDevice.vala \
+	tLN0.vala \
+	tLnClassEnum.vala \
 	tLNodeContainer.vala \
 	tLNodeType.vala \
+	tLNode.vala \
+	tLN.vala \
+	tLogControl.vala \
 	tLogSettings.vala \
-	tP.vala \
+	tLog.vala \
+	tNaming.vala \
 	tPhysConn.vala \
 	tPowerSystemResource.vala \
 	tPowerTransformer.vala \
+	tPrivate.vala \
+	tP.vala \
+	tReportControlOptFields.vala \
+	tReportControl.vala \
 	tReportSettings.vala \
+	tRptEnabled.vala \
+	tSampledValueControlSmvOpts.vala \
+	tSampledValueControl.vala \
+	tSCLControl.vala \
+	tSDI.vala \
 	tSDO.vala \
-	tServer.vala \
 	tServerAuthentication.vala \
-	tServices.vala \
+	tServer.vala \
 	tServiceSettings.vala \
 	tServicesSettingGroups.vala \
-	tServiceWithMax.vala \
+	tServices.vala \
 	tServiceWithMaxAndClient.vala \
-	tServiceWithMaxAndMaxAttributes.vala \
 	tServiceWithMaxAndMaxAttributesAndModify.vala \
+	tServiceWithMaxAndMaxAttributes.vala \
 	tServiceWithMaxAndModify.vala \
+	tServiceWithMax.vala \
 	tServiceYesNo.vala \
-	tSMV.vala \
+	tSettingControl.vala \
 	tSMVSettings.vala \
+	tSMV.vala \
 	tSubEquipment.vala \
 	tSubFunction.vala \
 	tSubNetwork.vala \
 	tSubstation.vala \
 	tTapChanger.vala \
 	tTerminal.vala \
+	tText.vala \
 	tTransformerWinding.vala \
+	tTrgOps.vala \
+	tUnNaming.vala \
 	tValueWithUnit.vala \
-	tVoltage.vala \
+	tVal.vala \
 	tVoltageLevel.vala \
-	tExtRef.vala \
+	tVoltage.vala \
 	utils.vala
 
 AM_CPPFLAGS = \
