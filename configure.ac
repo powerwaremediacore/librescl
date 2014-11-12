@@ -14,6 +14,8 @@ m4_define([project_lt_age], [0])
 
 m4_define([project_version],project_major_version.project_minor_version.project_micro_version)
 
+AC_CONFIG_MACRO_DIR([m4])
+
 AC_INIT([LibreSCL],[project_version],[liblscl])
 AC_SUBST(LSCL_ABI_MAJOR_VERSION, project_major_version)
 AC_SUBST(LSCL_ABI_MINOR_VERSION, project_minor_version)
@@ -77,16 +79,7 @@ AM_CONDITIONAL(DEBUG, [test $debug = yes])
 
 
 dnl Check for vala
-vala_version="0.20"
-vala_pkg="libvala-"$vala_version
-PKG_CHECK_MODULES(VALA,$vala_pkg)
-VALAC_BIN=`pkg-config $vala_pkg --variable=bindir`
-VALAC=$VALAC_BIN/valac-$vala_version
-VAPIDIR=`pkg-config $vala_pkg --variable=vapidir`
-AC_SUBST(VALAC_BIN)
-AC_SUBST(VALAC)
-AC_SUBST(VAPIDIR)
-AM_PROG_VALAC([0.20])
+VALAC_CHECK
 
 dnl Test directory
 
