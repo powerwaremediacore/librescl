@@ -1,0 +1,3 @@
+New for version 0.2.1:
+* Fixed build with recent versions of Vala
+* Added valac.m4 macros
