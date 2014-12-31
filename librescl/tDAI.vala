@@ -38,7 +38,7 @@ namespace Lscl
     [Description(nick="valKind", blurb="")]
     public tValKindEnum val_kind { get; set; default = tValKindEnum.SET; }
     [Description(nick="ix", blurb="")]
-    public uint ix { get; set; }
+    public string ix { get; set; }
     [Description(nick="ixSpecified", blurb="")]
     public bool ix_specified { get; set; }
 

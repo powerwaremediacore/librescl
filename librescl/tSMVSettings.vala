@@ -68,19 +68,13 @@ namespace Lscl
    */
   public class tSamplesBase : Serializable
   {
-    public uint get_value () {
-      if (serialized_xml_node_value != null)
-        return int.parse (serialized_xml_node_value);
-      else {
+    public string get_value () {
+      if (serialized_xml_node_value == null)
         serialized_xml_node_value = "0";
-        return 0;
-      }
+      return serialized_xml_node_value;
     }
-    public void set_value (uint val) {
-      var v = val;
-      if (v < 0)
-        v = 0;
-      serialized_xml_node_value = v.to_string ();
+    public void set_value (string val) {
+      serialized_xml_node_value = val;
     }
   }
   /**

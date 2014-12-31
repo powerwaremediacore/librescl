@@ -60,7 +60,7 @@ namespace Lscl
     [Description(nick="type", blurb="It's used to refer to the appropriate enumeration type or DAType definition.")]
     public string data_type { get; set; }
     [Description(nick="count", blurb="Shall state the number of array elements in the case where the attribute is an array.")]
-    public uint count { get; set; }
+    public string count { get; set; }
     // Serializable
     public override GXml.Node? deserialize (GXml.Node node)
                                     throws GLib.Error

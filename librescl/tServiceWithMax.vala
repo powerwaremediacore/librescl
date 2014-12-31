@@ -30,6 +30,6 @@ namespace Lscl
   public class tServiceWithMax : Serializable
   {
     [Description(nick="max", blurb="The maximum number of data sets")]
-    public uint max { get; set; default=0; }
+    public string max { get; set; default="0"; }
   }
 }

@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="name", blurb="Name of the SDI (structure part)")]
     public string name { get; set; }
     [Description(nick="ix", blurb="Index of the SDI element in case of an array type.")]
-    public uint ix { get; set; }
+    public string ix { get; set; }
     [Description(nick="ixSpecified", blurb="Index of the SDI element in case of an array type.")]
     public bool ix_specified { get; set; }
     [Description(nick="SDI", blurb="")]

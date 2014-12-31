@@ -1,7 +1,7 @@
 AM_VALAFLAGS=
 
 
-lib_LTLIBRARIES =  liblscl-0.2.la
+lib_LTLIBRARIES =  liblscl-0.4.la
 
 sources = \
 	namespace-info.vala \
@@ -136,7 +136,7 @@ AM_CPPFLAGS = \
 AM_CFLAGS = \
 	$(GXML_CFLAGS)
 
-liblscl_0_2_la_LDFLAGS= \
+liblscl_0_4_la_LDFLAGS= \
 	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)"
 
 
@@ -151,61 +151,61 @@ AM_VALAFLAGS += \
 	$(top_srcdir)/vapi/config.vapi \
 	--pkg gxml-0.4 \
 	-C -H lscl.h \
-	--library lscl-0.2
+	--library lscl-0.4
 
-liblscl_0_2_la_LIBADD = $(GXML_LIBS)
+liblscl_0_4_la_LIBADD = $(GXML_LIBS)
 
-lscl_0_2_la_vala.stamp: $(sources)
+lscl_0_4_la_vala.stamp: $(sources)
 	$(VALAC) $(AM_VALAFLAGS) $^
 
-$(sources:.vala=.c): lscl_0_2_la_vala.stamp
+$(sources:.vala=.c): lscl_0_4_la_vala.stamp
 
-liblscl_0_2_la_SOURCES= $(sources:.vala=.c)
+liblscl_0_4_la_SOURCES= $(sources:.vala=.c)
 
-lscl.h: lscl_0_2_la_vala.stamp
+lscl.h: lscl_0_4_la_vala.stamp
 lscldir = $(includedir)/librescl-$(API_VERSION)/librescl
 lscl_HEADERS = lscl.h
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = lscl-0.2.pc
+pkgconfig_DATA = lscl-0.4.pc
 
-lscl-0.2.vapi: lscl_0_2_la_vala.stamp
+lscl-0.4.vapi: lscl_0_4_la_vala.stamp
 vapidir = $(datadir)/vala/vapi
 dist_vapi_DATA = \
-	lscl-0.2.vapi \
-	lscl-0.2.deps
+	lscl-0.4.vapi \
+	lscl-0.4.deps
 
 EXTRA_DIST = \
 	$(sources) \
-	lscl-0.2.pc
+	lscl-0.4.pc
 
 BUILT_SOURCES = \
-	lscl_0_2_la_vala.stamp \
+	lscl_0_4_la_vala.stamp \
 	lscl.h \
-	lscl-0.2.vapi
+	lscl-0.4.vapi
 
 
 CLEANFILES = \
 	$(sources:.vala=.c) \
 	namespace-info.vala \
 	lscl.h \
-	lscl-0.2.vapi \
-	lscl-0.2.pc
+	lscl-0.4.vapi \
+	lscl-0.4.pc
 
 if HAVE_INTROSPECTION
 
 AM_VALAFLAGS += \
-	--gir=Lscl-0.2.gir
+	--gir=Lscl-0.4.gir
 
 
 liblscl_dlname=\
-	`$(SED) -n "s/^dlname='\([A-Za-z0-9.+-]\+\)'/\1/p" liblscl-0.2.la`
+	`$(SED) -n "s/^dlname='\([A-Za-z0-9.+-]\+\)'/\1/p" liblscl-0.4.la`
 
 INTROSPECTION_GIRS = Lscl-$(API_VERSION).gir
 INTROSPECTION_COMPILER_ARGS = --includedir=. -l $(liblscl_dlname)
 
-Lscl-0.2.gir: lscl_0_2_la_vala.stamp
-Lscl-0.2.typelib: $(INTROSPECTION_GIRS)
+Lscl-0.4.gir: lscl_0_4_la_vala.stamp
+Lscl-0.4.typelib: $(INTROSPECTION_GIRS)
 	$(INTROSPECTION_COMPILER) $(INTROSPECTION_COMPILER_ARGS)  $< -o $@
 
 if GI_SYSTEM_INSTALL
@@ -217,7 +217,7 @@ typelibsdir = $(libdir)/girepository-1.0
 endif
 
 gir_DATA = $(INTROSPECTION_GIRS)
-typelibs_DATA= Lscl-0.2.typelib
+typelibs_DATA= Lscl-0.4.typelib
 
 CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 
@@ -227,27 +227,27 @@ if PLATFORM_WIN32
 AM_VALAFLAGS += \
   --symbols=librescl.symbols
 
-librescl.symbols: lscl_0_2_la_vala.stamp
+librescl.symbols: lscl_0_4_la_vala.stamp
 
-liblscl_0_2_la_LDFLAGS += -shared -o lscl-0.4.dll -no-undefined \
+liblscl_0_4_la_LDFLAGS += -shared -o lscl-0.4.dll -no-undefined \
 	-out-imlib -export-all-symbols -output-def
 
-liblscl-0.2.def: librescl.symbols
+liblscl-0.4.def: librescl.symbols
 	(echo -e EXPORTS; $(CPP) -P $(DEF_FLAGS) - <$(srcdir)/librescl.symbols | \
 	 sed -e '/^$$/d' -e 's/^/ /' -e 's/G_GNUC_[^ ]*//g' | \
-	 sort) > liblscl-0.2.def.tmp && mv liblscl-0.2.def.tmp liblscl-0.2.def
+	 sort) > liblscl-0.4.def.tmp && mv liblscl-0.4.def.tmp liblscl-0.4.def
 
-liblscl-0.2.def: liblscl-0.2.la
+liblscl-0.4.def: liblscl-0.4.la
 liblscldefdir=$(libdir)
-liblscldef_DATA=liblscl-0.2.def
+liblscldef_DATA=liblscl-0.4.def
 
 BUILT_SOURCES += \
 	librescl.symbols \
-	liblscl-0.2.def
+	liblscl-0.4.def
 
 CLEANFILES += \
 	librescl.symbols \
-	liblscl-0.2.def
+	liblscl-0.4.def
 
 endif
 

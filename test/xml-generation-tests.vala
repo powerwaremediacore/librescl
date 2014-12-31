@@ -373,7 +373,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
            assert_not_reached ();
          }
-         if (dup.count != 2) {
+         if (dup.count != "2") {
            stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
            assert_not_reached ();
          }

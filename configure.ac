@@ -1,6 +1,6 @@
 m4_define([project_major_version], [0])
-m4_define([project_minor_version], [2])
-m4_define([project_micro_version], [1])
+m4_define([project_minor_version], [4])
+m4_define([project_micro_version], [0])
 
 # LT_VERSION
 #   If library source has changed since last release, increment revision
@@ -8,7 +8,7 @@ m4_define([project_micro_version], [1])
 #     increment current and set revision to 0
 #   If public symbols have been added since last release, increment age
 #   If public symbols have been removed since last release, set age to 0
-m4_define([project_lt_current], [2])
+m4_define([project_lt_current], [4])
 m4_define([project_lt_revision], [0])
 m4_define([project_lt_age], [0])
 
@@ -99,7 +99,7 @@ Makefile
 vapi/Makefile
 librescl/namespace-info.vala
 librescl/Makefile
-librescl/lscl-0.2.pc
+librescl/lscl-0.4.pc
 test/Makefile
 test/tests-config.vala
 plugins/Makefile

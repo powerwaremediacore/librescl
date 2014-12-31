@@ -30,7 +30,7 @@ namespace Lscl
   public class tEnumVal : Serializable
   {
     [Description(nick="ord", blurb="It contains the order of the values")]
-    public int ord { get; set; }
+    public string ord { get; set; }
     // Enable set Element contents
     public void set_value (string val) { serialized_xml_node_value = val; }
     public string get_value () { return serialized_xml_node_value; }
