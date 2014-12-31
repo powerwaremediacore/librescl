@@ -504,7 +504,7 @@ public class LsclTest.ReadFile
         string[] danames = {"d","swRev","vendor"};
         //string[] dabtypes = {"VisString255","VisString255","VisString255"};
         //string[] davkinds = {"Set","Set","Set"};
-        int[] dacounts = {1,2,3};
+        string[] dacounts = {"1","2","3"};
         bool[] dadchgs = {false,true,false};
         bool[] daqchgs = {false,false,true};
         bool[] dadupds = {true,false,false};
@@ -575,7 +575,7 @@ public class LsclTest.ReadFile
         string[] bdas = {"SinglePhase","SingleBraker"};
         //string[] values = {"single_contact","single_contact"};
         tValKindEnum[] vkinds = {tValKindEnum.SET, tValKindEnum.CONF};
-        int[] counts = {0,0};
+        string[] counts = {"0","0"};
         for (int i = 0; i < bdas.length; i++) {
           var bda = dat.bdas.get (bdas[i]);
           if (bda == null) {
@@ -612,7 +612,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
           assert_not_reached ();
         }
-        if (bda.count != 2) {
+        if (bda.count != "2") {
           stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count)\n");
           assert_not_reached ();
         }
@@ -644,7 +644,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
           assert_not_reached ();
         }
-        if (dup.count != 2) {
+        if (dup.count != "2") {
           stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
           assert_not_reached ();
         }
@@ -708,13 +708,13 @@ public class LsclTest.ReadFile
         assert (ied.services.set_data_set_value == null);
         assert (ied.services.data_set_directory != null);
         assert (ied.services.conf_data_set != null);
-        assert (ied.services.conf_data_set.max == 8);
-        assert (ied.services.conf_data_set.max_attributes == 64);
+        assert (ied.services.conf_data_set.max == "8");
+        assert (ied.services.conf_data_set.max_attributes == "64");
         assert (ied.services.dyn_data_set == null);
         assert (ied.services.read_write != null);
         assert (ied.services.timer_activated_control == null);
         assert (ied.services.conf_report_control != null);
-        assert (ied.services.conf_report_control.max == 6);
+        assert (ied.services.conf_report_control.max == "6");
         assert (ied.services.get_cb_values != null);
         assert (ied.services.conf_log_control == null);
         assert (ied.services.report_settings != null);
@@ -731,9 +731,9 @@ public class LsclTest.ReadFile
         assert (ied.services.smv_settings == null);
         assert (ied.services.gse_dir == null);
         assert (ied.services.goose != null);
-        assert (ied.services.goose.max == 9);
+        assert (ied.services.goose.max == "9");
         assert (ied.services.gsse != null);
-        assert (ied.services.gsse.max == 1);
+        assert (ied.services.gsse.max == "1");
         assert (ied.services.file_handling != null);
         assert (ied.services.conf_lns != null);
         assert (ied.services.conf_lns.fix_prefix == false);
@@ -766,7 +766,7 @@ public class LsclTest.ReadFile
         }
         // Server Tests
         var server = ap.server;
-        assert (server.timeout == 30);
+        assert (server.timeout == "30");
         if (server.authentication == null) {
           stdout.printf (@"ERROR: No authentication for 'IED1.AccessPoint1.Server'\n");
           assert_not_reached ();
@@ -832,7 +832,7 @@ public class LsclTest.ReadFile
         assert(gsec.control_type == tGSEControlTypeEnum.GOOSE);
         assert (gsec.app_id == "DISPARO");
         assert (gsec.dat_set == "GOOSE1");
-        assert (gsec.conf_rev == 1);
+        assert (gsec.conf_rev == "1");
         // Data Object Information
         assert (ld.ln0.dois != null);
         assert (ld.ln0.dois.size == 4);

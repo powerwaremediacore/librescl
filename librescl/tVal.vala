@@ -32,7 +32,7 @@ namespace Lscl
   public class tVal : Serializable
   {
     [Description(nick="sGroup", blurb="The number of the setting group to which this value belongs")]
-    public uint s_group  { get; set; }
+    public string s_group  { get; set; }
     [Description(nick="sGroupSpecified", blurb="It specifies setting group the value belongs to")]
     public bool s_group_specified  { get; set; }
 

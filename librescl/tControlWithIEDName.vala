@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="IEDName", blurb="")]
     public tIEDName.Array ied_names { get; set; }
     [Description(nick="confRev", blurb="")]
-    public uint conf_rev { get; set; }
+    public string conf_rev { get; set; }
     [Description(nick="confRevSpecified", blurb="")]
     public bool conf_rev_specified {get; set; }
 

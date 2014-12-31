@@ -37,9 +37,9 @@ namespace Lscl
     [Description(nick=" ", blurb="If it's false indicates Unicast SMV services")]
     public bool multicast  { get; set; default=true; }
     [Description(nick=" ", blurb="Sample rate")]
-    public uint smpRate  { get; set; }
+    public string smpRate  { get; set; }
     [Description(nick=" ", blurb="Number of ASDU (Application service data unit)")]
-    public uint nofASDU  { get; set; }
+    public string nofASDU  { get; set; }
 
     public class Array : SerializableArrayList<tSampledValueControl> {}
   }

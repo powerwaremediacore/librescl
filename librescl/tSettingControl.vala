@@ -30,9 +30,9 @@ namespace Lscl
 	public class tSettingControl : tUnNaming
 	{
 		[Description(nick="numOfSGs", blurb="The number of setting groups available.")]
-		public uint num_of_sgs { get; set; default=1;}
+		public string num_of_sgs { get; set; default="1";}
 		[Description(nick="actSG", blurb="The number of the setting group to be activated when loading the configuration.")]
-		public uint act_sg { get; set; default=1;}
+		public string act_sg { get; set; default="1";}
 	}
 }
 

@@ -1,15 +1,12 @@
 /**
- *
  *  LibreSCL
  *
  *  Authors:
  *
  *       Daniel Espinosa <esodan@gmail.com>
- *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
- *  Copyright (c) 2014 PowerMedia Consulting
+ *  Copyright (c) 2014 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -25,21 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Lscl
-{
-  public class tRptEnabled : tUnNaming
-  {
-    [Description(nick="max", blurb="Defines the maximum number of report control blocks of this type")]
-    public string max { get; set; default="1"; }
-    /* Edition 2.0 */
-    [Description(nick="ClientLN", blurb="Logical Node client in the system of this report")]
-    public tClientLN.Array clients_ln { get; set; }
-    // Serializable
-    public override void init_containers ()
-    {
-      if (clients_ln == null)
-        clients_ln = new tClientLN.Array ();
-    }
-  }
-}
+using Lscl;
 
+public abstract class DeviceDefaultGoExtRef : Lscl.DeviceGoExtRef {
+
+	public DeviceDefaultGoExtRef (DeviceConnection cnn) {
+		base (cnn);
+	}
+  // DeviceObject interface methods overrides
+  public override bool read () { return true; }
+  public override bool save () { return true; }
+  public override  bool is_valid () { return true; }
+
+}

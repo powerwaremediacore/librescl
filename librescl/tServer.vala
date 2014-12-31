@@ -36,7 +36,7 @@ namespace Lscl
     [Description(nick="Association", blurb="")]
     public tAssociation association { get; set; }
     [Description(nick="timeout", blurb="Time out in seconds.")]
-    public uint timeout { get; set; default = 30; }
+    public string timeout { get; set; default = "30"; }
 
     public override void init_containers ()
     {

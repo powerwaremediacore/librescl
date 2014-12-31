@@ -30,7 +30,7 @@ namespace Lscl
   public class tServiceWithMaxAndMaxAttributes : tServiceWithMax 
   {
     [Description(nick="maxAttributes", blurb="The maximum number of attributes allowed in a data set (an FCDA can contain several attributes)")]
-    public uint max_attributes { get; set; }
+    public string max_attributes { get; set; }
     [Description(nick="maxAttributesSpecified", blurb="The maximum number of attributes specified in a data set (an FCDA can contain several attributes)")]
     public bool max_attributes_specified{ get; set; }
   }
