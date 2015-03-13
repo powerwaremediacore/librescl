@@ -36,6 +36,6 @@ namespace Lscl
 
     public string get_map_key () { return name; }
 
-    public class Collection : SerializableHashMap<string,tGSEControl> {}
+    public class HashMap : SerializableHashMap<string,tGSEControl> {}
   }
 }

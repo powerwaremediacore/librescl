@@ -30,11 +30,11 @@ namespace Lscl
   public class tAnyLN : tUnNaming 
   {
     [Description(blurb="DataSet controls")]
-    public tDataSet.Collection data_sets { get; set; }
+    public tDataSet.HashMap data_sets { get; set; }
     [Description(blurb="Report Controls")]
-    public tReportControl.Collection report_controls { get; set; }
+    public tReportControl.HashMap report_controls { get; set; }
     [Description(blurb="Log Controls")]
-    public tLogControl.Collection log_controls { get; set; }
+    public tLogControl.HashMap log_controls { get; set; }
     [Description(blurb="Data Object Instances")]
     public tDOI.Array dois { get; set; }
     [Description(nick="Inputs", blurb="Input source")]
@@ -45,11 +45,11 @@ namespace Lscl
     public override void init_containers ()
     {
       if (data_sets == null)
-        data_sets = new tDataSet.Collection ();
+        data_sets = new tDataSet.HashMap ();
       if (report_controls == null)
-        report_controls = new tReportControl.Collection ();
+        report_controls = new tReportControl.HashMap ();
       if (log_controls == null)
-        log_controls = new tLogControl.Collection ();
+        log_controls = new tLogControl.HashMap ();
       if (dois == null)
         dois = new tDOI.Array ();
     }

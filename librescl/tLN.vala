@@ -46,7 +46,7 @@ namespace Lscl
     public string get_map_secondary_key () { return inst; }
     public string get_map_tertiary_key () { return prefix; }
 
-    public class Collection : ThreeMap<string,string,string,tLN>
+    public class ThreeMap : Lscl.ThreeMap<string,string,string,tLN>
     {
       public tLN find (string prefix, string lnclass, string inst)
       {

@@ -30,7 +30,7 @@ namespace Lscl
   public class tLNodeType : tIDNaming, SerializableMapKey<string>, SerializableMapDualKey<string,string>
   {
     [Description (blurb="Data Objects as Properties in this Logical Node Type")]
-    public tDO.Collection dos { get; set; }
+    public tDO.HashMap dos { get; set; }
     [Description (nick="iedType", blurb="Data Objects as Properties in this Logical Node Type")]
     public string ied_type { get; set; default=Defaults.IED_TYPE; }
     [Description (nick="lnClass", blurb="Logical Node Class. Standard or custome one")]
@@ -52,7 +52,7 @@ namespace Lscl
     public override void init_containers ()
     {
       if (dos == null)
-        dos = new tDO.Collection ();
+        dos = new tDO.HashMap ();
     }
     public class HashMap : Lscl.HashMap<string,tLNodeType> {}
   }

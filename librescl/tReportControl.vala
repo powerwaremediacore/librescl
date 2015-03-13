@@ -44,7 +44,7 @@ namespace Lscl
     public string buf_time { get; set; default = "0"; }
 
     public string get_map_key () { return name; }
-    public class Collection : GXml.SerializableHashMap<string, tReportControl>
+    public class HashMap : GXml.SerializableHashMap<string, tReportControl>
     {
       public new tReportControl @get (string name) { return base.get (name); }
     }

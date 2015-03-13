@@ -40,7 +40,7 @@ public class Performance
     });
     Test.add_func ("/librescl-test-suite/performance/treemap", 
     () => {
-      var lns = new tLN.Collection ();
+      var lns = new tLN.ThreeMap ();
       double time;
       Test.timer_start ();
       for (int i = 0; i < 5; i++) {

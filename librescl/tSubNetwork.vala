@@ -33,7 +33,7 @@ namespace Lscl
     [Description(nick="BitRate", blurb="Defining the bit rate in Mbit/s")]
     public tBitRateInMbPerSec bit_rate  { get; set; }
     [Description(blurb="Defining the bit rate in Mbit/s")]
-    public tConnectedAP.Collection connected_aps { get; set; }
+    public tConnectedAP.DualKeyMap connected_aps { get; set; }
     [Description(nick="type", blurb="The SubNetwork protocol type")]
     public string network_type { get; set; }
     // SerializableMapId
@@ -46,7 +46,7 @@ namespace Lscl
       var element = (Element) node;
       if (element.has_child_nodes ()) {
         if (connected_aps == null)
-          connected_aps = new tConnectedAP.Collection ();
+          connected_aps = new tConnectedAP.DualKeyMap ();
         connected_aps.deserialize (element);
       }
       return default_deserialize (node);

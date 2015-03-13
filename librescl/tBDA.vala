@@ -32,7 +32,7 @@ namespace Lscl
     // SerializableMapKey
     public string get_map_key () { return name; }
 
-    public class Collection : HashMap<string,tBDA> {}
+    public class HashMap : Lscl.HashMap<string,tBDA> {}
   }
 }
 

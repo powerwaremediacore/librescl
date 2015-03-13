@@ -30,9 +30,9 @@ namespace Lscl
   public class tDOType : tIDNaming, SerializableMapKey<string>
   {
     [Description(blurb="Data Objects")]
-    public tSDO.Collection sdos { get; set; }
+    public tSDO.HashMap sdos { get; set; }
     [Description(blurb="Data Attributes")]
-    public tDA.Collection das { get; set; }
+    public tDA.HashMap das { get; set; }
     [Description(nick="iedType",blurb="The type of the IED to which this DOType belongs")]
     public string ied_type { get; set; }
     [Description(nick="cdc",blurb="The basic Common Data Class")]
@@ -43,9 +43,9 @@ namespace Lscl
     public override void init_containers ()
     {
       if (sdos == null)
-        sdos = new tSDO.Collection ();
+        sdos = new tSDO.HashMap ();
       if (das == null)
-        das = new tDA.Collection ();
+        das = new tDA.HashMap ();
     }
     public class HashMap : Lscl.HashMap<string,tDOType> {}
   }

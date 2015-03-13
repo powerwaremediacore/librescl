@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="LN0",blurb="Logical Device's Logical Node")]
     public LN0 ln0 { get; set; }
     [Description(blurb="Logical Nodes defined in the Logical Node")]
-    public tLN.Collection logical_nodes { get; set; }
+    public tLN.ThreeMap logical_nodes { get; set; }
     [Description(nick="AccessControl",blurb="")]
     public tAccessControl access_control { get; set; }
     [Description(nick="inst",blurb="")]
@@ -43,7 +43,7 @@ namespace Lscl
     public override void init_containers ()
     {
       if (logical_nodes == null)
-        logical_nodes = new tLN.Collection ();
+        logical_nodes = new tLN.ThreeMap ();
     }
     public class HashMap : SerializableHashMap<string,tLDevice> {}
   }

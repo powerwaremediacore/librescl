@@ -40,7 +40,7 @@ namespace Lscl
     // SerializableMapId
     public string get_map_key () { return name; }
 
-    public class Collection : SerializableTreeMap<string,tDA> {}
+    public class HashMap : SerializableHashMap<string,tDA> {}
   }
 }
 

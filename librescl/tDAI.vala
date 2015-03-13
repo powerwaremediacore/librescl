@@ -48,6 +48,6 @@ namespace Lscl
       if (vals == null)
         vals = new tVal.Array ();
     }
-    public class Collection : SerializableHashMap<string,tDAI> {}
+    public class HashMap : SerializableHashMap<string,tDAI> {}
   }
 }

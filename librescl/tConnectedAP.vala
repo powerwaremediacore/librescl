@@ -32,9 +32,9 @@ namespace Lscl
     [Description(nick="Address",blurb="Network address communication parameters")]
     public tAddress address { get; set; }
     [Description(nick="GSE",blurb="Generic Station Event control blocks")]
-    public tGSE.Collection gses { get; set; }
+    public tGSE.DualKeyMap gses { get; set; }
     [Description(nick="SMV",blurb="Sample Value control blocks")]
-    public tSMV.Collection smvs { get; set; }
+    public tSMV.DualKeyMap smvs { get; set; }
     [Description(nick="PhysConn",blurb="Physical Connection")]
     public tPhysConn phys_conn { get; set; }
     [Description(nick="iedName",blurb="IED's name, connected to network")]
@@ -48,10 +48,10 @@ namespace Lscl
     public override void init_containers ()
     {
       if (gses == null)
-        gses = new tGSE.Collection ();
+        gses = new tGSE.DualKeyMap ();
       if (smvs == null)
-        smvs = new tSMV.Collection ();
+        smvs = new tSMV.DualKeyMap ();
     }
-    public class Collection : SerializableDualKeyMap<string,string,tConnectedAP> {}
+    public class DualKeyMap : SerializableDualKeyMap<string,string,tConnectedAP> {}
   }
 }

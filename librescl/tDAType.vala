@@ -31,7 +31,7 @@ namespace Lscl
   public class tDAType : tIDNaming, SerializableMapKey<string>
   {
     [Description(blurb="Basic Data Attribute Types")]
-    public tBDA.Collection bdas { get; set; }
+    public tBDA.HashMap bdas { get; set; }
     [Description(nick="iedType", blurb="it is used to define the relation of a specific LN type to an IED type.")]
     public string ied_type { get; set; }
     // SerializableMapDualId
@@ -40,7 +40,7 @@ namespace Lscl
     public override void init_containers ()
     {
       if (bdas == null)
-        bdas = new tBDA.Collection ();
+        bdas = new tBDA.HashMap ();
     }
     public class HashMap : Lscl.HashMap<string,tDAType> {}
   }

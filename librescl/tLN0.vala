@@ -30,7 +30,7 @@ namespace Lscl
   public class tLN0 : tAnyLN
   {
     [Description(blurb="GSE Control Blocks")]
-    public tGSEControl.Collection gse_controls { get; set; }
+    public tGSEControl.HashMap gse_controls { get; set; }
     [Description(blurb="Sample Value Control Blocks")]
     public tSampledValueControl.Array sampled_value_controls { get; set; }
     [Description(blurb="Setting Control Blocks")]
@@ -48,7 +48,7 @@ namespace Lscl
     {
       base.init_containers ();
       if (gse_controls == null)
-        gse_controls = new tGSEControl.Collection ();
+        gse_controls = new tGSEControl.HashMap ();
       if (sampled_value_controls == null)
         sampled_value_controls = new tSampledValueControl.Array ();
     }

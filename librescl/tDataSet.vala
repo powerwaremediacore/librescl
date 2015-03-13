@@ -40,6 +40,6 @@ namespace Lscl
         fcdas = new tFCDA.Array ();
     }
 
-    public class Collection : SerializableHashMap<string,tDataSet> {}
+    public class HashMap : SerializableHashMap<string,tDataSet> {}
   }
 }

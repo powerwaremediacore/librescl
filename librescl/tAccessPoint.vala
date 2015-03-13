@@ -36,7 +36,7 @@ namespace Lscl
     [Description(nick="Server", blurb="A communication entity within an IED.")]
     public tServer server { get; set; }
     [Description(blurb="List of Logical Nodes related with access point")]
-    public tLN.Collection logical_nodes { get; set; }
+    public tLN.ThreeMap logical_nodes { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
 
@@ -48,7 +48,7 @@ namespace Lscl
       var element = (Element) node;
       if (element.has_child_nodes ()) {
         if (logical_nodes == null)
-          logical_nodes = new tLN.Collection ();
+          logical_nodes = new tLN.ThreeMap ();
         logical_nodes.deserialize (element);
       }
       return default_deserialize (node);
