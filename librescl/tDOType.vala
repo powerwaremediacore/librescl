@@ -47,7 +47,7 @@ namespace Lscl
       if (das == null)
         das = new tDA.Collection ();
     }
-    public class Collection : SerializableTreeMap<string,tDOType> {}
+    public class HashMap : Lscl.HashMap<string,tDOType> {}
   }
 }
 

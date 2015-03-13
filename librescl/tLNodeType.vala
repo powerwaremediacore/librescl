@@ -54,7 +54,7 @@ namespace Lscl
       if (dos == null)
         dos = new tDO.Collection ();
     }
-    public class Collection : SerializableTreeMap<string,tLNodeType> {}
+    public class HashMap : Lscl.HashMap<string,tLNodeType> {}
   }
 }
 

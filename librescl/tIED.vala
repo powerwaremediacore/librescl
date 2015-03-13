@@ -32,7 +32,7 @@ namespace Lscl
     [Description (nick="Services", blurb="Available services")]
     public tServices services { get; set; }
     [Description (blurb="Access point to IED servers")]
-    public tAccessPoint.Collection access_points  {get; set; }
+    public tAccessPoint.HashMap access_points  {get; set; }
     [Description (nick="type", blurb="IED type")]
     public string ied_type { get; set; }
     [Description (nick="manufacturer", blurb="Manufacturer of the IED")]
@@ -44,12 +44,12 @@ namespace Lscl
     public override void init_containers ()
     {
       if (access_points == null)
-        access_points = new tAccessPoint.Collection ();
+        access_points = new tAccessPoint.HashMap ();
     }
     // SerializableMapId
     public string get_map_key () { return name; }
 
-    public class Collection : SerializableTreeMap<string,tIED>
+    public class HashMap : SerializableHashMap<string,tIED>
     {
       public new tIED get (string name)
       {

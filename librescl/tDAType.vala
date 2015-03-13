@@ -42,7 +42,7 @@ namespace Lscl
       if (bdas == null)
         bdas = new tBDA.Collection ();
     }
-    public class Collection : HashMap<string,tDAType> {}
+    public class HashMap : Lscl.HashMap<string,tDAType> {}
   }
 }
 

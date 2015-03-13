@@ -30,7 +30,7 @@ using GXml;
 
 namespace Lscl
 {
-  public class tEnumType : tIDNaming
+  public class tEnumType : tIDNaming, SerializableMapKey<string>
   {
     [Description(nick="EnumVal",blurb="")]
     public tEnumVal.Array enum_val { get; set; }
@@ -39,12 +39,14 @@ namespace Lscl
     {
       // TODO: Reorder using order
     }
+    // SerializableMapDualId
+    public string get_map_key () { return id; }
     // Serializable
     public override void init_containers ()
     {
       if (enum_val == null)
         enum_val = new tEnumVal.Array ();
     }
-    public class Array : SerializableArrayList<tEnumType> {}
+    public class HashMap : Lscl.HashMap<string,tEnumType> {}
   }
 }

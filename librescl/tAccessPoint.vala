@@ -54,7 +54,7 @@ namespace Lscl
       return default_deserialize (node);
     }
 
-    public class Collection : SerializableTreeMap<string,tAccessPoint> {}
+    public class HashMap : SerializableHashMap<string,tAccessPoint> {}
   }
 }
 

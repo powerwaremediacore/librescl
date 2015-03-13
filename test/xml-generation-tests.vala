@@ -85,7 +85,7 @@ class LsclTest.XmlGeneration
          dat.id = "TEMPLATE1";
          dat.ied_type = "TEMPLATE";
          //        dat.BDA = new tBdaArray ();
-         dscl.data_type_templates.data_attribute_types = new tDAType.Collection ();
+         dscl.data_type_templates.data_attribute_types = new tDAType.HashMap ();
          dscl.data_type_templates.data_attribute_types.@set (dat.id, dat);
          var t = dscl.data_type_templates.data_attribute_types.@get (dat.id);
          if (t == null)
@@ -140,7 +140,7 @@ class LsclTest.XmlGeneration
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
        try {
-         dscl.ieds = new tIED.Collection ();
+         dscl.ieds = new tIED.HashMap ();
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
          if (doc.document_element == null) {
