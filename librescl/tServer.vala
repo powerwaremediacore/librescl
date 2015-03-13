@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="Authentication", blurb="Defines the authentication possibilities or method(s) to be used.")]
     public tServerAuthentication authentication { get; set; }
     [Description(blurb="Logical Devices Configured")]
-    public tLDevice.Collection logical_devices { get; set; }
+    public tLDevice.HashMap logical_devices { get; set; }
     [Description(nick="Association", blurb="")]
     public tAssociation association { get; set; }
     [Description(nick="timeout", blurb="Time out in seconds.")]
@@ -41,7 +41,7 @@ namespace Lscl
     public override void init_containers ()
     {
       if (logical_devices == null)
-        logical_devices = new tLDevice.Collection ();
+        logical_devices = new tLDevice.HashMap ();
     }
   }
 }

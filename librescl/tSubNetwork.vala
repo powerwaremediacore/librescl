@@ -51,6 +51,6 @@ namespace Lscl
       }
       return default_deserialize (node);
     }
-    public class Collection : GXml.SerializableTreeMap<string,tSubNetwork> {}
+    public class HashMap : GXml.SerializableHashMap<string,tSubNetwork> {}
   }
 }

@@ -45,7 +45,7 @@ namespace Lscl
       if (logical_nodes == null)
         logical_nodes = new tLN.Collection ();
     }
-    public class Collection : SerializableTreeMap<string,tLDevice> {}
+    public class HashMap : SerializableHashMap<string,tLDevice> {}
   }
 }
 
