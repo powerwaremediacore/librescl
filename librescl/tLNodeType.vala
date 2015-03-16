@@ -27,7 +27,7 @@
 using GXml;
 namespace Lscl
 {
-  public class tLNodeType : tIDNaming, SerializableMapKey<string>, SerializableMapDualKey<string,string>
+  public class tLNodeType : tIDNaming, SerializableMapKey<string>
   {
     [Description (blurb="Data Objects as Properties in this Logical Node Type")]
     public tDO.HashMap dos { get; set; }
@@ -44,9 +44,6 @@ namespace Lscl
     }
     // SerializableMapKey
     public string get_map_key () { return id; }
-    // SerializableMapDualKey
-    public string get_map_primary_key () { return ied_type; }
-    public string get_map_secondary_key () { return id; }
 
     // Serializable
     public override void init_containers ()

@@ -73,7 +73,7 @@ public class Lscl.SclDocument : Scl
    * Saves SCL Document to the current file using the given IEC 61850 Edition version
    * and file path.
    */
-  public void save_as (string file, int edition = 1) throws GLib.Error
+  public async void save_as (string file, int edition = 1) throws GLib.Error
   {
     _file_name = file;
     save.begin (edition);
