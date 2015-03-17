@@ -57,7 +57,7 @@ public class Lscl.SclDocument : Scl
   /**
    * Saves SCL Document to the current file using the given IEC 61850 Edition version.
    */
-  public async void save (int edition = 1) 
+  public async void save (int edition = 1, Cancellable? cancellable = null) 
     throws GLib.Error
   {
     var document = new GXml.Document ();
@@ -65,18 +65,19 @@ public class Lscl.SclDocument : Scl
     var file = File.new_for_path (_file_name);
     var outs = file.replace (null, true, FileCreateFlags.NONE, null);
     file_operation_start (_file_name);
-    document.save_to_stream (outs);
+    document.save_to_stream (outs, cancellable);
     file_operation_end (_file_name);
+    Idle.add(save.callback);
   }
 
   /**
    * Saves SCL Document to the current file using the given IEC 61850 Edition version
    * and file path.
    */
-  public async void save_as (string file, int edition = 1) throws GLib.Error
+  public async void save_as (string file, int edition = 1, Cancellable? cancellable = null) throws GLib.Error
   {
     _file_name = file;
-    save.begin (edition);
+    save.begin (edition, cancellable, ()=>{ save_as.callback (); });
   }
 
   /**
