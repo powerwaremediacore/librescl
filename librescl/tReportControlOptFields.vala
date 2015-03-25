@@ -47,6 +47,7 @@ namespace Lscl
     [Description(nick="bufOvfl", blurb="Configuration reference")]
     public bool buf_ovfl { get; set; default = false; }
 
+    public override string node_name () { return "OptFields"; }
     public tReportControlOptFields () { _property_edition.set ("buf-ovfl", Edition.SECOND); }
   }
 }

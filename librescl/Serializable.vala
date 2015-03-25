@@ -62,9 +62,10 @@ namespace Lscl
     /**
      * 
      */
-    public void set_edition (Edition edition) {
-	    if (edition == Edition.FIRST) _edition = edition;
-	    if (edition == Edition.SECOND) _edition = edition;
+    public bool set_edition (Edition edition) {
+      return_val_if_fail (edition == Edition.FIRST || edition == Edition.SECOND, false);
+      _edition = edition;
+      return true;
     }
     public Edition get_edition () {
       return _edition;

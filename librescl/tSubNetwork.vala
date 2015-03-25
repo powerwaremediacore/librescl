@@ -31,7 +31,7 @@ namespace Lscl
   public class tSubNetwork : tNaming, GXml.SerializableMapKey<string>
   {
     [Description(nick="BitRate", blurb="Defining the bit rate in Mbit/s")]
-    public tBitRateInMbPerSec bit_rate  { get; set; }
+    public tBitRate bit_rate  { get; set; }
     [Description(blurb="Defining the bit rate in Mbit/s")]
     public tConnectedAP.DualKeyMap connected_aps { get; set; }
     [Description(nick="type", blurb="The SubNetwork protocol type")]
@@ -52,5 +52,9 @@ namespace Lscl
       return default_deserialize (node);
     }
     public class HashMap : GXml.SerializableHashMap<string,tSubNetwork> {}
+    public class tBitRate : tBitRateInMbPerSec
+    {
+      public override string node_name () { return "BitRate"; }
+    }
   }
 }

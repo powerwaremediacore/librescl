@@ -29,7 +29,7 @@ public class Performance
         double time;
         Test.timer_start ();
         var scl = new SclDocument ();
-        scl.read (LsclTest.TEST_DIR + "/tests-files/generic.cid");
+        scl.read_from_path (LsclTest.TEST_DIR + "/tests-files/generic.cid");
         time = Test.timer_elapsed ();
         Test.minimized_result (time, "Read generic.cid: %g seconds", time);
       }

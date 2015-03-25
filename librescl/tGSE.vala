@@ -30,13 +30,21 @@ namespace Lscl
   public class tGSE : tControlBlock, SerializableMapDualKey<string,string>
   {
     [Description(nick="MinTime", blurb="Minimal Time")]
-    public tDurationInMilliSec min_time { get; set; }
+    public tMinTime min_time { get; set; }
     [Description(nick="MaxTime", blurb="Max Time")]
-    public tDurationInMilliSec max_time  { get; set; }
+    public tMaxTime max_time  { get; set; }
 
     public string get_map_primary_key  () { return ld_inst; }
     public string get_map_secondary_key () { return cb_name; }
 
     public class DualKeyMap : SerializableDualKeyMap<string,string,tGSE> {}
+    public class tMinTime : tDurationInMilliSec
+    {
+      public override string node_name () { return "MinTime"; }
+    }
+    public class tMaxTime : tDurationInMilliSec
+    {
+      public override string node_name () { return "MaxTime"; }
+    }
   }
 }

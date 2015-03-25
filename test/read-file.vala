@@ -23,6 +23,83 @@ public class LsclTest.ReadFile
 {
   public static void add_funcs ()
   {
+    Test.add_func ("/librescl-test-suite/read/set-file", 
+    () => {
+      try {
+        string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
+        var f = File.new_for_path (path);
+        assert (f.query_exists ());
+        var scl = new SclDocument ();
+        scl.set_file (f);
+        assert (scl.get_file () != null);
+        assert (scl.get_file ().query_exists ());
+        assert (scl.read ());
+      }
+      catch (GLib.Error e)
+      {
+        stdout.printf (@"ERROR: $(e.message)");
+        assert_not_reached ();
+      }
+    });
+    Test.add_func ("/librescl-test-suite/read/set-path", 
+    () => {
+      try {
+        string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
+        var scl = new SclDocument ();
+        scl.set_file_path (path);
+        assert (scl.get_file () != null);
+        assert (scl.get_file ().query_exists ());
+        assert (scl.read ());
+      }
+      catch (GLib.Error e)
+      {
+        stdout.printf (@"ERROR: $(e.message)");
+        assert_not_reached ();
+      }
+    });
+    Test.add_func ("/librescl-test-suite/read/from-file", 
+    () => {
+      try {
+        string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
+        var  f = File.new_for_path (path);
+        var scl = new SclDocument ();
+        assert (scl.read_from_file (f));
+        assert (scl.get_file () != null);
+        assert (scl.get_file ().query_exists ());
+      }
+      catch (GLib.Error e)
+      {
+        stdout.printf (@"ERROR: $(e.message)");
+        assert_not_reached ();
+      }
+    });
+    Test.add_func ("/librescl-test-suite/read/from-path", 
+    () => {
+      try {
+        string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
+        var scl = new SclDocument ();
+        assert (scl.read_from_path (path));
+      }
+      catch (GLib.Error e)
+      {
+        stdout.printf (@"ERROR: $(e.message)");
+        assert_not_reached ();
+      }
+    });
+    Test.add_func ("/librescl-test-suite/read-string", 
+    () => {
+      try {
+        string str = "<SCL><Header></Header></SCL>";
+        var scl = new SclDocument ();
+        scl.read_from_string (str);
+        assert (scl.header != null);
+      }
+      catch (GLib.Error e)
+      {
+        stdout.printf (@"ERROR: $(e.message)");
+        assert_not_reached ();
+      }
+    });
     Test.add_func ("/librescl-test-suite/read-scl", 
     () => {
       try {
@@ -39,42 +116,19 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-header", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/header.cid");
-        var scl = new Scl ();
-        scl.deserialize (doc);
-        if (scl.header == null) {
-          stdout.printf (@"ERROR: No header found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.header.id != "SCL File") {
-          stdout.printf (@"ERROR: bad id header\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.header.version != "0") {
-          stdout.printf (@"ERROR: bad version header\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.header.revision != "1") {
-          stdout.printf (@"ERROR: bad revision header\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.header.tool_id != "LibreSclEditor") {
-          stdout.printf (@"ERROR: bad tood id header\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.header.name_structure != tHeader.NameStructure.IED_NAME) {
-          stdout.printf (@"ERROR: bad name structure header\n$(doc)");
-          assert_not_reached ();
-        }
+        var scl = new SclDocument ();
+        scl.read_from_path (LsclTest.TEST_DIR + "/tests-files/header.cid");
+        assert (scl.get_file () != null);
+        assert (scl.get_file ().query_exists ());
+        assert (scl.header != null);
+        assert (scl.header.id == "SCL File");
+        assert (scl.header.version == "0");
+        assert (scl.header.revision == "1");
+        assert (scl.header.tool_id == "LibreSclEditor");
+        assert (scl.header.name_structure == tHeader.NameStructure.IED_NAME);
         var history = scl.header.history;
-        if (history == null) {
-          stdout.printf (@"ERROR: no header's history\n$(doc)");
-          assert_not_reached ();
-        }
-        if (history.size != 2) {
-          stdout.printf (@"ERROR: bad header's size, expected 2 got: $(history.size)\n$(doc)");
-          assert_not_reached ();
-        }
+        assert (history != null);
+        assert (history.size == 2);
         bool found1 = false;
         bool found2 = false;
         string hitems = "";
@@ -91,76 +145,38 @@ public class LsclTest.ReadFile
               && hitem.what=="Added new fake history item") found2 = true;
           hitems += @"$(hitem)\n";
         }
-        if (!found1) {
-          stdout.printf (@"ERROR: no header's history item at 10:56 found\n$(hitems)\n$(doc)");
-          assert_not_reached ();
-        }
-        if (!found2) {
-          stdout.printf (@"ERROR: no header's history item at 10:59 found\n$(hitems)\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.communication != null) {
-          stdout.printf (@"ERROR: Communications must be null\n$(doc)");
-          assert_not_reached ();
-        }
+        assert (found1);
+        assert (found2);
+        assert (scl.communication == null);
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+#if DEBUG
+        GLib.message (@"ERROR: $(e.message)");
+#endif
         assert_not_reached ();
       }
     });
     Test.add_func ("/librescl-test-suite/read-communication", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/communication.cid");
-        var scl = new Scl ();
-        scl.deserialize (doc);
-        if (scl.communication == null) {
-          stdout.printf (@"ERROR: no communication found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.communication.subnetworks == null) {
-          stdout.printf (@"ERROR: no subnetwork found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (scl.communication.subnetworks.size != 1) {
-          stdout.printf (@"ERROR: subnetworks size not met; expected 1 got: $(scl.communication.subnetworks.size)\n$(doc)");
-          assert_not_reached ();
-        }
+        var f = File.new_for_path (LsclTest.TEST_DIR + "/tests-files/communication.cid");
+        var scl = new SclDocument ();
+        scl.read_from_file (f);
+        assert (scl.get_file () != null);
+        assert (scl.get_file ().query_exists ());
+        assert (scl.communication != null);
+        assert (scl.communication.subnetworks != null);
+        assert (scl.communication.subnetworks.size == 1);
         tSubNetwork subnetwork = (tSubNetwork) scl.communication.subnetworks.@get ("Net1");
-        if (subnetwork == null) {
-          stdout.printf (@"ERROR: no subnetwork Net1 found\n$(doc)");
-          foreach (Object obj in scl.communication.subnetworks.values) {
-            stdout.printf (@"Network: $(((tSubNetwork) obj).name)");
-          }
-          assert_not_reached ();
-        }
-        if (subnetwork.desc != "Network1") {
-          stdout.printf (@"ERROR: bad subnetwork desc found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (subnetwork.connected_aps == null) {
-          stdout.printf (@"ERROR: no connected ap found\n$(doc)");
-          assert_not_reached ();
-        }
+        assert (subnetwork != null);
+        assert (subnetwork.desc == "Network1");
+        assert (subnetwork.connected_aps != null);
         tConnectedAP cap = subnetwork.connected_aps.@get ("IED1", "AccessPoint1");
-        if (cap == null) {
-          stdout.printf (@"ERROR: no connected for IED1 named AccessPoint1 found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (cap.address == null) {
-          stdout.printf (@"ERROR: no address found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (cap.address.ps == null) {
-          stdout.printf (@"ERROR: no address tp found\n$(doc)");
-          assert_not_reached ();
-        }
-        if (cap.address.ps.size != 6) {
-          stdout.printf (@"ERROR: wrong address tp size\n$(doc)");
-          assert_not_reached ();
-        }
+        assert (cap != null);
+        assert (cap.address != null);
+        assert (cap.address.ps != null);
+        assert (cap.address.ps.size == 6);
         bool foundip = false;
         bool foundsubnet = false;
         bool foundts = false;

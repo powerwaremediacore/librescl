@@ -1,6 +1,6 @@
 m4_define([project_major_version], [0])
-m4_define([project_minor_version], [4])
-m4_define([project_micro_version], [0])
+m4_define([project_minor_version], [3])
+m4_define([project_micro_version], [1])
 
 # LT_VERSION
 #   If library source has changed since last release, increment revision
@@ -42,7 +42,7 @@ AC_SUBST([LT_AGE])
 
 LIBRESCL_VERSION=project_version
 AC_SUBST(LIBRESCL_VERSION)
-API_VERSION=project_major_version.project_minor_version
+API_VERSION=0.4
 AC_SUBST(API_VERSION)
 IT_PROG_INTLTOOL([0.35.0])
 
