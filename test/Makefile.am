@@ -21,6 +21,7 @@ sources = \
 	Test.vala \
 	xml-generation-tests.vala \
 	read-file.vala \
+	save-file.vala \
 	lscl-performance.vala
 
 AM_VALAFLAGS = \
@@ -53,7 +54,8 @@ CLEANFILES = \
 	$(sources:.vala=.c) \
 	lscl_test.stamp \
 	librescl_test \
-	write_test.cid
+	write_test.cid \
+	saved1.cid
 
 EXTRA_DIST += \
 	$(sources) \

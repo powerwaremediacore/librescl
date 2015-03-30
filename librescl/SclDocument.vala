@@ -114,7 +114,6 @@ public class Lscl.SclDocument : Scl
    */
   public bool save_to (GLib.File file, Lscl.Edition edition = Lscl.Edition.FIRST, Cancellable? cancellable = null) throws GLib.Error
   {
-    return_val_if_fail (file.query_exists (), false);
     return_val_if_fail (set_edition (edition), false);
     /* TODO: This makes save_to() operation to take longer. We should serialize 
              directly to a file to improve performance. */

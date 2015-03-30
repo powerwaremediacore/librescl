@@ -37,6 +37,7 @@ namespace LsclTest
 			Test.init (ref args);
 			XmlGeneration.add_funcs ();
 			ReadFile.add_funcs ();
+			SaveFile.add_funcs ();
 			Performance.add_funcs ();
 			return Test.run ();
 		}
