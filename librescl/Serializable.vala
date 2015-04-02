@@ -30,7 +30,7 @@ using Gee;
 
 namespace Lscl
 {
-	
+  private bool _enable_proprietary = false;
    /**
     * LSCL_EDITION:
     * 
@@ -80,6 +80,14 @@ namespace Lscl
       _property_edition = new Gee.HashMultiMap<string,Edition> ();
     }
 
+    public void enable_proprietary_info (bool enable)
+    {
+      _enable_proprietary = enable;
+    }
+    public bool get_enable_proprietary_info ()
+    {
+      return _enable_proprietary;
+    }
     public override GXml.Node? serialize_property (GXml.Element element,
                                                    GLib.ParamSpec prop)
         throws GLib.Error
@@ -124,7 +132,7 @@ namespace Lscl
       return;
     }
     // Implementation of AnyContentFromOtherNameSpace
-    public new virtual bool get_enable_unknown_serializable_property () { return true; }
+    public new virtual bool get_enable_unknown_serializable_property () { return _enable_proprietary; }
     public Gee.ArrayList<Object> find_other (string name)
     {
       var objs = new Gee.ArrayList<Object> ();
