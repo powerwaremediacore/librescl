@@ -44,13 +44,13 @@ namespace Lscl
                                                       this.get_type ().name (), value_type.name ());
       }
       if (node is Element) {
-        foreach (GXml.Node n in node.child_nodes) {
+        foreach (GXml.Node n in node.childs) {
           if (n is Element) {
   #if DEBUG
             stdout.printf (@"Node $(node.node_name) for type '$(get_type ().name ())'\n");
   #endif
             var obj = Object.new (value_type);
-            if (n.node_name == ((Serializable) obj).node_name ()) {
+            if (n.name == ((Serializable) obj).node_name ()) {
               ((Serializable) obj).deserialize (n);
               if (has_key (((SerializableMapKey<K>) obj).get_map_key ())) {
                 if (duplicated == null)
@@ -246,11 +246,12 @@ namespace Lscl
       }
       return node;
     }
-    public virtual GXml.Node? serialize_property (GXml.Element element,
+    public virtual GXml.Node? serialize_property (GXml.Node element,
                                                   GLib.ParamSpec prop)
       throws GLib.Error
+      requires (element is GXml.Element)
     {
-      return default_serialize_property (element, prop);
+      return default_serialize_property ((GXml.Element) element, prop);
     }
     public GXml.Node? default_serialize_property (GXml.Element element,
                                                   GLib.ParamSpec prop)
@@ -273,10 +274,10 @@ namespace Lscl
         throw new SerializableError.UNSUPPORTED_TYPE_ERROR ("%s: Value type '%s' is unsupported", 
                                                       this.get_type ().name (), value_type.name ());
       }
-      foreach (GXml.Node n in node.child_nodes) {
+      foreach (GXml.Node n in node.childs) {
         if (n is Element) {
           var obj = (SerializableMapThreeKey<P,S,T>) Object.new (value_type);
-          if (n.node_name == ((Serializable) obj).node_name ()) {
+          if (n.name == ((Serializable) obj).node_name ()) {
             ((Serializable) obj).deserialize (n);
             @set (obj.get_map_primary_key (), obj.get_map_secondary_key (), obj.get_map_tertiary_key (), obj);
           }
@@ -294,5 +295,6 @@ namespace Lscl
     {
       return true;
     }
+    public bool set_namespace (GXml.Node node) { return true; }
   }
 }

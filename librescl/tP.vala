@@ -330,8 +330,8 @@ namespace Lscl
                                               throws GLib.Error
     {
       if (property_node is GXml.Attr) {
-        if (property_node.node_name == "type") {
-          if ("tP_" in property_node.node_value )
+        if (property_node.name == "type") {
+          if ("tP_" in property_node.value )
             return false;
         }
       }

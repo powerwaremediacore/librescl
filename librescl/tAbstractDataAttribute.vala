@@ -67,7 +67,7 @@ namespace Lscl
                                     requires (node is Element)
     {
       var element = (Element) node;
-      if (element.has_child_nodes ()) {
+      if (element.childs.size > 0) {
         if (vals == null)
           vals = new tVal.Array ();
         vals.deserialize (element);

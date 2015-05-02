@@ -39,7 +39,7 @@ endif
 AM_VALAFLAGS += \
 	$(top_srcdir)/vapi/config.vapi \
 	$(top_builddir)/librescl/lscl-0.4.vapi \
-	--pkg gxml-0.4 \
+	--pkg gxml-0.6 \
 	-C -H lscl-plugin-default.h
 
 liblscl_plugin_default_0_2_la_vala.stamp: $(sources)

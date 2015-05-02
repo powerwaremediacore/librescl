@@ -103,7 +103,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-scl", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
       }
@@ -265,7 +265,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-data-type-template", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -395,7 +395,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-data-type-template/logical-node-types", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -485,7 +485,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-data-type-template/data-object-types", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -561,7 +561,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-data-type-template/data-attribute-types", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -681,7 +681,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-ied", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.ieds == null) {
@@ -823,7 +823,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-ied/logical-device/LN0", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);
@@ -917,7 +917,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-ied/logical-device/logical-nodes", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);
@@ -963,7 +963,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-scd/initial-comments", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         // TODO: Add test for SDO y SDA in templates
@@ -973,7 +973,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-scd/communication-tp-ns", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
+        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.communication != null);
@@ -994,7 +994,7 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl-test-suite/read-ied/logcontrol", 
     () => {
       try {
-        var doc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
+        var doc = new xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);

@@ -46,7 +46,7 @@ namespace Lscl
                                     requires (node is Element)
     {
       var element = (Element) node;
-      if (element.has_child_nodes ()) {
+      if (element.childs.size > 0) {
         if (logical_nodes == null)
           logical_nodes = new tLN.ThreeMap ();
         logical_nodes.deserialize (element);

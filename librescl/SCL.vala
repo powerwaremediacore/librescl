@@ -45,7 +45,7 @@ namespace Lscl
     public override GXml.Node? serialize (GXml.Node node) throws GLib.Error
     {
       var n = default_serialize (node);
-      n.add_namespace_attr ("http://www.iec.ch/61850/2003/SCL", "scl");
+      n.set_namespace ("http://www.iec.ch/61850/2003/SCL", "scl");
       return n;
     }
     public override string node_name ()

@@ -33,36 +33,36 @@ class LsclTest.XmlGeneration
   {
     Test.add_func ("/librescl-test-suite/write-empty-scl-ed1", 
       () => {
-        var doc = new Document ();
+        GXml.Document doc = new GXml.xDocument ();
         var dscl = new SclDocument ();
         try {
           dscl.serialize (doc);
           //        stdout.printf (@"[OUTPUT SCL:\n$doc]");
-          if (doc.document_element == null) {
+          if (doc.root == null) {
             stdout.printf (@"ERROR: SCL NODE: no node");
             assert_not_reached ();
           }
-          if (doc.document_element.node_name.up () != "SCL") {
-            stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+          if (doc.root.name.up () != "SCL") {
+            stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
             assert_not_reached ();
           }
-          if (doc.document_element.namespace_definitions.length != 1) {
-            stdout.printf (@"ERROR: SCL NODE: No Namespace \n$(doc.document_element)");
+          if (doc.root.namespaces.size != 1) {
+            stdout.printf (@"ERROR: SCL NODE: No Namespace \n$(doc.root)");
             assert_not_reached ();
           }
           bool found = false;
-          foreach (GXml.Node n in doc.document_element.namespace_definitions) {
+          foreach (GXml.Namespace n in doc.root.namespaces) {
             if (n is NamespaceAttr) {
-              if (n.node_value == "http://www.iec.ch/61850/2003/SCL")
+              if (n.uri == "http://www.iec.ch/61850/2003/SCL")
                 found = true;
             }
           }
           if (!found) {
-            stdout.printf (@"ERROR: SCL NODE: No default Ed 1.0 Namespace found\n$(doc.document_element)");
+            stdout.printf (@"ERROR: SCL NODE: No default Ed 1.0 Namespace found\n$(doc.root)");
             assert_not_reached ();
           }
-          if (doc.document_element.has_child_nodes ()) {
-            stdout.printf (@"ERROR: SCL NODE: Have child nodes \n$(doc.document_element)");
+          if (doc.root.childs.size > 0) {
+            stdout.printf (@"ERROR: SCL NODE: Have child nodes \n$(doc.root)");
             assert_not_reached ();
           }
         }
@@ -74,7 +74,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl-test-suite/write-data_type_templates-scl-ed1", 
       () => {
-       var doc = new Document ();
+       GXml.Document doc = new GXml.xDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
@@ -95,26 +95,26 @@ class LsclTest.XmlGeneration
          //        dat.BDA.set_at (bda.name, bda);
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
-         if (doc.document_element == null) {
+         if (doc.root == null) {
            stdout.printf (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.document_element.node_name.up () != "SCL") {
-           stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+         if (doc.root.name.up () != "SCL") {
+           stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
            assert_not_reached ();
          }
-         Element element = doc.document_element;
-         if (!element.has_child_nodes ()) {
-           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.document_element)");
+         GXml.Element element = (GXml.Element) doc.root;
+         if (!(element.childs.size > 0)) {
+           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.root)");
            assert_not_reached ();
          }
          bool found = false;
-         Element dt = doc.document_element;
-         foreach (GXml.Node n in doc.document_element.child_nodes) {
-           if (n is Element) {
-             if (n.node_name == "DataTypeTemplates") {
+         GXml.Element dt = (GXml.Element) doc.root;
+         foreach (GXml.Node n in doc.root.childs) {
+           if (n is GXml.Element) {
+             if (n.name == "DataTypeTemplates") {
                found = true;
-               dt = (Element) n;
+               dt = (GXml.Element) n;
              }
            }
          }
@@ -122,7 +122,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: SCL NODE: No DataTypeTemplates node found\n$(doc)");
            assert_not_reached ();
          }
-         if (!dt.has_child_nodes ()) {
+         if (!(dt.childs.size > 0)) {
            stdout.printf (@"ERROR: SCL NODE: DataTypeTemplates has NO nodes\n$(doc)");
            assert_not_reached ();
          }
@@ -135,7 +135,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl-test-suite/write-ieds-scl-ed1", 
       () => {
-       var doc = new Document ();
+       GXml.Document doc = new GXml.xDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
@@ -143,17 +143,17 @@ class LsclTest.XmlGeneration
          dscl.ieds = new tIED.HashMap ();
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
-         if (doc.document_element == null) {
+         if (doc.root == null) {
            stdout.printf (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.document_element.node_name.up () != "SCL") {
-           stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+         if (doc.root.name.up () != "SCL") {
+           stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
            assert_not_reached ();
          }
-         Element element = doc.document_element;
-         if (element.has_child_nodes ()) {
-           stdout.printf (@"ERROR: SCL NODE: have child nodes $(doc.document_element)");
+         GXml.Element element = (GXml.Element) doc.root;
+         if (element.childs.size > 0) {
+           stdout.printf (@"ERROR: SCL NODE: have child nodes $(doc.root)");
            assert_not_reached ();
          }
        }
@@ -165,7 +165,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl-test-suite/write-communication-scl-ed1", 
       () => {
-       var doc = new Document ();
+       GXml.Document doc = new GXml.xDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
@@ -173,24 +173,24 @@ class LsclTest.XmlGeneration
          dscl.communication = new tCommunication ();
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
-         if (doc.document_element == null) {
+         if (doc.root == null) {
            stdout.printf (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.document_element.node_name.up () != "SCL") {
-           stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+         if (doc.root.name.up () != "SCL") {
+           stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
            assert_not_reached ();
          }
-         Element element = doc.document_element;
-         if (!element.has_child_nodes ()) {
-           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.document_element)");
+         GXml.Element element = (GXml.Element) doc.root;
+         if (!(element.childs.size > 0)) {
+           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.root)");
            assert_not_reached ();
          }
          bool found = false;
-         Element dt = doc.document_element;
-         foreach (GXml.Node n in doc.document_element.child_nodes) {
+         GXml.Element dt = (GXml.Element) doc.root;
+         foreach (GXml.Node n in doc.root.childs) {
            if (n is Element) {
-             if (n.node_name == "Communication") {
+             if (n.name == "Communication") {
                found = true;
                dt = (Element) n;
              }
@@ -200,7 +200,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: SCL NODE: No Communication node found\n$(doc)");
            assert_not_reached ();
          }
-         if (dt.has_child_nodes ()) {
+         if (dt.childs.size > 0) {
            stdout.printf (@"ERROR: SCL NODE: Communication has nodes\n$(doc)");
            assert_not_reached ();
          }
@@ -213,7 +213,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl-test-suite/write-substation-scl-ed1", 
       () => {
-       var doc = new Document ();
+       GXml.Document doc = new GXml.xDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
@@ -221,24 +221,24 @@ class LsclTest.XmlGeneration
          dscl.substation = new tSubstation ();
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
-         if (doc.document_element == null) {
+         if (doc.root == null) {
            stdout.printf (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.document_element.node_name.up () != "SCL") {
-           stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+         if (doc.root.name.up () != "SCL") {
+           stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
            assert_not_reached ();
          }
-         Element element = doc.document_element;
-         if (!element.has_child_nodes ()) {
-           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.document_element)");
+         GXml.Element element = (GXml.Element) doc.root;
+         if (!(element.childs.size > 0)) {
+           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.root)");
            assert_not_reached ();
          }
          bool found = false;
-         Element dt = doc.document_element;
-         foreach (GXml.Node n in doc.document_element.child_nodes) {
+         GXml.Element dt = (GXml.Element) doc.root;
+         foreach (GXml.Node n in doc.root.childs) {
            if (n is Element) {
-             if (n.node_name == "Substation") {
+             if (n.name == "Substation") {
                found = true;
                dt = (Element) n;
              }
@@ -248,7 +248,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: SCL NODE: No Substation node found\n$(doc)");
            assert_not_reached ();
          }
-         if (dt.has_child_nodes ()) {
+         if (dt.childs.size > 0) {
            stdout.printf (@"ERROR: SCL NODE: Substationhas nodes\n$(doc)");
            assert_not_reached ();
          }
@@ -261,7 +261,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl-test-suite/write-header-scl-ed1", 
       () => {
-       var doc = new Document ();
+       GXml.Document doc = new GXml.xDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //stdout.printf (@"Test Node name: $(tn)");
@@ -269,24 +269,24 @@ class LsclTest.XmlGeneration
          dscl.header = new tHeader ();
          dscl.serialize (doc);
          //        stdout.printf (@"SCL:\n $(doc)\n");
-         if (doc.document_element == null) {
+         if (doc.root == null) {
            stdout.printf (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.document_element.node_name.up () != "SCL") {
-           stdout.printf (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
+         if (doc.root.name.up () != "SCL") {
+           stdout.printf (@"ERROR: SCL NODE: node name $(doc.root.name)");
            assert_not_reached ();
          }
-         Element element = doc.document_element;
-         if (!element.has_child_nodes ()) {
-           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.document_element)");
+         GXml.Element element = (GXml.Element) doc.root;
+         if (!(element.childs.size > 0)) {
+           stdout.printf (@"ERROR: SCL NODE: no child nodes $(doc.root)");
            assert_not_reached ();
          }
          bool found = false;
-         Element dt = doc.document_element;
-         foreach (GXml.Node n in doc.document_element.child_nodes) {
+         GXml.Element dt =(GXml.Element) doc.root;
+         foreach (GXml.Node n in doc.root.childs) {
            if (n is Element) {
-             if (n.node_name == "Header") {
+             if (n.name == "Header") {
                //          stdout.printf (@"Node: $(n.node_name)");
                found = true;
                dt = (Element) n;
@@ -297,7 +297,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: SCL NODE: No Header node found\n$(doc)");
            assert_not_reached ();
          }
-         if (dt.has_child_nodes ()) {
+         if (dt.childs.size > 0) {
            stdout.printf (@"ERROR: SCL NODE: Header has nodes\n$(doc)");
            assert_not_reached ();
          }
@@ -311,7 +311,7 @@ class LsclTest.XmlGeneration
     Test.add_func ("/librescl-test-suite/write-data_attribute_types-duplicated-dba-ed1", 
       () => {
        try {
-         var idoc = new Document.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+         var idoc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
          var iscl = new Scl ();
          //        stdout.printf ("INITIAL SCL\n");
          iscl.deserialize (idoc);
@@ -327,7 +327,7 @@ class LsclTest.XmlGeneration
              }
            }
          }
-         var doc = new Document ();
+         GXml.Document doc = new GXml.xDocument ();
          iscl.serialize (doc);
          var scl = new Scl ();
          //stdout.printf (@"FINALY SCL\n$doc");

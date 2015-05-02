@@ -93,7 +93,7 @@ public class Lscl.SclDocument : Scl
     throws GLib.Error
   {
     return_val_if_fail (_file != null, false);
-    var document = new GXml.Document ();
+    var document = new GXml.xDocument ();
     serialize (document);
     var outs = _file.replace (null, true, FileCreateFlags.NONE, null);
 #if DEBUG
@@ -117,7 +117,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (set_edition (edition), false);
     /* TODO: This makes save_to() operation to take longer. We should serialize 
              directly to a file to improve performance. */
-    var document = new GXml.Document ();
+    var document = new GXml.xDocument ();
     serialize (document);
     var outs = file.replace (null, true, FileCreateFlags.NONE, null);
 #if DEBUG
@@ -142,7 +142,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.Document.from_gfile (_file);
+    var document = new GXml.xDocument.from_gfile (_file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -156,7 +156,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.Document.from_path (path);
+    var document = new GXml.xDocument.from_path (path);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -169,7 +169,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (_file != null, false);
     return_val_if_fail (_file.query_exists (), false);
     file_operation_start (_file.get_path ());
-    var document = new GXml.Document.from_gfile (_file);
+    var document = new GXml.xDocument.from_gfile (_file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -183,7 +183,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.Document.from_gfile (file);
+    var document = new GXml.xDocument.from_gfile (file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -194,7 +194,7 @@ public class Lscl.SclDocument : Scl
    */
   public void read_from_string (string str) throws GLib.Error
   {
-    var document = new Document.from_string (str);
+    var document = new GXml.xDocument.from_string (str);
     deserialize (document);
   }
 }

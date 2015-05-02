@@ -30,7 +30,7 @@ AM_VALAFLAGS = \
 	--pkg glib-2.0 \
 	--pkg gio-2.0 \
 	--pkg gee-0.8 \
-	--pkg gxml-0.4 \
+	--pkg gxml-0.6 \
 	--pkg libxml-2.0 \
 	--pkg lscl-0.4 \
 	-C -g

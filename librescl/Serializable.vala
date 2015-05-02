@@ -5,7 +5,6 @@
  *  Authors:
  *
  *       Daniel Espinosa <esodan@gmail.com>
- *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
  *  Copyright (c) 2013, 2014 Daniel Espinosa
@@ -71,8 +70,17 @@ namespace Lscl
       return _edition;
     }
 
+    protected string nname = null;
+
     construct {
       Init.init ();
+      nname = get_type ().name ();
+      if ("Lsclt" in nname)
+        nname = nname.replace ("Lsclt","");
+      else {
+        if ("Lscl" in nname)
+          nname = nname.replace ("Lscl","");
+      }
     }
 
     public Serializable () {
@@ -88,31 +96,25 @@ namespace Lscl
     {
       return _enable_proprietary;
     }
-    public override GXml.Node? serialize_property (GXml.Element element,
+    public override GXml.Node? serialize_property (GXml.Node element,
                                                    GLib.ParamSpec prop)
         throws GLib.Error
+        requires (element is GXml.Element)
     {
       if (_edition != Edition.FIRST &&
           _property_edition.size != 0) // FIXME: This doesn't work on SECOND edition
         if (_property_edition.get (prop.name) != null) return element;
-      return default_serialize_property (element, prop);
+      return default_serialize_property ((GXml.Element) element, prop);
     }
 
     public override string node_name ()
     {
-      string nname = get_type ().name ();
-      if ("Lsclt" in nname)
-        nname = nname.replace ("Lsclt","");
-      else {
-        if ("Lscl" in nname)
-          nname = nname.replace ("Lscl","");
-      }
       return nname;
     }
     public override bool property_use_nick () { return true; }
     public override string to_string ()
     {
-      Document doc = new Document ();
+      Document doc = new xDocument ();
       string ret = this.get_type ().name ();
       try {
         this.serialize (doc);
@@ -137,7 +139,7 @@ namespace Lscl
     {
       var objs = new Gee.ArrayList<Object> ();
       foreach (GXml.Node n in unknown_serializable_property.get_values ()) {
-        if (n.node_name == name) {
+        if (nname == name) {
           if (n is GXml.Attr) {
             var attr = new OtherProperty (n);
             objs.add (attr);
@@ -153,8 +155,8 @@ namespace Lscl
     public class OtherProperty : Object
     {
       protected GXml.Node node;
-      public string name { get { return node.node_name; } }
-      public string @value { get { return node.node_value; } }
+      public string name { get { return node.name; } }
+      public string @value { get { return node.value; } }
       public OtherProperty (GXml.Node attr)
       {
         this.node = attr;
@@ -163,7 +165,7 @@ namespace Lscl
     public class OtherElement : Object
     {
       private GXml.Node node;
-      public string name { get { return node.node_name; } } 
+      public string name { get { return node.name; } } 
       public OtherElement (GXml.Node node)
       {
         this.node = node;

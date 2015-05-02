@@ -149,7 +149,7 @@ endif
 
 AM_VALAFLAGS += \
 	$(top_srcdir)/vapi/config.vapi \
-	--pkg gxml-0.4 \
+	--pkg gxml-0.6 \
 	-C -H lscl.h \
 	--library lscl-0.4
 
