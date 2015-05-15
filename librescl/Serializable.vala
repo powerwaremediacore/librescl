@@ -138,9 +138,9 @@ namespace Lscl
     public Gee.ArrayList<Object> find_other (string name)
     {
       var objs = new Gee.ArrayList<Object> ();
-      foreach (GXml.Node n in unknown_serializable_property.get_values ()) {
+      foreach (GXml.Node n in unknown_serializable_properties.values) {
         if (nname == name) {
-          if (n is GXml.Attr) {
+          if (n is GXml.Attribute) {
             var attr = new OtherProperty (n);
             objs.add (attr);
           }

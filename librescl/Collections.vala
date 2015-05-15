@@ -32,7 +32,7 @@ namespace Lscl
    * A {link: GXml.SerializableHashMap} implementation with support for
    * duplicated entries.
    */
-  public class HashMap<K,V> : SerializableHashMap<K,V>
+  public class HashMap<K,V> : GXml.SerializableHashMap<K,V>
   {
     public SerializableArrayList<V> duplicated { get; set; }
     public override GXml.Node? deserialize (GXml.Node node)
@@ -181,10 +181,14 @@ namespace Lscl
         storage = new Gee.HashMultiMap<P,Gee.HashMultiMap<S,Gee.HashMap<T,V>>> ();
     }
     // Serializable Interface
+    protected Gee.HashMap<string,GXml.Node> _unknown_serializable_properties = new Gee.HashMap<string,GXml.Node> ();
+    protected Gee.ArrayList<GXml.Node> _unknown_serializable_nodes = new ArrayList<GXml.Node> ();
+
     protected ParamSpec[] properties { get; set; }
     public GLib.HashTable<string,GLib.ParamSpec> ignored_serializable_properties { get; protected set; }
     public string? serialized_xml_node_value { get; protected set; default=null; }
-    public GLib.HashTable<string,GXml.Node> unknown_serializable_property { get; protected set; }
+    public Gee.Map<string,GXml.Node> unknown_serializable_properties { get { return _unknown_serializable_properties; } }
+    public Gee.Collection<GXml.Node> unknown_serializable_nodes { get { return _unknown_serializable_nodes; } }
 
     public virtual bool get_enable_unknown_serializable_property () { return false; }
     public virtual bool serialize_use_xml_node_value () { return false; }
