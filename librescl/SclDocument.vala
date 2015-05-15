@@ -93,14 +93,13 @@ public class Lscl.SclDocument : Scl
     throws GLib.Error
   {
     return_val_if_fail (_file != null, false);
-    var document = new GXml.xDocument ();
+    var document = new GXml.TwDocument ();
     serialize (document);
-    var outs = _file.replace (null, true, FileCreateFlags.NONE, null);
 #if DEBUG
     GLib.message ("Starting save operation from GXml");
 #endif
     file_operation_start (_file.get_path ());
-    document.save_to_stream (outs, cancellable);
+    document.save_to (_file, cancellable);
 #if DEBUG
     GLib.message ("Ending save operation from GXml");
 #endif
@@ -115,16 +114,14 @@ public class Lscl.SclDocument : Scl
   public bool save_to (GLib.File file, Lscl.Edition edition = Lscl.Edition.FIRST, Cancellable? cancellable = null) throws GLib.Error
   {
     return_val_if_fail (set_edition (edition), false);
-    /* TODO: This makes save_to() operation to take longer. We should serialize 
-             directly to a file to improve performance. */
-    var document = new GXml.xDocument ();
+    var document = new GXml.TwDocument ();
     serialize (document);
-    var outs = file.replace (null, true, FileCreateFlags.NONE, null);
 #if DEBUG
+    GLib.message (@"Serialized document:\n$document");
     GLib.message ("Starting save operation from GXml");
 #endif
     file_operation_start (file.get_path ());
-    document.save_to_stream (outs, cancellable);
+    document.save_to (file, cancellable);
 #if DEBUG
     GLib.message ("Ending save operation from GXml");
 #endif
