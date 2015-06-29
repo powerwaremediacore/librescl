@@ -108,7 +108,7 @@ plugins/default/Makefile
 ])
 
 echo ""
-echo " Configuration summary for LibreSCL Version: $API_VERSION"
+echo " Configuration summary for LibreSCL Version: $LIBRESCL_VERSION"
 echo "   Installation prefix:  $prefix"
 echo "   GObject Introspection $found_introspection"
 echo "   Documentation:        $have_valadoc"
