@@ -36,7 +36,7 @@ namespace Lscl
     [Description(blurb="Log Controls")]
     public tLogControl.HashMap log_controls { get; set; }
     [Description(blurb="Data Object Instances")]
-    public tDOI.Array dois { get; set; }
+    public tDOI.HashMap dois { get; set; }
     [Description(nick="Inputs", blurb="Input source")]
     public tInputs inputs { get; set; }
     [Description(nick="lnType", blurb="The instantiable type definition of this logical node.")]

@@ -29,13 +29,13 @@ namespace Lscl
 {
   public class tDAI : tUnNaming, SerializableMapKey<string>
   {
-    [Description(nick="Val", blurb="")]
+    [Description(nick="Val", blurb="Array of values")]
     public tVal.Array vals { get; set; }
-    [Description(nick="name", blurb="")]
+    [Description(nick="name", blurb="Data Attribute's name")]
     public string name { get; set; }
     [Description(nick="sAddr", blurb="")]
     public string s_addr { get; set; }
-    [Description(nick="valKind", blurb="")]
+    [Description(nick="valKind", blurb="Value kind of")]
     public tValKindEnum val_kind { get; set; default = tValKindEnum.SET; }
     [Description(nick="ix", blurb="")]
     public string ix { get; set; }

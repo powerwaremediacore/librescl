@@ -31,9 +31,9 @@ namespace Lscl
   {
     [Description(nick="name",blurb="")]
     public string name { get; set; }
-    [Description(nick="ix",blurb="")]
+    [Description(nick="ix",blurb="Index")]
     public string ix { get; set; }
-    [Description(nick="ixSpecified",blurb="")]
+    [Description(nick="ixSpecified",blurb="Index specified")]
     public bool ix_specified { get; set; }
     [Description(nick="accessControl",blurb="")]
     public string access_control { get; set; }
@@ -51,6 +51,6 @@ namespace Lscl
       if (dais == null)
         dais = new tDAI.HashMap ();
     }
-    public class Array : GXml.SerializableHashMap<string, tDOI> {}
+    public class HashMap : GXml.SerializableHashMap<string, tDOI> {}
   }
 }
