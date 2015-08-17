@@ -30,11 +30,11 @@ namespace Lscl
   public class tFCDA : Serializable
   {
     [Description(nick="ldInst", blurb="Logical Device instance")]
-    public string ld_inst { get; set; default=""; }
+    public string ld_inst { get; set; }
     [Description(nick="LDevice",blurb="Logcial Device")]
     public tLDevice logical_device { get; set; }
     [Description(nick="prefix",blurb="Prefix")]
-    public string prefix { get; set; default = ""; }
+    public string prefix { get; set; }
     [Description(nick="lnClass",blurb="Logical Node class")]
     public string ln_class { get; set; }
     [Description(nick="lnInst",blurb="Logical Node instance")]

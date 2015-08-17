@@ -30,29 +30,17 @@ namespace Lscl
   public class tAnyLN : tUnNaming 
   {
     [Description(blurb="DataSet controls")]
-    public tDataSet.HashMap data_sets { get; set; }
+    public tDataSet.HashMap data_sets { get; set; default = new tDataSet.HashMap (); }
     [Description(blurb="Report Controls")]
-    public tReportControl.HashMap report_controls { get; set; }
+    public tReportControl.HashMap report_controls { get; set; default = new tReportControl.HashMap (); }
     [Description(blurb="Log Controls")]
-    public tLogControl.HashMap log_controls { get; set; }
+    public tLogControl.HashMap log_controls { get; set; default = new tLogControl.HashMap (); }
     [Description(blurb="Data Object Instances")]
-    public tDOI.HashMap dois { get; set; }
+    public tDOI.HashMap dois { get; set; default = new tDOI.HashMap (); }
     [Description(nick="Inputs", blurb="Input source")]
     public tInputs inputs { get; set; }
     [Description(nick="lnType", blurb="The instantiable type definition of this logical node.")]
     public string ln_type { get; set; }
-    // Serializable
-    public override void init_containers ()
-    {
-      if (data_sets == null)
-        data_sets = new tDataSet.HashMap ();
-      if (report_controls == null)
-        report_controls = new tReportControl.HashMap ();
-      if (log_controls == null)
-        log_controls = new tLogControl.HashMap ();
-      if (dois == null)
-        dois = new tDOI.HashMap ();
-    }
 	}
 }
 
