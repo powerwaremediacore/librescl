@@ -30,11 +30,11 @@ namespace Lscl
   public class tFCDA : Serializable
   {
     [Description(nick="ldInst", blurb="Logical Device instance")]
-    public string ld_inst { get; set; }
+    public string ld_inst { get; set; default=""; }
     [Description(nick="LDevice",blurb="Logcial Device")]
     public tLDevice logical_device { get; set; }
     [Description(nick="prefix",blurb="Prefix")]
-    public string prefix { get; set; }
+    public string prefix { get; set; default = ""; }
     [Description(nick="lnClass",blurb="Logical Node class")]
     public string ln_class { get; set; }
     [Description(nick="lnInst",blurb="Logical Node instance")]
@@ -46,7 +46,9 @@ namespace Lscl
     [Description(nick="fc",blurb="Functional Code")]
     public tFCEnum fc { get; set; }
 
-    public class Array : SerializableArrayList<tFCDA> {}
+    public class Array : SerializableArrayList<tFCDA> {
+      public tFCDA get (int index)  { return base.get (index); }
+    }
   }
 }
 
