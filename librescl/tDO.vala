@@ -40,7 +40,9 @@ namespace Lscl
     public bool transient { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string,tDO> {}
+    public class HashMap : SerializableHashMap<string,tDO> {
+      public new tDO get (string name) { return base.get (name); }
+    }
   }
 }
 

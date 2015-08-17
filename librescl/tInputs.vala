@@ -30,7 +30,7 @@ namespace Lscl
   public class tInputs : tUnNaming
   {
     [Description(nick="ExtRef", blurb="")]
-    public tExtRef ext_ref { get; set; }
+    public tExtRef.Array ext_refs { get; set; default = new tExtRef.Array (); }
   }
 }
 

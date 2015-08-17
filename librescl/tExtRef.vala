@@ -43,6 +43,10 @@ namespace Lscl
     public string src_ln_class { get; set; }
     public string src_ln_inst { get; set; }
     public string src_cb_name { get; set; }
+    
+    public class Array : SerializableArrayList<tExtRef> {
+      public new tExtRef get (int index) { return base.get (index); }
+    }
   }
   // tExtRef.service_type must have just one of this enum value
   public enum tServiceType

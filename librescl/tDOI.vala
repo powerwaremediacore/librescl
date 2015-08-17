@@ -51,6 +51,8 @@ namespace Lscl
       if (dais == null)
         dais = new tDAI.HashMap ();
     }
-    public class HashMap : GXml.SerializableHashMap<string, tDOI> {}
+    public class HashMap : GXml.SerializableHashMap<string, tDOI> {
+      public new tDOI get (string name) { return base.get (name); }
+    }
   }
 }

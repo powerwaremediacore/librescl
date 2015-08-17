@@ -49,6 +49,8 @@ namespace Lscl
       if (dais == null)
         dais = new tDAI.HashMap ();
     }
-    public class HashMap : SerializableHashMap<string,tSDI> {}
+    public class HashMap : SerializableHashMap<string,tSDI> {
+      public new tSDI get (string name) { return base.get (name); }
+    }
   }
 }

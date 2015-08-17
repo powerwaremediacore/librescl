@@ -51,7 +51,7 @@ namespace Lscl
       if (log_controls == null)
         log_controls = new tLogControl.HashMap ();
       if (dois == null)
-        dois = new tDOI.Array ();
+        dois = new tDOI.HashMap ();
     }
 	}
 }

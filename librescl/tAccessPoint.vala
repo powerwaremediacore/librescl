@@ -54,7 +54,9 @@ namespace Lscl
       return default_deserialize (node);
     }
 
-    public class HashMap : SerializableHashMap<string,tAccessPoint> {}
+    public class HashMap : SerializableHashMap<string,tAccessPoint> {
+      public new tAccessPoint get (string name) { return base.get (name); }
+    }
   }
 }
 

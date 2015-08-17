@@ -29,13 +29,13 @@ namespace Lscl
 {
   public class tServicesSettingGroups : Serializable
   {
-    [Description(nick="SGEdit",blurb="The capability of online editing is decided with the SGEdit element")]
-    public tGSEdit sg_edit { get; set; }
+    [Description(nick="SGEdit",blurb="The capability of online editing is decided with the GSEdit element")]
+    public tSGEdit sg_edit { get; set; }
 
     [Description(nick="ConfSG",blurb="The capability to configure the (number of) setting groups by SCL can be also available")]
     public tConfSG conf_sg { get; set; }
   }
-  public class tGSEdit : tServiceYesNo {}
+  public class tSGEdit : tServiceYesNo {}
   public class tConfSG : tServiceYesNo {}
 }
 

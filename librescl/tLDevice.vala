@@ -45,7 +45,9 @@ namespace Lscl
       if (logical_nodes == null)
         logical_nodes = new tLN.ThreeMap ();
     }
-    public class HashMap : SerializableHashMap<string,tLDevice> {}
+    public class HashMap : SerializableHashMap<string,tLDevice> {
+      public new tLDevice get (string name) { return base.get (name); }
+    }
   }
 }
 
