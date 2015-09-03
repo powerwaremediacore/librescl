@@ -49,7 +49,7 @@ namespace Lscl
         vals = new tVal.Array ();
     }
     public class HashMap : SerializableHashMap<string,tDAI> {
-      public new tDAI get (string name) { return base.get (name); }
+      public new tDAI @get (string name) { return base.get (name); }
     }
   }
 }

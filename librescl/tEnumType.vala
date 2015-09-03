@@ -47,6 +47,9 @@ namespace Lscl
       if (enum_val == null)
         enum_val = new tEnumVal.Array ();
     }
-    public class HashMap : Lscl.HashMap<string,tEnumType> {}
+    public class HashMap : Lscl.HashMap<string,tEnumType>
+	 {
+		 public new tEnumType get (string key) { return base.get (key); }
+	 }
   }
 }

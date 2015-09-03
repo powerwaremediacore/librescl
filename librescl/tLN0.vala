@@ -30,9 +30,9 @@ namespace Lscl
   public class tLN0 : tAnyLN
   {
     [Description(blurb="GSE Control Blocks")]
-    public tGSEControl.HashMap gse_controls { get; set; }
+    public tGSEControl.HashMap gse_controls { get; set; default = new tGSEControl.HashMap (); }
     [Description(blurb="Sample Value Control Blocks")]
-    public tSampledValueControl.Array sampled_value_controls { get; set; }
+    public tSampledValueControl.Array sampled_value_controls { get; set; default = new tSampledValueControl.Array (); }
     [Description(blurb="Setting Control Blocks")]
     public tSettingControl setting_control { get; set; }
     [Description(nick="SCLControl",blurb="")]
@@ -43,15 +43,6 @@ namespace Lscl
     public tLNClassEnum ln_class { get { return tLNClassEnum.LLN0; } set {} }
     [Description(nick="inst",blurb="LN0 have no instances")]
     public string inst { get { return ""; } set {} }
-    // Serializable
-    public override void init_containers ()
-    {
-      base.init_containers ();
-      if (gse_controls == null)
-        gse_controls = new tGSEControl.HashMap ();
-      if (sampled_value_controls == null)
-        sampled_value_controls = new tSampledValueControl.Array ();
-    }
   }
 }
 

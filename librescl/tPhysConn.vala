@@ -30,19 +30,16 @@ namespace Lscl
   public class tPhysConn : tUnNaming, SerializableMapKey<string>
   {
     [Description (nick="P", blurb="")]
-    public tP.Array ps { get; set; }
+    public tP.Array ps { get; set; default = new tP.Array (); }
     [Description (nick="type", blurb="Physical Connection type")]
     public string connection_type { get; set; }
     public TypeEnum get_enum () { return TypeEnum.from_string (connection_type); }
 
     public string get_map_key () { return connection_type; }
-
-    public override void init_containers ()
-    {
-      if (ps == null)
-          ps = new tP.Array ();
-    }
-    public class Collection : SerializableHashMap<string,tPhysConn> {}
+    public class Collection : SerializableHashMap<string,tPhysConn>
+	 {
+		 public new tPhysConn get (string key) { return base.get (key); }
+	 }
 
     // Edition 2.0 Enum
     public enum TypeEnum

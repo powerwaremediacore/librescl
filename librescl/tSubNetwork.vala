@@ -51,7 +51,10 @@ namespace Lscl
       }
       return default_deserialize (node);
     }
-    public class HashMap : GXml.SerializableHashMap<string,tSubNetwork> {}
+    public class HashMap : GXml.SerializableHashMap<string,tSubNetwork>
+	 {
+			public new tSubNetwork get (string name) { return base.get (name); }
+	 }
     public class tBitRate : tBitRateInMbPerSec
     {
       public override string node_name () { return "BitRate"; }

@@ -32,7 +32,10 @@ namespace Lscl
     // SerializableMapKey
     public string get_map_key () { return name; }
 
-    public class HashMap : Lscl.HashMap<string,tBDA> {}
+    public class HashMap : Lscl.HashMap<string,tBDA>
+	 {
+			public new tBDA @get (string key) { return base.get (key); }
+		}
   }
 }
 

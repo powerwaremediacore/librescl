@@ -30,14 +30,7 @@ namespace Lscl
   public class tCommunication : tUnNaming
   {
     [Description (blurb="Subnetworks for substation communications")]
-    public tSubNetwork.HashMap subnetworks { get; set; }
-
-    // Serializable
-    public override void init_containers ()
-    {
-      if (subnetworks == null)
-        subnetworks = new tSubNetwork.HashMap ();
-    }
+    public tSubNetwork.HashMap subnetworks { get; set; default = new tSubNetwork.HashMap (); }
   }
 }
 

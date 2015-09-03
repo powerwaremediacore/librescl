@@ -30,16 +30,16 @@ namespace Lscl
 {
   public class tSampledValueControl : tControlWithIEDName
   {
-    [Description(nick=" ", blurb="Sampled Values Options")]
-    public tSampledValueControlSmvOpts SmvOpts  { get; set; }
-    [Description(nick=" ", blurb="Idenitifier of the SMV, (Multicast CB or Unicast CB)")]
-    public string smvID  { get; set; }
-    [Description(nick=" ", blurb="If it's false indicates Unicast SMV services")]
-    public bool multicast  { get; set; default=true; }
-    [Description(nick=" ", blurb="Sample rate")]
-    public string smpRate  { get; set; }
-    [Description(nick=" ", blurb="Number of ASDU (Application service data unit)")]
-    public string nofASDU  { get; set; }
+    [Description(nick="SmvOpts", blurb="Sampled Values Options")]
+    public tSampledValueControlSmvOpts smv_opts  { get; set; }
+    [Description(nick="smvID", blurb="Idenitifier of the SMV, (Multicast CB or Unicast CB)")]
+    public string smv_id  { get; set; }
+    [Description(nick="multicast", blurb="If it's false indicates Unicast SMV services")]
+    public bool multicast { get; set; default=true; }
+    [Description(nick="smpRate", blurb="Sample rate")]
+    public string smp_rate  { get; set; }
+    [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
+    public string nof_asdu  { get; set; }
 
     public class Array : SerializableArrayList<tSampledValueControl> {}
   }

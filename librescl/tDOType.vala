@@ -47,7 +47,10 @@ namespace Lscl
       if (das == null)
         das = new tDA.HashMap ();
     }
-    public class HashMap : Lscl.HashMap<string,tDOType> {}
+    public class HashMap : Lscl.HashMap<string,tDOType>
+	 {
+		 public new tDOType get (string key) { return base.get (key); }
+	 }
   }
 }
 

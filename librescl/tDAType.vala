@@ -42,7 +42,10 @@ namespace Lscl
       if (bdas == null)
         bdas = new tBDA.HashMap ();
     }
-    public class HashMap : Lscl.HashMap<string,tDAType> {}
+    public class HashMap : Lscl.HashMap<string,tDAType>
+	 {
+			public new tDAType @get (string key) { return base.get (key); }
+	 }
   }
 }
 
