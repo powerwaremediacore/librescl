@@ -40,9 +40,8 @@ namespace Lscl
     // SerializableMapId
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string,tDA>
-	 {
-			public new tDA @get (string key) { return base.get (key); }
+    public class HashMap : SerializableHashMap<string,tDA> {
+			public new tDA @get (string name) { return base.get (name); }
 	 }
   }
 }

@@ -31,36 +31,26 @@ namespace Lscl
   public class tSMVSettings : tServiceSettings 
   {
     [Description(nick="smpRate", blurb="Type of supported sample rate")]
-    public tServiceSettingsEnum smp_rate  { get; set;  default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum smp_rate  { get; set;  default=tServiceSettingsEnum.FIX; }
 
     [Description(nick="svID", blurb="Sample value identifier.")]
-    public tServiceSettingsEnum sv_id { get; set; default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum sv_id { get; set; default=tServiceSettingsEnum.FIX; }
 
     [Description(nick="optFields", blurb="Optional fields to include in report")]
-    public tServiceSettingsEnum opt_fields { get; set; default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum opt_fields { get; set; default=tServiceSettingsEnum.FIX; }
 
     [Description(nick="SmpRate", blurb="Sample Rate")]
-    public tSmpRate.Array smp_rates { get; set; }
+    public tSmpRate.Array smp_rates { get; set; default = new tSmpRate.Array (); }
     // Edition 2.0
     [Description(nick="SamplesPerSec", blurb="Samples per second")]
-    public tSamplesPerSec.Array samples_per_sec { get; set; }
+    public tSamplesPerSec.Array samples_per_sec { get; set; default = new tSamplesPerSec.Array (); }
     [Description(nick="SecPerSamples", blurb="Seconds per samples")]
-    public tSecPerSamples.Array sec_per_samples { get; set; }
+    public tSecPerSamples.Array sec_per_samples { get; set; default = new tSecPerSamples.Array (); }
 
     public tSMVSettings ()
     {
       _property_edition.set ("samples-per-sec", Edition.SECOND);
       _property_edition.set ("sec-per-samples", Edition.SECOND);
-    }
-    // SerializableContainer overrides
-    public override void init_containers ()
-    {
-      if (smp_rates == null)
-        smp_rates = new tSmpRate.Array ();
-      if (samples_per_sec == null)
-        samples_per_sec = new tSamplesPerSec.Array ();
-      if (sec_per_samples == null)
-        sec_per_samples = new tSecPerSamples.Array ();
     }
   }
   /**
@@ -82,20 +72,26 @@ namespace Lscl
    */
   public class tSmpRate : tSamplesBase
   {
-    public class Array : GXml.SerializableArrayList <tSmpRate> {}
+    public class Array : GXml.SerializableArrayList <tSmpRate> {
+			public new tSmpRate get (int index) { return base.get (index); }
+		}
   }
   /**
    * Sample Rates supported by this device for Sample Measured Values.
    */
   public class tSamplesPerSec : tSamplesBase
   {
-    public class Array : GXml.SerializableArrayList <tSamplesPerSec> {}
+    public class Array : GXml.SerializableArrayList <tSamplesPerSec> {
+			public new tSamplesPerSec get (int index) { return base.get (index); }
+		}
   }
   /**
    * Sample Rates supported by this device for Sample Measured Values.
    */
   public class tSecPerSamples : tSamplesBase
   {
-    public class Array : GXml.SerializableArrayList <tSecPerSamples> {}
+    public class Array : GXml.SerializableArrayList <tSecPerSamples> {
+			public new tSecPerSamples get (int index) { return base.get (index); }
+		}
   }
 }

@@ -36,9 +36,8 @@ namespace Lscl
     public TypeEnum get_enum () { return TypeEnum.from_string (connection_type); }
 
     public string get_map_key () { return connection_type; }
-    public class Collection : SerializableHashMap<string,tPhysConn>
-	 {
-		 public new tPhysConn get (string key) { return base.get (key); }
+    public class HashMap : SerializableHashMap<string,tPhysConn> {
+			public new tPhysConn get (string type) { return base.get (type); }
 	 }
 
     // Edition 2.0 Enum

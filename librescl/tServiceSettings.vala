@@ -30,14 +30,14 @@ namespace Lscl
   public class tServiceSettings : Serializable
   {
     [Description(nick="cbName", blurb="Control block name")]
-    public tServiceSettingsEnum cb_name { get; set; default = tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum cb_name { get; set; default = tServiceSettingsEnum.FIX; }
     [Description(nick="datSet", blurb="Data set reference")]
-    public tServiceSettingsEnum dat_set { get; set; default = tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum dat_set { get; set; default = tServiceSettingsEnum.FIX; }
   }
   public enum tServiceSettingsEnum
   {
-    Dyn,
-    Conf,
-    Fix
+    DYN,
+    CONF,
+    FIX
   }
 }

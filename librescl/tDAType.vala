@@ -31,20 +31,13 @@ namespace Lscl
   public class tDAType : tIDNaming, SerializableMapKey<string>
   {
     [Description(blurb="Basic Data Attribute Types")]
-    public tBDA.HashMap bdas { get; set; }
+    public tBDA.HashMap bdas { get; set; default = new tBDA.HashMap (); }
     [Description(nick="iedType", blurb="it is used to define the relation of a specific LN type to an IED type.")]
     public string ied_type { get; set; }
     // SerializableMapDualId
     public string get_map_key () { return id; }
-    // Serializable
-    public override void init_containers ()
-    {
-      if (bdas == null)
-        bdas = new tBDA.HashMap ();
-    }
-    public class HashMap : Lscl.HashMap<string,tDAType>
-	 {
-			public new tDAType @get (string key) { return base.get (key); }
+    public class HashMap : Lscl.HashMap<string,tDAType> {
+			public new tDAType @get (string id) { return base.get (id); }
 	 }
   }
 }

@@ -47,7 +47,7 @@ namespace Lscl
     public tFCEnum fc { get; set; }
 
     public class Array : SerializableArrayList<tFCDA> {
-      public tFCDA get (int index)  { return base.get (index); }
+      public new tFCDA get (int index)  { return base.get (index); }
     }
   }
 }

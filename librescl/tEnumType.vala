@@ -33,7 +33,7 @@ namespace Lscl
   public class tEnumType : tIDNaming, SerializableMapKey<string>
   {
     [Description(nick="EnumVal",blurb="")]
-    public tEnumVal.Array enum_val { get; set; }
+    public tEnumVal.Array enum_val { get; set; default = new tEnumVal.Array (); }
 
     public void order ()
     {
@@ -41,15 +41,9 @@ namespace Lscl
     }
     // SerializableMapDualId
     public string get_map_key () { return id; }
-    // Serializable
-    public override void init_containers ()
-    {
-      if (enum_val == null)
-        enum_val = new tEnumVal.Array ();
-    }
     public class HashMap : Lscl.HashMap<string,tEnumType>
 	 {
-		 public new tEnumType get (string key) { return base.get (key); }
+		 public new tEnumType get (string id) { return base.get (id); }
 	 }
   }
 }

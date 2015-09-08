@@ -57,8 +57,7 @@ namespace Lscl
     }
 
     public string get_map_key () { return name; }
-    public class HashMap : GXml.SerializableHashMap<string, tLogControl>
-    {
+    public class HashMap : GXml.SerializableHashMap<string, tLogControl> {
       public new tLogControl @get (string name) { return base.get (name); }
     }
   }

@@ -41,7 +41,9 @@ namespace Lscl
     public string get_value () { return serialized_xml_node_value; }
     public override bool serialize_use_xml_node_value () { return true; }
 
-    public class Array : SerializableArrayList<tVal> {}
+    public class Array : SerializableArrayList<tVal> {
+			public new tVal get (int index) { return base.get (index); }
+		}
   }
 
 }

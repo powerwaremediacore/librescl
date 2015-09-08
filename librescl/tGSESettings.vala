@@ -30,8 +30,8 @@ namespace Lscl
   public class tGSESettings : tServiceSettings 
   {
     [Description(nick="appID", blurb="Application ID")]
-    public tServiceSettingsEnum app_id { get; set; default =  tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum app_id { get; set; default =  tServiceSettingsEnum.FIX; }
     [Description(nick="dataLabel", blurb="Data Label")]
-    public tServiceSettingsEnum data_label { get; set; default =  tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum data_label { get; set; default =  tServiceSettingsEnum.FIX; }
   }
 }

@@ -64,7 +64,9 @@ namespace Lscl
 
     public override bool serialize_use_xml_node_value () { return true; }
 
-    public class Array : GXml.SerializableArrayList<tP> {}
+    public class Array : GXml.SerializableArrayList<tP> {
+			public new tP get (int index) { return base.get (index); }
+		}
 
     public enum TypeEnum
     {

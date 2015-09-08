@@ -37,7 +37,9 @@ namespace Lscl
     public string get_map_primary_key  () { return ld_inst; }
     public string get_map_secondary_key () { return cb_name; }
 
-    public class DualKeyMap : SerializableDualKeyMap<string,string,tGSE> {}
+    public class DualKeyMap : SerializableDualKeyMap<string,string,tGSE> {
+			public new tGSE get (string ldinst, string cbname) { return base.get (ldinst, cbname); }
+		}
     public class tMinTime : tDurationInMilliSec
     {
       public override string node_name () { return "MinTime"; }

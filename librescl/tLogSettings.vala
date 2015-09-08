@@ -30,10 +30,10 @@ namespace Lscl
   public class tLogSettings : tServiceSettings
   {
     [Description (nick="logEna", blurb="Logging enabled")]
-    public tServiceSettingsEnum logEna { get; set; default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum logEna { get; set; default=tServiceSettingsEnum.FIX; }
     [Description (nick="trgOps", blurb="Trigger options")]
-    public tServiceSettingsEnum trg_ops { get; set; default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum trg_ops { get; set; default=tServiceSettingsEnum.FIX; }
     [Description (nick="intgPd", blurb="")]
-    public tServiceSettingsEnum intg_pd { get; set; default=tServiceSettingsEnum.Fix; }
+    public tServiceSettingsEnum intg_pd { get; set; default=tServiceSettingsEnum.FIX; }
   }
 }

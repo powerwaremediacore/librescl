@@ -48,7 +48,10 @@ namespace Lscl
 
     public class ThreeMap : Lscl.ThreeMap<string,string,string,tLN>
     {
-      public tLN find (string prefix, string lnclass, string inst)
+			public new tLN get (string lnclass, string inst, string prefix) {
+				return base.get (lnclass, inst, prefix);
+			}
+			public tLN find (string prefix, string lnclass, string inst)
       {
         return @get (lnclass, inst, prefix);
       }

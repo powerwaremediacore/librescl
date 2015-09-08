@@ -30,7 +30,7 @@ public class Lscl.tHeader : Lscl.Serializable
   [Description (nick="Text", blurb="Free text")]
   public tText text { get; set; }
   [Description (nick="History", blurb="History Items")]
-  public tHitem.Array history { get; set; }
+  public tHitem.Array history { get; set; default = new tHitem.Array (); }
   [Description(nick="id", blurb="")]
   public string id { get; set; default = "Created by LibreSCL(C)"; }
   [Description(nick="version", blurb="")]
@@ -41,12 +41,6 @@ public class Lscl.tHeader : Lscl.Serializable
   public string tool_id { get; set; default = "LibreSCL"; }
   [Description (nick="nameStructure",blurb="Name structure according with standard")]
   public NameStructure name_structure { get; set; }
-  // Serializable
-  public override void init_containers ()
-  {
-    if (history == null)
-        history = new tHitem.Array ();
-  }
 
   public enum NameStructure 
   {

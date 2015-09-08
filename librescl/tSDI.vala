@@ -36,19 +36,11 @@ namespace Lscl
     [Description(nick="ixSpecified", blurb="Index of the SDI element in case of an array type.")]
     public bool ix_specified { get; set; }
     [Description(nick="SDI", blurb="")]
-    public tSDI.HashMap sdis	{ get; set; }
+    public tSDI.HashMap sdis	{ get; set; default = new tSDI.HashMap (); }
     [Description(nick="DAI", blurb="")]
-    public tDAI.HashMap dais { get; set; }
+    public tDAI.HashMap dais { get; set; default = new tDAI.HashMap (); }
 
     public string get_map_key () { return name; }
-
-    public override void init_containers ()
-    {
-      if (sdis == null)
-        sdis = new tSDI.HashMap ();
-      if (dais == null)
-        dais = new tDAI.HashMap ();
-    }
     public class HashMap : SerializableHashMap<string,tSDI> {
       public new tSDI get (string name) { return base.get (name); }
     }

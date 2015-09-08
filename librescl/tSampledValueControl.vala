@@ -41,7 +41,9 @@ namespace Lscl
     [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
     public string nof_asdu  { get; set; }
 
-    public class Array : SerializableArrayList<tSampledValueControl> {}
+    public class Array : SerializableArrayList<tSampledValueControl> {
+			public new tSampledValueControl @get (int index) { return base.get (index); }
+		}
   }
 }
 

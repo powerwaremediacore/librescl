@@ -33,13 +33,11 @@ namespace Lscl
     public string max { get; set; default="1"; }
     /* Edition 2.0 */
     [Description(nick="ClientLN", blurb="Logical Node client in the system of this report")]
-    public tClientLN.Array clients_ln { get; set; }
-    // Serializable
-    public override void init_containers ()
-    {
-      if (clients_ln == null)
-        clients_ln = new tClientLN.Array ();
-    }
+    public tClientLN.Array clients_ln { get; set; default = new tClientLN.Array (); }
+		public tRptEnabled ()
+		{
+			_property_edition.set ("clients-ln", Edition.SECOND);
+		}
   }
 }
 

@@ -42,7 +42,9 @@ namespace Lscl
     [Description(nick="lnType",blurb="Logical Node type")]
     public string ln_type { get; set; }
 
-    public class Array : SerializableArrayList<tLNode> {}
+    public class Array : SerializableArrayList<tLNode> {
+			public new tLNode get (int index) { return base.get (index); } 
+		}
   }
 }
 

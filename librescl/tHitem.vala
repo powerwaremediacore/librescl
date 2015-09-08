@@ -55,7 +55,9 @@ namespace Lscl
     {
       return @"Ver $(version) / Rev $(revision) / When '$(when)'";
     }
-    public class Array : SerializableArrayList<tHitem> {}
+    public class Array : SerializableArrayList<tHitem> {
+			public new tHitem get (int index) { return base.get (index); }
+		}
   }
 }
 

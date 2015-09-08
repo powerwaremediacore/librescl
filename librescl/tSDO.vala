@@ -34,7 +34,9 @@ namespace Lscl
 		// SerializableMapId
 		public string get_map_key () { return name; }
 
-		public class HashMap : SerializableHashMap<string,tSDO> {}
+		public class HashMap : SerializableHashMap<string,tSDO> {
+			public new tSDO @get (string name) { return base.get (name); }
+		}
 	}
 }
 

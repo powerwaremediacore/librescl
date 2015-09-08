@@ -32,7 +32,12 @@ namespace Lscl
     public string get_map_primary_key  () { return ld_inst; }
     public string get_map_secondary_key () { return cb_name; }
 
-    public class DualKeyMap : SerializableDualKeyMap<string,string,tSMV> {}
+    public class DualKeyMap : SerializableDualKeyMap<string,string,tSMV>
+		{
+			public new tSMV @get (string ldinst, string cbname) {
+				return base.get (ldinst,cbname);
+			}
+		}
   }
 }
 
