@@ -31,16 +31,16 @@ namespace Lscl
 {
 	public class tTrgOps : Serializable
 	{
-		[Description(nick="", blurb="dchg enabled means that a change in the value of that attribute should cause a report")]
+		[Description(nick="dchg", blurb="dchg enabled means that a change in the value of that attribute should cause a report")]
 		public bool dchg { get; set; default=false; }
-		[Description(nick="", blurb="dchg enabled means that a change in the value of the quality for that attribute should cause a report")]
+		[Description(nick="qchg", blurb="dchg enabled means that a change in the value of the quality for that attribute should cause a report")]
 		public bool qchg { get; set; default=false; }
-		[Description(nick="", blurb="dupd enabled A report or a log entry shall be generated due to freezing the value of a freezable attribute or updating the value of any other attribute")]
+		[Description(nick="dupd", blurb="dupd enabled A report or a log entry shall be generated due to freezing the value of a freezable attribute or updating the value of any other attribute")]
 		public bool dupd { get; set; default=false; }
-		[Description(nick="", blurb="if it es enabled integrity period is relevant")]
+		[Description(nick="period", blurb="if it es enabled integrity period is relevant")]
 		public bool period { get; set; default=false; }
 		/* Edition 2.0 */
-		[Description(nick="", blurb="general interrogation")]
+		[Description(nick="gi", blurb="general interrogation")]
 		public bool gi { get; set; default=true; }
 
 		public tTrgOps () { _property_edition.set ("gi", Edition.SECOND); }
