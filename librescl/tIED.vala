@@ -52,7 +52,7 @@ namespace Lscl
       {
         string str = "";
         foreach (tIED ied in values) {
-          str += "["+ied.name+"] ";
+          str += "["+ied.name+"/"+ied.manufacturer+"/"+ied.ied_type+"]";
         }
         return str;
       }
