@@ -886,7 +886,9 @@ public class LsclTest.ReadFile
         assert (fcda0.prefix == "");
         assert (fcda0.ln_class == "XCBR");
         assert (fcda0.ln_inst == "5");
-        assert (fcda0.fc == tFCEnum.ST);
+        Test.message ("Checking FC 0-1:"+fcda0.fc.get_string ());
+        assert (fcda0.fc.get_value () == tFC.Enum.ST);
+        Test.message ("Checking FC 0-2:"+fcda0.fc.get_string ());
         assert (fcda0.do_name == "Pos");
         assert (fcda0.da_name == "stVal");
         var fcda1 = dt.fcdas.@get (1);
@@ -895,7 +897,7 @@ public class LsclTest.ReadFile
         assert (fcda1.prefix == "");
         assert (fcda1.ln_class == "XCBR");
         assert (fcda1.ln_inst == "5");
-        assert (fcda1.fc == tFCEnum.ST);
+        assert (fcda1.fc.get_value () == tFC.Enum.ST);
         assert (fcda1.do_name == "Pos");
         assert (fcda1.da_name == "q");
         var fcda2 = dt.fcdas.@get (2);
@@ -904,7 +906,7 @@ public class LsclTest.ReadFile
         assert (fcda2.prefix == "");
         assert (fcda2.ln_class == "XCBR");
         assert (fcda2.ln_inst == "5");
-        assert (fcda2.fc == tFCEnum.ST);
+        assert (fcda2.fc.get_value () == tFC.Enum.ST);
         assert (fcda2.do_name == "Pos");
         assert (fcda2.da_name == "t");
       }

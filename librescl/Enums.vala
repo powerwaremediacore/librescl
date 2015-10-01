@@ -24,25 +24,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using Gee;
+using GXml;
 
 namespace Lscl
 {
-  public class StringArray : ArrayList<string>
+	public class BaseEnum : SerializableEnum
   {
-    public new string get (int index)
-    {
-      return base.get (index);
-    }
+    public string get_string () throws GLib.Error { return get_serializable_property_value (); }
+    public void set_string (string? str) throws GLib.Error { set_serializable_property_value (str); }
   }
-  public class Enum
-  {
-    public StringArray values { get; set; default = new StringArray (); }
-    public StringArray alias { get; set; default = new StringArray (); }
-  }
+	public class tStatus : BaseEnum
+	{
+		public tStatus (string name)
+		{
+		_name = name;
+		_enumtype = typeof (tStatus.Enum);
+		}
+    public tStatus.Enum get_value () throws GLib.Error { return (tStatus.Enum) to_integer (); }
+    public void set_value (tStatus.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+			VALID,
+			INVALID,
+			UNKNOWN
+		}
+	}
 
-  public class tSIUnitEnum : Enum
+  public class tSIUnit : SerializableValueList
   {
-    public tSIUnitEnum () {
+    /*public tSIUnitEnum () {
       values.add_all_array ({ "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
                          "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
                          "lx","Lm","Wb","T","W","Pa","m^2","m^3","m/s","m/s^2",
@@ -58,29 +68,31 @@ namespace Lscl
                          "V²","As","A²","A²t","VAh","Wh","VArh","V/Hz","b/s",
                          // Edition 2.0
                          "Hz/s","char","char/s","kgm²","dB"});
-    }
+    }*/
   }
 
-  
-  public enum tStatusEnum
-  {
-		Valid,
-		Invalid,
-		Unknown
-	}
-
-  public enum tFCEnum
+	public class tFC : BaseEnum
 	{
-		ST,
-		MX,
-		CO,
-		SP,
-		SG,
-		SE,
-		SV,
-		CF,
-		DC,
-		EX
+		public tFC (string name)
+		{
+		_name = name;
+		_enumtype = typeof (tFC.Enum);
+		}
+    public tFC.Enum get_value () throws GLib.Error { return (tFC.Enum) to_integer (); }
+    public void set_value (tFC.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+			ST,
+			MX,
+			CO,
+			SP,
+			SG,
+			SE,
+			SV,
+			CF,
+			DC,
+			EX
+		}
 	}
 
 	public enum tAssociationKindEnum 
