@@ -60,6 +60,7 @@ sources = \
 	tEquipmentContainer.vala \
 	tEquipment.vala \
 	tExtRef.vala \
+	tFC.vala \
 	tFCDA.vala \
 	tFunction.vala \
 	tGeneralEquipment.vala \
@@ -121,6 +122,7 @@ sources = \
 	tTrgOps.vala \
 	tUnNaming.vala \
 	tValueWithUnit.vala \
+	tValKind.vala \
 	tVal.vala \
 	tVoltageLevel.vala \
 	tVoltage.vala \

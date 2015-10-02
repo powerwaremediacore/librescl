@@ -369,10 +369,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
            assert_not_reached ();
          }
-         if (dup.val_kind != (Enumeration.parse (typeof (tValKindEnum), "RO")).value) {
-           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
-           assert_not_reached ();
-         }
+				 assert (dup.val_kind.get_value () == (Enumeration.parse (typeof (tValKind.Enum), "RO")).value);
          if (dup.count != "2") {
            stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
            assert_not_reached ();

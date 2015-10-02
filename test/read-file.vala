@@ -590,8 +590,12 @@ public class LsclTest.ReadFile
         }
         string[] bdas = {"SinglePhase","SingleBraker"};
         //string[] values = {"single_contact","single_contact"};
-        tValKindEnum[] vkinds = {tValKindEnum.SET, tValKindEnum.CONF};
+        tValKind.Enum[] vkinds = {tValKind.Enum.SET, tValKind.Enum.CONF};
         string[] counts = {"0","0"};
+        var d = new xDocument ();
+        dat.serialize (d);
+        Test.message ("DAT XML: "+d.to_string ());
+        Test.message ("Testing tDAType");
         for (int i = 0; i < bdas.length; i++) {
           var bda = dat.bdas.get (bdas[i]);
           if (bda == null) {
@@ -606,11 +610,15 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
             assert_not_reached ();
           }
-          if (bda.val_kind != vkinds[i]) {
+          var db = new xDocument ();
+          bda.serialize (db);
+          Test.message ("Testing tDAType BDA: "+bda.name+db.to_string ());
+          if (bda.val_kind.get_value () != (int) vkinds[i]) {
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
             assert_not_reached ();
           }
         }
+        Test.message ("Testing BDA");
         var bda = dat.bdas.get ("Operated");
         if (bda == null) {
           stdout.printf (@"ERROR: BDA: Operated not found\n");
@@ -624,7 +632,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type)\n");
           assert_not_reached ();
         }
-        if (bda.val_kind != (Enumeration.parse (typeof (tValKindEnum), "RO")).value) {
+        if (bda.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
           assert_not_reached ();
         }
@@ -656,7 +664,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
           assert_not_reached ();
         }
-        if (dup.val_kind != (Enumeration.parse (typeof (tValKindEnum), "RO")).value) {
+        if (dup.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
           assert_not_reached ();
         }
@@ -874,7 +882,7 @@ public class LsclTest.ReadFile
         var dai11 = doi1.dais.@get ("q");
         assert (dai11 != null);
         assert (dai11.name == "q");
-        assert (dai11.val_kind == tValKindEnum.SET);
+        assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
         // DataSets
         assert (ld.ln0.data_sets != null);
         var dt = ld.ln0.data_sets.@get ("GOOSE1");
@@ -948,7 +956,7 @@ public class LsclTest.ReadFile
         var dai11 = doi1.dais.@get ("stVal");
         assert (dai11 != null);
         assert (dai11.name == "stVal");
-        assert (dai11.val_kind == tValKindEnum.SET);
+        assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
         assert (dai11.vals != null);
         assert (dai11.vals.size == 1);
         var val111 = dai11.vals.@get (0);

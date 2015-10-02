@@ -36,7 +36,7 @@ namespace Lscl
     [Description(nick="sAddr", blurb="")]
     public string s_addr { get; set; }
     [Description(nick="valKind", blurb="Value kind of")]
-    public tValKindEnum val_kind { get; set; default = tValKindEnum.SET; }
+    public tValKind val_kind { get; set; default = new tValKind ("valKind"); }
     [Description(nick="ix", blurb="")]
     public string ix { get; set; }
     [Description(nick="ixSpecified", blurb="")]

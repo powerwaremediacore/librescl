@@ -32,7 +32,7 @@ namespace Lscl
     private tBasicType _btypeenum;
     public tAbstractDataAttribute() 
     {
-      //this.valKind = tValKindEnum.Set;
+      this.val_kind.set_value (tValKind.Enum.SET);
       //this.count = ((uint)(0));
       this._btypeenum = new tBasicType();
     }
@@ -56,7 +56,7 @@ namespace Lscl
       }
     }
     [Description(nick="valKind", blurb="Determines how the value shall be interpreted if any is given.")]
-    public tValKindEnum val_kind { get; set; }
+    public tValKind val_kind { get; set; default = new tValKind ("valKind"); }
     [Description(nick="type", blurb="It's used to refer to the appropriate enumeration type or DAType definition.")]
     public string data_type { get; set; }
     [Description(nick="count", blurb="Shall state the number of array elements in the case where the attribute is an array.")]
@@ -73,31 +73,6 @@ namespace Lscl
         vals.deserialize (element);
       }
       return default_deserialize (node);
-    }
-  }
-	public enum tValKindEnum
-  {
-    SPEC, //Spec,
-    CONF, //Conf,
-    RO,
-    SET; // Set
-    public string to_string ()
-    {
-      try {
-        return GXml.Enumeration.get_nick_camelcase (typeof (tValKindEnum), this);
-      } catch (GLib.Error e) {
-        GLib.warning ("tValKindEnum get nick camelcase error: %s", e.message);
-      }
-      return "<<INVALID VALUE KIND>>";
-    }
-    public static tValKindEnum parse (string str)
-    {
-      try {
-        return (tValKindEnum) (GXml.Enumeration.parse (typeof (tValKindEnum), str)).value;
-      } catch (GLib.Error e) {
-        GLib.warning ("tValKindEnum parse error: %s", e.message);
-      }
-      return tValKindEnum.SET;
     }
   }
 }

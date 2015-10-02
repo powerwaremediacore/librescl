@@ -71,30 +71,6 @@ namespace Lscl
     }*/
   }
 
-	public class tFC : BaseEnum
-	{
-		public tFC (string name)
-		{
-		_name = name;
-		_enumtype = typeof (tFC.Enum);
-		}
-    public tFC.Enum get_value () throws GLib.Error { return (tFC.Enum) to_integer (); }
-    public void set_value (tFC.Enum val) throws GLib.Error { parse_integer ((int) val); }
-		public enum Enum
-		{
-			ST,
-			MX,
-			CO,
-			SP,
-			SG,
-			SE,
-			SV,
-			CF,
-			DC,
-			EX
-		}
-	}
-
 	public enum tAssociationKindEnum 
 	{
 		preestablished,
