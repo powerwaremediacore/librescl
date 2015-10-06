@@ -365,7 +365,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
            assert_not_reached ();
          }
-         if (dup.b_type != "BOOLEAN") {
+         if (dup.b_type.get_string ().down () != "BOOLEAN".down ()) {
            stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
            assert_not_reached ();
          }

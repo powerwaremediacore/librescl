@@ -628,7 +628,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name)\n");
           assert_not_reached ();
         }
-        if (bda.b_type != "BOOLEAN") {
+        if (bda.b_type.get_string ().down () != "BOOLEAN".down ()) {
           stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type)\n");
           assert_not_reached ();
         }
@@ -660,7 +660,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
           assert_not_reached ();
         }
-        if (dup.b_type != "BOOLEAN") {
+        if (dup.b_type.get_string ().down () != "BOOLEAN".down ()) {
           stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
           assert_not_reached ();
         }

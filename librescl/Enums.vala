@@ -30,8 +30,8 @@ namespace Lscl
 {
 	public class BaseEnum : SerializableEnum
   {
-    public string get_string () throws GLib.Error { return get_serializable_property_value (); }
-    public void set_string (string? str) throws GLib.Error { set_serializable_property_value (str); }
+    public string get_string () { return get_serializable_property_value (); }
+    public void set_string (string? str) { set_serializable_property_value (str); }
   }
 	public class tStatus : BaseEnum
 	{
