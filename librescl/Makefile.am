@@ -30,6 +30,7 @@ sources = \
 	tAnyContentFromOtherNamespace.vala \
 	tAnyLN.vala \
 	tAssociation.vala \
+	tAttributeName.vala \
 	tBaseElement.vala \
 	tBasicType.vala \
 	tBay.vala \

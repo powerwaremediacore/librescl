@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013-2015 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ namespace Lscl
     [Description(blurb="Attribute's value.")]
     public tVal.Array vals { get; set; default = new tVal.Array (); }
     [Description(nick="name", blurb="The attribute name.")]
-    public string name { get; set; }
+    public tAttributeName name { get; set; default = new tAttributeName ("name"); }
     [Description(nick="sAddr", blurb="A short address of this BDA attribute.")]
     public string s_addr { get; set; }
     [Description(nick="bType", blurb="The basic type of the attribute.")]
@@ -42,6 +42,6 @@ namespace Lscl
     [Description(nick="type", blurb="It's used to refer to the appropriate enumeration type or DAType definition.")]
     public string data_type { get; set; }
     [Description(nick="count", blurb="Shall state the number of array elements in the case where the attribute is an array.")]
-    public string count { get; set; }
+    public SerializableInt count { get; set; default = new SerializableInt ("count"); }
   }
 }

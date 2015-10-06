@@ -30,7 +30,7 @@ namespace Lscl
   public class tBDA : tAbstractDataAttribute, SerializableMapKey<string>
   {
     // SerializableMapKey
-    public string get_map_key () { return name; }
+    public string get_map_key () { return name.get_string (); }
 
     public class HashMap : Lscl.HashMap<string,tBDA>
 	 {

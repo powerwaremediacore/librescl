@@ -50,9 +50,22 @@ namespace Lscl
 		}
 	}
 
+	public class BaseValueList : SerializableValueList
+	{
+		 public BaseValueList (string name)
+		 {
+		   base (name);
+		 }
+		 public string get_string () { return get_serializable_property_value (); }
+		 public void set_string (string str) { set_serializable_property_value (str); }
+	}
+
+	 
   public class tSIUnit : SerializableValueList
   {
-    /*public tSIUnitEnum () {
+    public tSIUnit (string name) {
+			base (name);
+			/*
       values.add_all_array ({ "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
                          "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
                          "lx","Lm","Wb","T","W","Pa","m^2","m^3","m/s","m/s^2",
@@ -67,8 +80,8 @@ namespace Lscl
                          "1/s","rad/s","VA","Watts","VAr","phi","cos(phi)","Vs",
                          "V²","As","A²","A²t","VAh","Wh","VArh","V/Hz","b/s",
                          // Edition 2.0
-                         "Hz/s","char","char/s","kgm²","dB"});
-    }*/
+                         "Hz/s","char","char/s","kgm²","dB"});*/
+    }
   }
 
 	public enum tAssociationKindEnum 
@@ -301,41 +314,6 @@ namespace Lscl
 		SBO,
 		SBOw,
 		Cancel
-	}
-
-	public enum tAttributeNameEnum
-	{
-		T,		
-		Test,		
-		Check,
-		SIUnit,
-		Oper,
-		SBO,
-		SBOw,
-		Cancel,
-		ctlVal,
-		operTm,
-		origin,
-		ctlNum,
-		stVal,
-		q,
-		t,
-		stSeld,
-		subEna,
-		subVal,
-		subQ,
-		subID,
-		ctlModel,
-		sboTimeout,
-		sboClass,
-		minVal,
-		maxVal,
-		stepSize,
-		d,
-		dU,
-		cdcNs,
-		cdcName,
-		dataNs
 	}
 
 	public enum tPredefinedGeneralEquipmentEnum

@@ -361,7 +361,7 @@ class LsclTest.XmlGeneration
            stdout.printf (@"ERROR: BDA: No duplicated found!\n");
            assert_not_reached ();
          }
-         if (dup.name != "Operated") {
+         if (dup.name.get_string () != "Operated") {
            stdout.printf (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
            assert_not_reached ();
          }
@@ -370,7 +370,7 @@ class LsclTest.XmlGeneration
            assert_not_reached ();
          }
 				 assert (dup.val_kind.get_value () == (Enumeration.parse (typeof (tValKind.Enum), "RO")).value);
-         if (dup.count != "2") {
+         if (dup.count.get_value () != 2) {
            stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
            assert_not_reached ();
          }

@@ -520,7 +520,7 @@ public class LsclTest.ReadFile
         string[] danames = {"d","swRev","vendor"};
         //string[] dabtypes = {"VisString255","VisString255","VisString255"};
         //string[] davkinds = {"Set","Set","Set"};
-        string[] dacounts = {"1","2","3"};
+        int[] dacounts = {1,2,3};
         bool[] dadchgs = {false,true,false};
         bool[] daqchgs = {false,false,true};
         bool[] dadupds = {true,false,false};
@@ -530,11 +530,11 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) not found\n");
             assert_not_reached ();
           }
-          if (da.name != danames[i]) {
+          if (da.name.get_string () != danames[i]) {
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong name. Expected $(danames[i]), got: $(da.name)\n");
             assert_not_reached ();
           }
-          if (da.count != dacounts[i]) {
+          if (da.count.get_value () != dacounts[i]) {
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count)\n");
             assert_not_reached ();
           }
@@ -591,7 +591,7 @@ public class LsclTest.ReadFile
         string[] bdas = {"SinglePhase","SingleBraker"};
         //string[] values = {"single_contact","single_contact"};
         tValKind.Enum[] vkinds = {tValKind.Enum.SET, tValKind.Enum.CONF};
-        string[] counts = {"0","0"};
+        int[] counts = {0,0};
         var d = new xDocument ();
         dat.serialize (d);
         Test.message ("DAT XML: "+d.to_string ());
@@ -602,17 +602,17 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: BDA: $(bdas[i]) not found\n");
             assert_not_reached ();
           }
-          if (bda.name != bdas[i]) {
+          if (bda.name.get_string () != bdas[i]) {
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong name. Expected $(bdas[i]), got: $(bda.name)\n");
             assert_not_reached ();
           }
-          if (bda.count != counts[i]) {
+          if (bda.count.get_value () != counts[i]) {
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
             assert_not_reached ();
           }
           var db = new xDocument ();
           bda.serialize (db);
-          Test.message ("Testing tDAType BDA: "+bda.name+db.to_string ());
+          Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+db.to_string ());
           if (bda.val_kind.get_value () != (int) vkinds[i]) {
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
             assert_not_reached ();
@@ -624,7 +624,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Operated not found\n");
           assert_not_reached ();
         }
-        if (bda.name != "Operated") {
+        if (bda.name.get_string () != "Operated") {
           stdout.printf (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name)\n");
           assert_not_reached ();
         }
@@ -636,7 +636,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
           assert_not_reached ();
         }
-        if (bda.count != "2") {
+        if (bda.count.get_value () != 2) {
           stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count)\n");
           assert_not_reached ();
         }
@@ -656,7 +656,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: No duplicated found!\n");
           assert_not_reached ();
         }
-        if (dup.name != "Operated") {
+        if (dup.name.get_string () != "Operated") {
           stdout.printf (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
           assert_not_reached ();
         }
@@ -668,7 +668,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
           assert_not_reached ();
         }
-        if (dup.count != "2") {
+        if (dup.count.get_value () != 2) {
           stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
           assert_not_reached ();
         }

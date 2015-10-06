@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013-2015 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ namespace Lscl
     [Description(nick="fc", blurb="Functional Code")]
     public tFC fc { get; set; default = new tFC ("fc"); }
     // SerializableMapId
-    public string get_map_key () { return name; }
+    public string get_map_key () { return name.get_string (); }
 
     public class HashMap : SerializableHashMap<string,tDA> {
 			public new tDA @get (string name) { return base.get (name); }
