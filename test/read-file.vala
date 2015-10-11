@@ -691,7 +691,9 @@ public class LsclTest.ReadFile
       try {
         var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
+        Test.message ("Before deserialize");
         scl.deserialize (doc);
+        Test.message ("After deserialize");
         if (scl.ieds == null) {
           stdout.printf (@"ERROR: No ieds found!\n");
           assert_not_reached ();

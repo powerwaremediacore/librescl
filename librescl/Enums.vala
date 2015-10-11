@@ -28,7 +28,7 @@ using GXml;
 
 namespace Lscl
 {
-	public class BaseEnum : SerializableEnum
+	public class BaseEnum : GXml.SerializableEnum
   {
     public string get_string () { return get_serializable_property_value (); }
     public void set_string (string? str) { set_serializable_property_value (str); }
@@ -37,8 +37,8 @@ namespace Lscl
 	{
 		public tStatus (string name)
 		{
-		_name = name;
-		_enumtype = typeof (tStatus.Enum);
+			_name = name;
+			_enumtype = typeof (tStatus.Enum);
 		}
     public tStatus.Enum get_value () throws GLib.Error { return (tStatus.Enum) to_integer (); }
     public void set_value (tStatus.Enum val) throws GLib.Error { parse_integer ((int) val); }
@@ -50,7 +50,7 @@ namespace Lscl
 		}
 	}
 
-	public class BaseValueList : SerializableValueList
+	public class BaseValueList : GXml.SerializableValueList
 	{
 		 public BaseValueList (string name)
 		 {
@@ -61,7 +61,7 @@ namespace Lscl
 	}
 
 	 
-  public class tSIUnit : SerializableValueList
+  public class tSIUnit : GXml.SerializableValueList
   {
     public tSIUnit (string name) {
 			base (name);
@@ -120,189 +120,6 @@ namespace Lscl
 		GSSE,
 		GOOSE,
 	}
-
-	public enum tLPHDEnum
-	{
-		LPHD
-	}
-
-	public enum tLLN0Enum
-	{
-		LLN0
-	}
-
-	public enum tDomainLNGroupAEnum
-	{
-		ANCR,
-		ARCO,
-		ATCC,
-		AVCO
-	}
-
-	public enum tDomainLNGroupCEnum 
-	{
-		CILO,
-		CSWI,
-		CALH,
-		CCGR,
-		CPOW
-	}
-
-	public enum tDomainLNGroupGEnum 
-	{
-		GAPC,
-		GGIO,
-		GSAL
-	}
-
-	public enum tDomainLNGroupIEnum
-	{
-		IHMI,
-		IARC,
-		ITCI,
-		ITMI
-	}
-
-	public enum tDomainLNGroupMEnum 
-	{
-		MMXU,
-		MDIF,
-		MHAI,
-		MHAN,
-		MMTR,
-		MMXN,
-		MSQI,
-		MSTA
-	}
-	
-	public enum tDomainLNGroupPEnum 
-	{
-		PDIF,
-		PDIS,
-		PDIR,
-		PDOP,
-		PDUP,
-		PFRC,
-		PHAR,
-		PHIZ,
-		PIOC,
-		PMRI,
-		PMSS,
-		POPF,
-		PPAM,
-		PSCH,
-		PSDE,
-		PTEF,
-		PTOC,
-		PTOF,
-		PTOV,
-		PTRC,
-		PTTR,
-		PTUC,
-		PTUV,
-		PUPF,
-		PTUF,
-		PVOC,
-		PVPH,
-		PZSU
-	}
-
-	public enum tDomainLNGroupREnum 
-	{
-		RSYN,
-		RDRE,
-		RADR,
-		RBDR,
-		RDRS,
-		RBRF,
-		RDIR,
-		RFLO,
-		RPSB,
-		RREC
-	}
-
-	public enum tDomainLNGroupSEnum
-	{
-		SARC,
-		SIMG,
-		SIML,
-		SPDC
-	}
-
-	public enum tDomainLNGroupTEnum 
-	{
-		TCTR,
-		TVTR
-	}
-
-	public enum tDomainLNGroupXEnum
-	{
-		XCBR,
-		XSWI
-	}
-	
-
-	public enum tDomainLNGroupYEnum
-	{
-		YPTR,
-		YEFN,
-		YLTC,
-		YPSH	
-	}
-
-	public enum tDomainLNGroupZEnum 
-	{
-		ZAXN,
-		ZBAT,
-		ZBSH,
-		ZCAB,
-		ZCAP,
-		ZCON,
-		ZGEN,
-		ZGIL,
-		ZLIN,
-		ZMOT,
-		ZREA,
-		ZRRC,
-		ZSAR,
-		ZTCF,
-		ZTCR
-	}
-
-	public enum tDomainLNEnum
-	{
-		ANCR,ARCO,ATCC,AVCO,
-		CILO, CSWI,CALH,CCGR,CPOW,
-		GAPC,GGIO,GSAL,
-		IHMI,IARC,ITCI,ITMI,
-		MMXU,MDIF,MHAI,MHAN,MMTR,MMXN,MSQI,MSTA,		
-		PDIF,PDIS,PDIR,PDOP,PDUP,PFRC,PHAR,PHIZ,PIOC,PMRI,PMSS,POPF,PPAM,PSCH,PSDE,PTEF,PTOC,PTOF,PTOV,PTRC,PTTR,PTUC,PTUV,PUPF,PTUF,PVOC,PVPH,PZSU,
-		RSYN,RDRE,RADR,RBDR,RDRS,RBRF,RDIR,RFLO,RPSB,RREC,
-		SARC,SIMG,SIML,SPDC,
-		TCTR,TVTR,
-		XCBR,XSWI,
-		YPTR,YEFN,YLTC,YPSH,
-		ZAXN,ZBAT,ZBSH,ZCAB,ZCAP,ZCON,ZGEN,ZGIL,ZLIN,ZMOT,ZREA,ZRRC,ZSAR,ZTCF,ZTCR
-	}
-
-	public enum tPredefinedLNClassEnum 
-	{
-		LPHD,		
-		LLN0,
-		ANCR,ARCO,ATCC,AVCO,
-		CILO, CSWI,CALH,CCGR,CPOW,
-		GAPC,GGIO,GSAL,
-		IHMI,IARC,ITCI,ITMI,
-		MMXU,MDIF,MHAI,MHAN,MMTR,MMXN,MSQI,MSTA,
-		PDIF,PDIS,PDIR,PDOP,PDUP,PFRC,PHAR,PHIZ,PIOC,PMRI,PMSS,POPF,PPAM,PSCH,PSDE,PTEF,PTOC,PTOF,PTOV,PTRC,PTTR,PTUC,PTUV,PUPF,PTUF,PVOC,PVPH,PZSU,
-		RSYN,RDRE,RADR,RBDR,RDRS,RBRF,RDIR,RFLO,RPSB,RREC,
-		SARC,SIMG,SIML,SPDC,
-		TCTR,TVTR,
-		XCBR,XSWI,
-		YPTR,YEFN,YLTC,YPSH,
-		ZAXN,ZBAT,ZBSH,ZCAB,ZCAP,ZCON,ZGEN,ZGIL,ZLIN,ZMOT,ZREA,ZRRC,ZSAR,ZTCF,ZTCR
-	}
-
 
 	public enum tPredefinedAttributeNameEnum
 	{
@@ -445,36 +262,6 @@ namespace Lscl
 		LPL,
 		CSD,
 		EXT // For Extensions
-	}
-
-	public enum  tPredefinedBasicTypeEnum 
-	{
-		BOOLEAN,
-		INT8,
-		INT16,
-		INT24,
-		INT32,
-		INT128,
-		INT8U,
-		INT16U,
-		INT24U,
-		INT32U,
-		FLOAT32,
-		FLOAT64,
-		Enum,
-		Dbpos,
-		Tcmd,
-		Quality,
-		Timestamp,
-		VisString32,
-		VisString64,
-		VisString129,
-		VisString255,
-		Octet64,
-		Struct,
-		EntryTime,
-		Unicode255,
-		Check
 	}
 
 	public enum tTransformerWindingEnum 

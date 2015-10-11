@@ -29,6 +29,11 @@ namespace Lscl
 {
   public class tLN0 : tAnyLN
   {
+		public tLNClassEnum _lnclass;
+		public tLN0 () { 
+			_lnclass = new tLNClassEnum ("lnClass");
+			_lnclass.set_string ("LLN0");
+		}
     [Description(blurb="GSE Control Blocks")]
     public tGSEControl.HashMap gse_controls { get; set; default = new tGSEControl.HashMap (); }
     [Description(blurb="Sample Value Control Blocks")]
@@ -40,7 +45,7 @@ namespace Lscl
     [Description(nick="Log",blurb="")]
     public tLog log { get; set; }
     [Description(nick="lnClass",blurb="Allways set to LLN0")]
-    public tLNClassEnum ln_class { get { return tLNClassEnum.LLN0; } set {} }
+    public tLNClassEnum ln_class { get { return _lnclass; } set {} }
     [Description(nick="inst",blurb="LN0 have no instances")]
     public string inst { get { return ""; } set {} }
   }

@@ -75,7 +75,7 @@ sources = \
 	tInputs.vala \
 	tLDevice.vala \
 	tLN0.vala \
-	tLnClassEnum.vala \
+	tLNClass.vala \
 	tLNodeContainer.vala \
 	tLNodeType.vala \
 	tLNode.vala \
