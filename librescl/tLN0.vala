@@ -29,8 +29,8 @@ namespace Lscl
 {
   public class tLN0 : tAnyLN
   {
-		public tLNClassEnum _lnclass;
-		public tLN0 () { 
+		private tLNClassEnum _lnclass;
+		construct {
 			_lnclass = new tLNClassEnum ("lnClass");
 			_lnclass.set_string ("LLN0");
 		}
