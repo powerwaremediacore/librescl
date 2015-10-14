@@ -35,14 +35,18 @@ namespace Lscl
    */
   public class tLN : tAnyLN, SerializableMapThreeKey<string,string,string>
   {
+		private tLNClassEnum _ln_class;
+		construct {
+			_ln_class = new tLNClassEnum ("lnClass");
+		}
     [Description(nick="lnClass",blurb="")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get { return _ln_class; } set { _ln_class = value; } }
     [Description(nick="inst",blurb="")]
     public string inst { get; set; default = "1"; }
     [Description(nick="prefix",blurb="")]
     public string prefix { get; set; default = ""; }
 
-    public string get_map_primary_key  () { return ln_class; }
+    public string get_map_primary_key  () { return _ln_class.get_string (); }
     public string get_map_secondary_key () { return inst; }
     public string get_map_tertiary_key () { return prefix; }
 

@@ -46,9 +46,9 @@ public class Performance
       for (int i = 0; i < 5; i++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class = "GGIO";
+        ln.ln_class.set_string ("GGIO");
         ln.inst = i.to_string ();
-        lns.set (ln.ln_class, ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
       foreach (tLN ln in lns.values ()) {
         Test.message (ln.to_string ());
@@ -59,9 +59,9 @@ public class Performance
       for (int j = 5; j < 25; j++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class = "GGIO";
+        ln.ln_class.set_string ("GGIO");
         ln.inst = j.to_string ();
-        lns.set (ln.ln_class, ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
       foreach (tLN ln in lns.values ()) {
         Test.message (ln.to_string ());
@@ -72,9 +72,9 @@ public class Performance
       for (int k = 25; k < 55; k++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class = "GGIO";
+        ln.ln_class.set_string ("GGIO");
         ln.inst = k.to_string ();
-        lns.set (ln.ln_class, ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
       foreach (tLN ln in lns.values ()) {
         Test.message (ln.to_string ());
