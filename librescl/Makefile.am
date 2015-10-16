@@ -116,6 +116,7 @@ sources = \
 	tSubFunction.vala \
 	tSubNetwork.vala \
 	tSubstation.vala \
+	tSIUnitEnum.vala \
 	tTapChanger.vala \
 	tTerminal.vala \
 	tText.vala \

@@ -60,30 +60,6 @@ namespace Lscl
 		 public void set_string (string str) { set_serializable_property_value (str); }
 	}
 
-	 
-  public class tSIUnit : GXml.SerializableValueList
-  {
-    public tSIUnit (string name) {
-			base (name);
-			/*
-      values.add_all_array ({ "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
-                         "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
-                         "lx","Lm","Wb","T","W","Pa","m^2","m^3","m/s","m/s^2",
-                         "m^3/s","m/m^3","M","kg/m^3","m^2/s","W/m K","J/K","ppm",
-                         "s^-1","rad/s","VA","Watts","VAr","phi","cos_phi","Vs",
-                         "V^2","As","A^2","A^2 s","VAh","Wh","VArh","V/Hz","b/s" });
- 
-      alias.add_all_array ( { "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
-                         "Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
-                         "lx","Lm","Wb","T","W","Pa","m²","m³","m/s","m/s²",
-                         "m³/s","m/m³","M","kg/m³","m²/s","W/m K","J/K","ppm",
-                         "1/s","rad/s","VA","Watts","VAr","phi","cos(phi)","Vs",
-                         "V²","As","A²","A²t","VAh","Wh","VArh","V/Hz","b/s",
-                         // Edition 2.0
-                         "Hz/s","char","char/s","kgm²","dB"});*/
-    }
-  }
-
 	public enum tAssociationKindEnum 
 	{
 		preestablished,
