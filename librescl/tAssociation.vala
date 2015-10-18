@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2015 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,11 @@ namespace Lscl
 {
   public class tAssociation : Serializable
   {
+    construct {
+      kind = new tAssociationKind ("kind");
+    }
     [Description(nick="kind", blurb="The kind of pre-configured association, pre-established or predefined")]
-    public tAssociationKindEnum kind  { get; set; default = tAssociationKindEnum.preestablished;}
+    public tAssociationKind kind  { get; set; }
     [Description(nick="associationID", blurb="The identification of a pre-configured association")]
     public string association_id { get; set; }
     [Description(nick="iedName", blurb="The reference identifying the IED on which the client resides")]

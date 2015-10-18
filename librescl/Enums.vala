@@ -60,36 +60,16 @@ namespace Lscl
 		public void set_string (string str) { set_serializable_property_value (str); }
 	}
 
-	public enum tAssociationKindEnum 
-	{
-		preestablished,
-		predefined,
-	}
-
-	
-
   public enum tGSEControlTypeEnum 
 	{		
 		GSSE,
 		GOOSE,
 	}
 
-	public enum tPredefinedAttributeNameEnum
-	{
-		T,		
-		Test,		
-		Check,
-		SIUnit,
-		Oper,
-		SBO,
-		SBOw,
-		Cancel
-	}
-
 	public enum tPredefinedGeneralEquipmentEnum
 	{
-		AXN,		
-		BAT,		
+		AXN,
+		BAT,
 		MOT	
 	}
 

@@ -30,6 +30,7 @@ sources = \
 	tAnyContentFromOtherNamespace.vala \
 	tAnyLN.vala \
 	tAssociation.vala \
+	tAssociationKind.vala \
 	tAttributeName.vala \
 	tBaseElement.vala \
 	tBasicType.vala \
@@ -87,6 +88,7 @@ sources = \
 	tPhysConn.vala \
 	tPowerSystemResource.vala \
 	tPowerTransformer.vala \
+	tPredefinedAttributeName.vala \
 	tPrivate.vala \
 	tP.vala \
 	tReportControlOptFields.vala \
