@@ -30,7 +30,7 @@ namespace Lscl
 	public class tValueWithUnit : Serializable
 	{
 		[Description(nick="unit", blurb="Units derived from ISO 1000 to represent a measurement")]
-		public string unit { get; set; default = "V"; }
+		public tSIUnit unit { get; set; default = new tSIUnit ("unit"); }
 		[Description(nick="multiplier", blurb="It shall define the multiplier value")]
 		public string multiplier{ get; set; }
     // Enable set Element contents

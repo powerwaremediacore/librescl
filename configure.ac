@@ -87,7 +87,7 @@ PKG_CHECK_MODULES(GXML,gio-2.0
 glib-2.0
 gobject-2.0
 gee-0.8 >= 0.10
-gxml-0.6 >= 0.7.2)
+gxml-0.6 >= 0.7.3)
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0)
 

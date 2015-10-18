@@ -52,12 +52,12 @@ namespace Lscl
 
 	public class BaseValueList : GXml.SerializableValueList
 	{
-		 public BaseValueList (string name)
-		 {
-		   base (name);
-		 }
-		 public string get_string () { return get_serializable_property_value (); }
-		 public void set_string (string str) { set_serializable_property_value (str); }
+		public BaseValueList (string name)
+		{
+			base (name);
+		}
+		public string get_string () { return get_serializable_property_value (); }
+		public void set_string (string str) { set_serializable_property_value (str); }
 	}
 
 	public enum tAssociationKindEnum 

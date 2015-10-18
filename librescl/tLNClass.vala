@@ -21,13 +21,20 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using Gee;
+
 public class Lscl.tLNClassEnum : Lscl.BaseValueList
 {
 	public tLNClassEnum (string name)
 	{
 	  base (name);
+	}
+	public override Gee.List<string> get_values ()
+	{
 	  var pd = new tPredefinedLNClassEnum ("pd");
-	  add_values (pd.get_values ());
+		var l = new ArrayList<string> ();
+		l.add_all (pd.get_values ());
+		return l;
 	}
 }
 
@@ -37,179 +44,231 @@ public class Lscl.tPredefinedLNClassEnum : Lscl.BaseValueList
 	public tPredefinedLNClassEnum (string name)
 	{
 		base (name);
+	}
+	public override Gee.List<string> get_values ()
+	{
 		var phd = new tLPHDEnum ("lphd");
-		add_values (phd.get_values ());
 		var ln0 = new tLPHDEnum ("ln0");
-		add_values (ln0.get_values ());
 		var domain = new tDomainLNEnum ("domain");
-		add_values (domain.get_values ());
+		var l = new ArrayList<string> ();
+		l.add_all (phd.get_values ());
+		l.add_all (ln0.get_values ());
+		l.add_all (domain.get_values ());
+		return l;
 	}
 }
 public class Lscl.tLPHDEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"LPHD"};
+	}
 	public tLPHDEnum (string name)
 	{
 		base (name);
-		add_values ({"LPHD"});
+	}
+	public override Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		l.add (_vals[0]);
+		return l;
 	}
 }
 
 public class Lscl.tLLN0Enum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"LLN0"};
+	}
 	public tLLN0Enum (string name)
 	{
 		base (name);
-		add_values ({"LLN0"});
+	}
+	public override Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		l.add (_vals[0]);
+		return l;
 	}
 }
 
 public class Lscl.tDomainLNEnum : Lscl.BaseValueList
 {
+	construct { _vals = {}; }
 	public tDomainLNEnum (string name)
 	{
 		base (name);
+	}
+	public override Gee.List<string> get_values ()
+	{
 		var a = new tDomainLNGroupAEnum ("a");
-		add_values (a.get_values ());
 		var c = new tDomainLNGroupCEnum ("c");
-		add_values (c.get_values ());
 		var g = new tDomainLNGroupGEnum ("g");
-		add_values (g.get_values ());
 		var i = new tDomainLNGroupIEnum ("i");
-		add_values (i.get_values ());
 		var p = new tDomainLNGroupPEnum ("p");
-		add_values (p.get_values ());
 		var r = new tDomainLNGroupREnum ("r");
-		add_values (r.get_values ());
 		var s = new tDomainLNGroupSEnum ("s");
-		add_values (s.get_values ());
 		var t = new tDomainLNGroupTEnum ("t");
-		add_values (t.get_values ());
 		var x = new tDomainLNGroupXEnum ("x");
-		add_values (x.get_values ());
 		var y = new tDomainLNGroupYEnum ("y");
-		add_values (y.get_values ());
 		var z = new tDomainLNGroupZEnum ("z");
-		add_values (z.get_values ());
+		var l = new ArrayList<string> ();
+		l.add_all (a.get_values ());
+		l.add_all (c.get_values ());
+		l.add_all (g.get_values ());
+		l.add_all (i.get_values ());
+		l.add_all (p.get_values ());
+		l.add_all (r.get_values ());
+		l.add_all (s.get_values ());
+		l.add_all (t.get_values ());
+		l.add_all (x.get_values ());
+		l.add_all (y.get_values ());
+		l.add_all (z.get_values ());
+		if (extra != null) l.add_all (extra);
+		return l;
 	}
 }
 
 public class Lscl.tDomainLNGroupAEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"ANCR","ARCO","ATCC","AVCO"};
+	}
 	public tDomainLNGroupAEnum (string name)
 	{
 		base (name);
-		add_values ({"ANCR","ARCO","ATCC","AVCO"});
 	}
 }
 
 public class Lscl.tDomainLNGroupCEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"CILO","CSWI","CALH","CCGR",
+		"CPOW"};
+	}
 	public tDomainLNGroupCEnum (string name)
 	{
 		base (name);
-		add_values ({"CILO","CSWI","CALH","CCGR",
-		"CPOW"});
 	}
 }
 
 
 public class Lscl.tDomainLNGroupGEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"GAPC","GGIO","GSAL"};
+	}
 	public tDomainLNGroupGEnum (string name)
 	{
 		base (name);
-		add_values ({"GAPC","GGIO","GSAL"});
 	}
 }
 
 public class Lscl.tDomainLNGroupIEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"IHMI","IARC","ITCI","ITMI"};
+	}
 	public tDomainLNGroupIEnum (string name)
 	{
 		base (name);
-		add_values ({"IHMI","IARC","ITCI","ITMI"});
 	}
 }
 
 public class Lscl.tDomainLNGroupMEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"MMXU","MDIF",
+		"MHAI","MHAN","MMTR","MMXN","MSQI","MSTA"};
+	}
 	public tDomainLNGroupMEnum (string name)
 	{
 		base (name);
-		add_values ({"MMXU","MDIF",
-		"MHAI","MHAN","MMTR","MMXN","MSQI","MSTA"});
 	}
 }
 
 
 public class Lscl.tDomainLNGroupPEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"PDIF","PDIS","PDIR","PDOP",
+		"PDUP","PFRC","PHAR","PHIZ","PIOC","PMRI","PMSS","POPF","PPAM","PSCH",
+		"PSDE","PTEF","PTOC","PTOF","PTOV","PTRC","PTTR","PTUC","PTUV","PUPF",
+		"PTUF","PVOC","PVPH","PZSU"};
+	}
 	public tDomainLNGroupPEnum (string name)
 	{
 		base (name);
-		add_values ({"PDIF","PDIS","PDIR","PDOP",
-		"PDUP","PFRC","PHAR","PHIZ","PIOC","PMRI","PMSS","POPF","PPAM","PSCH",
-		"PSDE","PTEF","PTOC","PTOF","PTOV","PTRC","PTTR","PTUC","PTUV","PUPF",
-		"PTUF","PVOC","PVPH","PZSU"});
 	}
 }
 
 public class Lscl.tDomainLNGroupREnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"RSYN","RDRE","RADR","RBDR","RDRS","RBRF",
+		"RDIR","RFLO","RPSB","RREC"};
+	}
 	public tDomainLNGroupREnum (string name)
 	{
 		base (name);
-		add_values ({"RSYN","RDRE","RADR","RBDR","RDRS","RBRF",
-		"RDIR","RFLO","RPSB","RREC"});
 	}
 }
 
 
 public class Lscl.tDomainLNGroupSEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"SARC","SIMG","SIML","SPDC"};
+	}
 	public tDomainLNGroupSEnum (string name)
 	{
 		base (name);
-		add_values ({"SARC","SIMG","SIML","SPDC"});
 	}
 }
 
 public class Lscl.tDomainLNGroupTEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"TCTR","TVTR"};
+	}
 	public tDomainLNGroupTEnum (string name)
 	{
 		base (name);
-		add_values ({"TCTR","TVTR"});
 	}
 }
 
 
 public class Lscl.tDomainLNGroupXEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"XCBR","XSWI"};
+	}
 	public tDomainLNGroupXEnum (string name)
 	{
 		base (name);
-		add_values ({"XCBR","XSWI"});
 	}
 }
 
 public class Lscl.tDomainLNGroupYEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"YPTR","YEFN","YLTC","YPSH"};
+	}
 	public tDomainLNGroupYEnum (string name)
 	{
 		base (name);
-		add_values ({"YPTR","YEFN","YLTC","YPSH"});
 	}
 }
 
 public class Lscl.tDomainLNGroupZEnum : Lscl.BaseValueList
 {
+	construct {
+		_vals = {"ZAXN","ZBAT","ZBSH","ZCAB",
+		"ZCAP","ZCON","ZGEN","ZGIL","ZLIN","ZMOT","ZREA","ZRRC","ZSAR",
+		"ZTCF","ZTCR"};
+	}
 	public tDomainLNGroupZEnum (string name)
 	{
 		base (name);
-		add_values ({"ZAXN","ZBAT","ZBSH","ZCAB",
-		"ZCAP","ZCON","ZGEN","ZGIL","ZLIN","ZMOT","ZREA","ZRRC","ZSAR",
-		"ZTCF","ZTCR"});
 	}
 }
 
