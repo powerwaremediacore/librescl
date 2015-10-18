@@ -67,6 +67,7 @@ sources = \
 	tFunction.vala \
 	tGeneralEquipment.vala \
 	tGSEControl.vala \
+	tGSEControlType.vala \
 	tGSESettings.vala \
 	tGSE.vala \
 	tHeader.vala \

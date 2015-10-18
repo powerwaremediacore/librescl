@@ -29,8 +29,11 @@ namespace Lscl
 {
   public class tGSEControl : tControlWithIEDName, SerializableMapKey<string>
   {
+		construct {
+			control_type = new tGSEControlType ("type");
+		}
     [Description(nick="type",blurb="Control type")]
-    public tGSEControlTypeEnum control_type { get; set; default=tGSEControlTypeEnum.GOOSE; }
+    public tGSEControlType control_type { get; set; }
     [Description(nick="appID",blurb="Application ID")]
     public string app_id { get; set; }
 

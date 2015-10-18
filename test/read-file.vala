@@ -855,7 +855,7 @@ public class LsclTest.ReadFile
         var gsec = ld.ln0.gse_controls.@get ("gcb");
         assert (gsec != null);
         assert (gsec.name =="gcb");
-        assert(gsec.control_type == tGSEControlTypeEnum.GOOSE);
+        assert(gsec.control_type.get_value () == tGSEControlType.Enum.GOOSE);
         assert (gsec.app_id == "DISPARO");
         assert (gsec.dat_set == "GOOSE1");
         assert (gsec.conf_rev == "1");
