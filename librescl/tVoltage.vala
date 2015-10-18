@@ -32,7 +32,7 @@ namespace Lscl
 		public tVoltage()
 		{
 			unit.select (tSIUnit.Enum.V);
-			multiplier = "k";
+			multiplier.set_value (tUnitMultiplier.Enum.k);
 		}
 	}
 }

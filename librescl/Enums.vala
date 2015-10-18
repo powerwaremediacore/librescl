@@ -66,30 +66,7 @@ namespace Lscl
 		predefined,
 	}
 
-	public enum tUnitMultiplierEnum
-	{
-		Item = 0,
-		m = -3,
-		k = 3,
-		M = 6,
-		mu = -6,
-		y = -24,
-		z = -21,
-		a = -18,
-		f = -15,
-		p = -12,
-		n = -9,
-		c = -2,
-		d = -1,
-		da = 1,
-		h = 2,
-		G = 9,
-		T = 12,
-		P = 15,
-		E = 18,
-		Z = 21,
-		Y = 24
-	}
+	
 
   public enum tGSEControlTypeEnum 
 	{		

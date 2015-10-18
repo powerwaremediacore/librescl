@@ -122,6 +122,7 @@ sources = \
 	tText.vala \
 	tTransformerWinding.vala \
 	tTrgOps.vala \
+	tUnitMultiplier.vala \
 	tUnNaming.vala \
 	tValueWithUnit.vala \
 	tValKind.vala \

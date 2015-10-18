@@ -29,10 +29,13 @@ namespace Lscl
 {
 	public class tValueWithUnit : Serializable
 	{
+		construct {
+			multiplier = new tUnitMultiplier ("multiplier");
+		}
 		[Description(nick="unit", blurb="Units derived from ISO 1000 to represent a measurement")]
 		public tSIUnit unit { get; set; default = new tSIUnit ("unit"); }
 		[Description(nick="multiplier", blurb="It shall define the multiplier value")]
-		public string multiplier{ get; set; }
+		public tUnitMultiplier multiplier{ get; set; }
     // Enable set Element contents
     public void set_value (string val) { serialized_xml_node_value = val; }
     public string get_value () { return serialized_xml_node_value; }
