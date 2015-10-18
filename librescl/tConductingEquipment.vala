@@ -24,12 +24,58 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Lscl
+public class Lscl.tConductingEquipment : Lscl.tAbstractConductingEquipment 
 {
-  public class tConductingEquipment : tAbstractConductingEquipment 
-  {
-    [Description(nick="type", blurb="Type of conducting equipment")]
-    public string equipment_type { get; set; }
+  construct {
+		equipment_type = new tCommonConductingEquipment ("type");
   }
+  [Description(nick="type", blurb="Type of conducting equipment")]
+  public tCommonConductingEquipment equipment_type { get; set; }
 }
+
+public class Lscl.tCommonConductingEquipment : Lscl.tPredefinedCommonConductingEquipment
+{
+	public tCommonConductingEquipment (string name) { base (name); }
+}
+public class Lscl.tPredefinedCommonConductingEquipment : Lscl.BaseEnum
+{
+	construct {
+		_enumtype = typeof (tPredefinedCommonConductingEquipment.Enum);
+	}
+	public tPredefinedCommonConductingEquipment (string name)
+	{
+		_name = name;
+	}
+  public tPredefinedCommonConductingEquipment.Enum get_value () throws GLib.Error { return (tPredefinedCommonConductingEquipment.Enum) to_integer (); }
+  public void set_value (tPredefinedCommonConductingEquipment.Enum val) throws GLib.Error { parse_integer ((int) val); }
+	public enum Enum 
+	{
+		CBR,
+		DIS,
+		VTR,
+		CTR,
+		GEN,
+		CAP,
+		REA,
+		CON,
+		MOT,
+		EFN,
+		PSH,
+		BAT,
+		BSH,
+		CAB,
+		GIL,
+		LIN,
+		RRC,
+		SAR,
+		TCF,
+		TCR,
+		IFL,
+		// Edition 2.0
+		FAN,
+		SCR,
+		SMC
+	}
+}
+
 
