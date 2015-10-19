@@ -5,11 +5,9 @@
  *  Authors:
  *
  *       Daniel Espinosa <esodan@gmail.com>
- *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
- *  Copyright (c) 2014 PowerMedia Consulting
+ *  Copyright (c) 2015 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -25,17 +23,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Lscl
+public class Lscl.tPredefinedTransformerWinding : Lscl.BaseEnum
 {
-	public class tTransformerWinding : tAbstractConductingEquipment 
+	construct {
+		_enumtype = typeof (tPredefinedTransformerWinding.Enum);
+	}
+	public tPredefinedTransformerWinding (string name)
 	{
-		construct {
-			winding_type = new tPredefinedTransformerWinding ("type");
-		}
-		[Description(nick="TapChanger", blurb="Transformer's tap changer")]
-		public tTapChanger tap_changer { get; set; }
-		[Description(nick="type", blurb="Type of Transformer Winding")]
-		public tPredefinedTransformerWinding winding_type { get; set; }
+		_name = name;
+	}
+  public tPredefinedTransformerWinding.Enum get_value () throws GLib.Error { return (tPredefinedTransformerWinding.Enum) to_integer (); }
+  public void set_value (tPredefinedTransformerWinding.Enum val) throws GLib.Error { parse_integer ((int) val); }
+	public enum Enum 
+	{
+		PTW
 	}
 }
-

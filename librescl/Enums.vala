@@ -60,11 +60,6 @@ namespace Lscl
 		public void set_string (string str) { set_serializable_property_value (str); }
 	}
 
-	public enum tTransformerWindingEnum 
-	{
-		PTW
-	}
-
 	public enum tPhaseEnum 
 	{
 		A,
