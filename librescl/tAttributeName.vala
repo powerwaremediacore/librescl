@@ -23,12 +23,14 @@ using GXml;
 
 public class Lscl.tAttributeName : BaseValueList
 {
+   construct {
+    _vals = {"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
+ "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
+ "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
+ "stepSize","d","dU","cdcNs","cdcName","dataNs"};
+   }
    public tAttributeName (string name)
    {
      base (name);
-     add_values ({"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
- "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
- "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
- "stepSize","d","dU","cdcNs","cdcName","dataNs"});
    }
 }

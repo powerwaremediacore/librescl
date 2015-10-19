@@ -29,6 +29,9 @@ namespace Lscl
 {
   public class tDOType : tIDNaming, SerializableMapKey<string>
   {
+		construct {
+			cdc = new tCDCEnum ("cdc");
+		}
     [Description(blurb="Data Objects")]
     public tSDO.HashMap sdos { get; set; default = new tSDO.HashMap (); }
     [Description(blurb="Data Attributes")]
@@ -36,7 +39,7 @@ namespace Lscl
     [Description(nick="iedType",blurb="The type of the IED to which this DOType belongs")]
     public string ied_type { get; set; }
     [Description(nick="cdc",blurb="The basic Common Data Class")]
-    public string cdc { get; set; }
+    public tCDCEnum cdc { get; set; }
     // SerializableMapKey
     public string get_map_key () { return id; }
     public class HashMap : Lscl.HashMap<string,tDOType>

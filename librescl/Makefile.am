@@ -37,6 +37,7 @@ sources = \
 	tBay.vala \
 	tBDA.vala \
 	tBitRateInMbPerSec.vala \
+	tCDCEnum.vala \
 	tClientLN.vala \
 	tCommunication.vala \
 	tConductingEquipment.vala \

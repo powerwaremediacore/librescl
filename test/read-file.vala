@@ -334,7 +334,7 @@ public class LsclTest.ReadFile
               string t1ied = "NULL";
               string t1id = "NULL";
               if (t1.cdc != null)
-                t1cdc = t1.cdc;
+                t1cdc = t1.cdc.get_string ();
               if (t1.ied_type != null)
                 t1ied = t1.ied_type;
               if (t1.id != null)
@@ -344,10 +344,10 @@ public class LsclTest.ReadFile
             }
             assert_not_reached ();
           }
-          if (dot.cdc != cdcs[j]) {
+          if (dot.cdc.get_string () != cdcs[j]) {
             string gcdc = "NULL";
             if (dot.cdc != null)
-              gcdc = dot.cdc;
+              gcdc = dot.cdc.get_string ();
             stdout.printf (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) CDC no match hope: $(gcdc) - got: $(cdc)\n");
             assert_not_reached ();
           }
@@ -509,7 +509,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Data Object Type: NULL/LPHD1NamPlt not found\n");
           assert_not_reached ();
         }
-        if (dot.cdc != "LPL") {
+        if (dot.cdc.get_string () != "LPL") {
           stdout.printf (@"ERROR: Wrong CDC for Data Object Type: NULL/LPHD1NamPlt/LPL got: $(dot.cdc)\n");
           assert_not_reached ();
         }
