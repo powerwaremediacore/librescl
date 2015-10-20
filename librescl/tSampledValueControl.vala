@@ -30,20 +30,48 @@ namespace Lscl
 {
   public class tSampledValueControl : tControlWithIEDName
   {
+	 construct {
+			//_property_edition.set ("smp-mod", Edition.SECOND);
+			//smp_mod = new tSmpMod ("smpMod");
+			multicast = new SerializableBool ("multicast");
+			//smp_rate = new SerializableInt ("smpRate");
+			//nof_asdu = new SerializableInt ("nofASDU");
+		}
     [Description(nick="SmvOpts", blurb="Sampled Values Options")]
     public tSampledValueControlSmvOpts smv_opts  { get; set; }
     [Description(nick="smvID", blurb="Idenitifier of the SMV, (Multicast CB or Unicast CB)")]
     public string smv_id  { get; set; }
     [Description(nick="multicast", blurb="If it's false indicates Unicast SMV services")]
-    public bool multicast { get; set; default=true; }
+    public SerializableBool multicast { get; set; }
     [Description(nick="smpRate", blurb="Sample rate")]
     public string smp_rate  { get; set; }
     [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
     public string nof_asdu  { get; set; }
+		// Edition 2.0
+		//[Description(nick="smpMod", blurb="Number of ASDU (Application service data unit)")]
+    //public tSmpMod smp_mod  { get; set; }
 
     public class Array : SerializableArrayList<tSampledValueControl> {
 			public new tSampledValueControl @get (int index) { return base.get (index); }
 		}
   }
+	public class tSmpMod : BaseEnum
+	{
+		construct {
+			_enumtype = typeof (tSmpMod.Enum);
+		}
+		 public tSmpMod (string name)
+		{
+			_name = name;
+		}
+		public tSmpMod.Enum get_value () throws GLib.Error { return (tSmpMod.Enum) to_integer (); }
+		public void set_value (tSmpMod.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+			SMP_PER_PERIOD,
+			SMP_PER_SEC,
+			SEC_PER_SMP
+		}
+	}
 }
 
