@@ -29,19 +29,25 @@ namespace Lscl
 {
   public class tAbstractDataAttribute : tUnNaming
   {
+		construct {
+			name = new tAttributeName ("name");
+			b_type = new tBasicType ("bType");
+			val_kind = new tValKind ("valKind");
+			count = new SerializableInt ("count");
+		}
     [Description(blurb="Attribute's value.")]
     public tVal.Array vals { get; set; default = new tVal.Array (); }
     [Description(nick="name", blurb="The attribute name.")]
-    public tAttributeName name { get; set; default = new tAttributeName ("name"); }
+    public tAttributeName name { get; set; }
     [Description(nick="sAddr", blurb="A short address of this BDA attribute.")]
     public string s_addr { get; set; }
     [Description(nick="bType", blurb="The basic type of the attribute.")]
-    public tBasicType b_type { get; set; default = new tBasicType ("bType"); }
+    public tBasicType b_type { get; set; }
     [Description(nick="valKind", blurb="Determines how the value shall be interpreted if any is given.")]
-    public tValKind val_kind { get; set; default = new tValKind ("valKind"); }
+    public tValKind val_kind { get; set; }
     [Description(nick="type", blurb="It's used to refer to the appropriate enumeration type or DAType definition.")]
     public string data_type { get; set; }
     [Description(nick="count", blurb="Shall state the number of array elements in the case where the attribute is an array.")]
-    public SerializableInt count { get; set; default = new SerializableInt ("count"); }
+    public SerializableInt count { get; set; }
   }
 }
