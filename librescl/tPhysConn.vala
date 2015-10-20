@@ -29,17 +29,39 @@ namespace Lscl
 {
   public class tPhysConn : tUnNaming, SerializableMapKey<string>
   {
+		construct  {
+			connection_type = new tPhysConnType ("type");
+		}
     [Description (nick="P", blurb="")]
     public tP.Array ps { get; set; default = new tP.Array (); }
     [Description (nick="type", blurb="Physical Connection type")]
-    public string connection_type { get; set; }
-    public TypeEnum get_enum () { return TypeEnum.from_string (connection_type); }
+    public tPhysConnType connection_type { get; set; }
 
-    public string get_map_key () { return connection_type; }
+    public string get_map_key () { return ""; }
     public class HashMap : SerializableHashMap<string,tPhysConn> {
 			public new tPhysConn get (string type) { return base.get (type); }
 	 }
+	}
 
+	public class tPhysConnType : tPredefinedPhysConnType
+	{
+		public tPhysConnType (string name) { base (name); }
+	}
+	public class tPredefinedPhysConnType : BaseEnum
+	{
+		public tPredefinedPhysConnType (string name)
+		{
+			_name = name;
+			_enumtype = typeof (tPredefinedPhysConnType.Enum);
+		}
+    public tPredefinedPhysConnType.Enum get_value () throws GLib.Error { return (tPredefinedPhysConnType.Enum) to_integer (); }
+    public void set_value (tPredefinedPhysConnType.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+			CONNECTION,
+			RED_CONN
+		}
+	}
     // Edition 2.0 Enum
     public enum TypeEnum
     {
@@ -68,5 +90,4 @@ namespace Lscl
         return env;
       }
     }
-  }
 }
