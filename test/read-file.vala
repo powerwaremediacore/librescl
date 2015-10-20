@@ -686,7 +686,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-ied", 
+    Test.add_func ("/librescl-test-suite/read-ied/ied", 
     () => {
       try {
         var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
