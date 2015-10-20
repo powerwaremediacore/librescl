@@ -32,10 +32,10 @@ namespace Lscl
   {
 	 construct {
 			//_property_edition.set ("smp-mod", Edition.SECOND);
-			//smp_mod = new tSmpMod ("smpMod");
 			multicast = new SerializableBool ("multicast");
 			smp_rate = new SerializableInt ("smpRate");
 			nof_asdu = new SerializableInt ("nofASDU");
+			smp_mod = new tSmpMod ("smpMod");
 		}
     [Description(nick="SmvOpts", blurb="Sampled Values Options")]
     public tSampledValueControlSmvOpts smv_opts  { get; set; }
@@ -48,8 +48,8 @@ namespace Lscl
     [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
     public SerializableInt nof_asdu  { get; set; }
 		// Edition 2.0
-		//[Description(nick="smpMod", blurb="Number of ASDU (Application service data unit)")]
-    //public tSmpMod smp_mod  { get; set; }
+		[Description(nick="smpMod", blurb="Number of ASDU (Application service data unit)")]
+    public tSmpMod smp_mod  { get; set; }
 
     public class Array : SerializableArrayList<tSampledValueControl> {
 			public new tSampledValueControl @get (int index) { return base.get (index); }
