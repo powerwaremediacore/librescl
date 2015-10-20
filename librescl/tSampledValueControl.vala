@@ -35,7 +35,7 @@ namespace Lscl
 			//smp_mod = new tSmpMod ("smpMod");
 			multicast = new SerializableBool ("multicast");
 			smp_rate = new SerializableInt ("smpRate");
-			//nof_asdu = new SerializableInt ("nofASDU");
+			nof_asdu = new SerializableInt ("nofASDU");
 		}
     [Description(nick="SmvOpts", blurb="Sampled Values Options")]
     public tSampledValueControlSmvOpts smv_opts  { get; set; }
@@ -46,7 +46,7 @@ namespace Lscl
     [Description(nick="smpRate", blurb="Sample rate")]
     public SerializableInt smp_rate  { get; set; }
     [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
-    public string nof_asdu  { get; set; }
+    public SerializableInt nof_asdu  { get; set; }
 		// Edition 2.0
 		//[Description(nick="smpMod", blurb="Number of ASDU (Application service data unit)")]
     //public tSmpMod smp_mod  { get; set; }
