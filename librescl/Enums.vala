@@ -59,20 +59,5 @@ namespace Lscl
 		public string get_string () { return get_serializable_property_value (); }
 		public void set_string (string str) { set_serializable_property_value (str); }
 	}
-
-	public enum tPhaseEnum 
-	{
-		A,
-		B,
-		C,
-		N,
-		all,
-		none
-	}
-
-	public enum tPowerTransformerEnum 
-	{
-		PTR
-	}
 }
 
