@@ -805,7 +805,7 @@ public class LsclTest.ReadFile
         assert (server.authentication.certificate == false);
         // TODO: Association Tests
         assert (server.association != null);
-        assert (server.association.kind.get_value () == tAssociationKind.Enum.preestablished);
+        assert (server.association.kind.get_value () == tAssociationKind.Enum.PREESTABLISHED);
         assert (server.association.association_id == "0");
         assert (server.association.ied_name == "None");
         assert (server.association.ld_inst == "NoneLd");

@@ -37,7 +37,7 @@ public class Lscl.tAssociationKind : Lscl.BaseEnum
   public void set_value (tAssociationKind.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum 
 	{
-		preestablished,
-		predefined,
+		PREESTABLISHED,
+		PREDEFINED
 	}
 }
