@@ -34,9 +34,10 @@ namespace Lscl
 			b_type = new tBasicType ("bType");
 			val_kind = new tValKind ("valKind");
 			count = new SerializableInt ("count");
+			vals = new tVal.Array ();
 		}
     [Description(blurb="Attribute's value.")]
-    public tVal.Array vals { get; set; default = new tVal.Array (); }
+    public tVal.Array vals { get; set; }
     [Description(nick="name", blurb="The attribute name.")]
     public tAttributeName name { get; set; }
     [Description(nick="sAddr", blurb="A short address of this BDA attribute.")]
