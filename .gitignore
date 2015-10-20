@@ -36,6 +36,7 @@ intltool-update.in
 po/stamp-it
 po/POTFILES
 po/Makefile
+po/Makefile.in.in
 po/es.gmo
 librescl/.deps/*
 librescl/.goutputstream*
