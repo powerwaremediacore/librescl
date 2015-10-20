@@ -30,6 +30,11 @@ namespace Lscl
 {
   public class tClientLN : Serializable
   {
+		construct {
+      _property_edition.set ("ap-ref", Edition.SECOND);
+      _property_edition.set ("desc", Edition.SECOND);
+			ln_class = new tLNClassEnum ("lnClass");
+		}
     [Description(nick="iedName", blurb="The name of the IED where the LN resides")]
     public string ied_name { get; set; }
     [Description(nick="ldInst", blurb="The instance identification of the LD where the LN resides")]
@@ -37,7 +42,7 @@ namespace Lscl
     [Description(nick="prefix", blurb="The Logical Node prefix")]
     public string prefix { get; set; }
     [Description(nick="lnClass", blurb="The Logical Node class")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
     [Description(nick="lnInst", blurb="The instance id of this LN instance of below LN class in the IED")]
     public string ln_inst { get; set; }
     /* Edition 2.0 */
@@ -46,22 +51,20 @@ namespace Lscl
     [Description(nick="desc", blurb="Description")]
     public string desc { get; set; }
 
-    public tClientLN () {
-      _property_edition.set ("ap-ref", Edition.SECOND);
-      _property_edition.set ("desc", Edition.SECOND);
-    }
     public new string to_string () {
       string str = "";
       if (ied_name != null) str += ied_name + ".";
       if (ap_ref != null) str += ap_ref + "/";
       if (ld_inst != null) str += ld_inst + "/";
       if (prefix != null) str += prefix;
-      if (ln_class != null) str += ln_class;
+      if (ln_class.get_string () != null) str += ln_class.get_string ();
       if (ln_inst != null) str += ln_inst;
       return str;
     }
 
-    public class Array : SerializableArrayList<tClientLN> {}
+    public class Array : SerializableArrayList<tClientLN> {
+			public new tClientLN get (int index) { return base.get (index); }
+		}
   }
 }
 
