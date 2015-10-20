@@ -74,6 +74,8 @@ namespace Lscl
 
     construct {
       Init.init ();
+      _edition = Edition.FIRST;
+      _property_edition = new Gee.HashMultiMap<string,Edition> ();
       nname = get_type ().name ();
       if ("Lsclt" in nname)
         nname = nname.replace ("Lsclt","");
@@ -81,11 +83,6 @@ namespace Lscl
         if ("Lscl" in nname)
           nname = nname.replace ("Lscl","");
       }
-    }
-
-    public Serializable () {
-      _edition = Edition.FIRST;
-      _property_edition = new Gee.HashMultiMap<string,Edition> ();
     }
 
     public void enable_proprietary_info (bool enable)

@@ -31,7 +31,7 @@ namespace Lscl
   public class tSampledValueControl : tControlWithIEDName
   {
 	 construct {
-			//_property_edition.set ("smp-mod", Edition.SECOND);
+			_property_edition.set ("smp-mod", Edition.SECOND);
 			multicast = new SerializableBool ("multicast");
 			smp_rate = new SerializableInt ("smpRate");
 			nof_asdu = new SerializableInt ("nofASDU");
