@@ -35,10 +35,12 @@ namespace Lscl
   }
 	public class tStatus : BaseEnum
 	{
+		construct {
+			_enumtype = typeof (tStatus.Enum);
+		}
 		public tStatus (string name)
 		{
 			_name = name;
-			_enumtype = typeof (tStatus.Enum);
 		}
     public tStatus.Enum get_value () throws GLib.Error { return (tStatus.Enum) to_integer (); }
     public void set_value (tStatus.Enum val) throws GLib.Error { parse_integer ((int) val); }

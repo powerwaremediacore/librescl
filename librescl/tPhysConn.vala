@@ -33,11 +33,20 @@ namespace Lscl
 			connection_type = new tPhysConnType ("type");
 		}
     [Description (nick="P", blurb="")]
-    public tP.Array ps { get; set; default = new tP.Array (); }
+    public tPPhysConn.Array ps { get; set; default = new tPPhysConn.Array (); }
     [Description (nick="type", blurb="Physical Connection type")]
     public tPhysConnType connection_type { get; set; }
 
-    public string get_map_key () { return ""; }
+    public string get_map_key ()
+	 {
+			if (ps == null) return "";
+			if (ps.size == 0) return "";
+			var p = ps.get (0); // Get first element in Ps
+			if (p == null) return "";
+			if (p.ptype == null) return "";
+			if (p.ptype.get_string () == null) return "";
+			return p.ptype.get_string ();
+		}
     public class HashMap : SerializableHashMap<string,tPhysConn> {
 			public new tPhysConn get (string type) { return base.get (type); }
 	 }
@@ -49,10 +58,12 @@ namespace Lscl
 	}
 	public class tPredefinedPhysConnType : BaseEnum
 	{
+		construct {
+			_enumtype = typeof (tPredefinedPhysConnType.Enum);
+		}
 		public tPredefinedPhysConnType (string name)
 		{
 			_name = name;
-			_enumtype = typeof (tPredefinedPhysConnType.Enum);
 		}
     public tPredefinedPhysConnType.Enum get_value () throws GLib.Error { return (tPredefinedPhysConnType.Enum) to_integer (); }
     public void set_value (tPredefinedPhysConnType.Enum val) throws GLib.Error { parse_integer ((int) val); }
@@ -62,32 +73,40 @@ namespace Lscl
 			RED_CONN
 		}
 	}
-    // Edition 2.0 Enum
-    public enum TypeEnum
-    {
-      TYPE,
+
+	public class tPPhysConn : Serializable
+	{
+		construct {
+			ptype = new tPTypePhysConn ("type");
+		}
+		[Description (nick="type", blurb="Physical Connection type")]
+		public tPTypePhysConn ptype { get; set; }
+		public override string node_name () { return "P"; }
+		public class Array : SerializableArrayList<tPPhysConn> {
+			public new tPPhysConn get (int index) { return base.get (index); }
+		}
+	}
+	public class tPTypePhysConn : tPredefinedPTypePhysConn
+	{
+		public tPTypePhysConn (string name) { base (name); }
+	}
+	public class tPredefinedPTypePhysConn : BaseEnum
+	{
+		construct {
+			_enumtype = typeof (tPredefinedPTypePhysConn.Enum);
+		}
+		public tPredefinedPTypePhysConn (string name)
+		{
+			_name = name;
+		}
+    public tPredefinedPTypePhysConn.Enum get_value () throws GLib.Error { return (tPredefinedPTypePhysConn.Enum) to_integer (); }
+    public void set_value (tPredefinedPTypePhysConn.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+			TYPE,
       PLUG,
       CABLE,
-      PORT,
-      EXTENSION;
-      public string to_string ()
-      {
-        string str = "<<INVALID PHYSICAL CONNECTION>>";
-        try {
-          str = GXml.Enumeration.get_nick_camelcase (typeof (TypeEnum), this);
-        }
-        catch (GLib.Error e) {}
-        return str;
-      }
-      public static TypeEnum from_string (string str)
-      {
-        TypeEnum env = TypeEnum.EXTENSION;
-        try {
-          var v = GXml.Enumeration.parse (typeof (TypeEnum), str);
-          env = (TypeEnum) v.@value;
-        }
-        catch {}
-        return env;
-      }
-    }
+      PORT
+		}
+	}
 }
