@@ -90,7 +90,6 @@ sources = \
 	tPhysConn.vala \
 	tPowerSystemResource.vala \
 	tPowerTransformer.vala \
-	tPredefinedAttributeName.vala \
 	tPredefinedGeneralEquipment.vala \
 	tPrivate.vala \
 	tP.vala \
