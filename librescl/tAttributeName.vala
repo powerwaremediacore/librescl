@@ -21,16 +21,41 @@
 */
 using GXml;
 
-public class Lscl.tAttributeName : BaseValueList
+public class Lscl.tAttributeName : tPredefinedAttributeName
 {
-   construct {
-    _vals = {"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
- "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
- "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
- "stepSize","d","dU","cdcNs","cdcName","dataNs"};
-   }
    public tAttributeName (string name)
    {
      base (name);
    }
+}
+public class Lscl.tPredefinedAttributeName : Lscl.BaseValueList
+{
+	construct {
+		_vals = {"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
+ "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
+ "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
+ "stepSize","d","dU","cdcNs","cdcName","dataNs"};
+	}
+	 public tPredefinedAttributeName (string name)
+	{
+		base (name);
+	}
+  public void select (Enum v) { set_string (_vals[v]); }
+	public enum Enum
+	{
+		T,
+		TEST,
+		CHECK,
+		SIUNIT,
+		OPER,
+		SBO,
+		SBOW,
+		CANCEL,
+    CTL_VAL,
+    OPER_TM,
+    ORIGIN,
+    CTL_NUM,
+    ST_VAL,Q,TIME,ST_SELD,SUB_ENA,SUB_VAL, SUB_Q,SUB_ID,CTL_MODEL,
+    SBO_CLASS, MIN_VAL, MAX_VAL, STEP_SIZE,D,DU,CDC_NS,CDC_NAME,DATA_NS
+	}
 }

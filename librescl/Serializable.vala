@@ -84,7 +84,6 @@ namespace Lscl
           nname = nname.replace ("Lscl","");
       }
     }
-
     public void enable_proprietary_info (bool enable)
     {
       _enable_proprietary = enable;
