@@ -30,6 +30,8 @@ public class LsclTest.Enums
 		public tBasicType btype { get; set; }
 		[Description (nick="CDCEnum")]
 		public tCDCEnum cdc { get; set; }
+		[Description (nick="condEq")]
+		public tCommonConductingEquipment ceq { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -195,6 +197,44 @@ public class LsclTest.Enums
 				assert (t.cdc != null);
 				assert (t.cdc.get_value () == tPredefinedCDC.Enum.VSG);
 				assert (t.cdc.get_string () == "VSG");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/common-conducting-equitment/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.ceq = new tCommonConductingEquipment ();
+				t.ceq.set_value (tPredefinedCommonConductingEquipment.Enum.RRC);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("condEq");
+				assert (c != null);
+				assert (c.value == "Rrc");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/common-conducting-equitment/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest condEq = "SCR" />""");
+				t.deserialize (d);
+				assert (t.ceq != null);
+				assert (t.ceq.get_value () == tPredefinedCommonConductingEquipment.Enum.SCR);
+				assert (t.ceq.get_string () == "SCR");
 			}
 			catch (GLib.Error e)
 			{
