@@ -26,6 +26,8 @@ public class LsclTest.Enums
 		public tAssociationKind kind { get; set; }
 		[Description (nick="AttributeName")]
 		public tAttributeName attr_name { get; set; }
+		[Description (nick="BasicType")]
+		public tBasicType btype { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -115,6 +117,44 @@ public class LsclTest.Enums
 				assert (t.attr_name.get_string () != null);
 				Test.message ("Actual value = "+t.attr_name.get_string ());
 				assert (t.attr_name.get_string () == "sboTimeout");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/basic-type/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.btype = new tBasicType ();
+				t.btype.set_value (tBasicType.Enum.FLOAT32);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("BasicType");
+				assert (c != null);
+				assert (c.value == "Float32");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/basic-type/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest BasicType = "QUALITY" />""");
+				t.deserialize (d);
+				assert (t.btype != null);
+				assert (t.btype.get_value () == tBasicType.Enum.QUALITY);
+				assert (t.btype.get_string () == "QUALITY");
 			}
 			catch (GLib.Error e)
 			{
