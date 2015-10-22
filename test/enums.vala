@@ -37,6 +37,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
+				t.kind = new tAssociationKind ();
 				t.kind.set_value (tAssociationKind.Enum.PREESTABLISHED);
 				var d = new xDocument ();
 				t.serialize (d);
@@ -75,14 +76,15 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
+				t.attr_name = new tAttributeName ();
 				t.attr_name.select (tPredefinedAttributeName.Enum.OPER_TM);
 				var d = new xDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
 				assert (r.name == "NodeTest");
-				assert (r.attrs.has_key ("AttributName"));
-				var c = r.attrs.get ("AttributName");
+				assert (r.attrs.has_key ("AttributeName"));
+				var c = r.attrs.get ("AttributeName");
 				assert (c != null);
 				assert (c.value == "operTm");
 			}
@@ -96,7 +98,6 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				assert (t.attr_name.get_string () == null);
 				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest AttributeName = "sboTimeout" />""");
 				t.deserialize (d);
