@@ -44,6 +44,8 @@ public class LsclTest.Enums
 		public tPhysConnType phc { get; set; }
 		[Description (nick="PhysConnType")]
 		public tPTypePhysConn phct { get; set; }
+		[Description (nick="PwTrnType")]
+		public tPowerTransformerType pwt { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -475,6 +477,44 @@ public class LsclTest.Enums
 				assert (t.phct != null);
 				assert (t.phct.get_value () == tPredefinedPTypePhysConn.Enum.PLUG);
 				assert (t.phct.get_string () == "PLUG");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/power-transformer-type/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.pwt = new tPowerTransformerType ();
+				t.pwt.set_value (tPowerTransformerType.Enum.PTR);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("PwTrnType");
+				assert (c != null);
+				assert (c.value == "Ptr");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/power-transformer-type/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest PwTrnType = "ptr" />""");
+				t.deserialize (d);
+				assert (t.pwt != null);
+				assert (t.pwt.get_value () == tPowerTransformerType.Enum.PTR);
+				assert (t.pwt.get_string () == "ptr");
 			}
 			catch (GLib.Error e)
 			{
