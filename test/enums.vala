@@ -46,6 +46,8 @@ public class LsclTest.Enums
 		public tPTypePhysConn phct { get; set; }
 		[Description (nick="PwTrnType")]
 		public tPowerTransformerType pwt { get; set; }
+		[Description (nick="GEquiment")]
+		public tGeneralEquipmentEnum ge { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -515,6 +517,44 @@ public class LsclTest.Enums
 				assert (t.pwt != null);
 				assert (t.pwt.get_value () == tPowerTransformerType.Enum.PTR);
 				assert (t.pwt.get_string () == "ptr");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/general-equiment/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.ge = new tGeneralEquipmentEnum ();
+				t.ge.set_value (tPredefinedGeneralEquipment.Enum.FAN);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("GEquiment");
+				assert (c != null);
+				assert (c.value == "Fan");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/general-equiment/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest GEquiment = "vlv" />""");
+				t.deserialize (d);
+				assert (t.ge != null);
+				assert (t.ge.get_value () == tPredefinedGeneralEquipment.Enum.VLV);
+				assert (t.ge.get_string () == "vlv");
 			}
 			catch (GLib.Error e)
 			{
