@@ -28,6 +28,8 @@ public class LsclTest.Enums
 		public tAttributeName attr_name { get; set; }
 		[Description (nick="BasicType")]
 		public tBasicType btype { get; set; }
+		[Description (nick="CDCEnum")]
+		public tCDCEnum cdc { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -155,6 +157,44 @@ public class LsclTest.Enums
 				assert (t.btype != null);
 				assert (t.btype.get_value () == tBasicType.Enum.QUALITY);
 				assert (t.btype.get_string () == "QUALITY");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/cdcenum/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.cdc = new tCDCEnum ();
+				t.cdc.set_value (tPredefinedCDC.Enum.ENC);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("CDCEnum");
+				assert (c != null);
+				assert (c.value == "Enc");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/cdcenum/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest CDCEnum = "VSG" />""");
+				t.deserialize (d);
+				assert (t.cdc != null);
+				assert (t.cdc.get_value () == tPredefinedCDC.Enum.VSG);
+				assert (t.cdc.get_string () == "VSG");
 			}
 			catch (GLib.Error e)
 			{
