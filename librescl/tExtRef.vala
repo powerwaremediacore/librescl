@@ -29,19 +29,32 @@ namespace Lscl
 {
   public class tExtRef : Serializable
   {
+    [Description (nick="tIEDName")]
     public string ied_name { get; set; }
+    [Description (nick="ldInst")]
     public string ld_inst { get; set; }
     public string prefix { get; set; }
-    public string ln_class { get; set; }
+    [Description (nick="lnClass")]
+    public tLNClassEnum ln_class { get; set; }
+    [Description (nick="lnInst")]
     public string ln_inst { get; set; }
+    [Description (nick="doName")]
     public string do_name { get; set; }
+    [Description (nick="daName")]
     public string da_name { get; set; }
+    [Description (nick="intAddr")]
     public string int_addr { get; set; }
-    public string service_type { get; set; }
+    [Description (nick="serviceType")]
+    public tServiceType service_type { get; set; }
+    [Description (nick="srcLDInst")]
     public string src_ld_inst { get; set; }
+    [Description (nick="srcPrefix")]
     public string src_prefix { get; set; }
-    public string src_ln_class { get; set; }
+    [Description (nick="srcLNClass")]
+    public tLNClassEnum src_ln_class { get; set; }
+    [Description (nick="srcLNInst")]
     public string src_ln_inst { get; set; }
+    [Description (nick="srcCBName")]
     public string src_cb_name { get; set; }
     
     public class Array : SerializableArrayList<tExtRef> {
@@ -49,44 +62,19 @@ namespace Lscl
     }
   }
   // tExtRef.service_type must have just one of this enum value
-  public enum tServiceType
+  public class tServiceType : BaseEnum
   {
-    POLL,
-    REPORT,
-    GOOSE,
-    SMV,
-    EXTENSION;
-    public string to_string ()
+    construct {
+		  _enumtype = typeof (tServiceType.Enum);
+	  }
+    public tServiceType.Enum get_value () throws GLib.Error { return (tServiceType.Enum) to_integer (); }
+    public void set_value (tServiceType.Enum val) throws GLib.Error { parse_integer ((int) val); }
+    public enum Enum
     {
-      string t = "";
-      switch (this) {
-        case POLL:
-          t = "Poll";
-          break;
-        case REPORT:
-          t = "Report";
-          break;
-        case GOOSE:
-          t = "GOOSE";
-          break;
-        case SMV:
-          t = "SMV";
-          break;
-        default:
-          t = "EXTENSION";
-          break;
-      }
-      return t;
-    }
-    public static tServiceType from_string (string str)
-    {
-      tServiceType env = tServiceType.EXTENSION;
-      try {
-        var v = GXml.Enumeration.parse (typeof (tServiceType), str);
-        env = (tServiceType) v.@value;
-      }
-      catch {}
-      return env;
+      POLL,
+      REPORT,
+      GOOSE,
+      SMV
     }
   }
 }

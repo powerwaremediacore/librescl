@@ -32,6 +32,8 @@ public class LsclTest.Enums
 		public tCDCEnum cdc { get; set; }
 		[Description (nick="condEq")]
 		public tCommonConductingEquipment ceq { get; set; }
+		[Description (nick="ServiceType")]
+		public tServiceType st { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -235,6 +237,44 @@ public class LsclTest.Enums
 				assert (t.ceq != null);
 				assert (t.ceq.get_value () == tPredefinedCommonConductingEquipment.Enum.SCR);
 				assert (t.ceq.get_string () == "SCR");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/service-type/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.st = new tServiceType ();
+				t.st.set_value (tServiceType.Enum.GOOSE);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("ServiceType");
+				assert (c != null);
+				assert (c.value == "Goose");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/service-type/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest ServiceType = "SMV" />""");
+				t.deserialize (d);
+				assert (t.st != null);
+				assert (t.st.get_value () == tServiceType.Enum.SMV);
+				assert (t.st.get_string () == "SMV");
 			}
 			catch (GLib.Error e)
 			{
