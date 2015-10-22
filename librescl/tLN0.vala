@@ -31,7 +31,7 @@ namespace Lscl
   {
 		private tLNClassEnum _lnclass;
 		construct {
-			_lnclass = new tLNClassEnum ("lnClass");
+			_lnclass = new tLNClassEnum ();
 			_lnclass.set_string ("LLN0");
 		}
     [Description(blurb="GSE Control Blocks")]

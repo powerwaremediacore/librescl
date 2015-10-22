@@ -29,9 +29,6 @@ namespace Lscl
 {
   public class tGeneralEquipment : tEquipment
   {
-		construct {
-			equipment_type = new tGeneralEquipmentEnum ("type");
-		}
     [Description(nick="type", blurb="Equipmet type")]
     public tGeneralEquipmentEnum equipment_type { get; set; }
   }

@@ -44,7 +44,7 @@ namespace Lscl
     [Description(nick="daName",blurb="Data Attribute name")]
     public string da_name { get; set; }
     [Description(nick="fc",blurb="Functional Code")]
-    public tFC fc { get; set; default = new tFC ("fc"); }
+    public tFC fc { get; set; }
 
     public class Array : SerializableArrayList<tFCDA> {
       public new tFCDA get (int index)  { return base.get (index); }

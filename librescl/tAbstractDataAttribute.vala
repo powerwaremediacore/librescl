@@ -30,10 +30,6 @@ namespace Lscl
   public class tAbstractDataAttribute : tUnNaming
   {
 		construct {
-			name = new tAttributeName ("name");
-			b_type = new tBasicType ("bType");
-			val_kind = new tValKind ("valKind");
-			count = new SerializableInt ("count");
 			vals = new tVal.Array ();
 		}
     [Description(blurb="Attribute's value.")]

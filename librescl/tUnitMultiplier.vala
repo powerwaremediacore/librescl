@@ -29,10 +29,6 @@ public class Lscl.tUnitMultiplier : Lscl.BaseEnum
 	construct {
 		_enumtype = typeof (tUnitMultiplier.Enum);
 	}
-	 public tUnitMultiplier (string name)
-	{
-		_name = name;
-	}
   public tUnitMultiplier.Enum get_value () throws GLib.Error { return (tUnitMultiplier.Enum) to_integer (); }
   public void set_value (tUnitMultiplier.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum

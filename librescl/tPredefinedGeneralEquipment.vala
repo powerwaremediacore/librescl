@@ -24,20 +24,13 @@
  */
 using GXml;
 
-public class Lscl.tGeneralEquipmentEnum : Lscl.tPredefinedGeneralEquipment
-{
-	 public tGeneralEquipmentEnum (string name) { base (name); }
-}
+public class Lscl.tGeneralEquipmentEnum : Lscl.tPredefinedGeneralEquipment {}
 
 
 public class Lscl.tPredefinedGeneralEquipment : Lscl.BaseEnum
 {
 	construct {
 		_enumtype = typeof (tPredefinedGeneralEquipment.Enum);
-	}
-	 public tPredefinedGeneralEquipment (string name)
-	{
-		_name = name;
 	}
   public tPredefinedGeneralEquipment.Enum get_value () throws GLib.Error { return (tPredefinedGeneralEquipment.Enum) to_integer (); }
   public void set_value (tPredefinedGeneralEquipment.Enum val) throws GLib.Error { parse_integer ((int) val); }

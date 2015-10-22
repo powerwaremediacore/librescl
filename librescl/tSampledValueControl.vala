@@ -32,10 +32,6 @@ namespace Lscl
   {
 	 construct {
 			_property_edition.set ("smp-mod", Edition.SECOND);
-			multicast = new SerializableBool ("multicast");
-			smp_rate = new SerializableInt ("smpRate");
-			nof_asdu = new SerializableInt ("nofASDU");
-			smp_mod = new tSmpMod ("smpMod");
 		}
     [Description(nick="SmvOpts", blurb="Sampled Values Options")]
     public tSampledValueControlSmvOpts smv_opts  { get; set; }
@@ -59,10 +55,6 @@ namespace Lscl
 	{
 		construct {
 			_enumtype = typeof (tSmpMod.Enum);
-		}
-		 public tSmpMod (string name)
-		{
-			_name = name;
 		}
 		public tSmpMod.Enum get_value () throws GLib.Error { return (tSmpMod.Enum) to_integer (); }
 		public void set_value (tSmpMod.Enum val) throws GLib.Error { parse_integer ((int) val); }

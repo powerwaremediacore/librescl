@@ -29,10 +29,6 @@ public class Lscl.tValKind : Lscl.BaseEnum
 	construct {
 		_enumtype = typeof (tValKind.Enum);
 	}
-	 public tValKind (string name)
-	{
-		_name = name;
-	}
   public tValKind.Enum get_value () throws GLib.Error { return (tValKind.Enum) to_integer (); }
   public void set_value (tValKind.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum

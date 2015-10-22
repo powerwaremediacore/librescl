@@ -23,9 +23,7 @@
  */
 public class Lscl.tFC : Lscl.BaseEnum
 {
-	public tFC (string name)
-	{
-	_name = name;
+	construct {
 	_enumtype = typeof (tFC.Enum);
 	}
   public tFC.Enum get_value () throws GLib.Error { return (tFC.Enum) to_integer (); }

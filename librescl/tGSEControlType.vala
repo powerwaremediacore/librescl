@@ -29,10 +29,6 @@ public class Lscl.tGSEControlType : Lscl.BaseEnum
 	construct {
 		_enumtype = typeof (tGSEControlType.Enum);
 	}
-	 public tGSEControlType (string name)
-	{
-		_name = name;
-	}
   public tGSEControlType.Enum get_value () throws GLib.Error { return (tGSEControlType.Enum) to_integer (); }
   public void set_value (tGSEControlType.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum 

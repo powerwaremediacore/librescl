@@ -21,13 +21,7 @@
 */
 using GXml;
 
-public class Lscl.tAttributeName : tPredefinedAttributeName
-{
-   public tAttributeName (string name)
-   {
-     base (name);
-   }
-}
+public class Lscl.tAttributeName : tPredefinedAttributeName {}
 public class Lscl.tPredefinedAttributeName : Lscl.BaseValueList
 {
 	construct {
@@ -35,10 +29,6 @@ public class Lscl.tPredefinedAttributeName : Lscl.BaseValueList
  "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
  "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
  "stepSize","d","dU","cdcNs","cdcName","dataNs"};
-	}
-	 public tPredefinedAttributeName (string name)
-	{
-		base (name);
 	}
   public void select (Enum v) { set_string (_vals[v]); }
 	public enum Enum

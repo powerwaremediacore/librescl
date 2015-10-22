@@ -29,9 +29,6 @@ namespace Lscl
 {
 	public class tTransformerWinding : tAbstractConductingEquipment 
 	{
-		construct {
-			winding_type = new tPredefinedTransformerWinding ("type");
-		}
 		[Description(nick="TapChanger", blurb="Transformer's tap changer")]
 		public tTapChanger tap_changer { get; set; }
 		[Description(nick="type", blurb="Type of Transformer Winding")]

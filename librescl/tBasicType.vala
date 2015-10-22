@@ -26,9 +26,7 @@
  */
 public class Lscl.tBasicType : Lscl.BaseEnum
 {
-	public tBasicType (string name)
-	{
-		_name = name;
+	construct {
 		_enumtype = typeof (tBasicType.Enum);
 	}
   public tBasicType.Enum get_value () throws GLib.Error { return (tBasicType.Enum) to_integer (); }

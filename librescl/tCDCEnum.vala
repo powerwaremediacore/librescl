@@ -23,18 +23,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class Lscl.tCDCEnum : Lscl.tPredefinedCDC
-{
-	public tCDCEnum (string name) { base (name); }
-}
+public class Lscl.tCDCEnum : Lscl.tPredefinedCDC {}
 public class Lscl.tPredefinedCDC : Lscl.BaseEnum
 {
 	construct {
 		_enumtype = typeof (tPredefinedCDC.Enum);
-	}
-	public tPredefinedCDC (string name)
-	{
-		_name = name;
 	}
   public tPredefinedCDC.Enum get_value () throws GLib.Error { return (tPredefinedCDC.Enum) to_integer (); }
   public void set_value (tPredefinedCDC.Enum val) throws GLib.Error { parse_integer ((int) val); }

@@ -37,7 +37,7 @@ namespace Lscl
   {
 		private tLNClassEnum _ln_class;
 		construct {
-			_ln_class = new tLNClassEnum ("lnClass");
+			_ln_class = new tLNClassEnum ();
 		}
     [Description(nick="lnClass",blurb="")]
     public tLNClassEnum ln_class { get { return _ln_class; } set { _ln_class = value; } }

@@ -30,9 +30,6 @@ namespace Lscl
 {
   public class tAssociation : Serializable
   {
-    construct {
-      kind = new tAssociationKind ("kind");
-    }
     [Description(nick="kind", blurb="The kind of pre-configured association, pre-established or predefined")]
     public tAssociationKind kind  { get; set; }
     [Description(nick="associationID", blurb="The identification of a pre-configured association")]

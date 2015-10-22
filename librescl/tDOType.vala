@@ -29,9 +29,6 @@ namespace Lscl
 {
   public class tDOType : tIDNaming, SerializableMapKey<string>
   {
-		construct {
-			cdc = new tCDCEnum ("cdc");
-		}
     [Description(blurb="Data Objects")]
     public tSDO.HashMap sdos { get; set; default = new tSDO.HashMap (); }
     [Description(blurb="Data Attributes")]

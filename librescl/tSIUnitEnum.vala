@@ -44,9 +44,6 @@ public class Lscl.tSIUnit : Lscl.BaseValueList
 			// Edition 2.0
 			"Hz/s","char","char/s","kgm²","dB"};
 	}
-	public tSIUnit (string name) {
-		base (name);
-	}
 	public string[] get_alternatives () { return _alternatives; }
 	public string get_alternative (int index)
 	{

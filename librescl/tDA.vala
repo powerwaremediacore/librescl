@@ -36,7 +36,7 @@ namespace Lscl
     [Description(nick="dupd", blurb="Data Update")]
     public bool dupd { get; set; }
     [Description(nick="fc", blurb="Functional Code")]
-    public tFC fc { get; set; default = new tFC ("fc"); }
+    public tFC fc { get; set; }
     // SerializableMapId
     public string get_map_key () { return name.get_string (); }
 

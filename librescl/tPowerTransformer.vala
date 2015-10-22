@@ -29,9 +29,6 @@ namespace Lscl
 {
   public class tPowerTransformer : tEquipment
   {
-		construct {
-			transformer_type = new tPowerTransformerType ("type");
-		}
     [Description (nick="TransformerWinding", blurb="")]
     public tTransformerWinding transformer_winding { get; set; }
     [Description (nick="type", blurb="")]
@@ -41,10 +38,6 @@ namespace Lscl
 	{
 		construct {
 			_enumtype = typeof (tPowerTransformerType.Enum);
-		}
-		 public tPowerTransformerType (string name)
-		{
-			_name = name;
 		}
 		public tPowerTransformerType.Enum get_value () throws GLib.Error { return (tPowerTransformerType.Enum) to_integer (); }
 		public void set_value (tPowerTransformerType.Enum val) throws GLib.Error { parse_integer ((int) val); }

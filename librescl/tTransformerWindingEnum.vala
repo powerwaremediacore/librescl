@@ -28,10 +28,6 @@ public class Lscl.tPredefinedTransformerWinding : Lscl.BaseEnum
 	construct {
 		_enumtype = typeof (tPredefinedTransformerWinding.Enum);
 	}
-	public tPredefinedTransformerWinding (string name)
-	{
-		_name = name;
-	}
   public tPredefinedTransformerWinding.Enum get_value () throws GLib.Error { return (tPredefinedTransformerWinding.Enum) to_integer (); }
   public void set_value (tPredefinedTransformerWinding.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum 

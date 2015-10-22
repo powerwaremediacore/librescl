@@ -28,9 +28,6 @@ namespace Lscl
 {
 	public class tSubEquipment : tPowerSystemResource 
 	{
-		construct {
-			phase = new tPhase ("phase");
-		}
 		[Description(nick="phase", blurb="The phase to which the subdevice belongs.")]
 		public tPhase phase  { get; set; }
 		[Description(nick="virtual", blurb="A virtual equipment")]
@@ -41,10 +38,6 @@ namespace Lscl
 	{
 		construct {
 			_enumtype = typeof (tPhase.Enum);
-		}
-		 public tPhase (string name)
-		{
-			_name = name;
 		}
 		public tPhase.Enum get_value () throws GLib.Error { return (tPhase.Enum) to_integer (); }
 		public void set_value (tPhase.Enum val) throws GLib.Error { parse_integer ((int) val); }

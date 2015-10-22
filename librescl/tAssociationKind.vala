@@ -29,10 +29,6 @@ public class Lscl.tAssociationKind : Lscl.BaseEnum
 	construct {
 		_enumtype = typeof (tAssociationKind.Enum);
 	}
-	 public tAssociationKind (string name)
-	{
-		_name = name;
-	}
   public tAssociationKind.Enum get_value () throws GLib.Error { return (tAssociationKind.Enum) to_integer (); }
   public void set_value (tAssociationKind.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum 

@@ -29,9 +29,6 @@ namespace Lscl
 {
   public class tPhysConn : tUnNaming, SerializableMapKey<string>
   {
-		construct  {
-			connection_type = new tPhysConnType ("type");
-		}
     [Description (nick="P", blurb="")]
     public tPPhysConn.Array ps { get; set; default = new tPPhysConn.Array (); }
     [Description (nick="type", blurb="Physical Connection type")]
@@ -52,18 +49,11 @@ namespace Lscl
 	 }
 	}
 
-	public class tPhysConnType : tPredefinedPhysConnType
-	{
-		public tPhysConnType (string name) { base (name); }
-	}
+	public class tPhysConnType : tPredefinedPhysConnType {}
 	public class tPredefinedPhysConnType : BaseEnum
 	{
 		construct {
 			_enumtype = typeof (tPredefinedPhysConnType.Enum);
-		}
-		public tPredefinedPhysConnType (string name)
-		{
-			_name = name;
 		}
     public tPredefinedPhysConnType.Enum get_value () throws GLib.Error { return (tPredefinedPhysConnType.Enum) to_integer (); }
     public void set_value (tPredefinedPhysConnType.Enum val) throws GLib.Error { parse_integer ((int) val); }
@@ -76,9 +66,6 @@ namespace Lscl
 
 	public class tPPhysConn : Serializable
 	{
-		construct {
-			ptype = new tPTypePhysConn ("type");
-		}
 		[Description (nick="type", blurb="Physical Connection type")]
 		public tPTypePhysConn ptype { get; set; }
 		public override string node_name () { return "P"; }
@@ -86,18 +73,11 @@ namespace Lscl
 			public new tPPhysConn get (int index) { return base.get (index); }
 		}
 	}
-	public class tPTypePhysConn : tPredefinedPTypePhysConn
-	{
-		public tPTypePhysConn (string name) { base (name); }
-	}
+	public class tPTypePhysConn : tPredefinedPTypePhysConn {}
 	public class tPredefinedPTypePhysConn : BaseEnum
 	{
 		construct {
 			_enumtype = typeof (tPredefinedPTypePhysConn.Enum);
-		}
-		public tPredefinedPTypePhysConn (string name)
-		{
-			_name = name;
 		}
     public tPredefinedPTypePhysConn.Enum get_value () throws GLib.Error { return (tPredefinedPTypePhysConn.Enum) to_integer (); }
     public void set_value (tPredefinedPTypePhysConn.Enum val) throws GLib.Error { parse_integer ((int) val); }

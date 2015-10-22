@@ -26,25 +26,15 @@
  */
 public class Lscl.tConductingEquipment : Lscl.tAbstractConductingEquipment 
 {
-  construct {
-		equipment_type = new tCommonConductingEquipment ("type");
-  }
   [Description(nick="type", blurb="Type of conducting equipment")]
   public tCommonConductingEquipment equipment_type { get; set; }
 }
 
-public class Lscl.tCommonConductingEquipment : Lscl.tPredefinedCommonConductingEquipment
-{
-	public tCommonConductingEquipment (string name) { base (name); }
-}
+public class Lscl.tCommonConductingEquipment : Lscl.tPredefinedCommonConductingEquipment {}
 public class Lscl.tPredefinedCommonConductingEquipment : Lscl.BaseEnum
 {
 	construct {
 		_enumtype = typeof (tPredefinedCommonConductingEquipment.Enum);
-	}
-	public tPredefinedCommonConductingEquipment (string name)
-	{
-		_name = name;
 	}
   public tPredefinedCommonConductingEquipment.Enum get_value () throws GLib.Error { return (tPredefinedCommonConductingEquipment.Enum) to_integer (); }
   public void set_value (tPredefinedCommonConductingEquipment.Enum val) throws GLib.Error { parse_integer ((int) val); }

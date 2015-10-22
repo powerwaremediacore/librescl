@@ -33,7 +33,6 @@ namespace Lscl
 		construct {
       _property_edition.set ("ap-ref", Edition.SECOND);
       _property_edition.set ("desc", Edition.SECOND);
-			ln_class = new tLNClassEnum ("lnClass");
 		}
     [Description(nick="iedName", blurb="The name of the IED where the LN resides")]
     public string ied_name { get; set; }
