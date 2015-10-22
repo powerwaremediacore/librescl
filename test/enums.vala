@@ -40,6 +40,8 @@ public class LsclTest.Enums
 		public tGSEControlType gsect { get; set; }
 		[Description (nick="nameStructure")]
 		public tNameStructure namestruct { get; set; }
+		[Description (nick="PhysConn")]
+		public tPhysConnType phc { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -395,6 +397,44 @@ public class LsclTest.Enums
 				assert (t.namestruct != null);
 				assert (t.namestruct.get_value () == tNameStructure.Enum.FUNC_NAME);
 				assert (t.namestruct.get_string () == "FUNCNAME");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/phys-conn/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.phc = new tPhysConnType ();
+				t.phc.set_value (tPredefinedPhysConnType.Enum.CONNECTION);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("PhysConn");
+				assert (c != null);
+				assert (c.value == "Connection");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/phys-conn/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest PhysConn = "REDCONN" />""");
+				t.deserialize (d);
+				assert (t.phc != null);
+				assert (t.phc.get_value () == tPredefinedPhysConnType.Enum.RED_CONN);
+				assert (t.phc.get_string () == "REDCONN");
 			}
 			catch (GLib.Error e)
 			{
