@@ -38,6 +38,8 @@ public class LsclTest.Enums
 		public tFC fc { get; set; }
 		[Description (nick="GSEType")]
 		public tGSEControlType gsect { get; set; }
+		[Description (nick="nameStructure")]
+		public tNameStructure namestruct { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -355,6 +357,44 @@ public class LsclTest.Enums
 				assert (t.gsect != null);
 				assert (t.gsect.get_value () == tGSEControlType.Enum.GOOSE);
 				assert (t.gsect.get_string () == "goose");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/namestructure/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.namestruct = new tNameStructure ();
+				t.namestruct.set_value (tNameStructure.Enum.IED_NAME);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("nameStructure");
+				assert (c != null);
+				assert (c.value == "IedName");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/namestructure/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest nameStructure = "FUNCNAME" />""");
+				t.deserialize (d);
+				assert (t.namestruct != null);
+				assert (t.namestruct.get_value () == tNameStructure.Enum.FUNC_NAME);
+				assert (t.namestruct.get_string () == "FUNCNAME");
 			}
 			catch (GLib.Error e)
 			{

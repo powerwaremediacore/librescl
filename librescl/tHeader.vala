@@ -40,26 +40,19 @@ public class Lscl.tHeader : Lscl.Serializable
   [Description (nick="toolID", blurb="Tool creator ID")]
   public string tool_id { get; set; default = "LibreSCL"; }
   [Description (nick="nameStructure",blurb="Name structure according with standard")]
-  public NameStructure name_structure { get; set; }
+  public tNameStructure name_structure { get; set; }
+}
 
-  public enum NameStructure 
-  {
-    IED_NAME,
-    FUNC_NAME;
-    public string to_string ()
-    {
-      string str = "<<INVALID NAME STRUCTURE>>";
-      switch (this) {
-        case IED_NAME:
-          str = "IEDName";
-          break;
-        case FUNC_NAME:
-          str =  "FuncName";
-          break;
-        default:
-          break;
-      }
-      return str;
-    }
-  }
+public class Lscl.tNameStructure : Lscl.BaseEnum
+{
+	construct {
+		_enumtype = typeof (tNameStructure.Enum);
+	}
+	public tNameStructure.Enum get_value () throws GLib.Error { return (tNameStructure.Enum) to_integer (); }
+	public void set_value (tNameStructure.Enum val) throws GLib.Error { parse_integer ((int) val); }
+	public enum Enum
+	{
+	  IED_NAME,
+	  FUNC_NAME
+	}
 }

@@ -125,7 +125,7 @@ public class LsclTest.ReadFile
         assert (scl.header.version == "0");
         assert (scl.header.revision == "1");
         assert (scl.header.tool_id == "LibreSclEditor");
-        assert (scl.header.name_structure == tHeader.NameStructure.IED_NAME);
+        assert (scl.header.name_structure.get_value () == tNameStructure.Enum.IED_NAME);
         var history = scl.header.history;
         assert (history != null);
         assert (history.size == 2);
