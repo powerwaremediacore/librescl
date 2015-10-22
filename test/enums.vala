@@ -36,6 +36,8 @@ public class LsclTest.Enums
 		public tServiceType st { get; set; }
 		[Description (nick="FC")]
 		public tFC fc { get; set; }
+		[Description (nick="GSEType")]
+		public tGSEControlType gsect { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -315,6 +317,44 @@ public class LsclTest.Enums
 				assert (t.fc != null);
 				assert (t.fc.get_value () == tFC.Enum.MX);
 				assert (t.fc.get_string () == "mx");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/gsec-type/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.gsect = new tGSEControlType ();
+				t.gsect.set_value (tGSEControlType.Enum.GSSE);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("GSEType");
+				assert (c != null);
+				assert (c.value == "Gsse");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/gsec-type/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest GSEType = "goose" />""");
+				t.deserialize (d);
+				assert (t.gsect != null);
+				assert (t.gsect.get_value () == tGSEControlType.Enum.GOOSE);
+				assert (t.gsect.get_string () == "goose");
 			}
 			catch (GLib.Error e)
 			{
