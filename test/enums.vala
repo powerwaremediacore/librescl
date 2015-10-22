@@ -48,6 +48,8 @@ public class LsclTest.Enums
 		public tPowerTransformerType pwt { get; set; }
 		[Description (nick="GEquiment")]
 		public tGeneralEquipmentEnum ge { get; set; }
+		[Description (nick="smpMod")]
+		public tSmpMod smpm { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -555,6 +557,44 @@ public class LsclTest.Enums
 				assert (t.ge != null);
 				assert (t.ge.get_value () == tPredefinedGeneralEquipment.Enum.VLV);
 				assert (t.ge.get_string () == "vlv");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/smpmod/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.smpm = new tSmpMod ();
+				t.smpm.set_value (tSmpMod.Enum.SMP_PER_SEC);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("smpMod");
+				assert (c != null);
+				assert (c.value == "SmpPerSec");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/smpmod/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest smpMod = "SECPERSMP" />""");
+				t.deserialize (d);
+				assert (t.smpm != null);
+				assert (t.smpm.get_value () == tSmpMod.Enum.SEC_PER_SMP);
+				assert (t.smpm.get_string () == "SECPERSMP");
 			}
 			catch (GLib.Error e)
 			{
