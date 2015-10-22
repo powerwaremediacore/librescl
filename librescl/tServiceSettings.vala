@@ -30,14 +30,22 @@ namespace Lscl
   public class tServiceSettings : Serializable
   {
     [Description(nick="cbName", blurb="Control block name")]
-    public tServiceSettingsEnum cb_name { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType cb_name { get; set; }
     [Description(nick="datSet", blurb="Data set reference")]
-    public tServiceSettingsEnum dat_set { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType dat_set { get; set; }
   }
-  public enum tServiceSettingsEnum
+  public class tServiceSettingsType : BaseEnum
   {
-    DYN,
-    CONF,
-    FIX
+		construct {
+			_enumtype = typeof (tServiceSettingsType.Enum);
+		}
+		public tServiceSettingsType.Enum get_value () throws GLib.Error { return (tServiceSettingsType.Enum) to_integer (); }
+		public void set_value (tServiceSettingsType.Enum val) throws GLib.Error { parse_integer ((int) val); }
+		public enum Enum
+		{
+		  DYN,
+		  CONF,
+		  FIX
+		}
   }
 }

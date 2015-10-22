@@ -31,13 +31,13 @@ namespace Lscl
   public class tSMVSettings : tServiceSettings 
   {
     [Description(nick="smpRate", blurb="Type of supported sample rate")]
-    public tServiceSettingsEnum smp_rate  { get; set;  default=tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType smp_rate  { get; set; }
 
     [Description(nick="svID", blurb="Sample value identifier.")]
-    public tServiceSettingsEnum sv_id { get; set; default=tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType sv_id { get; set; }
 
     [Description(nick="optFields", blurb="Optional fields to include in report")]
-    public tServiceSettingsEnum opt_fields { get; set; default=tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType opt_fields { get; set; }
 
     [Description(nick="SmpRate", blurb="Sample Rate")]
     public tSmpRate.Array smp_rates { get; set; default = new tSmpRate.Array (); }

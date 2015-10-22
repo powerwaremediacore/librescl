@@ -30,15 +30,15 @@ namespace Lscl
   public class tReportSettings : tServiceSettings 
   {
     [Description(nick="rptID", blurb="Identifier for the report control block")]
-    public tServiceSettingsEnum rpt_id  { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType rpt_id  { get; set; }
     [Description(nick="optFields", blurb="Optional fields to include in report")]
-    public tServiceSettingsEnum opt_fields  { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType opt_fields  { get; set; }
     [Description(nick="bufTime", blurb="Buffer Time")]
-    public tServiceSettingsEnum buf_time  { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType buf_time  { get; set; }
     [Description(nick="trgOps", blurb="TrgOps contains the reasons which causes the control block to report a value into the report.")]
-    public tServiceSettingsEnum trg_ops  { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType trg_ops  { get; set; }
     [Description(nick="intgPd", blurb="Integrity period: reporting all values initiated by the server based on this period")]
-    public tServiceSettingsEnum intg_pd  { get; set; default = tServiceSettingsEnum.FIX; }
+    public tServiceSettingsType intg_pd  { get; set; }
   }
 }
 
