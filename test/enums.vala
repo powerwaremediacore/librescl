@@ -52,6 +52,8 @@ public class LsclTest.Enums
 		public tSmpMod smpm { get; set; }
 		[Description (nick="ServiceSett")]
 		public tServiceSettingsType svt { get; set; }
+		[Description (nick="SIUnit")]
+		public tSIUnit siu { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -635,6 +637,43 @@ public class LsclTest.Enums
 				assert (t.svt != null);
 				assert (t.svt.get_value () == tServiceSettingsType.Enum.DYN);
 				assert (t.svt.get_string () == "dyn");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/siunit/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.siu = new tSIUnit ();
+				t.siu.select (tSIUnit.Enum.V_HZ);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("ServiceSett");
+				assert (c != null);
+				assert (c.value == "Conf");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/siunit/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest ServiceSett = "kg/m³" />""");
+				t.deserialize (d);
+				assert (t.siu != null);
+				assert (t.siu.get_string () == "kg/m³");
 			}
 			catch (GLib.Error e)
 			{
