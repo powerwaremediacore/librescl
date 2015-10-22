@@ -34,6 +34,8 @@ public class LsclTest.Enums
 		public tCommonConductingEquipment ceq { get; set; }
 		[Description (nick="ServiceType")]
 		public tServiceType st { get; set; }
+		[Description (nick="FC")]
+		public tFC fc { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -275,6 +277,44 @@ public class LsclTest.Enums
 				assert (t.st != null);
 				assert (t.st.get_value () == tServiceType.Enum.SMV);
 				assert (t.st.get_string () == "SMV");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/fc/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.fc = new tFC ();
+				t.fc.set_value (tFC.Enum.SE);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("FC");
+				assert (c != null);
+				assert (c.value == "Se");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/fc/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest FC = "mx" />""");
+				t.deserialize (d);
+				assert (t.fc != null);
+				assert (t.fc.get_value () == tFC.Enum.MX);
+				assert (t.fc.get_string () == "mx");
 			}
 			catch (GLib.Error e)
 			{
