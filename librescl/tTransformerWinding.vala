@@ -32,7 +32,7 @@ namespace Lscl
 		[Description(nick="TapChanger", blurb="Transformer's tap changer")]
 		public tTapChanger tap_changer { get; set; }
 		[Description(nick="type", blurb="Type of Transformer Winding")]
-		public tPredefinedTransformerWinding winding_type { get; set; }
+		public tTransformerWindingEnum winding_type { get; set; }
 	}
 }
 

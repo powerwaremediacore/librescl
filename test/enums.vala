@@ -56,6 +56,8 @@ public class LsclTest.Enums
 		public tSIUnit siu { get; set; }
 		[Description (nick="Phase")]
 		public tPhase ph { get; set; }
+		[Description (nick="TrWnd")]
+		public tTransformerWindingEnum twt { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -722,6 +724,44 @@ public class LsclTest.Enums
 				t.deserialize (d);
 				assert (t.ph != null);
 				assert (t.ph.get_string () == "ALL");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/trans-winding/write",
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.twt = new tTransformerWindingEnum ();
+				t.twt.set_value (tPredefinedTransformerWinding.Enum.PTW);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("TrWnd");
+				assert (c != null);
+				assert (c.value == "Ptw");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/trans-winding/read",
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest TrWnd = "ptw" />""");
+				t.deserialize (d);
+				assert (t.twt != null);
+				assert (t.twt.get_value () == tPredefinedTransformerWinding.Enum.PTW);
+				assert (t.twt.get_string () == "ptw");
 			}
 			catch (GLib.Error e)
 			{

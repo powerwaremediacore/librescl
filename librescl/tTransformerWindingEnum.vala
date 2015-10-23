@@ -23,6 +23,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+public class Lscl.tTransformerWindingEnum : Lscl.tPredefinedTransformerWinding {}
+
 public class Lscl.tPredefinedTransformerWinding : Lscl.BaseEnum
 {
 	construct {
