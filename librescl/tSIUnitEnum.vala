@@ -50,7 +50,10 @@ public class Lscl.tSIUnit : Lscl.BaseValueList
 		if (index < 0 || index > _alternatives.length) return "";
 		return _alternatives[index];
 	}
-	public void select (Enum v) { set_string (_vals[v]); }
+	public void select (Enum v)
+	{
+		select_value_at ((int) v);
+	}
 	public enum Enum
 	{
 		NONE,

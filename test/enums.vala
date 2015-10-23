@@ -54,6 +54,8 @@ public class LsclTest.Enums
 		public tServiceSettingsType svt { get; set; }
 		[Description (nick="SIUnit")]
 		public tSIUnit siu { get; set; }
+		[Description (nick="Phase")]
+		public tPhase ph { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -649,15 +651,24 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.siu = new tSIUnit ();
+				Test.message ("tSIUnit testing values...");
+				var v1 = t.siu.get_value_at (tSIUnit.Enum.V_HZ);
+				assert (v1 != null);
+				Test.message ("tSIUnit value at: "+tSIUnit.Enum.V_HZ.to_string ()+" = "+v1);
 				t.siu.select (tSIUnit.Enum.V_HZ);
 				var d = new xDocument ();
+				Test.message ("Serializing...");
 				t.serialize (d);
+				Test.message ("Serializing Finalize... XML:\n"+d.to_string ());
 				var r = d.root;
+				Test.message ("root is null: "+(r == null).to_string ());
 				assert (r != null);
+				Test.message ("root is not null. Name is null?"+(r.name == null).to_string ());
 				assert (r.name == "NodeTest");
-				var c = r.attrs.get ("ServiceSett");
+				assert (r.attrs != null);
+				var c = r.attrs.get ("SIUnit");
 				assert (c != null);
-				assert (c.value == "Conf");
+				assert (c.value == "V/Hz");
 			}
 			catch (GLib.Error e)
 			{
@@ -670,10 +681,47 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
-				<NodeTest ServiceSett = "kg/m³" />""");
+				<NodeTest SIUnit = "kg/m³" />""");
 				t.deserialize (d);
 				assert (t.siu != null);
 				assert (t.siu.get_string () == "kg/m³");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/phase/write", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.ph = new tPhase ();
+				t.ph.set_value (tPhase.Enum.C);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("Phase");
+				assert (c != null);
+				assert (c.value == "C");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/phase/read", 
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest Phase = "ALL" />""");
+				t.deserialize (d);
+				assert (t.ph != null);
+				assert (t.ph.get_string () == "ALL");
 			}
 			catch (GLib.Error e)
 			{
