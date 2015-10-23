@@ -58,6 +58,8 @@ public class LsclTest.Enums
 		public tPhase ph { get; set; }
 		[Description (nick="TrWnd")]
 		public tTransformerWindingEnum twt { get; set; }
+		[Description (nick="UM")]
+		public tUnitMultiplier tum { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -762,6 +764,52 @@ public class LsclTest.Enums
 				assert (t.twt != null);
 				assert (t.twt.get_value () == tPredefinedTransformerWinding.Enum.PTW);
 				assert (t.twt.get_string () == "ptw");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/unit-multiplier/basic",
+		() => {
+			var u = new tUnitMultiplier ();
+			for (int i = tUnitMultiplier.Enum.ITEM; i < tUnitMultiplier.Enum.Y; i++) {
+				u.select_value_at (i);
+				assert (u.get_multiplier ((tUnitMultiplier.Enum) i) == u.get_multiplier_value ());
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/unit-multiplier/write",
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.tum = new tUnitMultiplier ();
+				t.tum.select (tUnitMultiplier.Enum.DEC_U);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("UM");
+				assert (c != null);
+				assert (c.value == "d");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/unit-multiplier/read",
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest UM = "p" />""");
+				t.deserialize (d);
+				assert (t.tum != null);
+				assert (t.tum.get_multiplier (tUnitMultiplier.Enum.PICO) == t.tum.get_multiplier_value ());
+				assert (t.tum.get_string () == "p");
 			}
 			catch (GLib.Error e)
 			{

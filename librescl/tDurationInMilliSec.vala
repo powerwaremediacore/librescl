@@ -32,7 +32,7 @@ namespace Lscl
     public tDurationInMilliSec()
     {
       this.unit.select (tSIUnit.Enum.SEC);
-      this.multiplier.set_value (tUnitMultiplier.Enum.m);
+      this.multiplier.select (tUnitMultiplier.Enum.MICRO);
     }
   }
 }

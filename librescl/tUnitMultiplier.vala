@@ -24,35 +24,37 @@
  */
 using GXml;
 
-public class Lscl.tUnitMultiplier : Lscl.BaseEnum
+public class Lscl.tUnitMultiplier : Lscl.BaseValueList
 {
+	private int[] _m = {0,-3,3,6,-6,-24,-21,-18,-15,-12,-9,-2,-1,1,
+											2,9,12,15,18,21,24};
 	construct {
-		_enumtype = typeof (tUnitMultiplier.Enum);
+		_vals = { "Item","m","k","M","mu","y","z","a","f","p","n","c","d","da",
+						"h","G","T","P","E","Z","Y"};
 	}
-  public tUnitMultiplier.Enum get_value () throws GLib.Error { return (tUnitMultiplier.Enum) to_integer (); }
-  public void set_value (tUnitMultiplier.Enum val) throws GLib.Error { parse_integer ((int) val); }
+	public void select (Enum v) { select_value_at (v); }
+	/**
+	 * If {@param v} is out of range of supported values, this method always return 0.
+	 */
+	public int get_multiplier (Enum v)
+	{
+		int index = (Enum) v;
+		if (index < 0 || index > _m.length || index > _vals.length) return 0;
+		return _m[v];
+	}
+	/**
+	 * Returns: multiplier based on current value, or 0 if value is not in list.
+	 */
+	public int get_multiplier_value ()
+	{
+		for (int i = 0; i < _vals.length; i++) {
+			if (_vals[i] == get_string ()) return get_multiplier ((Enum) i);
+		}
+		return 0;
+	}
 	public enum Enum
 	{
-		Item = 0,
-		m = -3,
-		k = 3,
-		M = 6,
-		mu = -6,
-		y = -24,
-		z = -21,
-		a = -18,
-		f = -15,
-		p = -12,
-		n = -9,
-		c = -2,
-		d = -1,
-		da = 1,
-		h = 2,
-		G = 9,
-		T = 12,
-		P = 15,
-		E = 18,
-		Z = 21,
-		Y = 24
+		ITEM,MILI,KILO,MEGA,MICRO,Y_U,Z_U,A_U,F_U,PICO,NANO,CENT_U,DEC_U,DEC,
+		HECT,GIGA,TERA,PETA,EPTA,Z,Y
 	}
 }
