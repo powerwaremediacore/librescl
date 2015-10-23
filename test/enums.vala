@@ -60,6 +60,8 @@ public class LsclTest.Enums
 		public tTransformerWindingEnum twt { get; set; }
 		[Description (nick="UM")]
 		public tUnitMultiplier tum { get; set; }
+		[Description (nick="Vk")]
+		public tValKind vk { get; set; }
 		public EnumTest () {}
 		public override string to_string () { return "EnumTest class"; }
 		public override string node_name () { return "NodeTest"; }
@@ -810,6 +812,44 @@ public class LsclTest.Enums
 				assert (t.tum != null);
 				assert (t.tum.get_multiplier (tUnitMultiplier.Enum.PICO) == t.tum.get_multiplier_value ());
 				assert (t.tum.get_string () == "p");
+			}
+			catch (GLib.Error e)
+			{
+				GLib.message (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/valkind/write",
+		() => {
+			try {
+				var t = new EnumTest ();
+				t.vk = new tValKind ();
+				t.vk.set_value (tValKind.Enum.RO);
+				var d = new xDocument ();
+				t.serialize (d);
+				var r = d.root;
+				assert (r != null);
+				assert (r.name == "NodeTest");
+				var c = r.attrs.get ("Vk");
+				assert (c != null);
+				assert (c.value == "Ro");
+			}
+			catch (GLib.Error e)
+			{
+				stdout.printf (@"ERROR: $(e.message)");
+				assert_not_reached ();
+			}
+		});
+		Test.add_func ("/librescl-test-suite/enums/valkind/read",
+		() => {
+			try {
+				var t = new EnumTest ();
+				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				<NodeTest Vk = "set" />""");
+				t.deserialize (d);
+				assert (t.vk != null);
+				assert (t.vk.get_value () == tValKind.Enum.SET);
+				assert (t.vk.get_string () == "set");
 			}
 			catch (GLib.Error e)
 			{
