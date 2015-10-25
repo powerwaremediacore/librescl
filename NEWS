@@ -1,3 +1,17 @@
+New for version 0.3.0 to 0.3.4
+* Ported to GXml 0.7.4
+* Properties now use GXml.SerializableProperty instances, allowing to remove
+  some basic properties like enums.integers, boolean, and others from serialization
+* Most enums now are ported to GXml.SerializableEnum and GXml.SerializableValueList
+  allowing to create concatenated lists like tLNClassEnum
+* Now most lists and enums provide a list of valid values while are flexible on
+  custom values
+* Lot of fixes on implementations to Edition 2.0
+* Now adding new elements to enums and value lists, no require API breaks
+* Collections like HashMap now use that name to improve API
+* Added most API to help bindings on HashMap, ArrayList and others
+* Improved SclDocument API for saving
+
 New for version 0.2.1:
 * Fixed build with recent versions of Vala
 * Added valac.m4 macros
