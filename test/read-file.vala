@@ -424,7 +424,7 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: Logical Node Type: $(ied_types[i])/$(ids[i])/$(lncs[i]) not found\n");
             assert_not_reached ();
           }
-          if (lnt.ln_class != lncs[i]) {
+          if (lnt.ln_class.get_string () != lncs[i]) {
             stdout.printf (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(lncs[i]), got $(lnt.ln_class)\n");
             assert_not_reached ();
           }
@@ -443,7 +443,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Incorrect IED Type for LNType: NULL/XCBR5/XCBR. Expected 'NULL', got: $(lnt.ied_type)\n");
           assert_not_reached ();
         }
-        if (lnt.ln_class != "XCBR") {
+        if (lnt.ln_class.get_string () != "XCBR") {
           stdout.printf (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class)\n");
           assert_not_reached ();
         }

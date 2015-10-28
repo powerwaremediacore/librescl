@@ -34,12 +34,12 @@ namespace Lscl
     [Description (nick="iedType", blurb="Data Objects as Properties in this Logical Node Type")]
     public string ied_type { get; set; default=Defaults.IED_TYPE; }
     [Description (nick="lnClass", blurb="Logical Node Class. Standard or custome one")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
 
     public tLNodeType.full (string iedtype, string lnclass, string id)
     {
       base.from_string (id);
-      ln_class = lnclass;
+      ln_class.set_string (lnclass);
       ied_type = iedtype;
     }
     // SerializableMapKey
