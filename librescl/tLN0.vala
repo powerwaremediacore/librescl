@@ -46,7 +46,7 @@ namespace Lscl
     public tLog log { get; set; }
     [Description(nick="lnClass",blurb="Allways set to LLN0")]
     public tLNClassEnum ln_class { get { return _lnclass; } set {} }
-    [Description(nick="inst",blurb="LN0 have no instances")]
+    [Description(nick="inst",blurb="LLN0 have no instances")]
     public string inst { get { return ""; } set {} }
   }
 }
