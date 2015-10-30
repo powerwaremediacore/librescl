@@ -24,12 +24,13 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
   public class tServiceWithMaxAndClient : tServiceWithMax
   {
     [Description(nick="client", blurb="Client")]
-    public bool client { get; set; default=true; }
+    public SerializableBool client { get; set; }
   }
 }

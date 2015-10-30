@@ -34,7 +34,7 @@ namespace Lscl
     [Description(nick="ix",blurb="Index")]
     public string ix { get; set; }
     [Description(nick="ixSpecified",blurb="Index specified")]
-    public bool ix_specified { get; set; }
+    public SerializableBool ix_specified { get; set; }
     [Description(nick="accessControl",blurb="")]
     public string access_control { get; set; }
     [Description(nick="SDI",blurb="")]

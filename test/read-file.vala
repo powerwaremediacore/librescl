@@ -470,7 +470,7 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: Data Object: $(doids[i]) has wrong type. Expected $(dotypes[i]), got: $(dobject.do_type)\n");
             assert_not_reached ();
           }
-          if (dobject.transient != dotrns[i]) {
+          if (dobject.transient.get_value () != dotrns[i]) {
             stdout.printf (@"ERROR: Data Object: $(doids[i]) has wrong transient value. Expected $(dotrns[i]), got: $(dobject.transient)\n");
             assert_not_reached ();
           }
@@ -538,15 +538,15 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count)\n");
             assert_not_reached ();
           }
-          if (da.dchg != dadchgs[i]) {
+          if (da.dchg.get_value () != dadchgs[i]) {
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadchgs[i]), got: $(da.dchg)\n");
             assert_not_reached ();
           }
-          if (da.qchg != daqchgs[i]) {
+          if (da.qchg.get_value () != daqchgs[i]) {
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(daqchgs[i]), got: $(da.qchg)\n");
             assert_not_reached ();
           }
-          if (da.dupd != dadupds[i]) {
+          if (da.dupd.get_value () != dadupds[i]) {
             stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadupds[i]), got: $(da.dupd)\n");
             assert_not_reached ();
           }
@@ -762,8 +762,8 @@ public class LsclTest.ReadFile
         assert (ied.services.gsse.max == "1");
         assert (ied.services.file_handling != null);
         assert (ied.services.conf_lns != null);
-        assert (ied.services.conf_lns.fix_prefix == false);
-        assert (ied.services.conf_lns.fix_ln_inst == true);
+        assert (ied.services.conf_lns.fix_prefix.get_value () == false);
+        assert (ied.services.conf_lns.fix_ln_inst.get_value () == true);
         // Acces Point Tests
         if (ied.access_points == null) {
           stdout.printf (@"ERROR: No access points found for 'IED1' \n");
@@ -778,11 +778,11 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Bad name for 'AccessPoint1' : $(ap.name)\n");
           assert_not_reached ();
         }
-        if (ap.router != false) {
+        if (ap.router.get_value () != false) {
           stdout.printf (@"ERROR: Bad router for 'IED1.AccessPoint1' : $(ap.router)\n");
           assert_not_reached ();
         }
-        if (ap.clock != true) {
+        if (ap.clock.get_value () != true) {
           stdout.printf (@"ERROR: Bad clock for 'IED1.AccessPoint1' : $(ap.clock)\n");
           assert_not_reached ();
         }
@@ -798,11 +798,11 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         // Tests for Authentication
-        assert (server.authentication.none == true);
-        assert (server.authentication.password == false);
-        assert (server.authentication.@weak == false);
-        assert (server.authentication.strong == false);
-        assert (server.authentication.certificate == false);
+        assert (server.authentication.none.get_value () == true);
+        assert (server.authentication.password.get_value () == false);
+        assert (server.authentication.@weak.get_value () == false);
+        assert (server.authentication.strong.get_value () == false);
+        assert (server.authentication.certificate.get_value () == false);
         // TODO: Association Tests
         assert (server.association != null);
         assert (server.association.kind.get_value () == tAssociationKind.Enum.PREESTABLISHED);
@@ -1030,9 +1030,9 @@ public class LsclTest.ReadFile
         assert (logc != null);
         assert (logc.desc == "Test Logs");
         assert (logc.log_name == "LD");
-        assert (logc.log_ena == true);
+        assert (logc.log_ena.get_value () == true);
         assert (logc.intg_pd == "5000");
-        assert (logc.reason_code = true);
+        assert (logc.reason_code.get_value () == true);
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });

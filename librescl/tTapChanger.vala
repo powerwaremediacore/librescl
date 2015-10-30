@@ -24,6 +24,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
@@ -32,7 +33,7 @@ namespace Lscl
 		[Description(nick="type", blurb="Type of Tap Changer")]
 		public string tap_type { get; set; default="LTC"; }
 		[Description(nick="virtual", blurb="Virtual equipment")]
-		public bool @virtual { get; set; default=false; }
+		public SerializableBool @virtual { get; set; }
 	}
 }
 

@@ -24,6 +24,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
@@ -32,6 +33,6 @@ namespace Lscl
     [Description(nick="maxAttributes", blurb="The maximum number of attributes allowed in a data set (an FCDA can contain several attributes)")]
     public string max_attributes { get; set; }
     [Description(nick="maxAttributesSpecified", blurb="The maximum number of attributes specified in a data set (an FCDA can contain several attributes)")]
-    public bool max_attributes_specified{ get; set; }
+    public SerializableBool max_attributes_specified{ get; set; }
   }
 }

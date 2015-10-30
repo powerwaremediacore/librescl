@@ -37,7 +37,7 @@ namespace Lscl
     [Description(nick=" accessControl", blurb="Access control definition for this DO.")]
     public string access_control { get; set; }
     [Description(nick="transient", blurb="If set to true, it indicates that the Transient definition applies.")]
-    public bool transient { get; set; }
+    public SerializableBool transient { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
     public class HashMap : SerializableHashMap<string,tDO> {

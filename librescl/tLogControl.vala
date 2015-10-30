@@ -32,9 +32,9 @@ namespace Lscl
     [Description (nick="logName", blurb="Reference to the LD, which is the owner of the log.")]
     public string log_name { get; set; }
     [Description (nick="logEna", blurb="Logging is enable if TRUE")]
-    public bool log_ena { get; set; default = true;}
+    public SerializableBool log_ena { get; set; }
     [Description (nick="reasonCode", blurb="If true this Logging Control Block have Trigger Options")]
-    public bool reason_code { get; set; default = true; }
+    public SerializableBool reason_code { get; set; }
     // Edition 2.0
     [Description (nick="ldInst", blurb="Logical Device instance for this log control block")]
     public string ld_inst { get; set; }

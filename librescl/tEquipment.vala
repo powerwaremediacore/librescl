@@ -24,13 +24,14 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
   public class tEquipment : tPowerSystemResource
   {
     [Description(nick="virtual", blurb="virtual")]
-    public bool @virtual { get; set; default = false; }
+    public SerializableBool @virtual { get; set; }
   }
 }
 

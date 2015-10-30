@@ -34,7 +34,7 @@ namespace Lscl
     [Description(nick="confRev", blurb="")]
     public string conf_rev { get; set; }
     [Description(nick="confRevSpecified", blurb="")]
-    public bool conf_rev_specified {get; set; }
+    public SerializableBool conf_rev_specified {get; set; }
 
     public override void init_containers ()
     {
@@ -51,7 +51,7 @@ namespace Lscl
     [Description (nick="prefix")]
     public string prefix { get; set; }
     [Description (nick="lnClass")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
     [Description (nick="lnInst")]
     public string ln_inst { get; set; }
 

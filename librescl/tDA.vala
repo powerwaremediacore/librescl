@@ -30,11 +30,11 @@ namespace Lscl
   public class tDA : tAbstractDataAttribute, SerializableMapKey<string>
   {
     [Description(nick="dchg", blurb="Data Change")]
-    public bool dchg { get; set; }
+    public SerializableBool dchg { get; set; }
     [Description(nick="qchg", blurb="Quallity Change")]
-    public bool qchg { get; set; }
+    public SerializableBool qchg { get; set; }
     [Description(nick="dupd", blurb="Data Update")]
-    public bool dupd { get; set; }
+    public SerializableBool dupd { get; set; }
     [Description(nick="fc", blurb="Functional Code")]
     public tFC fc { get; set; }
     // SerializableMapId

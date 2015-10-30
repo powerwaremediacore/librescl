@@ -39,7 +39,7 @@ namespace Lscl
     [Description(nick="confRev", blurb="The configuration revision number of this report control block")]
     public string conf_rev { get; set; default = "0"; }
     [Description(nick="buffered",blurb="Specifies if reports are buffered or not")]
-    public bool buffered { get; set; default = false; }
+    public SerializableBool buffered { get; set; }
     [Description(nick="bufTime", blurb="Buffer time")]
     public string buf_time { get; set; default = "0"; }
 

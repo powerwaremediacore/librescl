@@ -1,6 +1,6 @@
 m4_define([project_major_version], [0])
 m4_define([project_minor_version], [3])
-m4_define([project_micro_version], [4])
+m4_define([project_micro_version], [5])
 
 # LT_VERSION
 #   If library source has changed since last release, increment revision

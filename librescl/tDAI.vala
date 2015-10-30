@@ -40,7 +40,7 @@ namespace Lscl
     [Description(nick="ix", blurb="")]
     public string ix { get; set; }
     [Description(nick="ixSpecified", blurb="")]
-    public bool ix_specified { get; set; }
+    public SerializableBool ix_specified { get; set; }
 
     public string get_map_key () { return name; }
     public override void init_containers ()

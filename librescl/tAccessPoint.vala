@@ -30,9 +30,9 @@ namespace Lscl
   public class tAccessPoint : tNaming, GXml.SerializableMapKey<string>
   {
     [Description(nick="router", blurb="This is a function of the communication network on the IED.")]
-    public bool router { get; set; default= false; }
+    public SerializableBool router { get; set; }
     [Description(nick="clock", blurb="The presence and setting to true defines this IED to be a master clock at this bus.")]
-    public bool clock { get; set; default= false; }
+    public SerializableBool clock { get; set; }
     [Description(nick="Server", blurb="A communication entity within an IED.")]
     public tServer server { get; set; }
     [Description(blurb="List of Logical Nodes related with access point")]

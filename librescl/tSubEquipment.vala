@@ -24,6 +24,8 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
+
 namespace Lscl
 {
 	public class tSubEquipment : tPowerSystemResource 
@@ -31,7 +33,7 @@ namespace Lscl
 		[Description(nick="phase", blurb="The phase to which the subdevice belongs.")]
 		public tPhase phase  { get; set; }
 		[Description(nick="virtual", blurb="A virtual equipment")]
-		public bool @virtual  { get; set; default=false; }
+		public SerializableBool @virtual  { get; set; }
 	}
 	
 	public class tPhase : BaseEnum

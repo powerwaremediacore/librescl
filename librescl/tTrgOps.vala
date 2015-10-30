@@ -24,24 +24,23 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
- 
+using GXml;
 
 namespace Lscl
 {
 	public class tTrgOps : Serializable
 	{
 		[Description(nick="dchg", blurb="dchg enabled means that a change in the value of that attribute should cause a report")]
-		public bool dchg { get; set; default=false; }
+		public SerializableBool dchg { get; set; }
 		[Description(nick="qchg", blurb="dchg enabled means that a change in the value of the quality for that attribute should cause a report")]
-		public bool qchg { get; set; default=false; }
+		public SerializableBool qchg { get; set; }
 		[Description(nick="dupd", blurb="dupd enabled A report or a log entry shall be generated due to freezing the value of a freezable attribute or updating the value of any other attribute")]
-		public bool dupd { get; set; default=false; }
+		public SerializableBool dupd { get; set; }
 		[Description(nick="period", blurb="if it es enabled integrity period is relevant")]
-		public bool period { get; set; default=false; }
+		public SerializableBool period { get; set; }
 		/* Edition 2.0 */
 		[Description(nick="gi", blurb="general interrogation")]
-		public bool gi { get; set; default=true; }
+		public SerializableBool gi { get; set; }
 
 		public tTrgOps () { _property_edition.set ("gi", Edition.SECOND); }
 	}

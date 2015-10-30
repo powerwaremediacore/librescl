@@ -31,15 +31,15 @@ namespace Lscl
   public class tServerAuthentication : SerializableObjectModel
   {
     [Description(nick="none", blurb="No authentication.")]
-    public bool none { get; set; default=true; }
+    public SerializableBool none { get; set; }
     [Description(nick="password", blurb="Key for authentication.")]
-    public bool password { get; set; default=true; }
+    public SerializableBool password { get; set; }
     [Description(nick="weak", blurb="A weak password for authentication.")]
-    public bool @weak { get; set; default=true;}
+    public SerializableBool @weak { get; set; }
     [Description(nick="strong", blurb="A strong password for authentication.")]
-    public bool strong { get; set; default=true; }
+    public SerializableBool strong { get; set; }
     [Description(nick="certificate", blurb="A certificate for authentication.")]
-    public bool certificate { get; set; default=true; }
+    public SerializableBool certificate { get; set; }
 
     public override string node_name () { return "Authentication"; }
     public override string to_string () { return node_name (); }

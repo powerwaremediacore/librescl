@@ -34,7 +34,7 @@ namespace Lscl
     [Description(nick="sGroup", blurb="The number of the setting group to which this value belongs")]
     public string s_group  { get; set; }
     [Description(nick="sGroupSpecified", blurb="It specifies setting group the value belongs to")]
-    public bool s_group_specified  { get; set; }
+    public SerializableBool s_group_specified  { get; set; }
 
     // Enable set Element contents
     public void set_value (string val) { serialized_xml_node_value = val; }

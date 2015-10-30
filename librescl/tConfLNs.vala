@@ -24,15 +24,16 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
   public class tConfLNs : Serializable
   {
     [Description (nick="fixPrefix",blurb="Fix prefix")]
-    public bool fix_prefix { get; set; }
+    public SerializableBool fix_prefix { get; set; }
     [Description (nick="fixLnInst",blurb="Fix Logical Node instance")]
-    public bool fix_ln_inst { get; set; }
+    public SerializableBool fix_ln_inst { get; set; }
   }
 }
 

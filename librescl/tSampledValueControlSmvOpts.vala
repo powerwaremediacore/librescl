@@ -24,21 +24,22 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using GXml;
 
 namespace Lscl
 {
   public class tSampledValueControlSmvOpts : Serializable
   {
     [Description(nick="refreshTime", blurb="Time of refresh activity")]
-    public bool refresh_time { get; set; default=false; }
+    public SerializableBool refresh_time { get; set; }
     [Description(nick="sampleSynchronized", blurb="Samples are synchronized by clock signals")]
-    public bool sample_synchronized { get; set; default=false; }
+    public SerializableBool sample_synchronized { get; set; }
     [Description(nick="sampleRate", blurb="Sample rate from the instance")]
-    public bool sample_rate { get; set; default=false; }
+    public SerializableBool sample_rate { get; set; }
     [Description(nick="security", blurb="Security enabled")]
-    public bool security { get; set; default=false; }
+    public SerializableBool security { get; set; }
     [Description(nick="dataRef", blurb="If true, then the data set reference is included in the SV message")]
-    public bool data_ref { get; set; default=false; }
+    public SerializableBool data_ref { get; set; }
   }
 }
 
