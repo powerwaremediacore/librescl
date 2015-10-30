@@ -810,7 +810,7 @@ public class LsclTest.ReadFile
         assert (server.association.ied_name == "None");
         assert (server.association.ld_inst == "NoneLd");
         assert (server.association.prefix == "");
-        assert (server.association.ln_class == "XCBR");
+        assert (server.association.ln_class.get_string () == "XCBR");
         assert (server.association.ln_inst == "1");
         // Logical Device Tests
         assert (server.logical_devices != null);

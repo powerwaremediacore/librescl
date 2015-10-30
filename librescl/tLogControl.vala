@@ -41,7 +41,7 @@ namespace Lscl
     [Description (nick="prefix", blurb="Logical Node prefix")]
     public string prefix { get; set; }
     [Description (nick="lnClass", blurb="Logical Node class")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
     [Description (nick="lnInst", blurb="Logical Node instance")]
     public string ln_inst { get; set; }
     [Description(nick="bufTime", blurb="Buffer time")]

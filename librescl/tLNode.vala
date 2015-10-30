@@ -32,7 +32,7 @@ namespace Lscl
     [Description(nick="lnInst",blurb="Logical Node instance")]
     public string ln_inst { get; set; }
     [Description(nick="lnClass",blurb="Logical Node Class")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
     [Description(nick="iedName",blurb="IED's name")]
     public string ied_name { get; set; }
     [Description(nick="ldInst",blurb="Logical Device instance")]

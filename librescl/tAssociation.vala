@@ -41,7 +41,7 @@ namespace Lscl
     [Description(nick="prefix",blurb="The LN prefix")]
     public string prefix { get; set; default = ""; }
     [Description(nick="lnClass", blurb="The class of the client LN")]
-    public string ln_class { get; set; }
+    public tLNClassEnum ln_class { get; set; }
     [Description(nick="lnInst", blurb="The instance number of the client LN")]
     public string ln_inst { get; set; }
   }
