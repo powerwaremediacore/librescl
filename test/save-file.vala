@@ -23,7 +23,7 @@ public class LsclTest.SaveFile
 {
   public static void add_funcs ()
   {
-    Test.add_func ("/librescl-test-suite/read/set-file", 
+    Test.add_func ("/librescl-test-suite/save/set-file",
     () => {
       try {
         var scl = new SclDocument ();

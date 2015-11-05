@@ -62,7 +62,7 @@ namespace Lscl
    {
      string str = "SCL File:\n";
      if (header != null)
-       str += _("Version: ") + header.version + "\n"
+       str += "Version: " + header.version + "\n"
        + "Revision: " + header.revision + "\n";
      if (communication != null) {
        if (communication.subnetworks != null)
