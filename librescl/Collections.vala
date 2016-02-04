@@ -28,6 +28,19 @@ using GXml;
 using Gee;
 namespace Lscl
 {
+  public class SerializableHashMap<K,V> : GXml.SerializableHashMap<K,V>
+  {
+    public new GLib.List<K> list_keys () {
+      var l = new GLib.List<K> ();
+      foreach (K k in keys) { l.prepend (k); }
+      return l;
+    }
+    public new GLib.List<V> list_values () {
+      var l = new GLib.List<V> ();
+      foreach (V v in values) { l.prepend (v); }
+      return l;
+    }
+  }
   /**
    * A {link: GXml.SerializableHashMap} implementation with support for
    * duplicated entries.

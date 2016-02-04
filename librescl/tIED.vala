@@ -56,6 +56,8 @@ namespace Lscl
         }
         return str;
       }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tIED> list_values () { return (GLib.List<tIED>) base.list_values (); }
     }
   }
 }

@@ -56,6 +56,8 @@ namespace Lscl
 
     public class HashMap : SerializableHashMap<string,tAccessPoint> {
       public new tAccessPoint get (string name) { return base.get (name); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tAccessPoint> list_values () { return (GLib.List<tAccessPoint>) base.list_values (); }
     }
   }
 }
