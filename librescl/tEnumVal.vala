@@ -38,6 +38,7 @@ namespace Lscl
 
     public class Array : SerializableArrayList<tEnumVal> {
 			public new tEnumVal get (int index) { return base.get (index); }
+      public new tEnumVal[] to_array () { return ((Gee.Collection<tEnumVal>) this).to_array (); }
 		}
   }
   

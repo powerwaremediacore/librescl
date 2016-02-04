@@ -38,7 +38,7 @@ public class LsclTest.SaveFile
         ied.access_points.set (ap.name, ap);
         scl.ieds.set (ied.name, ied);
         var f = File.new_for_path (LsclTest.TEST_SAVE_DIR + "/saved1.cid");
-        scl.save_to (f);
+        scl.save_as (f);
         assert (f.query_exists ());
         var scl2 = new SclDocument ();
         scl2.read_from_file (f);

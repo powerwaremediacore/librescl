@@ -74,6 +74,7 @@ namespace Lscl
   {
     public class Array : GXml.SerializableArrayList <tSmpRate> {
 			public new tSmpRate get (int index) { return base.get (index); }
+      public new tSmpRate[] to_array () { return ((Gee.Collection<tSmpRate>) this).to_array (); }
 		}
   }
   /**
@@ -83,6 +84,7 @@ namespace Lscl
   {
     public class Array : GXml.SerializableArrayList <tSamplesPerSec> {
 			public new tSamplesPerSec get (int index) { return base.get (index); }
+      public new tSamplesPerSec[] to_array () { return ((Gee.Collection<tSamplesPerSec>) this).to_array (); }
 		}
   }
   /**
@@ -92,6 +94,7 @@ namespace Lscl
   {
     public class Array : GXml.SerializableArrayList <tSecPerSamples> {
 			public new tSecPerSamples get (int index) { return base.get (index); }
+      public new tSecPerSamples[] to_array () { return ((Gee.Collection<tSecPerSamples>) this).to_array (); }
 		}
   }
 }

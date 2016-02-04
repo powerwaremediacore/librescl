@@ -49,6 +49,7 @@ namespace Lscl
 
     public class Array : SerializableArrayList<tSampledValueControl> {
 			public new tSampledValueControl @get (int index) { return base.get (index); }
+      public new tSampledValueControl[] to_array () { return ((Gee.Collection<tSampledValueControl>) this).to_array (); }
 		}
   }
 	public class tSmpMod : BaseEnum

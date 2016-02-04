@@ -29,7 +29,10 @@ namespace Lscl
 {
   public class tAccessControl : Serializable
   {
-    public class Array : SerializableArrayList<tAccessControl> {}
+    public class Array : SerializableArrayList<tAccessControl> {
+      public new tAccessControl get (int index) { return base.get (index); }
+      public new tAccessControl[] to_array () { return ((Gee.Collection<tAccessControl>) this).to_array (); }
+    }
   }
 }
 

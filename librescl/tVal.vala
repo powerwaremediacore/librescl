@@ -43,6 +43,7 @@ namespace Lscl
 
     public class Array : SerializableArrayList<tVal> {
 			public new tVal get (int index) { return base.get (index); }
+      public new tVal[] to_array () { return ((Gee.Collection<tVal>) this).to_array (); }
 		}
   }
 

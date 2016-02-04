@@ -63,6 +63,7 @@ namespace Lscl
 
     public class Array : SerializableArrayList<tClientLN> {
 			public new tClientLN get (int index) { return base.get (index); }
+      public new tClientLN[] to_array () { return ((Gee.Collection<tClientLN>) this).to_array (); }
 		}
   }
 }

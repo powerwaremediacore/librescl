@@ -59,6 +59,7 @@ namespace Lscl
     
     public class Array : SerializableArrayList<tExtRef> {
       public new tExtRef get (int index) { return base.get (index); }
+      public new tExtRef[] to_array () { return ((Gee.Collection<tExtRef>) this).to_array (); }
     }
   }
   // tExtRef.service_type must have just one of this enum value

@@ -73,6 +73,7 @@ namespace Lscl
 		public override string node_name () { return "P"; }
 		public class Array : SerializableArrayList<tPPhysConn> {
 			public new tPPhysConn get (int index) { return base.get (index); }
+      public new tPPhysConn[] to_array () { return ((Gee.Collection<tPPhysConn>) this).to_array (); }
 		}
 	}
 	public class tPTypePhysConn : tPredefinedPTypePhysConn {}

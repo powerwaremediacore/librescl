@@ -48,6 +48,7 @@ namespace Lscl
 
     public class Array : SerializableArrayList<tFCDA> {
       public new tFCDA get (int index)  { return base.get (index); }
+      public new tFCDA[] to_array () { return ((Gee.Collection<tFCDA>) this).to_array (); }
     }
   }
 }

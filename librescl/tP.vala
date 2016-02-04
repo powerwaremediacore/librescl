@@ -66,6 +66,7 @@ namespace Lscl
 
     public class Array : GXml.SerializableArrayList<tP> {
 			public new tP get (int index) { return base.get (index); }
+      public new tP[] to_array () { return ((Gee.Collection<tP>) this).to_array (); }
 		}
 
     public enum TypeEnum

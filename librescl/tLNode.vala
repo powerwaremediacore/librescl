@@ -43,7 +43,8 @@ namespace Lscl
     public string ln_type { get; set; }
 
     public class Array : SerializableArrayList<tLNode> {
-			public new tLNode get (int index) { return base.get (index); } 
+			public new tLNode get (int index) { return base.get (index); }
+      public new tLNode[] to_array () { return ((Gee.Collection<tLNode>) this).to_array (); }
 		}
   }
 }

@@ -99,7 +99,7 @@ public class Lscl.SclDocument : Scl
     GLib.message ("Starting save operation from GXml");
 #endif
     file_operation_start (_file.get_path ());
-    document.save_to (_file, cancellable);
+    document.save_as (_file, cancellable);
 #if DEBUG
     GLib.message ("Ending save operation from GXml");
 #endif
@@ -111,7 +111,7 @@ public class Lscl.SclDocument : Scl
    * no change in file's name is made, then next {@link save()} operations will
    * save to original file setted by {@link set_file()}.
    */
-  public bool save_to (GLib.File file, Lscl.Edition edition = Lscl.Edition.FIRST, Cancellable? cancellable = null) throws GLib.Error
+  public bool save_as (GLib.File file, Lscl.Edition edition = Lscl.Edition.FIRST, Cancellable? cancellable = null) throws GLib.Error
   {
     return_val_if_fail (set_edition (edition), false);
     var document = new GXml.TwDocument ();
@@ -121,7 +121,7 @@ public class Lscl.SclDocument : Scl
     GLib.message ("Starting save operation from GXml");
 #endif
     file_operation_start (file.get_path ());
-    document.save_to (file, cancellable);
+    document.save_as (file, cancellable);
 #if DEBUG
     GLib.message ("Ending save operation from GXml");
 #endif
