@@ -45,7 +45,7 @@ namespace Lscl
    * A {link: GXml.SerializableHashMap} implementation with support for
    * duplicated entries.
    */
-  public class HashMap<K,V> : GXml.SerializableHashMap<K,V>
+  public class HashMap<K,V> : SerializableHashMap<K,V>
   {
     public SerializableArrayList<V> duplicated { get; set; }
     public override GXml.Node? deserialize (GXml.Node node)

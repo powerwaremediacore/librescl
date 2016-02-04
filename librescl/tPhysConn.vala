@@ -46,6 +46,8 @@ namespace Lscl
 		}
     public class HashMap : SerializableHashMap<string,tPhysConn> {
 			public new tPhysConn get (string type) { return base.get (type); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tPhysConn> list_values () { return (GLib.List<tPhysConn>) base.list_values (); }
 	 }
 	}
 

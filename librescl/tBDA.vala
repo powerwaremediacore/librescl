@@ -35,6 +35,8 @@ namespace Lscl
     public class HashMap : Lscl.HashMap<string,tBDA>
 	 {
 			public new tBDA @get (string key) { return base.get (key); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tBDA> list_values () { return (GLib.List<tBDA>) base.list_values (); }
 		}
   }
 }

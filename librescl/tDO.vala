@@ -42,6 +42,8 @@ namespace Lscl
     public string get_map_key () { return name; }
     public class HashMap : SerializableHashMap<string,tDO> {
       public new tDO get (string name) { return base.get (name); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tDO> list_values () { return (GLib.List<tDO>) base.list_values (); }
     }
   }
 }

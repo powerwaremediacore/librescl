@@ -36,6 +36,8 @@ namespace Lscl
 
 		public class HashMap : SerializableHashMap<string,tSDO> {
 			public new tSDO @get (string name) { return base.get (name); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tSDO> list_values () { return (GLib.List<tSDO>) base.list_values (); }
 		}
 	}
 }

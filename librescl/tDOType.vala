@@ -42,6 +42,8 @@ namespace Lscl
     public class HashMap : Lscl.HashMap<string,tDOType>
 	 {
 		 public new tDOType get (string id) { return base.get (id); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tDOType> list_values () { return (GLib.List<tDOType>) base.list_values (); }
 	 }
   }
 }

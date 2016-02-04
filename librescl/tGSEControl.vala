@@ -39,6 +39,8 @@ namespace Lscl
     public class HashMap : SerializableHashMap<string,tGSEControl>
 	 {
 			public new tGSEControl get (string key) { return base.get (key); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tGSEControl> list_values () { return (GLib.List<tGSEControl>) base.list_values (); }
 	 }
   }
 }

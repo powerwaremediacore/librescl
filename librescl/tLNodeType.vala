@@ -48,6 +48,8 @@ namespace Lscl
     public class HashMap : Lscl.HashMap<string,tLNodeType>
 	 {
 		 public new tLNodeType get (string id) { return base.get (id); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tLNodeType> list_values () { return (GLib.List<tLNodeType>) base.list_values (); }
 	 }
   }
 }

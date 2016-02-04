@@ -50,6 +50,8 @@ namespace Lscl
     }
     public class HashMap : SerializableHashMap<string,tDAI> {
       public new tDAI @get (string name) { return base.get (name); }
+      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
+      public new GLib.List<tDAI> list_values () { return (GLib.List<tDAI>) base.list_values (); }
     }
   }
 }
