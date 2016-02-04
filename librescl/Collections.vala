@@ -193,6 +193,11 @@ namespace Lscl
       if (storage == null)
         storage = new Gee.HashMultiMap<P,Gee.HashMultiMap<S,Gee.HashMap<T,V>>> ();
     }
+    public new GLib.List<V> list_values () {
+      var l = new GLib.List<V> ();
+      foreach (V v in values ()) { l.prepend (v); }
+      return l;
+    }
     // Serializable Interface
     protected Gee.HashMap<string,GXml.Node> _unknown_serializable_properties = new Gee.HashMap<string,GXml.Node> ();
     protected Gee.ArrayList<GXml.Node> _unknown_serializable_nodes = new ArrayList<GXml.Node> ();

@@ -104,6 +104,7 @@ test/Makefile
 test/tests-config.vala
 plugins/Makefile
 plugins/default/Makefile
+scripts/Makefile
 
 ])
 

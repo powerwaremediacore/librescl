@@ -59,6 +59,7 @@ namespace Lscl
       {
         return @get (lnclass, inst, prefix);
       }
+      public new GLib.List<tLN> list_values () { return (GLib.List<tLN>) ((Lscl.ThreeMap) this).list_values (); }
     }
   }
 }
