@@ -1,6 +1,6 @@
 m4_define([project_major_version], [0])
-m4_define([project_minor_version], [3])
-m4_define([project_micro_version], [5])
+m4_define([project_minor_version], [4])
+m4_define([project_micro_version], [0])
 
 # LT_VERSION
 #   If library source has changed since last release, increment revision
@@ -87,7 +87,7 @@ PKG_CHECK_MODULES(GXML,gio-2.0
 glib-2.0
 gobject-2.0
 gee-0.8 >= 0.10
-gxml-0.6 >= 0.7.3)
+gxml-0.6 >= 0.8.2)
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0)
 

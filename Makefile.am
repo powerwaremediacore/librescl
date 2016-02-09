@@ -4,7 +4,8 @@ SUBDIRS = \
 	librescl \
 	test \
 	plugins \
-	po
+	po \
+	scripts
 
 INTLTOOL_FILES = intltool-extract.in \
                  intltool-merge.in \
