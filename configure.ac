@@ -1,5 +1,5 @@
 m4_define([project_major_version], [0])
-m4_define([project_minor_version], [4])
+m4_define([project_minor_version], [5])
 m4_define([project_micro_version], [0])
 
 # LT_VERSION
