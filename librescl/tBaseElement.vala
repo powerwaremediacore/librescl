@@ -31,10 +31,30 @@ namespace Lscl
 {
   public class tBaseElement : Lscl.Serializable
   {
+#if ENABLE_PERFORMANCE
+    private GXml.Node node;
+    private tPrivateArray _privates = new tPrivateArray ();
+#endif
+
     [Description(nick="Text", blurb="")]
     public tText text { get; set; }
+
+#if ENABLE_PERFORMANCE
+    [Description(blurb="Logical Node Types templates")]
+    public tLNodeType.HashMap privates {
+        get {
+            if (_privates.size == 0) {
+                if (node == null) return _privates;
+                _privates.clear ();
+                _privates.deserialize (node);
+            }
+        }
+        set { _privates = value; }
+    }
+#else
     [Description(nick="Private", blurb="Free form data to be used by Vendor")]
-    public tPrivate @private { get; set; }
+    public tPrivateArray @privates { get; set; default = new tPrivateArray (); }
+#endif
   }
 }
 
