@@ -1,4 +1,14 @@
+==============================
+0.4.1
+==============================
 
+* Better support for scripts
+* Ported to GXml 0.6 version 0.8.2
+* tBaseElement uses array of tPrivate objects
+
+==============================
+0.3.x
+==============================
 New for version 0.3.0 to 0.3.4
 * Ported to GXml 0.7.4
 * Properties now use GXml.SerializableProperty instances, allowing to remove
