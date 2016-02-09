@@ -31,10 +31,13 @@ namespace Lscl
 {
   public class tBaseElement : Lscl.Serializable
   {
+#if ENABLE_PERFORMANCE
+    private GXml.Node node;
+#endif
     [Description(nick="Text", blurb="")]
     public tText text { get; set; }
     [Description(nick="Private", blurb="Free form data to be used by Vendor")]
-    public tPrivate @private { get; set; }
+    public tPrivateArray @private { get; set; default = new tPrivateArray (); }
   }
 }
 

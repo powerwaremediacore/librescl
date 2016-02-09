@@ -28,10 +28,16 @@ public class Performance
       try {
         double time;
         Test.timer_start ();
+        Test.message ("Initalizing Document");
         var scl = new SclDocument ();
         scl.read_from_path (LsclTest.TEST_DIR + "/tests-files/generic.cid");
+        Test.message ("Finished to read Document...");
         time = Test.timer_elapsed ();
         Test.minimized_result (time, "Read generic.cid: %g seconds", time);
+        Test.timer_start ();
+        Test.message ("SCL: "+scl.to_string ());
+        time = Test.timer_elapsed ();
+        Test.minimized_result (time, "Access to SCL: %g seconds", time);
       }
       catch (GLib.Error e) {
         Test.message (e.message);

@@ -5,6 +5,7 @@ scl = Lscl.SclDocument()
 print("Loading 'test.scd' file...")
 scl.read_from_path('test.scd')
 print ("File loaded...")
+print (scl.to_string ())
 print ("List of IEDs")
 for iedName in scl.get_ieds().list_keys():
   print ("IED: "+iedName)

@@ -27,12 +27,96 @@
 using GXml;
 public class Lscl.tDataTypeTemplates : Serializable
 {
+#if ENABLE_PERFORMANCE
+    private GXml.Node node;
+    private tLNodeType.HashMap _logical_node_types;
+    private tDOType.HashMap _data_object_types;
+    private tDAType.HashMap _data_attribute_types;
+    private tEnumType.HashMap _enum_types;
+#endif
+
+#if ENABLE_PERFORMANCE
+    [Description(blurb="Logical Node Types templates")]
+    public tLNodeType.HashMap logical_node_types {
+        get {
+            if (_logical_node_types.size == 0) {
+                if (node == null) return _logical_node_types;
+                _logical_node_types.clear ();
+                _logical_node_types.deserialize (node);
+            }
+        }
+        set { _logical_node_types = value; }
+    }
+#else
     [Description(blurb="Logical Node Types templates")]
     public tLNodeType.HashMap logical_node_types { get; set; default = new tLNodeType.HashMap (); }
+#endif
+
+#if ENABLE_PERFORMANCE
+    [Description(blurb="Data Object Types templates")]
+    public tDOType.HashMap data_object_types {
+        get {
+            if (_data_object_types.size == 0) {
+                if (node == null) return _data_object_types;
+                _data_object_types.clear ();
+                _data_object_types.deserialize (node);
+            }
+        }
+        set { _data_attribute_types = value; }
+    }
+#else
     [Description(blurb="Data Object Types templates")]
     public tDOType.HashMap data_object_types { get; set; default = new tDOType.HashMap (); }
+#endif
+
+#if ENABLE_PERFORMANCE
+    [Description(blurb="Data Attributes Types templates")]
+    public tDAType.HashMap data_attribute_types {
+        get {
+            if (_data_attribute_types.size == 0) {
+                if (node == null) return _data_attribute_types;
+                _data_attribute_types.clear ();
+                _data_attribute_types.deserialize (node);
+            }
+        }
+        set { _data_attribute_types = value; }
+    }
+#else
     [Description(blurb="Data Attributes Types templates")]
     public tDAType.HashMap data_attribute_types { get; set; default = new tDAType.HashMap (); }
+#endif
+
+#if ENABLE_PERFORMANCE
+    [Description(nick="EnumType",blurb="Data Attributes Types templates")]
+    public tEnumType.HashMap enum_types {
+        get {
+            if (_enum_types.size == 0) {
+                if (node == null) return _enum_types;
+                _enum_types.clear ();
+                _enum_types.deserialize (node);
+            }
+        }
+        set { _enum_types = value; }
+    }
+#else
     [Description(nick="EnumType",blurb="Data Attributes Types templates")]
     public tEnumType.HashMap enum_types { get; set; default = new tEnumType.HashMap (); }
+#endif
+
+#if ENABLE_PERFORMANCE
+    construct {
+        _logical_node_types = new tLNodeType.HashMap ();
+        _data_object_types new tDOType.HashMap ();
+        _data_attribute_types = new tDAType.HashMap ();
+        _enum_types = new tEnumType.HashMap ();
+    }
+
+    public override GXml.Node? deserialize (GXml.Node node) throws GLib.Error {
+      this.node = node;
+      _logical_node_types.clear ();
+      _data_object_types.clear ();
+      _data_attribute_types.clear ();
+      return node;
+    }
+#endif
 }
