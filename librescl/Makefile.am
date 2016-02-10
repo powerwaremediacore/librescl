@@ -159,27 +159,47 @@ endif
 
 AM_VALAFLAGS += \
 	$(top_srcdir)/vapi/config.vapi \
-	--pkg gxml-0.6 \
+	--pkg gxml-0.10 \
 	-C -H lscl.h \
 	--library lscl-0.4
 
 liblscl_0_4_la_LIBADD = $(GXML_LIBS)
 
-lscl_0_4_la_vala.stamp: $(sources)
-	$(VALAC) $(AM_VALAFLAGS) $^
 
-$(sources:.vala=.c): lscl_0_4_la_vala.stamp
+vala-stamp: $(sources)
+	@rm -f vala-temp
+	@touch vala-temp
+	$(VALAC) $(AM_VALAFLAGS) $^
+	@mv -f vala-temp $@
+
+$(sources:.vala=.c): vala-stamp
+## Recover from the removal of $@
+	@if test -f $@; then :; else \
+		trap ’rm -rf vala-lock vala-stamp’ 1 2 13 15; \
+		if mkdir vala-lock 2>/dev/null; then \
+## This code is being executed by the first process.
+			rm -f vala-stamp; \
+			$(MAKE) $(AM_MAKEFLAGS) vala-stamp; \
+			rmdir vala-lock; \
+		else \
+## This code is being executed by the follower processes.
+## Wait until the first process is done.
+			while test -d vala-lock; do sleep 1; done; \
+## Succeed if and only if the first process succeeded.
+			test -f vala-stamp; exit $$?; \
+		fi; \
+	fi
 
 liblscl_0_4_la_SOURCES= $(sources:.vala=.c)
 
-lscl.h: lscl_0_4_la_vala.stamp
+lscl.h: liblscl-0.4.la
 lscldir = $(includedir)/librescl-$(API_VERSION)/librescl
 lscl_HEADERS = lscl.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = lscl-0.4.pc
 
-lscl-0.4.vapi: lscl_0_4_la_vala.stamp
+lscl-0.4.vapi: liblscl-0.4.la
 vapidir = $(datadir)/vala/vapi
 dist_vapi_DATA = \
 	lscl-0.4.vapi \
@@ -190,7 +210,6 @@ EXTRA_DIST = \
 	lscl-0.4.pc
 
 BUILT_SOURCES = \
-	lscl_0_4_la_vala.stamp \
 	lscl.h \
 	lscl-0.4.vapi
 
@@ -214,7 +233,7 @@ liblscl_dlname=\
 INTROSPECTION_GIRS = Lscl-$(API_VERSION).gir
 INTROSPECTION_COMPILER_ARGS = --includedir=. -l $(liblscl_dlname)
 
-Lscl-0.4.gir: lscl_0_4_la_vala.stamp
+Lscl-0.4.gir: liblscl-0.4.la
 Lscl-0.4.typelib: $(INTROSPECTION_GIRS)
 	$(INTROSPECTION_COMPILER) $(INTROSPECTION_COMPILER_ARGS)  $< -o $@
 
@@ -237,7 +256,7 @@ if PLATFORM_WIN32
 AM_VALAFLAGS += \
   --symbols=librescl.symbols
 
-librescl.symbols: lscl_0_4_la_vala.stamp
+librescl.symbols: liblscl-0.4.la
 
 liblscl_0_4_la_LDFLAGS += -shared -o lscl-0.4.dll -no-undefined \
 	-out-imlib -export-all-symbols -output-def

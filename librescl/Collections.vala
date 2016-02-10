@@ -30,6 +30,29 @@ namespace Lscl
 {
   public class SerializableHashMap<K,V> : GXml.SerializableHashMap<K,V>
   {
+    private GXml.Node node;
+
+    construct {
+      init_properties ();
+    }
+    public new V @get (K key) {
+      Test.message ("At LSCL.SerializableHashMap: Getting value from type: "+this.get_type ().name ());
+      Test.message ("ignored_serializable_properties NULL? "+(ignored_serializable_properties==null).to_string ());
+      if (node == null) return null;
+      if (size == 0) {
+        Test.message ("Deserializing from node");
+        ((GXml.SerializableHashMap) this).default_deserialize (node);
+      }
+      return base.get (key);
+    }
+    public override GXml.Node? deserialize (GXml.Node node) throws GLib.Error
+      requires (node_name () != null)
+    {
+      Test.message ("Deserializing HashMap for type: "+this.get_type ().name ());
+      this.node = node;
+      //default_deserialize (node);
+      return node;
+    }
     public new GLib.List<K> list_keys () {
       var l = new GLib.List<K> ();
       foreach (K k in keys) { l.prepend (k); }
@@ -205,8 +228,12 @@ namespace Lscl
     protected ParamSpec[] properties { get; set; }
     public GLib.HashTable<string,GLib.ParamSpec> ignored_serializable_properties { get; protected set; }
     public string? serialized_xml_node_value { get; protected set; default=null; }
-    public Gee.Map<string,GXml.Node> unknown_serializable_properties { get { return _unknown_serializable_properties; } }
-    public Gee.Collection<GXml.Node> unknown_serializable_nodes { get { return _unknown_serializable_nodes; } }
+    public Gee.Map<string,GXml.Node> unknown_serializable_properties {
+      owned get { return (Gee.Map<string,GXml.Node>) _unknown_serializable_properties.ref (); }
+    }
+    public Gee.Collection<GXml.Node> unknown_serializable_nodes {
+      owned get { return (Gee.Collection<GXml.Node>) _unknown_serializable_nodes.ref (); }
+    }
 
     public virtual bool get_enable_unknown_serializable_property () { return false; }
     public virtual bool serialize_use_xml_node_value () { return false; }
@@ -318,5 +345,21 @@ namespace Lscl
       return true;
     }
     public bool set_namespace (GXml.Node node) { return true; }
+  }
+  public class Array<G> : SerializableArrayList<G> {
+    private GXml.Node node;
+
+    public new G @get (int index) {
+      Test.message ("Accessing data for type: "+this.get_type ().name ());
+      if (node == null) return null;
+      if (size == 0)
+        default_deserialize (node);
+      return base.get (index);
+    }
+    public override GXml.Node? deserialize (GXml.Node node) throws GLib.Error
+     requires (node_name () != null) {
+      this.node = node;
+      return node;
+    }
   }
 }

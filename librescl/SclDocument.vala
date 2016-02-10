@@ -139,7 +139,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.xDocument.from_gfile (_file);
+    var document = new GXml.GDocument.from_file (_file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -153,7 +153,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.xDocument.from_path (path);
+    var document = new GXml.GDocument.from_path (path);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -166,7 +166,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (_file != null, false);
     return_val_if_fail (_file.query_exists (), false);
     file_operation_start (_file.get_path ());
-    var document = new GXml.xDocument.from_gfile (_file);
+    var document = new GXml.GDocument.from_file (_file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -180,7 +180,7 @@ public class Lscl.SclDocument : Scl
     return_val_if_fail (file.query_exists (), false);
     _file = file;
     file_operation_start (_file.get_path ());
-    var document = new GXml.xDocument.from_gfile (file);
+    var document = new GXml.GDocument.from_file (file);
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
@@ -191,7 +191,7 @@ public class Lscl.SclDocument : Scl
    */
   public void read_from_string (string str) throws GLib.Error
   {
-    var document = new GXml.xDocument.from_string (str);
+    var document = new GXml.GDocument.from_string (str);
     deserialize (document);
   }
 }

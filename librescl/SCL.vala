@@ -38,7 +38,7 @@ namespace Lscl
                   blurb="Subneworks and communications descriptions")]
     public tCommunication communication { get; set; }
     [Description (blurb="IEDs defined in this configuration file")]
-    public tIED.HashMap ieds { get; set; }
+    public tIED.HashMap ieds { get; set; default = new tIED.HashMap (); }
     [Description (nick="DataTypeTemplates", blurb="Templates")]
     public tDataTypeTemplates data_type_templates { get; set; }
 
@@ -51,11 +51,6 @@ namespace Lscl
     public override string node_name ()
     {
       return "SCL";
-    }
-    public override void init_containers ()
-    {
-      if (ieds == null)
-        ieds = new tIED.HashMap ();
     }
 
    public new string to_string ()

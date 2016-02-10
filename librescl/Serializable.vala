@@ -151,8 +151,8 @@ namespace Lscl
     public class OtherProperty : Object
     {
       protected GXml.Node node;
-      public string name { get { return node.name; } }
-      public string @value { get { return node.value; } }
+      public string name { owned get { return node.name.dup (); } }
+      public string @value { owned get { return node.value.dup (); } }
       public OtherProperty (GXml.Node attr)
       {
         this.node = attr;
@@ -161,7 +161,7 @@ namespace Lscl
     public class OtherElement : Object
     {
       private GXml.Node node;
-      public string name { get { return node.name; } } 
+      public string name { owned get { return node.name.dup (); } } 
       public OtherElement (GXml.Node node)
       {
         this.node = node;
