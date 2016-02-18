@@ -38,13 +38,33 @@ namespace Lscl
     public new V @get (K key) {
       Test.message ("At LSCL.SerializableHashMap: Getting value from type: "+this.get_type ().name ());
       Test.message ("ignored_serializable_properties NULL? "+(ignored_serializable_properties==null).to_string ());
-      if (node == null) return null;
-      if (size == 0) {
-        Test.message ("Deserializing from node");
+      if (node != null && size == 0) {
+        Test.message ("Get: Deserializing from node");
         ((GXml.SerializableHashMap) this).default_deserialize (node);
       }
-      return base.get (key);
+      return (this as GXml.SerializableHashMap<K,V>).get (key);
     }
+
+    public new Gee.Collection<V> values {
+      owned get {
+        if (node != null && size == 0) {
+          Test.message ("Values: Deserializing from node");
+          ((GXml.SerializableHashMap) this).default_deserialize (node);
+        }
+        return (this as GXml.SerializableHashMap<K,V>).values;
+      }
+    }
+
+    public new int size {
+      get {
+        if (node != null) {
+          Test.message ("Size: Deserializing from node");
+          ((GXml.SerializableHashMap) this).default_deserialize (node);
+        }
+        return (this as GXml.SerializableHashMap<K,V>).size;
+      }
+    }
+
     public override GXml.Node? deserialize (GXml.Node node) throws GLib.Error
       requires (node_name () != null)
     {
