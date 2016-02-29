@@ -23,7 +23,7 @@ public class LsclTest.ReadFile
 {
   public static void add_funcs ()
   {
-    Test.add_func ("/librescl-test-suite/read/set-file", 
+    Test.add_func ("/librescl/read/set-file", 
     () => {
       try {
         string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
@@ -41,7 +41,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read/set-path", 
+    Test.add_func ("/librescl/read/set-path", 
     () => {
       try {
         string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
@@ -57,7 +57,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read/from-file", 
+    Test.add_func ("/librescl/read/from-file", 
     () => {
       try {
         string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
@@ -73,7 +73,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read/from-path", 
+    Test.add_func ("/librescl/read/from-path", 
     () => {
       try {
         string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
@@ -86,7 +86,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-string", 
+    Test.add_func ("/librescl/read-string", 
     () => {
       try {
         string str = "<SCL><Header></Header></SCL>";
@@ -100,10 +100,10 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-scl", 
+    Test.add_func ("/librescl/read-scl", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
       }
@@ -113,7 +113,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-header", 
+    Test.add_func ("/librescl/read-header", 
     () => {
       try {
         var scl = new SclDocument ();
@@ -128,6 +128,7 @@ public class LsclTest.ReadFile
         assert (scl.header.name_structure.get_value () == tNameStructure.Enum.IED_NAME);
         var history = scl.header.history;
         assert (history != null);
+        assert (history.deserialize_children ());
         assert (history.size == 2);
         bool found1 = false;
         bool found2 = false;
@@ -157,7 +158,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-communication", 
+    Test.add_func ("/librescl/read-communication", 
     () => {
       try {
         var f = File.new_for_path (LsclTest.TEST_DIR + "/tests-files/communication.cid");
@@ -167,15 +168,18 @@ public class LsclTest.ReadFile
         assert (scl.get_file ().query_exists ());
         assert (scl.communication != null);
         assert (scl.communication.subnetworks != null);
+        assert (scl.communication.subnetworks.deserialize_children ());
         assert (scl.communication.subnetworks.size == 1);
         tSubNetwork subnetwork = (tSubNetwork) scl.communication.subnetworks.@get ("Net1");
         assert (subnetwork != null);
         assert (subnetwork.desc == "Network1");
         assert (subnetwork.connected_aps != null);
+        assert (subnetwork.connected_aps.deserialize_children ());
         tConnectedAP cap = subnetwork.connected_aps.@get ("IED1", "AccessPoint1");
         assert (cap != null);
         assert (cap.address != null);
         assert (cap.address.ps != null);
+        assert (cap.address.ps.deserialize_children ());
         assert (cap.address.ps.size == 6);
         bool foundip = false;
         bool foundsubnet = false;
@@ -205,6 +209,7 @@ public class LsclTest.ReadFile
         assert (foundss);
         // GSE tests
         assert (cap.gses != null);
+        assert (cap.gses.deserialize_children ());
         assert (cap.gses.size == 1);
         var gse1 = cap.gses.@get ("LDevice1","gcb");
         assert (gse1 != null);
@@ -212,38 +217,41 @@ public class LsclTest.ReadFile
         assert (gse1.cb_name == "gcb");
         assert (gse1.address != null);
         assert (gse1.address.ps != null);
+        assert (gse1.address.ps.deserialize_children ());
         bool foundmac, foundvlanid, foundvlanp, foundappid;
         foundmac= foundvlanid= foundvlanp= foundappid = false;
-         foreach (tP gsep in gse1.address.ps) {
-           if (gsep.get_enum () == tP.TypeEnum.VLAN_ID) {
-             if (gsep.get_value () == "000")
-               foundvlanid = true;
-           }
-           if (gsep.get_enum () == tP.TypeEnum.VLAN_PRIORITY) {
-             if (gsep.get_value () == "4")
-               foundvlanp = true;
-           }
-            if (gsep.get_enum () == tP.TypeEnum.MAC_ADDRESS) {
-              if (gsep.get_value () == "01-0C-CD-01-00-04")
-                foundmac = true;
-            }
-           if (gsep.get_enum () == tP.TypeEnum.APPID) {
-             if (gsep.get_value () == "0001")
-               foundappid = true;
-           }
-         }
+        foreach (tP gsep in gse1.address.ps) {
+          if (gsep.get_enum () == tP.TypeEnum.VLAN_ID) {
+            if (gsep.get_value () == "000")
+            foundvlanid = true;
+          }
+          if (gsep.get_enum () == tP.TypeEnum.VLAN_PRIORITY) {
+            if (gsep.get_value () == "4")
+            foundvlanp = true;
+          }
+          if (gsep.get_enum () == tP.TypeEnum.MAC_ADDRESS) {
+            if (gsep.get_value () == "01-0C-CD-01-00-04")
+            foundmac = true;
+          }
+          if (gsep.get_enum () == tP.TypeEnum.APPID) {
+            if (gsep.get_value () == "0001")
+            foundappid = true;
+          }
+        }
         assert(foundappid);
         assert(foundvlanid);
         assert(foundvlanp);
         assert(foundmac);
         // SMV tests
         assert (cap.smvs != null);
+        assert (cap.smvs.deserialize_children ());
         assert (cap.smvs.size == 1);
         var sv1 = cap.smvs.@get ("LDevice1","svcb");
         assert (sv1 != null);
         assert (sv1.ld_inst == "LDevice1");
         assert (sv1.cb_name == "svcb");
         assert (sv1.address != null);
+        assert (sv1.address.ps.deserialize_children ());
         assert (sv1.address.ps != null);
          foreach (tP svp in sv1.address.ps) {
            if (svp.get_enum () == tP.TypeEnum.VLAN_ID)
@@ -262,55 +270,36 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-data-type-template", 
+    Test.add_func ("/librescl/read-data-type-template", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
-        if (scl.data_type_templates == null) {
-          stdout.printf ("ERROR: no data type templates found\n");
-          assert_not_reached ();
-        }
+        assert (scl.data_type_templates != null);
         var dt = scl.data_type_templates;
-        if (dt.logical_node_types == null) {
-          stdout.printf ("ERROR: no logical nodes type templates found\n");
-          assert_not_reached ();
-        }
+        assert (dt.logical_node_types != null);
         // Logical Node Types
         var lnts = dt.logical_node_types;
-        if (lnts.size != 7) {
-          stdout.printf (@"ERROR: wrong logical nodes type templates number. Expected: 7 Got: $(lnts.size)\n");
-          assert_not_reached ();
-        }
+        lnts.deserialize_children ();
+        assert (lnts.size == 7);
         // Data Object Types
-        if (dt.data_object_types == null) {
-          stdout.printf (@"ERROR: no Data Object Types found\n");
-          assert_not_reached ();
-        }
+        assert (dt.data_object_types != null);
         var dots = dt.data_object_types;
-        if (dots.size != 44) {
-          stdout.printf (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.size)\n");
-          assert_not_reached ();
-        }
+        dots.deserialize_children ();
+        assert (dots.size == 44);
         int k = 0;
         foreach (tDOType t1 in dots.values) {
           if (t1.ied_type == null)
             k++;
         }
-        if (k != 33) {
-          stdout.printf (@"ERROR: Counting Data Objects Types with IED type=NULL fail. Expected: 33 Got: $(k)\n");
-          assert_not_reached ();
-        }
+        assert (k == 33);
         k=0;
         foreach (tDOType t1 in dots.values) {
           if (t1.ied_type == "")
             k++;
         }
-        if (k != 11) {
-          stdout.printf (@"ERROR: Counting Data Objects Types with IED type='' fail. Expected: 11 Got: $(k)\n");
-          assert_not_reached ();
-        }
+        assert (k == 11);
         string[] ied_types2 = {"","","",null,null,
                                null,null,null,null};
         string[] ids2 = {"LLN01Mod","LPHD1PhyHealth","LPHD1NamPlt","XCBR5Loc","CSWI7NamPlt",
@@ -360,15 +349,10 @@ public class LsclTest.ReadFile
           }
         }
         // Data Attribute Types
-        if (dt.data_attribute_types == null) {
-          stdout.printf (@"ERROR: no Data Attribute Types found\n");
-          assert_not_reached ();
-        }
+        assert (dt.data_attribute_types != null);
         var dats = dt.data_attribute_types;
-        if (dats.size != 12) {
-          stdout.printf (@"ERROR: wrong data attribute type templates number. Expected: 13 Got: $(dats.size)\n");
-          assert_not_reached ();
-        }
+        dats.deserialize_children ();
+        assert (dats.size == 12);
         string[] ied_types3 = {"","",null,null,
                               null,null,null,null,
                                null,null,null,null};
@@ -392,26 +376,18 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-data-type-template/logical-node-types", 
+    Test.add_func ("/librescl/read-data-type-template/logical-node-types", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
-        if (scl.data_type_templates == null) {
-          stdout.printf ("ERROR: no data type templates found\n");
-          assert_not_reached ();
-        }
+        assert (scl.data_type_templates != null);
         var dt = scl.data_type_templates;
-        if (dt.logical_node_types == null) {
-          stdout.printf ("ERROR: no logical nodes type templates found\n");
-          assert_not_reached ();
-        }
+        assert (dt.logical_node_types != null);
         var lnts = dt.logical_node_types;
-        if (lnts.size != 7) {
-          stdout.printf (@"ERROR: wrong logical nodes type templates number. Expected: 7 Got: $(lnts.size)\n");
-          assert_not_reached ();
-        }
+        lnts.deserialize_children ();
+        assert (lnts.size == 7);
         string[] ied_types = {"","",null,null,null,null,null};
         string[] ids = {"LLN01","LPHD1","XCBR5","CSWI7","CILO9","PTOC11","RREC13"};
         string[] lncs = {"LLN0","LPHD","XCBR","CSWI","CILO","CCGR","RREC"};
@@ -447,10 +423,8 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class)\n");
           assert_not_reached ();
         }
-        if (lnt.dos == null) {
-          stdout.printf (@"ERROR: Data Object definitions not found for Logical Node Type: /XCBR5/XCBR \n");
-          assert_not_reached ();
-        }
+        assert (lnt.dos != null);
+        assert (lnt.dos.deserialize_children ());
         string[] doids = {"Pos","OpCnt","CBOpCap",
                           "BlkOpn","BlkCls","Loc",
                           "Mod","Beh","Health","NamPlt"};
@@ -482,10 +456,10 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-data-type-template/data-object-types", 
+    Test.add_func ("/librescl/read-data-type-template/data-object-types", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -499,6 +473,7 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         var dots = dt.data_object_types;
+        dots.deserialize_children ();
         if (dots.size != 44) {
           stdout.printf (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.size)\n");
           assert_not_reached ();
@@ -517,6 +492,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Data Attribute definitions not found for Data Object Type: NULL/LPHD1NamPlt/LPL \n");
           assert_not_reached ();
         }
+        assert (dot.das.deserialize_children ());
         string[] danames = {"d","swRev","vendor"};
         //string[] dabtypes = {"VisString255","VisString255","VisString255"};
         //string[] davkinds = {"Set","Set","Set"};
@@ -558,10 +534,10 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-data-type-template/data-attribute-types", 
+    Test.add_func ("/librescl/read-data-type-template/data-attribute-types", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
@@ -575,6 +551,7 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         var dats = dt.data_attribute_types;
+        dats.deserialize_children ();
         if (dats.size != 12) {
           stdout.printf (@"ERROR: wrong data object type templates number. Expected: 12 Got: $(dats.size)\n");
           assert_not_reached ();
@@ -588,11 +565,12 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: Basic Data Attribute definitions not found for Data Attribute Type: /RRECRecModStruct \n");
           assert_not_reached ();
         }
+        dat.bdas.deserialize_children ();
         string[] bdas = {"SinglePhase","SingleBraker"};
         //string[] values = {"single_contact","single_contact"};
         tValKind.Enum[] vkinds = {tValKind.Enum.SET, tValKind.Enum.CONF};
         int[] counts = {0,0};
-        var d = new xDocument ();
+        var d = new GDocument ();
         dat.serialize (d);
         Test.message ("DAT XML: "+d.to_string ());
         Test.message ("Testing tDAType");
@@ -610,7 +588,7 @@ public class LsclTest.ReadFile
             stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
             assert_not_reached ();
           }
-          var db = new xDocument ();
+          var db = new GDocument ();
           bda.serialize (db);
           Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+db.to_string ());
           if (bda.val_kind.get_value () != (int) vkinds[i]) {
@@ -686,10 +664,10 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-ied/ied", 
+    Test.add_func ("/librescl/read-ied/ied", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         Test.message ("Before deserialize");
         scl.deserialize (doc);
@@ -698,6 +676,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: No ieds found!\n");
           assert_not_reached ();
         }
+        assert (scl.ieds.deserialize_children ());
         if (scl.ieds.size != 1) {
           stdout.printf (@"ERROR: More IED than expected: found $(scl.ieds.size)\n");
           assert_not_reached ();
@@ -769,6 +748,7 @@ public class LsclTest.ReadFile
           stdout.printf (@"ERROR: No access points found for 'IED1' \n");
           assert_not_reached ();
         }
+        ied.access_points.deserialize_children ();
         var ap = ied.access_points.get ("AccessPoint1");
         if (ap == null) {
           stdout.printf (@"ERROR: No Access Points found for 'IED1'\n");
@@ -814,15 +794,14 @@ public class LsclTest.ReadFile
         assert (server.association.ln_inst == "1");
         // Logical Device Tests
         assert (server.logical_devices != null);
+        assert (server.logical_devices.deserialize_children ());
         var ld = server.logical_devices.@get ("LDevice1");
         assert (ld != null);
         assert (ld.inst == "LDevice1");
         assert (ld.ln0 != null);
         assert (ld.logical_nodes != null);
-        if (ld.logical_nodes.size != 6) {
-          stdout.printf (@"ERROR: Bad LD.LNs number for 'LDevice1' in 'IED1.AccessPoint1.Server': found $(ld.logical_nodes.size)\n");
-          assert_not_reached ();
-        }
+        assert (ld.logical_nodes.deserialize_children ());
+        assert (ld.logical_nodes.size == 6);
       }
       catch (GLib.Error e)
       {
@@ -830,21 +809,24 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-ied/logical-device/LN0", 
+    Test.add_func ("/librescl/read-ied/logical-device/LN0", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);
+        assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("IED1");
         assert (ied != null);
         assert (ied.access_points != null);
+        assert (ied.access_points.deserialize_children ());
         var ap = ied.access_points.get ("AccessPoint1");
         assert (ap != null);
         assert (ap.server != null);
         var server = ap.server;
         assert (server.logical_devices != null);
+        assert (server.logical_devices.deserialize_children ());
         var ld = server.logical_devices.@get ("LDevice1");
         assert (ld != null);
         assert (ld.inst == "LDevice1");
@@ -852,6 +834,7 @@ public class LsclTest.ReadFile
         assert (ld.ln0 != null);
         // GSE controls
         assert (ld.ln0.gse_controls != null);
+        assert (ld.ln0.gse_controls.deserialize_children ());
         var gsec = ld.ln0.gse_controls.@get ("gcb");
         assert (gsec != null);
         assert (gsec.name =="gcb");
@@ -861,18 +844,22 @@ public class LsclTest.ReadFile
         assert (gsec.conf_rev == "1");
         // Data Object Information
         assert (ld.ln0.dois != null);
+        assert (ld.ln0.dois.deserialize_children ());
         assert (ld.ln0.dois.size == 4);
         var doi1 = ld.ln0.dois.@get ("Mod");
         assert (doi1 != null);
         assert (doi1.sdis != null);
+        assert (doi1.sdis.deserialize_children ());
         assert (doi1.sdis.size == 1);
         var sdi11 = doi1.sdis.@get ("ctlModel");
         assert (sdi11 != null);
         assert (sdi11.dais != null);
+        assert (sdi11.dais.deserialize_children ());
         assert (sdi11.dais.size == 1);
         var dai111 = sdi11.dais.@get ("ctlModels");
         assert (dai111 != null);
         assert (dai111.vals != null);
+        assert (dai111.vals.deserialize_children ());
         assert (dai111.vals.size == 1);
         var val111 = dai111.vals.@get (0);
         assert (val111 != null);
@@ -880,6 +867,7 @@ public class LsclTest.ReadFile
         assert (val111v != null);
         assert (val111v == "status_only");
         assert (doi1.dais != null);
+        assert (doi1.dais.deserialize_children ());
         assert (doi1.dais.size == 3);
         var dai11 = doi1.dais.@get ("q");
         assert (dai11 != null);
@@ -887,9 +875,12 @@ public class LsclTest.ReadFile
         assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
         // DataSets
         assert (ld.ln0.data_sets != null);
+        assert (ld.ln0.data_sets.deserialize_children ());
         var dt = ld.ln0.data_sets.@get ("GOOSE1");
         assert (dt != null);
         assert (dt.name =="GOOSE1");
+        assert (dt.fcdas != null);
+        assert (dt.fcdas.deserialize_children ());
         var fcda0 = dt.fcdas.@get (0);
         assert (fcda0 != null);
         assert (fcda0.ld_inst == "LDevice1");
@@ -926,40 +917,48 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-ied/logical-device/logical-nodes", 
+    Test.add_func ("/librescl/read-ied/logical-device/logical-nodes", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);
+        assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("IED1");
         assert (ied != null);
         assert (ied.access_points != null);
+        assert (ied.access_points.deserialize_children ());
         var ap = ied.access_points.get ("AccessPoint1");
         assert (ap != null);
         assert (ap.server != null);
         var server = ap.server;
         assert (server.logical_devices != null);
+        assert (server.logical_devices.deserialize_children ());
         var ld = server.logical_devices.@get ("LDevice1");
         assert (ld != null);
         assert (ld.inst == "LDevice1");
         // Logical Nodes
         assert (ld.logical_nodes != null);
+        assert (ld.logical_nodes.deserialize_children ());
         var ln1 = ld.logical_nodes.find ("","XCBR","5");
         assert (ln1 != null);
         assert (ln1.dois != null);
+        assert (ln1.dois.deserialize_children ());
         assert (ln1.dois.size == 10);
         var doi1 = ln1.dois.@get ("Beh");
         assert (doi1 != null);
         assert (doi1.sdis != null);
+        assert (doi1.sdis.deserialize_children ());
         assert (doi1.sdis.size == 0);
         assert (doi1.dais != null);
+        assert (doi1.dais.deserialize_children ());
         var dai11 = doi1.dais.@get ("stVal");
         assert (dai11 != null);
         assert (dai11.name == "stVal");
         assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
         assert (dai11.vals != null);
+        assert (dai11.vals.deserialize_children ());
         assert (dai11.vals.size == 1);
         var val111 = dai11.vals.@get (0);
         assert (val111 != null);
@@ -972,60 +971,68 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/read-scd/initial-comments", 
+    Test.add_func ("/librescl/read-scd/initial-comments", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         // TODO: Add test for SDO y SDA in templates
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });
-    Test.add_func ("/librescl-test-suite/read-scd/communication-tp-ns", 
+    Test.add_func ("/librescl/read-scd/communication-tp-ns", 
     () => {
       try {
-        var doc = new GXml.xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
+        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.communication != null);
         assert (scl.communication.subnetworks != null);
+        assert (scl.communication.subnetworks.deserialize_children ());
         var sn = scl.communication.subnetworks.get ("test");
         assert (sn != null);
         assert (sn.connected_aps != null);
+        assert (sn.connected_aps.deserialize_children ());
         var cap = sn.connected_aps.get ("TEMPLATE", "AP");
         assert (cap != null);
         assert (cap.address != null);
         assert (cap.address.ps != null);
+        assert (cap.address.ps.deserialize_children ());
         foreach (tP p in cap.address.ps) {
           Test.message ("AP: "+p.to_string ());
         }
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });
-    Test.add_func ("/librescl-test-suite/read-ied/logcontrol", 
+    Test.add_func ("/librescl/read-ied/logcontrol", 
     () => {
       try {
-        var doc = new xDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
+        var doc = new GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
         var scl = new Scl ();
         scl.deserialize (doc);
         assert (scl.ieds != null);
+        assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("TEMPLATE");
         assert (ied != null);
         assert (ied.services != null);
         assert (ied.access_points != null);
+        assert (ied.access_points.deserialize_children ());
         var ap = ied.access_points.get ("AP");
         assert (ap.server != null);
         assert (ap.server.authentication != null);
         assert (ap.server.logical_devices != null);
+        assert (ap.server.logical_devices.deserialize_children ());
         var ld = ap.server.logical_devices.get ("LD");
         assert (ld != null);
         assert (ld.ln0 != null);
         assert (ld.logical_nodes != null);
+        assert (ld.logical_nodes.deserialize_children ());
         var ln = ld.logical_nodes.get ("GGIO", "1", "GENERIC");
         assert (ln != null);
         // Check LogControl
         assert (ld.ln0.log_controls != null);
+        assert (ld.ln0.log_controls.deserialize_children ());
         var logc = ld.ln0.log_controls.get ("GeneralLog");
         assert (logc != null);
         assert (logc.desc == "Test Logs");

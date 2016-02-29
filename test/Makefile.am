@@ -23,7 +23,8 @@ sources = \
 	xml-generation-tests.vala \
 	read-file.vala \
 	save-file.vala \
-	lscl-performance.vala
+	lscl-performance.vala \
+	collectionstest.vala
 
 AM_VALAFLAGS = \
 	--vapidir=$(top_builddir)/librescl \

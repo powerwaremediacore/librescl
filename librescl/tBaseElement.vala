@@ -31,23 +31,21 @@ namespace Lscl
 {
   public class tBaseElement : Lscl.Serializable
   {
-    private GXml.Node node;
-    private tPrivateArray _privates = new tPrivateArray ();
-
     [Description(nick="Text", blurb="")]
     public tText text { get; set; }
 
     [Description(blurb="Logical Node Types templates")]
-    public tPrivateArray privates {
-        get {
-            if (_privates.size == 0) {
-                if (node == null) return _privates;
-                _privates.clear ();
-                _privates.deserialize (node);
-            }
-            return _privates;
-        }
-        set { _privates = value; }
+    public tPrivateArray privates { get; set; default = new tPrivateArray (); }
+
+    public override GXml.Node? serialize_property (GXml.Node element,
+                                                   GLib.ParamSpec prop)
+        throws GLib.Error
+    {
+      if (!get_enable_proprietary_info () &&
+        element is GXml.Element && element.name.down () == "Private".down ())
+        return element;
+      if (_privates == null) _privates = new tPrivateArray ();
+      return (this as Lscl.Serializable).default_serialize_property (element, prop);
     }
   }
 }

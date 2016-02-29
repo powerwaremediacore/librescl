@@ -34,7 +34,7 @@ namespace Lscl
     [Description (nick="source", blurb="")]
     public string source { get; set; }
   }
-  public class tPrivateArray : Array<tPrivate>
+  public class tPrivateArray : SerializableArrayList<tPrivate>
 	{
 		public new tPrivate @get (int index) { return base.get (index); }
 		public new tPrivate[] to_array () { return ((Gee.Collection<tPrivate>) this).to_array (); }

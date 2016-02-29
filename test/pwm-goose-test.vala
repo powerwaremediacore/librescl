@@ -10,7 +10,7 @@ public class PwmTest.Goose
   const static string 
   public static void add_funcs ()
   {
-    Test.add_func ("/pwm-sclmanager-test-suite/goose", 
+    Test.add_func ("/librescl/goose", 
     () => {
       var station = new Station ();
       

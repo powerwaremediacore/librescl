@@ -42,11 +42,9 @@ namespace Lscl
     [Description (nick="DataTypeTemplates", blurb="Templates")]
     public tDataTypeTemplates data_type_templates { get; set; }
 
-    public override GXml.Node? serialize (GXml.Node node) throws GLib.Error
-    {
-      var n = default_serialize (node);
-      n.set_namespace ("http://www.iec.ch/61850/2003/SCL", "scl");
-      return n;
+    public override bool set_default_namespace (GXml.Node node) {
+      node.set_namespace ("http://www.iec.ch/61850/2003/SCL", "scl");
+      return true;
     }
     public override string node_name ()
     {

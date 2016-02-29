@@ -23,7 +23,7 @@ public class Performance
 {
   public static void add_funcs ()
   {
-    Test.add_func ("/librescl-test-suite/performance/read", 
+    Test.add_func ("/librescl/performance/read", 
     () => {
       try {
         double time;
@@ -34,11 +34,15 @@ public class Performance
         time = Test.timer_elapsed ();
         Test.minimized_result (time, "Read generic.cid: %g seconds", time);
         Test.message ("Finished to read Document...");
-        Test.timer_start ();
         Test.message ("Checking for IEDs...");
+        Test.timer_start ();
         assert (scl.ieds != null);
+        assert (scl.ieds.deserialize_children ());
+        time = Test.timer_elapsed ();
+        Test.minimized_result (time, "Read IEDs: %g seconds", time);
         //assert (scl.ieds.size == 0);
         Test.message ("Getting data from Document...");
+        Test.timer_start ();
         var ied = scl.ieds.get ("IED1");
         assert (ied != null);
         assert (ied.name == "IED1");
@@ -50,7 +54,7 @@ public class Performance
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl-test-suite/performance/treemap", 
+    Test.add_func ("/librescl/performance/treemap", 
     () => {
       var lns = new tLN.ThreeMap ();
       double time;

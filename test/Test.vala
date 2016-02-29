@@ -40,6 +40,7 @@ namespace LsclTest
 			SaveFile.add_funcs ();
 			Performance.add_funcs ();
 			Enums.add_funcs ();
+			Collections.add_funcs ();
 			return Test.run ();
 		}
 	}

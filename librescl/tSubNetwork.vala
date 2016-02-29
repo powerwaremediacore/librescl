@@ -39,12 +39,12 @@ namespace Lscl
     // SerializableMapId
     public string get_map_key () { return name; }
     // Serializable
-    public override GXml.Node? deserialize (GXml.Node node)
+    public override bool deserialize (GXml.Node node)
                                     throws GLib.Error
                                     requires (node is Element)
     {
       var element = (Element) node;
-      if (element.childs.size > 0) {
+      if (element.children.size > 0) {
         if (connected_aps == null)
           connected_aps = new tConnectedAP.DualKeyMap ();
         connected_aps.deserialize (element);

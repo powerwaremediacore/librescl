@@ -45,7 +45,7 @@ namespace Lscl
     public string get_map_primary_key () { return ied_name; }
     public string get_map_secondary_key () { return ap_name; }
 
-    public class DualKeyMap : SerializableDualKeyMap<string,string,tConnectedAP> {
+    public class DualKeyMap : Lscl.SerializableDualKeyMap<string,string,tConnectedAP> {
 			public new tConnectedAP get (string ied, string ap) { return base.get (ied, ap); }
 		}
   }

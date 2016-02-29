@@ -29,7 +29,6 @@ using Gee;
 
 namespace Lscl
 {
-  private bool _enable_proprietary = false;
    /**
     * LSCL_EDITION:
     * 
@@ -46,6 +45,7 @@ namespace Lscl
     public class Serializable : GXml.SerializableContainer
     {
     protected Edition _edition;
+    protected bool _enable_proprietary = false;
     /**
      * Add elements to this property in order to mark any property
      * as present just on a defined version. Use property's canonical 
@@ -93,14 +93,20 @@ namespace Lscl
       return _enable_proprietary;
     }
     public override GXml.Node? serialize_property (GXml.Node element,
-                                                   GLib.ParamSpec prop)
+                                           GLib.ParamSpec prop)
         throws GLib.Error
-        requires (element is GXml.Element)
+    {
+      return default_serialize_property (element, prop);
+    }
+    
+    public new GXml.Node? default_serialize_property (GXml.Node element,
+                                               GLib.ParamSpec prop)
+        throws GLib.Error
     {
       if (_edition != Edition.FIRST &&
           _property_edition.size != 0) // FIXME: This doesn't work on SECOND edition
         if (_property_edition.get (prop.name) != null) return element;
-      return default_serialize_property ((GXml.Element) element, prop);
+      return (this as SerializableObjectModel).default_serialize_property ((GXml.Element) element, prop);
     }
 
     public override string node_name ()

@@ -23,7 +23,7 @@ public class LsclTest.SaveFile
 {
   public static void add_funcs ()
   {
-    Test.add_func ("/librescl-test-suite/save/set-file",
+    Test.add_func ("/librescl/save/set-file",
     () => {
       try {
         var scl = new SclDocument ();
@@ -45,11 +45,13 @@ public class LsclTest.SaveFile
         assert (scl2.communication != null);
         assert (scl2.header != null);
         assert (scl2.ieds != null);
+        assert (scl2.ieds.deserialize_children ());
         assert (scl2.ieds.size == 1);
         var i = scl2.ieds.get ("TEMPLATE");
         assert (i != null);
         assert (i.name == "TEMPLATE");
         assert (i.access_points != null);
+        assert (i.access_points.deserialize_children ());
         assert (i.access_points.size == 1);
         var a = i.access_points.get ("AP");
         assert (a != null);

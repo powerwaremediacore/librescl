@@ -41,12 +41,12 @@ namespace Lscl
     public string get_map_key () { return name; }
 
     // Serializable
-    public override GXml.Node? deserialize (GXml.Node node)
+    public override bool deserialize (GXml.Node node)
                                     throws GLib.Error
                                     requires (node is Element)
     {
       var element = (Element) node;
-      if (element.childs.size > 0) {
+      if (element.children.size > 0) {
         if (logical_nodes == null)
           logical_nodes = new tLN.ThreeMap ();
         logical_nodes.deserialize (element);
