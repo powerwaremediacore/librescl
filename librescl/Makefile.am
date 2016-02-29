@@ -221,7 +221,8 @@ CLEANFILES = \
 	namespace-info.vala \
 	lscl.h \
 	lscl-0.6.vapi \
-	lscl-0.6.pc
+	lscl-0.6.pc \
+	vala-stamp
 
 if HAVE_INTROSPECTION
 

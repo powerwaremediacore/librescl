@@ -74,7 +74,8 @@ CLEANFILES = \
 	$(sources:.vala=.c) \
 	librescl_test \
 	write_test.cid \
-	saved1.cid
+	saved1.cid \
+	vala-stamp
 
 EXTRA_DIST += \
 	$(sources) \
