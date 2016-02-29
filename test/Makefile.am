@@ -34,7 +34,7 @@ AM_VALAFLAGS = \
 	--pkg gee-0.8 \
 	--pkg gxml-0.10 \
 	--pkg libxml-2.0 \
-	--pkg lscl-0.4 \
+	--pkg lscl-0.6 \
 	-C -g
 
 
@@ -67,7 +67,7 @@ librescl_test_SOURCES = $(sources:.vala=.c)
 
 librescl_test_LDFLAGS = \
 	$(GXML_LIBS) \
-	$(top_builddir)/librescl/liblscl-0.4.la
+	$(top_builddir)/librescl/liblscl-0.6.la
 
 
 CLEANFILES = \

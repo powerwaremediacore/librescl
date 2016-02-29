@@ -33,7 +33,7 @@ public class Performance
         scl.read_from_path (LsclTest.TEST_DIR + "/tests-files/generic.cid");
         time = Test.timer_elapsed ();
         Test.minimized_result (time, "Read generic.cid: %g seconds", time);
-        Test.message ("Finished to read Document...");
+        Test.message ("Finished to load Document...");
         Test.message ("Checking for IEDs...");
         Test.timer_start ();
         assert (scl.ieds != null);

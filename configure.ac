@@ -42,7 +42,7 @@ AC_SUBST([LT_AGE])
 
 LIBRESCL_VERSION=project_version
 AC_SUBST(LIBRESCL_VERSION)
-API_VERSION=0.4
+API_VERSION=0.6
 AC_SUBST(API_VERSION)
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -99,7 +99,7 @@ Makefile
 vapi/Makefile
 librescl/namespace-info.vala
 librescl/Makefile
-librescl/lscl-0.4.pc
+librescl/lscl-0.6.pc
 test/Makefile
 test/tests-config.vala
 plugins/Makefile

@@ -8,6 +8,6 @@ includedir=@includedir@
 Name: lscl-@API_VERSION@
 Description: LibreSCL. Library for Substation Configuration Language.
 Version: @VERSION@
-Requires: glib-2.0 gobject-2.0 gio-2.0 gee-0.8 gxml-0.6 >= 0.7.4
+Requires: glib-2.0 gobject-2.0 gio-2.0 gee-0.8 gxml-0.10 >= 0.9.3
 Libs: -L${libdir} -llscl-@API_VERSION@
 Cflags: -I${includedir}/librescl-@API_VERSION@
