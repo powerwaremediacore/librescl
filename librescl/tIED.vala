@@ -46,7 +46,6 @@ namespace Lscl
     {
       public new tIED get (string name)
       {
-        Test.message ("tIED HashMap: Getting IED: "+name);
         return base.get (name);
       }
       public string to_string ()

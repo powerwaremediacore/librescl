@@ -4,13 +4,16 @@ from gi.repository import Lscl
 scl = Lscl.SclDocument()
 print("Loading 'test.scd' file...")
 scl.read_from_path('test.scd')
-print ("File loaded...")
-print ("List of IEDs")
+print("File loaded...")
+scl.get_ieds().deserialize_children()
+print("Deserialized IEDs")
+print("List of IEDs")
 for iedName in scl.get_ieds().list_keys():
   print ("IED: "+iedName)
 print ("Getting first IED")
 ied = scl.get_ieds().list_values()[0]
 print ("Access Points in IED "+ied.get_name())
+ied.get_access_points().deserialize_children()
 for apl in ied.get_access_points().list_values():
   print ("AP: "+apl.get_name ())
 ap = ied.get_access_points().list_values()[0]
