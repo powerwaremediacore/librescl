@@ -85,7 +85,7 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/serialize", 
     () => {
       try {
-        var d = new GDocument.from_string ("""<Templates><DataTemplate id="1"><Value>TEXT</Value></DataTemplate><DataTemplate id="1"/>FAKE_TEXT</Templates>""");
+        var d = new TDocument.from_string ("""<Templates><DataTemplate id="1"><Value>TEXT</Value></DataTemplate><DataTemplate id="1"/>FAKE_TEXT</Templates>""");
         var ts = new Templates ();
         assert (ts.templates.size == 0);
         ts.deserialize (d);

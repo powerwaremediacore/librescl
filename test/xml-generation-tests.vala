@@ -33,11 +33,11 @@ class LsclTest.XmlGeneration
   {
     Test.add_func ("/librescl/write-empty-scl-ed1", 
       () => {
-        GXml.Document doc = new GXml.GDocument ();
+        GXml.Document doc = new GXml.TDocument ();
         var dscl = new SclDocument ();
         try {
           dscl.serialize (doc);
-          Test.message (@"[OUTPUT SCL:\n$((doc as GDocument).libxml_to_string ())]");
+          Test.message (@"[OUTPUT SCL:\n$((doc as TDocument).to_string ())]");
           assert (doc.root != null);
           assert (doc.root.name.up () == "SCL");
           assert (doc.root.namespaces.size == 2);
@@ -63,7 +63,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-data_type_templates-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.GDocument ();
+       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -124,7 +124,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-ieds-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.GDocument ();
+       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -154,7 +154,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-communication-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.GDocument ();
+       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -187,7 +187,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-substation-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.GDocument ();
+       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -235,7 +235,7 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-header-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.GDocument ();
+       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -285,7 +285,7 @@ class LsclTest.XmlGeneration
     Test.add_func ("/librescl/write-data_attribute_types-duplicated-dba-ed1", 
       () => {
        try {
-         var idoc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+         var idoc = new GXml.TDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
          GLib.message (@"INITIAL SCL\n$(idoc)");
          var iscl = new Scl ();
          iscl.deserialize (idoc);
@@ -304,7 +304,7 @@ class LsclTest.XmlGeneration
              }
            }
          }
-         GXml.Document doc = new GXml.GDocument ();
+         GXml.Document doc = new GXml.TDocument ();
          iscl.serialize (doc);
          var scl = new Scl ();
          GLib.message (@"FINALY SCL\n$doc");

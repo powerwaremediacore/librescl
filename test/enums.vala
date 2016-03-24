@@ -75,7 +75,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.kind = new tAssociationKind ();
 				t.kind.set_value (tAssociationKind.Enum.PREESTABLISHED);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -95,7 +95,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest kind = "PREDEFINED" />""");
 				t.deserialize (d);
 				assert (t.kind != null);
@@ -114,7 +114,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.attr_name = new tAttributeName ();
 				t.attr_name.select (tPredefinedAttributeName.Enum.OPER_TM);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -134,7 +134,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest AttributeName = "sboTimeout" />""");
 				t.deserialize (d);
 				assert (t.attr_name != null);
@@ -164,7 +164,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.btype = new tBasicType ();
 				t.btype.set_value (tBasicType.Enum.FLOAT32);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -183,7 +183,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest BasicType = "QUALITY" />""");
 				t.deserialize (d);
 				assert (t.btype != null);
@@ -202,7 +202,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.cdc = new tCDCEnum ();
 				t.cdc.set_value (tPredefinedCDC.Enum.ENC);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -221,7 +221,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest CDCEnum = "VSG" />""");
 				t.deserialize (d);
 				assert (t.cdc != null);
@@ -240,7 +240,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.ceq = new tCommonConductingEquipment ();
 				t.ceq.set_value (tPredefinedCommonConductingEquipment.Enum.RRC);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -259,7 +259,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest condEq = "SCR" />""");
 				t.deserialize (d);
 				assert (t.ceq != null);
@@ -278,7 +278,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.st = new tServiceType ();
 				t.st.set_value (tServiceType.Enum.GOOSE);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -297,7 +297,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest ServiceType = "SMV" />""");
 				t.deserialize (d);
 				assert (t.st != null);
@@ -316,7 +316,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.fc = new tFC ();
 				t.fc.set_value (tFC.Enum.SE);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -335,7 +335,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest FC = "mx" />""");
 				t.deserialize (d);
 				assert (t.fc != null);
@@ -354,7 +354,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.gsect = new tGSEControlType ();
 				t.gsect.set_value (tGSEControlType.Enum.GSSE);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -373,7 +373,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest GSEType = "goose" />""");
 				t.deserialize (d);
 				assert (t.gsect != null);
@@ -392,7 +392,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.namestruct = new tNameStructure ();
 				t.namestruct.set_value (tNameStructure.Enum.IED_NAME);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -411,7 +411,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest nameStructure = "FUNCNAME" />""");
 				t.deserialize (d);
 				assert (t.namestruct != null);
@@ -430,7 +430,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.phc = new tPhysConnType ();
 				t.phc.set_value (tPredefinedPhysConnType.Enum.CONNECTION);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -449,7 +449,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest PhysConn = "REDCONN" />""");
 				t.deserialize (d);
 				assert (t.phc != null);
@@ -468,7 +468,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.phct = new tPTypePhysConn ();
 				t.phct.set_value (tPredefinedPTypePhysConn.Enum.CABLE);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -487,7 +487,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest PhysConnType = "PLUG" />""");
 				t.deserialize (d);
 				assert (t.phct != null);
@@ -506,7 +506,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.pwt = new tPowerTransformerType ();
 				t.pwt.set_value (tPowerTransformerType.Enum.PTR);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -525,7 +525,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest PwTrnType = "ptr" />""");
 				t.deserialize (d);
 				assert (t.pwt != null);
@@ -544,7 +544,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.ge = new tGeneralEquipmentEnum ();
 				t.ge.set_value (tPredefinedGeneralEquipment.Enum.FAN);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -563,7 +563,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest GEquiment = "vlv" />""");
 				t.deserialize (d);
 				assert (t.ge != null);
@@ -582,7 +582,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.smpm = new tSmpMod ();
 				t.smpm.set_value (tSmpMod.Enum.SMP_PER_SEC);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -601,7 +601,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest smpMod = "SECPERSMP" />""");
 				t.deserialize (d);
 				assert (t.smpm != null);
@@ -620,7 +620,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.svt = new tServiceSettingsType ();
 				t.svt.set_value (tServiceSettingsType.Enum.CONF);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -639,7 +639,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest ServiceSett = "dyn" />""");
 				t.deserialize (d);
 				assert (t.svt != null);
@@ -662,7 +662,7 @@ public class LsclTest.Enums
 				assert (v1 != null);
 				Test.message ("tSIUnit value at: "+tSIUnit.Enum.V_HZ.to_string ()+" = "+v1);
 				t.siu.select (tSIUnit.Enum.V_HZ);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				Test.message ("Serializing...");
 				t.serialize (d);
 				Test.message ("Serializing Finalize... XML:\n"+d.to_string ());
@@ -686,7 +686,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest SIUnit = "kg/m³" />""");
 				t.deserialize (d);
 				assert (t.siu != null);
@@ -704,7 +704,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.ph = new tPhase ();
 				t.ph.set_value (tPhase.Enum.C);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -723,7 +723,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest Phase = "ALL" />""");
 				t.deserialize (d);
 				assert (t.ph != null);
@@ -741,7 +741,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.twt = new tTransformerWindingEnum ();
 				t.twt.set_value (tPredefinedTransformerWinding.Enum.PTW);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -760,7 +760,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest TrWnd = "ptw" />""");
 				t.deserialize (d);
 				assert (t.twt != null);
@@ -787,7 +787,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.tum = new tUnitMultiplier ();
 				t.tum.select (tUnitMultiplier.Enum.DEC_U);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -806,7 +806,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest UM = "p" />""");
 				t.deserialize (d);
 				assert (t.tum != null);
@@ -825,7 +825,7 @@ public class LsclTest.Enums
 				var t = new EnumTest ();
 				t.vk = new tValKind ();
 				t.vk.set_value (tValKind.Enum.RO);
-				var d = new xDocument ();
+				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
 				assert (r != null);
@@ -844,7 +844,7 @@ public class LsclTest.Enums
 		() => {
 			try {
 				var t = new EnumTest ();
-				var d = new xDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
+				var d = new TDocument.from_string ("""<?xml version="1.0" encoding="UTF-8"?>
 				<NodeTest Vk = "set" />""");
 				t.deserialize (d);
 				assert (t.vk != null);
