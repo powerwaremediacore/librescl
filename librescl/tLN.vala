@@ -50,6 +50,10 @@ namespace Lscl
     public string get_map_secondary_key () { return inst; }
     public string get_map_tertiary_key () { return prefix; }
 
+    /**
+     * Primary key should be the logical node class, secondary should be instance,
+     * and tertiary key should be prefix.
+     */
     public class ThreeMap : Lscl.ThreeMap<string,string,string,tLN>
     {
 			public new tLN get (string lnclass, string inst, string prefix) {

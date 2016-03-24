@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+<SCL xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:lscl="http://www.librescl.org/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
   <Header id="SCL File" version="0" revision="1" toolID="OpenSCLConfigurator" nameStructure="IEDName" />
   <Communication>
     <SubNetwork name="Net1" desc="Network1">

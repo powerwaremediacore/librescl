@@ -40,13 +40,21 @@ class LsclTest.XmlGeneration
           Test.message (@"[OUTPUT SCL:\n$((doc as GDocument).libxml_to_string ())]");
           assert (doc.root != null);
           assert (doc.root.name.up () == "SCL");
-          assert (doc.root.namespaces.size == 1);
-          bool found = false;
+          assert (doc.root.namespaces.size == 2);
+          bool found1, found2;
+          found1 = found2 = false;
           foreach (GXml.Namespace n in doc.root.namespaces) {
             if (n.uri == "http://www.iec.ch/61850/2003/SCL")
-              found = true;
+              found1 = true;
+            if (n.uri == "http://www.librescl.org/SCL")
+              found2 = true;
           }
-          assert (found);
+          assert (found1);
+          assert (found2);
+          assert (doc.root.namespaces.get (0) != null);
+          assert (doc.root.namespaces[0].uri == "http://www.iec.ch/61850/2003/SCL");
+          assert (doc.root.namespaces.get (1) != null);
+          assert (doc.root.namespaces[1].uri == "http://www.librescl.org/SCL");
           assert (doc.root.children.size == 0);
         } catch (GLib.Error e) {
           GLib.message (@"ERROR: $(e.message)");

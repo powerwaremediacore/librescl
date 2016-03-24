@@ -44,6 +44,7 @@ namespace Lscl
 
     public override bool set_default_namespace (GXml.Node node) {
       node.set_namespace ("http://www.iec.ch/61850/2003/SCL", "scl");
+      node.set_namespace ("http://www.librescl.org/SCL","lscl");
       return true;
     }
     public override string node_name ()

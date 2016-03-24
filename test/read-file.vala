@@ -37,7 +37,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -53,7 +53,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -69,7 +69,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -82,7 +82,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -96,7 +96,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -109,7 +109,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -164,6 +164,7 @@ public class LsclTest.ReadFile
         var f = File.new_for_path (LsclTest.TEST_DIR + "/tests-files/communication.cid");
         var scl = new SclDocument ();
         scl.read_from_file (f);
+        //assert_not_reached ();
         assert (scl.get_file () != null);
         assert (scl.get_file ().query_exists ());
         assert (scl.communication != null);
@@ -266,7 +267,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -316,7 +317,7 @@ public class LsclTest.ReadFile
             ied = ied_types2[j];
           var dot = dots.get (ids2[j]);
           if (dot == null) {
-            stdout.printf (@"ERROR: Logical Node Type: $(ied)/$(ids2[j])/$(cdc) not found\n");
+            GLib.message (@"ERROR: Logical Node Type: $(ied)/$(ids2[j])/$(cdc) not found\n");
             k = 0;
             foreach (tDOType t1 in dots.values) {
               string t1cdc = "NULL";
@@ -329,7 +330,7 @@ public class LsclTest.ReadFile
               if (t1.id != null)
                 t1id = t1.id;
               k++;
-              stdout.printf (@"LNT $(k): $(t1ied)/$(t1id)/$(t1cdc)\n");
+              GLib.message (@"LNT $(k): $(t1ied)/$(t1id)/$(t1cdc)\n");
             }
             assert_not_reached ();
           }
@@ -337,14 +338,14 @@ public class LsclTest.ReadFile
             string gcdc = "NULL";
             if (dot.cdc != null)
               gcdc = dot.cdc.get_string ();
-            stdout.printf (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) CDC no match hope: $(gcdc) - got: $(cdc)\n");
+            GLib.message (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) CDC no match hope: $(gcdc) - got: $(cdc)\n");
             assert_not_reached ();
           }
           if (dot.ied_type != ied_types2[j]) {
             string doied = "NULL";
             if (dot.ied_type != null)
               doied = dot.ied_type;
-            stdout.printf (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) IED TYPE no match hope: $(ied) - got: $(doied)\n");
+            GLib.message (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) IED TYPE no match hope: $(ied) - got: $(doied)\n");
             assert_not_reached ();
           }
         }
@@ -365,14 +366,14 @@ public class LsclTest.ReadFile
             string ied = "NULL";
             if (ied_types3[j] != null)
               ied = ied_types3[j];
-            stdout.printf (@"ERROR: Data Attribute Type $(ied)/$(ids3[j]) not found\n");
+            GLib.message (@"ERROR: Data Attribute Type $(ied)/$(ids3[j]) not found\n");
             assert_not_reached ();
           }
         }
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -397,30 +398,30 @@ public class LsclTest.ReadFile
           if (ied_types[i] != null)
             ied = ied_types[i];
           if (lnt == null) {
-            stdout.printf (@"ERROR: Logical Node Type: $(ied_types[i])/$(ids[i])/$(lncs[i]) not found\n");
+            GLib.message (@"ERROR: Logical Node Type: $(ied_types[i])/$(ids[i])/$(lncs[i]) not found\n");
             assert_not_reached ();
           }
           if (lnt.ln_class.get_string () != lncs[i]) {
-            stdout.printf (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(lncs[i]), got $(lnt.ln_class)\n");
+            GLib.message (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(lncs[i]), got $(lnt.ln_class)\n");
             assert_not_reached ();
           }
           if (lnt.ied_type != ied_types[i]) {
-            stdout.printf (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(ied_types[i]), got $(lnt.ied_type)\n");
+            GLib.message (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(ied_types[i]), got $(lnt.ied_type)\n");
             assert_not_reached ();
           }
         }
         // LNType - Data Objects Attributes
         var lnt = lnts.get ("XCBR5");
         if (lnt == null) {
-          stdout.printf (@"ERROR: Logical Node Type: ''/XCBR5 not found\n");
+          GLib.message (@"ERROR: Logical Node Type: ''/XCBR5 not found\n");
           assert_not_reached ();
         }
         if (lnt.ied_type != null) {
-          stdout.printf (@"ERROR: Incorrect IED Type for LNType: NULL/XCBR5/XCBR. Expected 'NULL', got: $(lnt.ied_type)\n");
+          GLib.message (@"ERROR: Incorrect IED Type for LNType: NULL/XCBR5/XCBR. Expected 'NULL', got: $(lnt.ied_type)\n");
           assert_not_reached ();
         }
         if (lnt.ln_class.get_string () != "XCBR") {
-          stdout.printf (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class)\n");
+          GLib.message (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class)\n");
           assert_not_reached ();
         }
         assert (lnt.dos != null);
@@ -437,22 +438,22 @@ public class LsclTest.ReadFile
         for (int i = 0; i < doids.length; i++) {
           var dobject = lnt.dos.get (doids[i]);
           if (dobject == null) {
-            stdout.printf (@"ERROR: Data Object: $(doids[i]) not found\n");
+            GLib.message (@"ERROR: Data Object: $(doids[i]) not found\n");
             assert_not_reached ();
           }
           if (dobject.do_type != dotypes[i]) {
-            stdout.printf (@"ERROR: Data Object: $(doids[i]) has wrong type. Expected $(dotypes[i]), got: $(dobject.do_type)\n");
+            GLib.message (@"ERROR: Data Object: $(doids[i]) has wrong type. Expected $(dotypes[i]), got: $(dobject.do_type)\n");
             assert_not_reached ();
           }
           if (dobject.transient.get_value () != dotrns[i]) {
-            stdout.printf (@"ERROR: Data Object: $(doids[i]) has wrong transient value. Expected $(dotrns[i]), got: $(dobject.transient)\n");
+            GLib.message (@"ERROR: Data Object: $(doids[i]) has wrong transient value. Expected $(dotrns[i]), got: $(dobject.transient)\n");
             assert_not_reached ();
           }
         }
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -463,33 +464,33 @@ public class LsclTest.ReadFile
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
-          stdout.printf ("ERROR: no data type templates found\n");
+          GLib.message ("ERROR: no data type templates found\n");
           assert_not_reached ();
         }
         var dt = scl.data_type_templates;
         // Data Object Types
         if (dt.data_object_types == null) {
-          stdout.printf (@"ERROR: no Data Object Types found\n");
+          GLib.message (@"ERROR: no Data Object Types found\n");
           assert_not_reached ();
         }
         var dots = dt.data_object_types;
         dots.deserialize_children ();
         if (dots.size != 44) {
-          stdout.printf (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.size)\n");
+          GLib.message (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.size)\n");
           assert_not_reached ();
         }
         // Data Attributes
         var dot = dots.get ("LPHD1NamPlt");
         if (dot == null) {
-          stdout.printf (@"ERROR: Data Object Type: NULL/LPHD1NamPlt not found\n");
+          GLib.message (@"ERROR: Data Object Type: NULL/LPHD1NamPlt not found\n");
           assert_not_reached ();
         }
         if (dot.cdc.get_string () != "LPL") {
-          stdout.printf (@"ERROR: Wrong CDC for Data Object Type: NULL/LPHD1NamPlt/LPL got: $(dot.cdc)\n");
+          GLib.message (@"ERROR: Wrong CDC for Data Object Type: NULL/LPHD1NamPlt/LPL got: $(dot.cdc)\n");
           assert_not_reached ();
         }
         if (dot.das == null) {
-          stdout.printf (@"ERROR: Data Attribute definitions not found for Data Object Type: NULL/LPHD1NamPlt/LPL \n");
+          GLib.message (@"ERROR: Data Attribute definitions not found for Data Object Type: NULL/LPHD1NamPlt/LPL \n");
           assert_not_reached ();
         }
         assert (dot.das.deserialize_children ());
@@ -503,34 +504,34 @@ public class LsclTest.ReadFile
         for (int i = 0; i < danames.length; i++) {
           var da = dot.das.get (danames[i]);
           if (da == null) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) not found\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) not found\n");
             assert_not_reached ();
           }
           if (da.name.get_string () != danames[i]) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong name. Expected $(danames[i]), got: $(da.name)\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong name. Expected $(danames[i]), got: $(da.name)\n");
             assert_not_reached ();
           }
           if (da.count.get_value () != dacounts[i]) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count)\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count)\n");
             assert_not_reached ();
           }
           if (da.dchg.get_value () != dadchgs[i]) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadchgs[i]), got: $(da.dchg)\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadchgs[i]), got: $(da.dchg)\n");
             assert_not_reached ();
           }
           if (da.qchg.get_value () != daqchgs[i]) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(daqchgs[i]), got: $(da.qchg)\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(daqchgs[i]), got: $(da.qchg)\n");
             assert_not_reached ();
           }
           if (da.dupd.get_value () != dadupds[i]) {
-            stdout.printf (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadupds[i]), got: $(da.dupd)\n");
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dadupds[i]), got: $(da.dupd)\n");
             assert_not_reached ();
           }
         }
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -541,28 +542,28 @@ public class LsclTest.ReadFile
         var scl = new Scl ();
         scl.deserialize (doc);
         if (scl.data_type_templates == null) {
-          stdout.printf ("ERROR: no data type templates found\n");
+          GLib.message ("ERROR: no data type templates found\n");
           assert_not_reached ();
         }
         var dt = scl.data_type_templates;
         // Data Attribute Types
         if (dt.data_attribute_types == null) {
-          stdout.printf (@"ERROR: no Data Attribute Types found\n");
+          GLib.message (@"ERROR: no Data Attribute Types found\n");
           assert_not_reached ();
         }
         var dats = dt.data_attribute_types;
         dats.deserialize_children ();
         if (dats.size != 12) {
-          stdout.printf (@"ERROR: wrong data object type templates number. Expected: 12 Got: $(dats.size)\n");
+          GLib.message (@"ERROR: wrong data object type templates number. Expected: 12 Got: $(dats.size)\n");
           assert_not_reached ();
         }
         var dat = dats.get ("RRECRecModStruct");
         if (dat == null) {
-          stdout.printf (@"ERROR: Data Attribute Type: /XCBR5ModctlModel not found\n");
+          GLib.message (@"ERROR: Data Attribute Type: /XCBR5ModctlModel not found\n");
           assert_not_reached ();
         }
         if (dat.bdas == null) {
-          stdout.printf (@"ERROR: Basic Data Attribute definitions not found for Data Attribute Type: /RRECRecModStruct \n");
+          GLib.message (@"ERROR: Basic Data Attribute definitions not found for Data Attribute Type: /RRECRecModStruct \n");
           assert_not_reached ();
         }
         dat.bdas.deserialize_children ();
@@ -577,90 +578,90 @@ public class LsclTest.ReadFile
         for (int i = 0; i < bdas.length; i++) {
           var bda = dat.bdas.get (bdas[i]);
           if (bda == null) {
-            stdout.printf (@"ERROR: BDA: $(bdas[i]) not found\n");
+            GLib.message (@"ERROR: BDA: $(bdas[i]) not found\n");
             assert_not_reached ();
           }
           if (bda.name.get_string () != bdas[i]) {
-            stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong name. Expected $(bdas[i]), got: $(bda.name)\n");
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong name. Expected $(bdas[i]), got: $(bda.name)\n");
             assert_not_reached ();
           }
           if (bda.count.get_value () != counts[i]) {
-            stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
             assert_not_reached ();
           }
           var db = new GDocument ();
           bda.serialize (db);
           Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+db.to_string ());
           if (bda.val_kind.get_value () != (int) vkinds[i]) {
-            stdout.printf (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
             assert_not_reached ();
           }
         }
         Test.message ("Testing BDA");
         var bda = dat.bdas.get ("Operated");
         if (bda == null) {
-          stdout.printf (@"ERROR: BDA: Operated not found\n");
+          GLib.message (@"ERROR: BDA: Operated not found\n");
           assert_not_reached ();
         }
         if (bda.name.get_string () != "Operated") {
-          stdout.printf (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name)\n");
           assert_not_reached ();
         }
         if (bda.b_type.get_string ().down () != "BOOLEAN".down ()) {
-          stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type)\n");
           assert_not_reached ();
         }
         if (bda.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
-          stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
           assert_not_reached ();
         }
         if (bda.count.get_value () != 2) {
-          stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count)\n");
           assert_not_reached ();
         }
         string[] vals = {"TRUE","FALSE"};
         for (int j = 0; j < vals.length; j++) {
           if ((bda.vals.get (j)).get_value () != vals[j]) {
-            stdout.printf (@"ERROR: BDA: Wrong value for array element $j. Expected $(vals[j]), got: $((bda.vals.get (j)).get_value ())\n");
+            GLib.message (@"ERROR: BDA: Wrong value for array element $j. Expected $(vals[j]), got: $((bda.vals.get (j)).get_value ())\n");
             assert_not_reached ();
           }
         }
         if (dat.bdas.duplicated.size != 1) {
-          stdout.printf (@"ERROR: BDA: Wrong duplicated size. Expected 1, got: $(dat.bdas.duplicated.size)\n");
+          GLib.message (@"ERROR: BDA: Wrong duplicated size. Expected 1, got: $(dat.bdas.duplicated.size)\n");
           assert_not_reached ();
         }
         var dup = dat.bdas.duplicated.get (0);
         if (dup == null) {
-          stdout.printf (@"ERROR: BDA: No duplicated found!\n");
+          GLib.message (@"ERROR: BDA: No duplicated found!\n");
           assert_not_reached ();
         }
         if (dup.name.get_string () != "Operated") {
-          stdout.printf (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
+          GLib.message (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
           assert_not_reached ();
         }
         if (dup.b_type.get_string ().down () != "BOOLEAN".down ()) {
-          stdout.printf (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
           assert_not_reached ();
         }
         if (dup.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
-          stdout.printf (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
           assert_not_reached ();
         }
         if (dup.count.get_value () != 2) {
-          stdout.printf (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
+          GLib.message (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
           assert_not_reached ();
         }
         string[] vals2 = {"FALSE","TRUE"};
         for (int k = 0; k < vals2.length; k++) {
           if ((dup.vals.get (k)).get_value () != vals2[k]) {
-            stdout.printf (@"ERROR: BDA: Wrong value for array element $k. Expected $(vals2[k]), got: $((dup.vals.get (k)).get_value ())\n");
+            GLib.message (@"ERROR: BDA: Wrong value for array element $k. Expected $(vals2[k]), got: $((dup.vals.get (k)).get_value ())\n");
             assert_not_reached ();
           }
         }
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -673,33 +674,33 @@ public class LsclTest.ReadFile
         scl.deserialize (doc);
         Test.message ("After deserialize");
         if (scl.ieds == null) {
-          stdout.printf (@"ERROR: No ieds found!\n");
+          GLib.message (@"ERROR: No ieds found!\n");
           assert_not_reached ();
         }
         assert (scl.ieds.deserialize_children ());
         if (scl.ieds.size != 1) {
-          stdout.printf (@"ERROR: More IED than expected: found $(scl.ieds.size)\n");
+          GLib.message (@"ERROR: More IED than expected: found $(scl.ieds.size)\n");
           assert_not_reached ();
         }
         var ied = scl.ieds.get ("IED1");
         if (ied == null) {
-          stdout.printf (@"ERROR: No IED 'IED1' found!\n");
+          GLib.message (@"ERROR: No IED 'IED1' found!\n");
           assert_not_reached ();
         }
         if (ied.name != "IED1") {
-          stdout.printf (@"ERROR: Bad name for 'IED1' : $(ied.name)\n");
+          GLib.message (@"ERROR: Bad name for 'IED1' : $(ied.name)\n");
           assert_not_reached ();
         }
         if (ied.config_version != "0") {
-          stdout.printf (@"ERROR: Bad config_version for 'IED1' : $(ied.config_version)\n");
+          GLib.message (@"ERROR: Bad config_version for 'IED1' : $(ied.config_version)\n");
           assert_not_reached ();
         }
         if (ied.manufacturer != "LibreSCLEditor") {
-          stdout.printf (@"ERROR: Bad manufacturer for 'IED1' : $(ied.manufacturer)\n");
+          GLib.message (@"ERROR: Bad manufacturer for 'IED1' : $(ied.manufacturer)\n");
           assert_not_reached ();
         }
         if (ied.ied_type != "TEMPLATE") {
-          stdout.printf (@"ERROR: Bad name for 'IED1' : $(ied.ied_type)\n");
+          GLib.message (@"ERROR: Bad name for 'IED1' : $(ied.ied_type)\n");
           assert_not_reached ();
         }
         // Services Tests
@@ -745,36 +746,36 @@ public class LsclTest.ReadFile
         assert (ied.services.conf_lns.fix_ln_inst.get_value () == true);
         // Acces Point Tests
         if (ied.access_points == null) {
-          stdout.printf (@"ERROR: No access points found for 'IED1' \n");
+          GLib.message (@"ERROR: No access points found for 'IED1' \n");
           assert_not_reached ();
         }
         ied.access_points.deserialize_children ();
         var ap = ied.access_points.get ("AccessPoint1");
         if (ap == null) {
-          stdout.printf (@"ERROR: No Access Points found for 'IED1'\n");
+          GLib.message (@"ERROR: No Access Points found for 'IED1'\n");
           assert_not_reached ();
         }
         if (ap.name != "AccessPoint1") {
-          stdout.printf (@"ERROR: Bad name for 'AccessPoint1' : $(ap.name)\n");
+          GLib.message (@"ERROR: Bad name for 'AccessPoint1' : $(ap.name)\n");
           assert_not_reached ();
         }
         if (ap.router.get_value () != false) {
-          stdout.printf (@"ERROR: Bad router for 'IED1.AccessPoint1' : $(ap.router)\n");
+          GLib.message (@"ERROR: Bad router for 'IED1.AccessPoint1' : $(ap.router)\n");
           assert_not_reached ();
         }
         if (ap.clock.get_value () != true) {
-          stdout.printf (@"ERROR: Bad clock for 'IED1.AccessPoint1' : $(ap.clock)\n");
+          GLib.message (@"ERROR: Bad clock for 'IED1.AccessPoint1' : $(ap.clock)\n");
           assert_not_reached ();
         }
         if (ap.server == null) {
-          stdout.printf (@"ERROR: No server found for 'IED1.AccessPoint1'\n");
+          GLib.message (@"ERROR: No server found for 'IED1.AccessPoint1'\n");
           assert_not_reached ();
         }
         // Server Tests
         var server = ap.server;
         assert (server.timeout == "30");
         if (server.authentication == null) {
-          stdout.printf (@"ERROR: No authentication for 'IED1.AccessPoint1.Server'\n");
+          GLib.message (@"ERROR: No authentication for 'IED1.AccessPoint1.Server'\n");
           assert_not_reached ();
         }
         // Tests for Authentication
@@ -805,7 +806,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -913,7 +914,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -967,7 +968,7 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-        stdout.printf (@"ERROR: $(e.message)");
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });

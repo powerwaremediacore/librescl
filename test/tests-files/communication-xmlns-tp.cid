@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SCL xmlns:lscl="http://www.librescl.org/SCL" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SCL xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:lscl="http://www.librescl.org/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Communication>
 		<SubNetwork name="test" type="8-MMS/TCP">
 			<BitRate unit="b/s" multiplier="M">100</BitRate>

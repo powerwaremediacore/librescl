@@ -44,7 +44,7 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/api", 
     () => {
       try {
-        var d = new TwDocument ();
+        var d = new TDocument ();
         d.children.add (d.create_element ("Templates"));
         var e1 = d.create_element ("DataTemplate");
         d.root.children.add (e1);
@@ -68,7 +68,7 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/deserialize", 
     () => {
       try {
-        var d = new GDocument.from_string ("""<Templates><DataTemplate id="1"/><DataTemplate id="1"/></Templates>""");
+        var d = new TDocument.from_string ("""<Templates><DataTemplate id="1"/><DataTemplate id="1"/></Templates>""");
         var ts = new Templates ();
         assert (ts.templates.size == 0);
         ts.deserialize (d);
@@ -97,7 +97,7 @@ public class LsclTest.Collections
         assert (ts.templates.duplicated.size == 1);
         assert (ts.templates["1"].value != null);
         assert (ts.templates["1"].value.serialized_xml_node_value == "TEXT");
-        var ds = new TwDocument ();
+        var ds = new TDocument ();
         ts.serialize (ds);
         GLib.message (ds.to_string ());
         assert (ds.root != null);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Coment -->
 <!-- Coment 2 -->
-<SCL xmlns:lscl="http://www.librescl.org/SCL" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SCL xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:lscl="http://www.librescl.org/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Header id="TEMPLATE" nameStructure="IEDName" revision="0" toolID="YYYYY" version="3">
 		<Text>Capabilities of a #IRVA3S205K from ZIV</Text>
 		<History>
