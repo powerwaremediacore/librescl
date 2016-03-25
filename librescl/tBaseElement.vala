@@ -34,19 +34,8 @@ namespace Lscl
     [Description(nick="Text", blurb="")]
     public tText text { get; set; }
 
-    [Description(blurb="Logical Node Types templates")]
-    public tPrivateArray privates { get; set; default = new tPrivateArray (); }
-
-    public override GXml.Node? serialize_property (GXml.Node element,
-                                                   GLib.ParamSpec prop)
-        throws GLib.Error
-    {
-      if (!get_enable_proprietary_info () &&
-        element is GXml.Element && element.name.down () == "Private".down ())
-        return element;
-      if (_privates == null) _privates = new tPrivateArray ();
-      return (this as Lscl.Serializable).default_serialize_property (element, prop);
-    }
+    [Description(blurb="Private definitions")]
+    public tPrivate.Array privates { get; set; default = new tPrivate.Array (); }
   }
 }
 

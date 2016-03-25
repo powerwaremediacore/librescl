@@ -24,7 +24,8 @@ sources = \
 	read-file.vala \
 	save-file.vala \
 	lscl-performance.vala \
-	collectionstest.vala
+	collectionstest.vala \
+	private-test.vala
 
 AM_VALAFLAGS = \
 	--vapidir=$(top_builddir)/librescl \

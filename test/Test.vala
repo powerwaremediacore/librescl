@@ -41,6 +41,7 @@ namespace LsclTest
 			Performance.add_funcs ();
 			Enums.add_funcs ();
 			Collections.add_funcs ();
+			PrivateTest.add_funcs ();
 			return Test.run ();
 		}
 	}

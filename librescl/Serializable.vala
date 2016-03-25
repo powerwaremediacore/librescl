@@ -84,31 +84,6 @@ namespace Lscl
           nname = nname.replace ("Lscl","");
       }
     }
-    public void enable_proprietary_info (bool enable)
-    {
-      _enable_proprietary = enable;
-    }
-    public bool get_enable_proprietary_info ()
-    {
-      return _enable_proprietary;
-    }
-    public override GXml.Node? serialize_property (GXml.Node element,
-                                           GLib.ParamSpec prop)
-        throws GLib.Error
-    {
-      return default_serialize_property (element, prop);
-    }
-    
-    public new GXml.Node? default_serialize_property (GXml.Node element,
-                                               GLib.ParamSpec prop)
-        throws GLib.Error
-    {
-      if (_edition != Edition.FIRST &&
-          _property_edition.size != 0) // FIXME: This doesn't work on SECOND edition
-        if (_property_edition.get (prop.name) != null) return element;
-      return (this as SerializableObjectModel).default_serialize_property ((GXml.Element) element, prop);
-    }
-
     public override string node_name ()
     {
       return nname;
