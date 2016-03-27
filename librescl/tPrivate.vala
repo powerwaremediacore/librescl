@@ -29,7 +29,6 @@ namespace Lscl
 {
   public class tPrivate : Serializable
   {
-    construct { GLib.message ("Node name: "+node_name ()); }
     [Description (nick="type", blurb="")]
     public string private_type { get; set; }
     [Description (nick="source", blurb="")]

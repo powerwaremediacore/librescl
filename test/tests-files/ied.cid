@@ -24,6 +24,7 @@
     </SubNetwork>
   </Communication>
   <IED name="IED1" configVersion="0" type="TEMPLATE" manufacturer="LibreSCLEditor" >
+    <Private />
     <Services>
       <DynAssociation/>
       <GetDirectory/>

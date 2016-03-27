@@ -34,15 +34,12 @@ public class Lscl.SclDocument : Scl
   private bool _backup;
   private bool _enable_private = true;
   private GXml.TDocument.ReadType disable_private (GXml.Node node, Xml.TextReader Tr) {
-    GLib.message ("Disable Private: checking for node: "+node.name);
     if (node.name.down () == "private") {
-      GLib.message ("Skiping Private node");
       return GXml.TDocument.ReadType.NEXT;
     }
     return GXml.TDocument.ReadType.CONTINUE;
   }
   private GXml.TDocument.ReadType enable_private (GXml.Node node, Xml.TextReader Tr) {
-    GLib.message ("Enable Private: checking for node: "+node.name+" Adding node...");
     return GXml.TDocument.ReadType.CONTINUE;
   }
   /**
@@ -198,7 +195,6 @@ public class Lscl.SclDocument : Scl
     if (!_enable_private)
       func = disable_private;
     Document document = new GXml.TDocument.from_file_with_readtype_func (_file, func);
-    GLib.message (@"$document");
     deserialize (document);
     file_operation_end (_file.get_path ());
     return true;
