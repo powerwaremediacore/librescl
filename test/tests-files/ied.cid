@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SCL  xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<SCL  xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lscl="http://www.librescl.org/SCL">
   <Header id="SCL File" version="0" revision="1" toolID="OpenSCLConfigurator" nameStructure="IEDName" />
   <Communication>
     <SubNetwork name="Net1" desc="Network1">
@@ -25,6 +25,9 @@
   </Communication>
   <IED name="IED1" configVersion="0" type="TEMPLATE" manufacturer="LibreSCLEditor" >
     <Private />
+    <Private>
+      <lscl:Config t="1"/>
+    </Private>
     <Services>
       <DynAssociation/>
       <GetDirectory/>

@@ -80,10 +80,17 @@ public class LsclTest.PrivateTest
         scl.read_from_file (f);
         var d = new TDocument ();
         scl.serialize (d);
-        GLib.message (@"$d");
-        assert (scl.privates != null);
-        assert (scl.privates.deserialize_children ());
-        assert (scl.privates.size == 0);
+        Test.message (@"$d");
+        assert (scl.ieds != null);
+        scl.ieds.deserialize_children ();
+        var ied = scl.ieds.get ("IED1");
+        assert (ied != null);
+        assert (ied.privates != null);
+        ied.privates.deserialize_children ();
+        assert (ied.privates.size == 0);
+        assert (ied.access_points != null);
+        ied.access_points.deserialize_children ();
+        assert (ied.access_points.size == 1);
       }
       catch (GLib.Error e)
       {
