@@ -160,6 +160,7 @@ if DEBUG
 endif
 
 AM_VALAFLAGS += \
+	--vapidir=$(VAPIDIR) \
 	$(top_srcdir)/vapi/config.vapi \
 	--pkg gxml-0.10 \
 	-C -H lscl.h \
@@ -202,7 +203,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = lscl-0.6.pc
 
 lscl-0.6.vapi: liblscl-0.6.la
-vapidir = $(datadir)/vala/vapi
+vapidir = $(VAPIDIR)
 dist_vapi_DATA = \
 	lscl-0.6.vapi \
 	lscl-0.6.deps

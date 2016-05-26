@@ -28,8 +28,10 @@ sources = \
 	private-test.vala
 
 AM_VALAFLAGS = \
+	--vapidir=$(VAPIDIR) \
 	--vapidir=$(top_builddir)/librescl \
-	$(top_srcdir)/vapi/config.vapi \
+	--vapidir=$(top_srcdir)/vapi
+	--pkg config \
 	--pkg glib-2.0 \
 	--pkg gio-2.0 \
 	--pkg gee-0.8 \

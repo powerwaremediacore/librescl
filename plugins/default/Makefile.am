@@ -37,6 +37,7 @@ if DEBUG
 endif
 
 AM_VALAFLAGS += \
+	--vapidir=$(VAPIDIR) \
 	$(top_srcdir)/vapi/config.vapi \
 	$(top_builddir)/librescl/lscl-0.6.vapi \
 	--pkg gxml-0.10 \
