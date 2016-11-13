@@ -30,7 +30,7 @@ sources = \
 AM_VALAFLAGS = \
 	--vapidir=$(VAPIDIR) \
 	--vapidir=$(top_builddir)/librescl \
-	--vapidir=$(top_srcdir)/vapi
+	--vapidir=$(top_srcdir)/vapi \
 	--pkg config \
 	--pkg glib-2.0 \
 	--pkg gio-2.0 \
