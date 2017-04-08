@@ -29,17 +29,10 @@ namespace Lscl
 {
   public class Scl : tBaseElement
   {
-    [Description (nick="Header", blurb="History information about changes")]
     public tHeader header { get; set; }
-    [Description (nick="Substation",
-                  blurb="Substation configuration and nodes association")]
     public tSubstation substation { get; set; }
-    [Description (nick="Communication",
-                  blurb="Subneworks and communications descriptions")]
     public tCommunication communication { get; set; }
-    [Description (blurb="IEDs defined in this configuration file")]
     public tIED.HashMap ieds { get; set; default = new tIED.HashMap (); }
-    [Description (nick="DataTypeTemplates", blurb="Templates")]
     public tDataTypeTemplates data_type_templates { get; set; }
 
     construct {

@@ -35,13 +35,14 @@ namespace LsclTest
 		static int main (string args[])
 		{
 			Test.init (ref args);
+			SclTest.add_funcs ();/*
 			XmlGeneration.add_funcs ();
 			ReadFile.add_funcs ();
 			SaveFile.add_funcs ();
 			Performance.add_funcs ();
 			Enums.add_funcs ();
 			Collections.add_funcs ();
-			PrivateTest.add_funcs ();
+			PrivateTest.add_funcs ();*/
 			return Test.run ();
 		}
 	}

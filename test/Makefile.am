@@ -18,6 +18,7 @@ TEST_PROGS += librescl_test
 
 sources = \
 	tests-config.vala \
+	scl-test.vala \
 	enums.vala \
 	Test.vala \
 	xml-generation-tests.vala \
