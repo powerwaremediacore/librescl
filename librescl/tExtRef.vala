@@ -33,7 +33,7 @@ namespace Lscl
     public string ied_name { get; set; }
     [Description (nick="ldInst")]
     public string ld_inst { get; set; }
-    public string prefix { get; set; }
+    public new string prefix { get; set; }
     [Description (nick="lnClass")]
     public tLNClassEnum ln_class { get; set; }
     [Description (nick="lnInst")]

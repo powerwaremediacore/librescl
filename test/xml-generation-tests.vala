@@ -33,37 +33,23 @@ class LsclTest.XmlGeneration
   {
     Test.add_func ("/librescl/write-empty-scl-ed1", 
       () => {
-        GXml.Document doc = new GXml.TDocument ();
         var dscl = new SclDocument ();
         try {
-          dscl.serialize (doc);
+          var doc = new GXml.GomDocument.from_string (dscl.write_string ());
           Test.message (@"[OUTPUT SCL:\n$((doc as TDocument).to_string ())]");
-          assert (doc.root != null);
-          assert (doc.root.name.up () == "SCL");
-          assert (doc.root.namespaces.size == 2);
-          bool found1, found2;
-          found1 = found2 = false;
-          foreach (GXml.Namespace n in doc.root.namespaces) {
-            if (n.uri == "http://www.iec.ch/61850/2003/SCL")
-              found1 = true;
-            if (n.uri == "http://www.librescl.org/SCL")
-              found2 = true;
-          }
-          assert (found1);
-          assert (found2);
-          assert (doc.root.namespaces.get (0) != null);
-          assert (doc.root.namespaces[0].uri == "http://www.iec.ch/61850/2003/SCL");
-          assert (doc.root.namespaces.get (1) != null);
-          assert (doc.root.namespaces[1].uri == "http://www.librescl.org/SCL");
-          assert (doc.root.children.size == 0);
+          assert (doc.document_element != null);
+          assert (doc.document_element.node_name.up () == "SCL");
+          assert (doc.document_element.get_attribute_ns ("http://www.w3.org/2000/xmlns", "scl") == "http://www.iec.ch/61850/2003/SCL");
+          assert (doc.document_element.get_attribute_ns ("http://www.w3.org/2000/xmlns", "lscl") == "http://www.librescl.org/SCL");
+          assert (doc.document_element.get_attribute_ns ("http://www.w3.org/2000/xmlns", "scl") != null);
+          assert (doc.document_element.get_attribute_ns ("http://www.w3.org/2000/xmlns", "lscl") != null);
         } catch (GLib.Error e) {
           GLib.message (@"ERROR: $(e.message)");
           assert_not_reached ();
         }
       });
-    Test.add_func ("/librescl/write-data_type_templates-scl-ed1", 
+    Test.add_func ("/librescl/write-data_type_templates-scl-ed1",
       () => {
-       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
@@ -82,37 +68,38 @@ class LsclTest.XmlGeneration
          //        var bda = new tBDA ();
          //        bda.name = "attr1";
          //        dat.BDA.set_at (bda.name, bda);
-         dscl.serialize (doc);
+         var doc = new GXml.GomDocument.from_string (dscl.write_string ());
          //        GLib.message (@"SCL:\n $(doc)\n");
-         if (doc.root == null) {
+         if (doc.document_element == null) {
            GLib.message (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.root.name.up () != "SCL") {
-           GLib.message (@"ERROR: SCL NODE: node name $(doc.root.name)");
+         if (doc.document_element.node_name.up () != "SCL") {
+           GLib.message (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
            assert_not_reached ();
          }
-         GXml.Element element = (GXml.Element) doc.root;
-         if (!(element.children.size > 0)) {
-           GLib.message (@"ERROR: SCL NODE: no child nodes $(doc.root)");
+         var element = doc.document_element as DomElement;
+         if (!(element.child_nodes.length > 0)) {
+           GLib.message (@"ERROR: SCL NODE: no child nodes $((doc.document_element as GomElement).write_string ())");
            assert_not_reached ();
          }
          bool found = false;
-         GXml.Element dt = (GXml.Element) doc.root;
-         foreach (GXml.Node n in doc.root.children) {
-           if (n is GXml.Element) {
-             if (n.name == "DataTypeTemplates") {
+         var dt = doc.document_element as DomElement;
+         for (int i = 0; i < doc.document_element.child_nodes.length; i++) {
+           var n = doc.document_element.child_nodes.item (i);
+           if (n is GXml.DomElement) {
+             if (n.node_name == "DataTypeTemplates") {
                found = true;
-               dt = (GXml.Element) n;
+               dt = n as DomElement;
              }
            }
          }
          if (!found) {
-           GLib.message (@"ERROR: SCL NODE: No DataTypeTemplates node found\n$(doc)");
+           GLib.message (@"ERROR: SCL NODE: No DataTypeTemplates node found\n$((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
-         if (!(dt.children.size > 0)) {
-           GLib.message (@"ERROR: SCL NODE: DataTypeTemplates has NO nodes\n$(doc)");
+         if (!(dt.child_nodes.length > 0)) {
+           GLib.message (@"ERROR: SCL NODE: DataTypeTemplates has NO nodes\n$((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
        }
@@ -124,25 +111,24 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-ieds-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
        try {
          dscl.ieds = new tIED.HashMap ();
-         dscl.serialize (doc);
+         var doc = new GXml.GomDocument.from_string (dscl.write_string ());
          //        GLib.message (@"SCL:\n $(doc)\n");
-         if (doc.root == null) {
+         if (doc.document_element == null) {
            GLib.message (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.root.name.up () != "SCL") {
-           GLib.message (@"ERROR: SCL NODE: node name $(doc.root.name)");
+         if (doc.document_element.node_name.up () != "SCL") {
+           GLib.message (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
            assert_not_reached ();
          }
-         GXml.Element element = (GXml.Element) doc.root;
-         if (element.children.size > 0) {
-           GLib.message (@"ERROR: SCL NODE: have child nodes $(doc.root)");
+         GXml.DomElement element = doc.document_element;
+         if (element.child_nodes.length > 0) {
+           GLib.message (@"ERROR: SCL NODE: have child nodes $((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
        }
@@ -152,32 +138,32 @@ class LsclTest.XmlGeneration
          assert_not_reached ();
        }
       });
-    Test.add_func ("/librescl/write-communication-scl-ed1", 
+    Test.add_func ("/librescl/write-communication-scl-ed1",
       () => {
-       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
        try {
          dscl.communication = new tCommunication ();
-         dscl.serialize (doc);
+         var doc = new GomDocument.from_string (dscl.write_string ());
          //        GLib.message (@"SCL:\n $(doc)\n");
-         assert (doc.root != null);
-         assert (doc.root.name.up () == "SCL");
-         GXml.Element element = (GXml.Element) doc.root;
-         assert (element.children.size > 0);
+         assert (doc.document_element != null);
+         assert (doc.document_element.node_name.up () == "SCL");
+         GXml.DomElement element = doc.document_element;
+         assert (element.child_nodes.length > 0);
          bool found = false;
-         GXml.Element dt = (GXml.Element) doc.root;
-         foreach (GXml.Node n in doc.root.children) {
-           if (n is Element) {
-             if (n.name == "Communication") {
+         GXml.DomElement dt = doc.document_element;
+         for (int i = 0; i < doc.document_element.child_nodes.length; i++) {
+           var n = doc.document_element.child_nodes.item (i);
+           if (n is DomElement) {
+             if (n.node_name == "Communication") {
                found = true;
-               dt = (Element) n;
+               dt = (DomElement) n;
              }
            }
          }
          assert (found);
-         assert (dt.children.size == 0);
+         assert (dt.child_nodes.length == 0);
        }
        catch (GLib.Error e)
        {
@@ -187,43 +173,43 @@ class LsclTest.XmlGeneration
       });
     Test.add_func ("/librescl/write-substation-scl-ed1", 
       () => {
-       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
        try {
          dscl.substation = new tSubstation ();
-         dscl.serialize (doc);
+         var doc = new GomDocument.from_string (dscl.write_string ());
          //        GLib.message (@"SCL:\n $(doc)\n");
-         if (doc.root == null) {
+         if (doc.document_element == null) {
            GLib.message (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.root.name.up () != "SCL") {
-           GLib.message (@"ERROR: SCL NODE: node name $(doc.root.name)");
+         if (doc.document_element.node_name.up () != "SCL") {
+           GLib.message (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
            assert_not_reached ();
          }
-         GXml.Element element = (GXml.Element) doc.root;
-         if (!(element.children.size > 0)) {
-           GLib.message (@"ERROR: SCL NODE: no child nodes $(doc.root)");
+         GXml.DomElement element = doc.document_element;
+         if (!(element.child_nodes.length > 0)) {
+           GLib.message (@"ERROR: SCL NODE: no child nodes $((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
          bool found = false;
-         GXml.Element dt = (GXml.Element) doc.root;
-         foreach (GXml.Node n in doc.root.children) {
-           if (n is Element) {
-             if (n.name == "Substation") {
+         GXml.DomElement dt = doc.document_element;
+         for (int i = 0; i < doc.document_element.child_nodes.length; i++) {
+           var n = doc.document_element.child_nodes.item (i);
+           if (n is DomElement) {
+             if (n.node_name == "Substation") {
                found = true;
-               dt = (Element) n;
+               dt = (DomElement) n;
              }
            }
          }
          if (!found) {
-           GLib.message (@"ERROR: SCL NODE: No Substation node found\n$(doc)");
+           GLib.message (@"ERROR: SCL NODE: No Substation node found\n$((doc.document_element as GomElement).write_string ())");
            assert_not_reached ();
          }
-         if (dt.children.size > 0) {
-           GLib.message (@"ERROR: SCL NODE: Substationhas nodes\n$(doc)");
+         if (dt.child_nodes.length > 0) {
+           GLib.message (@"ERROR: SCL NODE: Substationhas nodes\n$((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
        }
@@ -233,46 +219,46 @@ class LsclTest.XmlGeneration
          assert_not_reached ();
        }
       });
-    Test.add_func ("/librescl/write-header-scl-ed1", 
+    Test.add_func ("/librescl/write-header-scl-ed1",
       () => {
-       GXml.Document doc = new GXml.TDocument ();
        var dscl = new SclDocument ();
        //string tn = typeof (tDataTypeTemplates).name ().replace ("Lsclt","");
        //GLib.message (@"Test Node name: $(tn)");
        try {
          dscl.header = new tHeader ();
-         dscl.serialize (doc);
+         var doc = new GomDocument.from_string (dscl.write_string ());
          //        GLib.message (@"SCL:\n $(doc)\n");
-         if (doc.root == null) {
+         if (doc.document_element == null) {
            GLib.message (@"ERROR: SCL NODE: no node");
            assert_not_reached ();
          }
-         if (doc.root.name.up () != "SCL") {
-           GLib.message (@"ERROR: SCL NODE: node name $(doc.root.name)");
+         if (doc.document_element.node_name.up () != "SCL") {
+           GLib.message (@"ERROR: SCL NODE: node name $(doc.document_element.node_name)");
            assert_not_reached ();
          }
-         GXml.Element element = (GXml.Element) doc.root;
-         if (!(element.children.size > 0)) {
-           GLib.message (@"ERROR: SCL NODE: no child nodes $(doc.root)");
+         GXml.DomElement element = doc.document_element;
+         if (!(element.child_nodes.length > 0)) {
+           GLib.message (@"ERROR: SCL NODE: no child nodes $((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
          bool found = false;
-         GXml.Element dt =(GXml.Element) doc.root;
-         foreach (GXml.Node n in doc.root.children) {
-           if (n is Element) {
-             if (n.name == "Header") {
+         GXml.DomElement dt =doc.document_element;
+         for (int i = 0; i < doc.document_element.child_nodes.length; i++) {
+           var n = doc.document_element.child_nodes.item (i);
+           if (n is DomElement) {
+             if (n.node_name == "Header") {
                //          GLib.message (@"Node: $(n.node_name)");
                found = true;
-               dt = (Element) n;
+               dt = (DomElement) n;
              }
            }
          }
          if (!found) {
-           GLib.message (@"ERROR: SCL NODE: No Header node found\n$(doc)");
+           GLib.message (@"ERROR: SCL NODE: No Header node found\n$((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
-         if (dt.children.size > 0) {
-           GLib.message (@"ERROR: SCL NODE: Header has nodes\n$(doc)");
+         if (dt.child_nodes.length > 0) {
+           GLib.message (@"ERROR: SCL NODE: Header has nodes\n$((doc.document_element as GomElement).write_string ()))");
            assert_not_reached ();
          }
        }
@@ -282,13 +268,13 @@ class LsclTest.XmlGeneration
          assert_not_reached ();
        }
       });
-    Test.add_func ("/librescl/write-data_attribute_types-duplicated-dba-ed1", 
+    Test.add_func ("/librescl/write-data_attribute_types-duplicated-dba-ed1",
       () => {
        try {
-         var idoc = new GXml.TDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
-         GLib.message (@"INITIAL SCL\n$(idoc)");
+         var fdoc = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+         assert (fdoc.query_exists ());
          var iscl = new Scl ();
-         iscl.deserialize (idoc);
+         (iscl as GomElement).read_from_file (fdoc);
          {
            assert (iscl.data_type_templates != null);
            assert (iscl.data_type_templates.data_attribute_types != null);
@@ -298,17 +284,14 @@ class LsclTest.XmlGeneration
              //GLib.message (@"INITIAL SCL: datypes size $(datd)\n");
              foreach (tDAType d in iscl.data_type_templates.data_attribute_types.values)
              {
-               if (d.serialized_xml_node_value != null) {
+               if (d.child_nodes.length != 0) {
                  //GLib.message (@"$(d.id): $(d.serialized_xml_node_value)\n");
                }
              }
            }
          }
-         GXml.Document doc = new GXml.TDocument ();
-         iscl.serialize (doc);
          var scl = new Scl ();
-         GLib.message (@"FINALY SCL\n$doc");
-         scl.deserialize (doc);
+         (scl as GomElement).read_from_string (iscl.write_string ());
          assert (scl.data_type_templates != null);
          assert (scl.data_type_templates.data_attribute_types != null);
          assert (scl.data_type_templates.data_attribute_types.size == 0);

@@ -7,7 +7,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *  
  *  This library is free software; you can redistribute it and/or
@@ -42,14 +42,11 @@ namespace Lscl
     [Description (nick="DataTypeTemplates", blurb="Templates")]
     public tDataTypeTemplates data_type_templates { get; set; }
 
-    public override bool set_default_namespace (GXml.Node node) {
-      node.set_namespace ("http://www.iec.ch/61850/2003/SCL", "scl");
-      node.set_namespace ("http://www.librescl.org/SCL","lscl");
-      return true;
-    }
-    public override string node_name ()
-    {
-      return "SCL";
+    construct {
+      try {
+        initialize_with_namespace ("http://www.iec.ch/61850/2003/SCL", "scl", "SCL");
+        set_attribute_ns ("http://www.w3.org/2000/xmlns","xmlns:Lscl","http://www.librescl.org/SCL");
+      } catch (GLib.Error e)  { warning ("Error: "+e.message); }
     }
 
    public new string to_string ()

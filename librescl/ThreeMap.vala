@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -194,9 +194,9 @@ namespace Lscl
         throw new SerializableError.UNSUPPORTED_TYPE_ERROR ("%s: Value type '%s' is unsupported", 
                                                       this.get_type ().name (), value_type.name ());
       }
-      foreach (GXml.Node n in _node.children) {
-        deserialize_node (n);
-      }
+      //for (int iGXml.Node n in _node.child_nodes) {
+      //  deserialize_node (n);
+      //}
       _deserialized = true;
       return true;
     }

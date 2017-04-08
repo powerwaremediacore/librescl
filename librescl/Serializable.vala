@@ -7,7 +7,7 @@
  *       Daniel Espinosa <esodan@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ namespace Lscl
 	    FIRST,
 	    SECOND
     }
-    public class Serializable : GXml.SerializableContainer
+    public class Serializable : GXml.GomElement
     {
     protected Edition _edition;
     protected bool _enable_proprietary = false;
@@ -83,70 +83,19 @@ namespace Lscl
         if ("Lscl" in nname)
           nname = nname.replace ("Lscl","");
       }
-    }
-    public override string node_name ()
-    {
-      return nname;
-    }
-    public override bool property_use_nick () { return true; }
-    public override string to_string ()
-    {
-      Document doc = new xDocument ();
-      string ret = this.get_type ().name ();
-      try {
-        this.serialize (doc);
-        ret = @"%s".printf (doc.to_string ());
+      try { initialize (nname); }
+      catch (GLib.Error e ) {
+        warning ("Error: "+e.message);
       }
-      catch (GLib.Error e) {
-        ret = @"ERROR: to_string (): $(e.message)";
-      }
-      return ret;
+    }
+    public virtual string to_string () {
+      string s = "";
+      try { s = write_string (); } catch { return ""; }
+      return s;
     }
     public virtual string get_id ()
     {
       return get_type ().name ();
-    }
-    public override void init_containers ()
-    {
-      return;
-    }
-    // Implementation of AnyContentFromOtherNameSpace
-    public new virtual bool get_enable_unknown_serializable_property () { return _enable_proprietary; }
-    public Gee.ArrayList<Object> find_other (string name)
-    {
-      var objs = new Gee.ArrayList<Object> ();
-      foreach (GXml.Node n in unknown_serializable_properties.values) {
-        if (nname == name) {
-          if (n is GXml.Attribute) {
-            var attr = new OtherProperty (n);
-            objs.add (attr);
-          }
-          if (n is GXml.Element) {
-            var elm = new OtherElement (n);
-            objs.add (elm);
-          }
-        }
-      }
-      return objs;
-    }
-    public class OtherProperty : Object
-    {
-      protected GXml.Node node;
-      public string name { owned get { return node.name.dup (); } }
-      public string @value { owned get { return node.value.dup (); } }
-      public OtherProperty (GXml.Node attr)
-      {
-        this.node = attr;
-      }
-    }
-    public class OtherElement : Object
-    {
-      private GXml.Node node;
-      public string name { owned get { return node.name.dup (); } } 
-      public OtherElement (GXml.Node node)
-      {
-        this.node = node;
-      }
     }
   }
 }

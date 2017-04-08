@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,27 +39,33 @@ namespace Lscl
     // SerializableMapId
     public string get_map_key () { return name; }
     // Serializable
+    /*
     public override bool deserialize (GXml.Node node)
                                     throws GLib.Error
                                     requires (node is Element)
     {
       var element = (Element) node;
-      if (element.children.size > 0) {
+      if (element.child_nodes.length > 0) {
         if (connected_aps == null)
           connected_aps = new tConnectedAP.DualKeyMap ();
         connected_aps.deserialize (element);
       }
       return default_deserialize (node);
-    }
+    }*/
     public class HashMap : SerializableHashMap<string,tSubNetwork>
-	 {
-			public new tSubNetwork get (string name) { return base.get (name); }
+    {
+      public new tSubNetwork get (string name) { return base.get (name); }
       public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
       public new GLib.List<tSubNetwork> list_values () { return (GLib.List<tSubNetwork>) base.list_values (); }
-	 }
+    }
     public class tBitRate : tBitRateInMbPerSec
     {
-      public override string node_name () { return "BitRate"; }
+      construct {
+        try { initialize ("BitRate"); }
+        catch (GLib.Error e ) {
+          warning ("Error: "+e.message);
+        }
+      }
     }
   }
 }

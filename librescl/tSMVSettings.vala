@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,17 +56,7 @@ namespace Lscl
   /**
    * Base class for Samples Measured Values device capabilities.
    */
-  public class tSamplesBase : Serializable
-  {
-    public string get_value () {
-      if (serialized_xml_node_value == null)
-        serialized_xml_node_value = "0";
-      return serialized_xml_node_value;
-    }
-    public void set_value (string val) {
-      serialized_xml_node_value = val;
-    }
-  }
+  public class tSamplesBase : NodeContent {}
   /**
    * Sample Rates supported by this device for Sample Measured Values.
    */

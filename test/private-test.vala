@@ -78,9 +78,7 @@ public class LsclTest.PrivateTest
         var scl = new SclDocument ();
         scl.set_enable_private (false);
         scl.read_from_file (f);
-        var d = new TDocument ();
-        scl.serialize (d);
-        Test.message (@"$d");
+        var d = new GomDocument.from_string (scl.write_string ());
         assert (scl.ieds != null);
         scl.ieds.deserialize_children ();
         var ied = scl.ieds.get ("IED1");

@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ namespace Lscl
     [Description(nick="ldInst",blurb="Logical Device instance")]
     public string ld_inst { get; set; }
     [Description(nick="prefix",blurb="Logical Node prefix")]
-    public string prefix { get; set; }
+    public new string prefix { get; set; }
     [Description(nick="lnType",blurb="Logical Node type")]
     public string ln_type { get; set; }
 

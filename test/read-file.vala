@@ -63,9 +63,7 @@ public class LsclTest.ReadFile
         string path = LsclTest.TEST_DIR + "/tests-files/scl.cid";
         var  f = File.new_for_path (path);
         var scl = new SclDocument ();
-        assert (scl.read_from_file (f));
-        assert (scl.get_file () != null);
-        assert (scl.get_file ().query_exists ());
+        scl.read_from_file (f);
       }
       catch (GLib.Error e)
       {
@@ -103,9 +101,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-scl", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/scl.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
       }
       catch (GLib.Error e)
       {
@@ -274,9 +272,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-data-type-template", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.data_type_templates != null);
         var dt = scl.data_type_templates;
         assert (dt.logical_node_types != null);
@@ -380,9 +378,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-data-type-template/logical-node-types", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.data_type_templates != null);
         var dt = scl.data_type_templates;
         assert (dt.logical_node_types != null);
@@ -460,9 +458,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-data-type-template/data-object-types", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         if (scl.data_type_templates == null) {
           GLib.message ("ERROR: no data type templates found\n");
           assert_not_reached ();
@@ -538,9 +536,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-data-type-template/data-attribute-types", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-datypes.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         if (scl.data_type_templates == null) {
           GLib.message ("ERROR: no data type templates found\n");
           assert_not_reached ();
@@ -571,9 +569,7 @@ public class LsclTest.ReadFile
         //string[] values = {"single_contact","single_contact"};
         tValKind.Enum[] vkinds = {tValKind.Enum.SET, tValKind.Enum.CONF};
         int[] counts = {0,0};
-        var d = new GDocument ();
-        dat.serialize (d);
-        Test.message ("DAT XML: "+d.to_string ());
+        Test.message ("DAT XML: "+dat.write_string ());
         Test.message ("Testing tDAType");
         for (int i = 0; i < bdas.length; i++) {
           var bda = dat.bdas.get (bdas[i]);
@@ -589,9 +585,7 @@ public class LsclTest.ReadFile
             GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
             assert_not_reached ();
           }
-          var db = new GDocument ();
-          bda.serialize (db);
-          Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+db.to_string ());
+          Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+bda.write_string ());
           if (bda.val_kind.get_value () != (int) vkinds[i]) {
             GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
             assert_not_reached ();
@@ -668,10 +662,10 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-ied/ied", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
         Test.message ("Before deserialize");
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         Test.message ("After deserialize");
         if (scl.ieds == null) {
           GLib.message (@"ERROR: No ieds found!\n");
@@ -813,9 +807,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-ied/logical-device/LN0", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.ieds != null);
         assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("IED1");
@@ -921,9 +915,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-ied/logical-device/logical-nodes", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.ieds != null);
         assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("IED1");
@@ -975,9 +969,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-scd/initial-comments", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/data-type-template-coments.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         // TODO: Add test for SDO y SDA in templates
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
@@ -985,9 +979,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-scd/communication-tp-ns", 
     () => {
       try {
-        var doc = new GXml.GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/communication-xmlns-tp.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.communication != null);
         assert (scl.communication.subnetworks != null);
         assert (scl.communication.subnetworks.deserialize_children ());
@@ -1009,9 +1003,9 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-ied/logcontrol", 
     () => {
       try {
-        var doc = new GDocument.from_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");
         var scl = new Scl ();
-        scl.deserialize (doc);
+        scl.read_from_file (f);
         assert (scl.ieds != null);
         assert (scl.ieds.deserialize_children ());
         var ied = scl.ieds.get ("TEMPLATE");

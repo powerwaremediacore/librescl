@@ -43,11 +43,6 @@ namespace Lscl
     public SerializableBool ix_specified { get; set; }
 
     public string get_map_key () { return name; }
-    public override void init_containers ()
-    {
-      if (vals == null)
-        vals = new tVal.Array ();
-    }
     public class HashMap : SerializableHashMap<string,tDAI> {
       public new tDAI @get (string name) { return base.get (name); }
       public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }

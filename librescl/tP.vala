@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,20 +27,17 @@
 using GXml;
 namespace Lscl
 {
-  public class tP : Serializable
+  public class tP : NodeContent
   {
     private string _type;
 
-    [Description(nick="type",blurb="This attribute identifies the meaning of the value")]
+    [Description(nick="::type")]
     public string ptype {  get { return _type; } set { _type = value; } }
 
     public TypeEnum get_enum ()
     {
       return TypeEnum.new_from_string (_type);
     }
-
-    public string get_value () { return serialized_xml_node_value; }
-    public void set_value (string val) { serialized_xml_node_value = val; }
 
     public string description ()
     {
@@ -61,8 +58,6 @@ namespace Lscl
     {
       _type = type;
     }
-
-    public override bool serialize_use_xml_node_value () { return true; }
 
     public class Array : Lscl.SerializableArrayList<tP> {
 			public new tP get (int index) { return base.get (index); }
@@ -329,17 +324,6 @@ namespace Lscl
         return pattern;
       }
     }
-    public override bool deserialize_property (GXml.Node property_node)
-                                              throws GLib.Error
-    {
-      if (property_node is GXml.Attribute) {
-        if (property_node.name == "type") {
-          if ("tP_" in property_node.value )
-            return false;
-        }
-      }
-      return default_deserialize_property (property_node);
-    }
   }
 
   public class tP_VLANID : tP 
@@ -350,9 +334,9 @@ namespace Lscl
     }
   }
 
-  public class tP_VLANPRIORITY : tP 
+  public class tP_VLANPRIORITY : tP
   {
-    public tP_VLANPRIORITY() 
+    public tP_VLANPRIORITY()
     {
       base.from_enum (tP.TypeEnum.VLAN_PRIORITY);
     }
@@ -368,7 +352,7 @@ namespace Lscl
 
   public class tP_MACAddress : tP
   {
-    public tP_MACAddress() 
+    public tP_MACAddress()
     {
       base.from_enum (tP.TypeEnum.MAC_ADDRESS);
     }
@@ -384,7 +368,7 @@ namespace Lscl
 
   public class tP_OSIAEQualifier : tP 
   {
-    public tP_OSIAEQualifier() 
+    public tP_OSIAEQualifier()
     {
       base.from_enum (tP.TypeEnum.OSI_AE_QUALIFIER);
     }

@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,12 +33,6 @@ namespace Lscl
     public tFCDA.Array fcdas { get; set; }
 
     public string get_map_key () { return name; }
-
-    public override void init_containers ()
-    {
-      if (fcdas == null)
-        fcdas = new tFCDA.Array ();
-    }
 
     public class HashMap : SerializableHashMap<string,tDataSet> {
       public new tDataSet get (string name) { return base.get (name); }

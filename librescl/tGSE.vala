@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,11 +42,21 @@ namespace Lscl
     }
     public class tMinTime : tDurationInMilliSec
     {
-      public override string node_name () { return "MinTime"; }
+      construct {
+        try { initialize ("MinTime"); }
+        catch (GLib.Error e ) {
+          warning ("Error: "+e.message);
+        }
+      }
     }
     public class tMaxTime : tDurationInMilliSec
     {
-      public override string node_name () { return "MaxTime"; }
+      construct {
+        try { initialize ("MaxTime"); }
+        catch (GLib.Error e ) {
+          warning ("Error: "+e.message);
+        }
+      }
     }
   }
 }

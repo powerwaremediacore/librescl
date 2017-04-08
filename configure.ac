@@ -1,5 +1,5 @@
 m4_define([project_major_version], [0])
-m4_define([project_minor_version], [5])
+m4_define([project_minor_version], [7])
 m4_define([project_micro_version], [0])
 
 # LT_VERSION
@@ -42,7 +42,7 @@ AC_SUBST([LT_AGE])
 
 LIBRESCL_VERSION=project_version
 AC_SUBST(LIBRESCL_VERSION)
-API_VERSION=0.6
+API_VERSION=0.8
 AC_SUBST(API_VERSION)
 IT_PROG_INTLTOOL([0.35.0])
 
@@ -86,8 +86,8 @@ dnl Test directory
 PKG_CHECK_MODULES(GXML,gio-2.0
 glib-2.0
 gobject-2.0
-gee-0.8 >= 0.10
-gxml-0.10 >= 0.9.91)
+gee-0.8 >= 0.18.1
+gxml-0.14 >= 0.14.2)
 
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0)
 
@@ -99,7 +99,7 @@ Makefile
 vapi/Makefile
 librescl/namespace-info.vala
 librescl/Makefile
-librescl/lscl-0.6.pc
+librescl/lscl-0.8.pc
 test/Makefile
 test/tests-config.vala
 plugins/Makefile

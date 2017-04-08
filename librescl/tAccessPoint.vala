@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,20 +39,6 @@ namespace Lscl
     public tLN.ThreeMap logical_nodes { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
-
-    // Serializable
-    public override bool deserialize (GXml.Node node)
-                                    throws GLib.Error
-                                    requires (node is Element)
-    {
-      var element = (Element) node;
-      if (element.children.size > 0) {
-        if (logical_nodes == null)
-          logical_nodes = new tLN.ThreeMap ();
-        logical_nodes.deserialize (element);
-      }
-      return default_deserialize (node);
-    }
 
     public class HashMap : SerializableHashMap<string,tAccessPoint> {
       public new tAccessPoint get (string name) { return base.get (name); }

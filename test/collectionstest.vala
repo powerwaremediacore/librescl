@@ -44,20 +44,17 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/api", 
     () => {
       try {
-        var d = new TDocument ();
-        d.children.add (d.create_element ("Templates"));
+        var d = new GomDocument ();
+        d.append_child (d.create_element ("Templates"));
         var e1 = d.create_element ("DataTemplate");
-        d.root.children.add (e1);
+        d.document_element.append_child (e1);
         (e1 as Element).set_attr ("id","1");
         var e2 = d.create_element ("DataTemplate");
-        d.root.children.add (e2);
+        d.document_element.append_child (e2);
         (e2 as Element).set_attr ("id","1");
         var ts = new Templates ();
         assert (ts.templates.size == 0);
-        ts.deserialize (d);
-        GLib.message (d.to_string ());
-        assert (!ts.templates.deserialized ());
-        assert (ts.templates.deserialize_children ());
+        // TODO: ts.read_from_string (d.document_element.write_string ());
         assert (ts.templates.size == 1);
         assert (ts.templates.duplicated != null);
         assert (ts.templates.duplicated.size == 1);
@@ -68,11 +65,9 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/deserialize", 
     () => {
       try {
-        var d = new TDocument.from_string ("""<Templates><DataTemplate id="1"/><DataTemplate id="1"/></Templates>""");
         var ts = new Templates ();
         assert (ts.templates.size == 0);
-        ts.deserialize (d);
-        GLib.message (d.to_string ());
+        // TODO: ts.read_from_string ("""<Templates><DataTemplate id="1"/><DataTemplate id="1"/></Templates>""");
         assert (!ts.templates.deserialized ());
         assert (ts.templates.deserialize_children ());
         assert (ts.templates.size == 1);
@@ -85,11 +80,9 @@ public class LsclTest.Collections
     Test.add_func ("/librescl/collections/dup-hashmap/serialize", 
     () => {
       try {
-        var d = new TDocument.from_string ("""<Templates><DataTemplate id="1"><Value>TEXT</Value></DataTemplate><DataTemplate id="1"/>FAKE_TEXT</Templates>""");
         var ts = new Templates ();
         assert (ts.templates.size == 0);
-        ts.deserialize (d);
-        GLib.message (d.to_string ());
+        // TODO: ts.read_from_string ("""<Templates><DataTemplate id="1"><Value>TEXT</Value></DataTemplate><DataTemplate id="1"/>FAKE_TEXT</Templates>""");
         assert (!ts.templates.deserialized ());
         assert (ts.templates.deserialize_children ());
         assert (ts.templates.size == 1);
@@ -97,21 +90,20 @@ public class LsclTest.Collections
         assert (ts.templates.duplicated.size == 1);
         assert (ts.templates["1"].value != null);
         assert (ts.templates["1"].value.serialized_xml_node_value == "TEXT");
-        var ds = new TDocument ();
-        ts.serialize (ds);
-        GLib.message (ds.to_string ());
-        assert (ds.root != null);
-        assert (ds.root.name == "Templates");
-        assert (ds.root.children.size == 2);
-        assert (ds.root.children[0].name == "DataTemplate");
-        assert (ds.root.children[0].attrs["id"].value == "1");
-        assert (ds.root.children[0].children.size == 1);
-        assert (ds.root.children[0].children[0].name == "Value");
-        assert (ds.root.children[0].children[0].children.size == 1);
-        assert (ds.root.children[0].children[0].children[0].value == "TEXT");
-        assert (ds.root.children.size == 2);
-        assert (ds.root.children[0].name == "DataTemplate");
-        assert (ds.root.children[0].attrs["id"].value == "1");
+        // TODO: ts.write_string ()
+        var ds = new GomDocument.from_string ("");
+        assert (ds.document_element != null);
+        assert (ds.document_element.node_name == "Templates");
+        assert (ds.document_element.child_nodes.length == 2);
+        assert (ds.document_element.child_nodes.item(0).node_name == "DataTemplate");
+        assert ((ds.document_element.child_nodes.item(0) as DomElement).get_attribute ("id") == "1");
+        assert (ds.document_element.child_nodes.item(0).child_nodes.length == 1);
+        assert (ds.document_element.child_nodes.item(0).child_nodes.item(0).node_name == "Value");
+        assert (ds.document_element.child_nodes.item(0).child_nodes.item(0).child_nodes.length == 1);
+        assert (ds.document_element.child_nodes.item(0).child_nodes.item(0).child_nodes.item(0).node_value == "TEXT");
+        assert (ds.document_element.child_nodes.length == 2);
+        assert (ds.document_element.child_nodes.item(0).node_name == "DataTemplate");
+        assert ((ds.document_element.child_nodes.item(0) as DomElement).get_attribute ("id") == "1");
       } catch (GLib.Error e) {
         GLib.message ("ERROR: "+e.message);
       }

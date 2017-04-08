@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2014 Daniel Espinosa
+ *  Copyright (c) 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consultinga
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,11 +48,14 @@ namespace Lscl
     [Description(nick="bufOvfl", blurb="Configuration reference")]
     public SerializableBool buf_ovfl { get; set; }
 
-    public override string node_name () { return "OptFields"; }
-    public tReportControlOptFields ()
-		{
-			_property_edition.set ("buf-ovfl", Edition.SECOND);
-		}
+
+    construct {
+      try { initialize ("OptFields"); }
+      catch (GLib.Error e ) {
+        warning ("Error: "+e.message);
+      }
+      _property_edition.set ("buf-ovfl", Edition.SECOND);
+    }
   }
 }
 

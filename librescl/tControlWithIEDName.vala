@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -35,14 +35,8 @@ namespace Lscl
     public string conf_rev { get; set; }
     [Description(nick="confRevSpecified", blurb="")]
     public SerializableBool conf_rev_specified {get; set; }
-
-    public override void init_containers ()
-    {
-      if (ied_names == null)
-        ied_names = new tIEDName.Array ();
-    }
   }
-  public class tIEDName : Serializable
+  public class tIEDName : NodeContent
   {
     [Description (nick="apRef", blurb="Referenced Access Point")]
     public string ap_ref { get; set; }
@@ -54,10 +48,6 @@ namespace Lscl
     public tLNClassEnum ln_class { get; set; }
     [Description (nick="lnInst")]
     public string ln_inst { get; set; }
-
-    public void set_value (string val) { serialized_xml_node_value = val; }
-    public string get_value () { return serialized_xml_node_value; }
-    public override bool serialize_use_xml_node_value () { return true; }
 
     public class Array : SerializableArrayList<tIEDName> {
 			public new tIEDName get (int index) { return base.get (index); }

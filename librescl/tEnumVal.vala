@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,14 +27,10 @@
 using GXml;
 namespace Lscl
 {
-  public class tEnumVal : Serializable
+  public class tEnumVal : NodeContent
   {
     [Description(nick="ord", blurb="It contains the order of the values")]
     public string ord { get; set; }
-    // Enable set Element contents
-    public void set_value (string val) { serialized_xml_node_value = val; }
-    public string get_value () { return serialized_xml_node_value; }
-    public override bool serialize_use_xml_node_value () { return true; }
 
     public class Array : SerializableArrayList<tEnumVal> {
 			public new tEnumVal get (int index) { return base.get (index); }

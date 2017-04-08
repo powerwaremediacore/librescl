@@ -23,7 +23,7 @@ AM_CPPFLAGS = \
 
 AM_CFLAGS = \
 	$(GXML_CFLAGS) \
-	$(top_builddir)/librescl/liblscl-0.6.la
+	$(top_builddir)/librescl/liblscl-0.8.la
 
 liblscl_plugin_default_0_4_la_LDFLAGS= \
 	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)"
@@ -39,8 +39,8 @@ endif
 AM_VALAFLAGS += \
 	--vapidir=$(VAPIDIR) \
 	$(top_srcdir)/vapi/config.vapi \
-	$(top_builddir)/librescl/lscl-0.6.vapi \
-	--pkg gxml-0.10 \
+	$(top_builddir)/librescl/lscl-0.8.vapi \
+	--pkg gxml-0.14 \
 	-C -H lscl-plugin-default.h
 
 liblscl_plugin_default_0_4_la_vala.stamp: $(sources)

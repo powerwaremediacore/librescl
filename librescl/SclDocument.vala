@@ -33,15 +33,6 @@ public class Lscl.SclDocument : Scl
   private File _file;
   private bool _backup;
   private bool _enable_private = true;
-  private GXml.TDocument.ReadType disable_private (GXml.Node node, Xml.TextReader Tr) {
-    if (node.name.down () == "private") {
-      return GXml.TDocument.ReadType.NEXT;
-    }
-    return GXml.TDocument.ReadType.CONTINUE;
-  }
-  private GXml.TDocument.ReadType enable_private (GXml.Node node, Xml.TextReader Tr) {
-    return GXml.TDocument.ReadType.CONTINUE;
-  }
   /**
    * Signal for operation on a file.
    *
@@ -112,17 +103,7 @@ public class Lscl.SclDocument : Scl
     throws GLib.Error
   {
     return_val_if_fail (_file != null, false);
-    var document = new GXml.TDocument ();
-    serialize (document);
-#if DEBUG
-    GLib.message ("Starting save operation from GXml");
-#endif
-    file_operation_start (_file.get_path ());
-    document.save_as (_file, cancellable);
-#if DEBUG
-    GLib.message ("Ending save operation from GXml");
-#endif
-    file_operation_end (_file.get_path ());
+    write_file (_file);
     return true;
   }
   /**
@@ -133,18 +114,7 @@ public class Lscl.SclDocument : Scl
   public bool save_as (GLib.File file, Lscl.Edition edition = Lscl.Edition.FIRST, Cancellable? cancellable = null) throws GLib.Error
   {
     return_val_if_fail (set_edition (edition), false);
-    var document = new GXml.TDocument ();
-    serialize (document);
-#if DEBUG
-    GLib.message (@"Serialized document:\n$document");
-    GLib.message ("Starting save operation from GXml");
-#endif
-    file_operation_start (file.get_path ());
-    document.save_as (file, cancellable);
-#if DEBUG
-    GLib.message ("Ending save operation from GXml");
-#endif
-    file_operation_end (file.get_path ());
+    write_file (file);
     return true;
   }
 
@@ -157,13 +127,7 @@ public class Lscl.SclDocument : Scl
     var file = File.new_for_uri (uri);
     return_val_if_fail (file.query_exists (), false);
     _file = file;
-    file_operation_start (_file.get_path ());
-    GXml.TDocument.ReadTypeFunc func = enable_private;
-    if (!_enable_private)
-      func = disable_private;
-    var document = new GXml.TDocument.from_file_with_readtype_func (_file, func);
-    deserialize (document);
-    file_operation_end (_file.get_path ());
+    (this as GomElement).read_from_file (_file);
     return true;
   }
   /**
@@ -174,13 +138,7 @@ public class Lscl.SclDocument : Scl
     var file = File.new_for_path (path);
     return_val_if_fail (file.query_exists (), false);
     _file = file;
-    file_operation_start (_file.get_path ());
-    GXml.TDocument.ReadTypeFunc func = enable_private;
-    if (!_enable_private)
-      func = disable_private;
-    var document = new GXml.TDocument.from_path_with_readtype_func (path, func);
-    deserialize (document);
-    file_operation_end (_file.get_path ());
+    (this as GomElement).read_from_file (_file);
     return true;
   }
   /**
@@ -190,42 +148,7 @@ public class Lscl.SclDocument : Scl
   {
     return_val_if_fail (_file != null, false);
     return_val_if_fail (_file.query_exists (), false);
-    file_operation_start (_file.get_path ());
-    GXml.TDocument.ReadTypeFunc func = enable_private;
-    if (!_enable_private)
-      func = disable_private;
-    Document document = new GXml.TDocument.from_file_with_readtype_func (_file, func);
-    deserialize (document);
-    file_operation_end (_file.get_path ());
+    (this as GomElement).read_from_file (_file);
     return true;
-  }
-  /**
-   * Read SCL Document from given {@link GLib.File}. Updates file name to be used
-   * by default on {@link save()}.
-   */
-  public bool read_from_file (File file) throws GLib.Error
-  {
-    return_val_if_fail (file.query_exists (), false);
-    _file = file;
-    file_operation_start (_file.get_path ());
-    GXml.TDocument.ReadTypeFunc func = enable_private;
-    if (!_enable_private)
-      func = disable_private;
-    var document = new GXml.TDocument.from_file_with_readtype_func (file, func);
-    deserialize (document);
-    file_operation_end (_file.get_path ());
-    return true;
-  }
-
-  /**
-   * Read an {@link Lscl.Scl} document in a string
-   */
-  public void read_from_string (string str) throws GLib.Error
-  {
-    GXml.TDocument.ReadTypeFunc func = enable_private;
-    if (!_enable_private)
-      func = disable_private;
-    var document = new GXml.TDocument.from_string_with_readtype_func (str, func);
-    deserialize (document);
   }
 }

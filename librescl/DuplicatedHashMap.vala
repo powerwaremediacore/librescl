@@ -7,7 +7,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>
  *
  *
- *  Copyright (c) 2016 Daniel Espinosa
+ *  Copyright (c) 2016, 2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -72,9 +72,9 @@ namespace Lscl
                                                       this.get_type ().name (), value_type.name ());
       }
       if (_node is Element) {
-        foreach (GXml.Node n in _node.children) {
-          deserialize_node (n);
-        }
+        //for (GXml.Node n in _node.children) {
+        //  deserialize_node (n);
+        //}
       }
       return true;
     }
