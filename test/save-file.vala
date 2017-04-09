@@ -45,9 +45,9 @@ public class LsclTest.SaveFile
         assert (scl2.communication != null);
         assert (scl2.header != null);
         assert (scl2.ieds != null);
-        assert (scl2.ieds.deserialize_children ());
-        assert (scl2.ieds.size == 1);
-        var i = scl2.ieds.get ("TEMPLATE");
+        scl2.read_unparsed ();
+        assert (scl2.ieds.length == 1);
+        var i = scl2.ieds.get ("TEMPLATE") as tIED;
         assert (i != null);
         assert (i.name == "TEMPLATE");
         assert (i.access_points != null);

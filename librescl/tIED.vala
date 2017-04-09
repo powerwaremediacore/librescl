@@ -27,7 +27,7 @@
 using GXml;
 namespace Lscl
 {
-  public class tIED : tNaming, GXml.SerializableMapKey<string>
+  public class tIED : tNaming, GXml.MappeableElement
   {
     [Description (nick="Services", blurb="Available services")]
     public tServices services { get; set; }
@@ -39,25 +39,15 @@ namespace Lscl
     public string manufacturer { get; set; }
     [Description (nick="configVersion", blurb="Configuration Versions of the IED")]
     public string config_version  { get; set; }
-    // SerializableMapId
+    // MappeableElement
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string,tIED>
+    public class HashMap : GomHashMap
     {
-      public new tIED get (string name)
-      {
-        return base.get (name);
+      construct {
+        try { initialize (typeof (tIED)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
       }
-      public string to_string ()
-      {
-        string str = "";
-        foreach (tIED ied in values) {
-          str += "["+ied.name+"/"+ied.manufacturer+"/"+ied.ied_type+"]";
-        }
-        return str;
-      }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tIED> list_values () { return (GLib.List<tIED>) base.list_values (); }
     }
   }
 }

@@ -29,10 +29,18 @@ namespace Lscl
 {
   public class Scl : tBaseElement
   {
+    private tIED.HashMap _ieds;
     public tHeader header { get; set; }
     public tSubstation substation { get; set; }
     public tCommunication communication { get; set; }
-    public tIED.HashMap ieds { get; set; default = new tIED.HashMap (); }
+    public tIED.HashMap ieds {
+      get {
+        if (_ieds == null)
+          set_instance_property ("ieds");
+        return _ieds;
+      }
+      set { _ieds = value; }
+    }
     public tDataTypeTemplates data_type_templates { get; set; }
 
     construct {
@@ -53,7 +61,7 @@ namespace Lscl
          str += "Subnetworks: "+ communication.subnetworks.size.to_string () + "\n";
      }
      if (ieds != null)
-       str += "Total IED number: " + ieds.size.to_string () + "\n";
+       str += "Total IED number: " + ieds.length.to_string () + "\n";
      if (data_type_templates != null) {
        if (data_type_templates.logical_node_types != null)
          str += "Total LN Types: " + data_type_templates.logical_node_types.size.to_string ()

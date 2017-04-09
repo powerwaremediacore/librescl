@@ -80,14 +80,14 @@ public class LsclTest.PrivateTest
         scl.read_from_file (f);
         var d = new GomDocument.from_string (scl.write_string ());
         assert (scl.ieds != null);
-        scl.ieds.deserialize_children ();
-        var ied = scl.ieds.get ("IED1");
+        scl.read_unparsed ();
+        var ied = scl.ieds.get ("IED1") as tIED;
         assert (ied != null);
         assert (ied.privates != null);
         ied.privates.deserialize_children ();
         assert (ied.privates.size == 0);
         assert (ied.access_points != null);
-        ied.access_points.deserialize_children ();
+        ied.read_unparsed ();
         assert (ied.access_points.size == 1);
       }
       catch (GLib.Error e)

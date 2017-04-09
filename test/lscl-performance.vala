@@ -37,13 +37,13 @@ public class Performance
         Test.message ("Checking for IEDs...");
         Test.timer_start ();
         assert (scl.ieds != null);
-        assert (scl.ieds.deserialize_children ());
+        scl.read_unparsed ();
         time = Test.timer_elapsed ();
         Test.minimized_result (time, "Read IEDs: %g seconds", time);
         //assert (scl.ieds.size == 0);
         Test.message ("Getting data from Document...");
         Test.timer_start ();
-        var ied = scl.ieds.get ("IED1");
+        var ied = scl.ieds.get ("IED1") as tIED;
         assert (ied != null);
         assert (ied.name == "IED1");
         time = Test.timer_elapsed ();

@@ -25,8 +25,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Lscl
-{
-  public class tUnNaming : tBaseElement
+{ // TODO: Convert to interface
+  public class tUnNaming : NodeContent
   {
     [Description(nick="desc", blurb="Some descriptive text for the attribute")]
     public string desc { get; set; }
