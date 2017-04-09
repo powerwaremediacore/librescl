@@ -29,36 +29,38 @@ namespace Lscl
 {
   public class tHitem : Serializable
   {
-    [Description(nick="version", blurb="Version")]
+    [Description(nick="::version", blurb="Version")]
     public string version { get; set; }
-    [Description(nick="revision", blurb="Revision")]
+    [Description(nick="::revision", blurb="Revision")]
     public string revision { get; set; }
-    [Description(nick="when", blurb="When was made")]
-    public string when { get; set; }
-    [Description(nick="who", blurb="Who do it")]
+    [Description(nick="::when", blurb="When was made")]
+    public GomDateTime when { get; set; }
+    [Description(nick="::who", blurb="Who do it")]
     public string who { get; set; }
-    [Description(nick="what", blurb="What changed/worked on")]
+    [Description(nick="::what", blurb="What changed/worked on")]
     public string what { get; set; }
-    [Description(nick="why", blurb="Why it was done")]
+    [Description(nick="::why", blurb="Why it was done")]
     public string why { get; set; }
-    public tHitem()
-    {
+    construct {
       version = "0";
       revision = "0";
       var t = new DateTime.now_local ();
-      when = t.to_string();
+      when = new GomDateTime ();
+      when.set_datetime (t);
       what = "";
       who = Defaults.HISTORY_ITEM_WHO;
       why = Defaults.HISTORY_ITEM_WHY;
     }
     public override string to_string ()
     {
-      return @"Ver $(version) / Rev $(revision) / When '$(when)'";
+      return @"Ver $(version) / Rev $(revision) / When '$(when.value)'";
     }
-    public class Array : SerializableArrayList<tHitem> {
-			public new tHitem get (int index) { return base.get (index); }
-      public new tHitem[] to_array () { return ((Gee.Collection<tHitem>) this).to_array (); }
-		}
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tHitem)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
   }
 }
 

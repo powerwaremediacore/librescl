@@ -88,7 +88,7 @@ public class LsclTest.ReadFile
     () => {
       try {
         string str = "<SCL><Header></Header></SCL>";
-        var scl = new SclDocument ();
+        var scl = new Scl ();
         scl.read_from_string (str);
         assert (scl.header != null);
       }
@@ -114,34 +114,36 @@ public class LsclTest.ReadFile
     Test.add_func ("/librescl/read-header", 
     () => {
       try {
-        var scl = new SclDocument ();
-        scl.read_from_path (LsclTest.TEST_DIR + "/tests-files/header.cid");
-        assert (scl.get_file () != null);
-        assert (scl.get_file ().query_exists ());
+        var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/header.cid");
+        var scl = new Scl ();
+        scl.read_from_file (f);
         assert (scl.header != null);
         assert (scl.header.id == "SCL File");
         assert (scl.header.version == "0");
         assert (scl.header.revision == "1");
         assert (scl.header.tool_id == "LibreSclEditor");
-        assert (scl.header.name_structure.get_value () == tNameStructure.Enum.IED_NAME);
+        assert (scl.header.name_structure.get_enum () == tNameStructure.Enum.IED_NAME);
+        scl.header.read_unparsed ();
         var history = scl.header.history;
         assert (history != null);
-        assert (history.deserialize_children ());
-        assert (history.size == 2);
+        assert (history.length == 2);
+        message (scl.header.write_string ());
         bool found1 = false;
         bool found2 = false;
         string hitems = "";
-        foreach (tHitem hitem in history) {
-          if (hitem.version=="0"
+        for (int i = 0; i < history.length; i++) {
+          tHitem hitem = history.get_item (i) as tHitem;
+          message ("hitem: "+hitem.to_string ());
+          if (hitem.version =="0"
+              && hitem.revision =="1"
+              && hitem.when.value =="2013-11-14T10:56:00"
+              && hitem.who =="esodan"
+              && hitem.what =="Added fake history item") found1 = true;
+          if (hitem.version =="1"
               && hitem.revision=="1"
-              && hitem.when=="14/11/2013 10:56:00" 
-              && hitem.who=="esodan"
-              && hitem.what=="Added fake history item") found1 = true;
-          if (hitem.version=="0"
-              && hitem.revision=="1"
-              && hitem.when=="14/11/2013 10:59:00" 
-              && hitem.who=="esodan"
-              && hitem.what=="Added new fake history item") found2 = true;
+              && hitem.when.value =="2017-04-09T14:28:00"
+              && hitem.who =="esodan"
+              && hitem.what =="Added new fake history item") found2 = true;
           hitems += @"$(hitem)\n";
         }
         assert (found1);
@@ -150,9 +152,26 @@ public class LsclTest.ReadFile
       }
       catch (GLib.Error e)
       {
-#if DEBUG
         GLib.message (@"ERROR: $(e.message)");
-#endif
+        assert_not_reached ();
+      }
+    });
+    Test.add_func ("/librescl/read-hitem",
+    () => {
+      try {
+        string s = "<Hitem version=\"1\" revision=\"1\" when=\"2013-11-14T10:59:00\" who=\"esodan\" what=\"Added new fake history item\" />";
+        var hi = new tHitem ();
+        hi.read_from_string (s);
+        message (hi.write_string ());
+        assert (hi.version == "1");
+        assert (hi.revision == "1");
+        assert (hi.when.value == "2013-11-14T10:59:00");
+        assert (hi.who == "esodan");
+        assert (hi.what == "Added new fake history item");
+      }
+      catch (GLib.Error e)
+      {
+        GLib.message (@"ERROR: $(e.message)");
         assert_not_reached ();
       }
     });
@@ -160,11 +179,8 @@ public class LsclTest.ReadFile
     () => {
       try {
         var f = File.new_for_path (LsclTest.TEST_DIR + "/tests-files/communication.cid");
-        var scl = new SclDocument ();
+        var scl = new Scl ();
         scl.read_from_file (f);
-        //assert_not_reached ();
-        assert (scl.get_file () != null);
-        assert (scl.get_file ().query_exists ());
         assert (scl.communication != null);
         assert (scl.communication.subnetworks != null);
         assert (scl.communication.subnetworks.deserialize_children ());

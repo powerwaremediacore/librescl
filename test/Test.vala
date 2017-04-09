@@ -8,7 +8,7 @@
  *       Daniel Espinosa <esodan@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013-2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -35,9 +35,9 @@ namespace LsclTest
 		static int main (string args[])
 		{
 			Test.init (ref args);
-			SclTest.add_funcs ();/*
+			SclTest.add_funcs ();
+			ReadFile.add_funcs ();/*
 			XmlGeneration.add_funcs ();
-			ReadFile.add_funcs ();
 			SaveFile.add_funcs ();
 			Performance.add_funcs ();
 			Enums.add_funcs ();

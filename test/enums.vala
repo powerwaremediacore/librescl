@@ -391,7 +391,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.namestruct = new tNameStructure ();
-				t.namestruct.set_value (tNameStructure.Enum.IED_NAME);
+				t.namestruct.set_enum (tNameStructure.Enum.IED_NAME);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -415,8 +415,8 @@ public class LsclTest.Enums
 				<NodeTest nameStructure = "FUNCNAME" />""");
 				t.deserialize (d);
 				assert (t.namestruct != null);
-				assert (t.namestruct.get_value () == tNameStructure.Enum.FUNC_NAME);
-				assert (t.namestruct.get_string () == "FUNCNAME");
+				assert (t.namestruct.get_enum () == tNameStructure.Enum.FUNC_NAME);
+				assert (t.namestruct.value == "FUNCNAME");
 			}
 			catch (GLib.Error e)
 			{

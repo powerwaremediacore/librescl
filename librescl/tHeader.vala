@@ -25,35 +25,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using GXml;
+
 public class Lscl.tHeader : Lscl.Serializable
 {
+  private tHitem.Array _history;
   public tText text { get; set; }
-  public tHitem.Array history { get; set; default = new tHitem.Array (); }
   [Description(nick="::id")]
-  public string id { get; set; default = "Created by LibreSCL(C)"; }
+  public string id { get; set; default = "Created by LibreSCL(R)"; }
   [Description(nick="::version", blurb="")]
   public string version { get; set; default = "0"; }
   [Description(nick="::revision", blurb="")]
   public string revision { get; set; default = "0"; }
   [Description (nick="::toolID", blurb="Tool creator ID")]
-  public string tool_id { get; set; default = "LibreSCL"; }
+  public string tool_id { get; set; default = "LibreSCL (R)"; }
   [Description (nick="::nameStructure",blurb="Name structure according with standard")]
   public tNameStructure name_structure { get; set; }
+  public tHitem.Array history {
+    get {
+      if (_history == null)
+        set_instance_property ("history");
+      return _history;
+    }
+    set { _history = value; }
+  }
   construct {
     parse_children = false;
   }
 }
 
-public class Lscl.tNameStructure : Lscl.BaseEnum
+public class Lscl.tNameStructure : GomEnum
 {
-	construct {
-		_enumtype = typeof (tNameStructure.Enum);
-	}
-	public tNameStructure.Enum get_value () throws GLib.Error { return (tNameStructure.Enum) to_integer (); }
-	public void set_value (tNameStructure.Enum val) throws GLib.Error { parse_integer ((int) val); }
-	public enum Enum
-	{
-	  IED_NAME,
-	  FUNC_NAME
-	}
+  construct {
+    try { initialize_enum (typeof (Enum)); }
+    catch (GLib.Error e) { warning ("Error: "+e.message); }
+  }
+  public enum Enum
+  {
+    IED_NAME,
+    FUNC_NAME
+  }
 }

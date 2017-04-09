@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SCL xmlns:scl="http://www.iec.ch/61850/2003/SCL" xmlns:lscl="http://www.librescl.org/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Header id="SCL File" version="0" revision="1" toolID="LibreSclEditor" nameStructure="IEDName">
-    <Hitem version="0" revision="1" when="14/11/2013 10:56:00" who="esodan" what="Added fake history item" />
-    <Hitem version="0" revision="1" when="14/11/2013 10:59:00" who="esodan" what="Added new fake history item" />
+    <Hitem version="0" revision="1" when="2013-11-14T10:56:00" who="esodan" what="Added fake history item" />
+    <Hitem version="1" revision="1" when="2017-04-09T14:28:00" who="esodan" what="Added new fake history item" />
   </Header>
 </SCL>
