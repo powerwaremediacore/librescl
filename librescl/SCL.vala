@@ -48,6 +48,7 @@ namespace Lscl
         initialize_with_namespace ("http://www.iec.ch/61850/2003/SCL", "scl", "SCL");
         set_attribute_ns ("http://www.w3.org/2000/xmlns/","xmlns:lscl","http://www.librescl.org/SCL");
       } catch (GLib.Error e)  { warning ("Error: "+e.message); }
+      parse_children = false;
     }
 
    public new string to_string ()

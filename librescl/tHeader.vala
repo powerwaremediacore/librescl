@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,20 +27,21 @@
 using GXml;
 public class Lscl.tHeader : Lscl.Serializable
 {
-  [Description (nick="Text", blurb="Free text")]
   public tText text { get; set; }
-  [Description (nick="History", blurb="History Items")]
   public tHitem.Array history { get; set; default = new tHitem.Array (); }
-  [Description(nick="id", blurb="")]
+  [Description(nick="::id")]
   public string id { get; set; default = "Created by LibreSCL(C)"; }
-  [Description(nick="version", blurb="")]
+  [Description(nick="::version", blurb="")]
   public string version { get; set; default = "0"; }
-  [Description(nick="revision", blurb="")]
+  [Description(nick="::revision", blurb="")]
   public string revision { get; set; default = "0"; }
-  [Description (nick="toolID", blurb="Tool creator ID")]
+  [Description (nick="::toolID", blurb="Tool creator ID")]
   public string tool_id { get; set; default = "LibreSCL"; }
-  [Description (nick="nameStructure",blurb="Name structure according with standard")]
+  [Description (nick="::nameStructure",blurb="Name structure according with standard")]
   public tNameStructure name_structure { get; set; }
+  construct {
+    parse_children = false;
+  }
 }
 
 public class Lscl.tNameStructure : Lscl.BaseEnum

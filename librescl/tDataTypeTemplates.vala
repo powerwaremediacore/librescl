@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,12 +27,11 @@
 using GXml;
 public class Lscl.tDataTypeTemplates : Serializable
 {
-    [Description(blurb="Logical Node Types templates")]
     public tLNodeType.HashMap logical_node_types { get; set; default = new tLNodeType.HashMap (); }
-    [Description(blurb="Data Object Types templates")]
     public tDOType.HashMap data_object_types { get; set; default = new tDOType.HashMap (); }
-    [Description(blurb="Data Attributes Types templates")]
     public tDAType.HashMap data_attribute_types { get; set; default = new tDAType.HashMap (); }
-    [Description(nick="EnumType",blurb="Data Attributes Types templates")]
     public tEnumType.HashMap enum_types { get; set; default = new tEnumType.HashMap (); }
+    construct {
+      parse_children = false;
+    }
 }

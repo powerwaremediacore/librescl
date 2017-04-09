@@ -9,7 +9,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,10 @@ namespace Lscl
 {
   public class tCommunication : tUnNaming
   {
-    [Description (blurb="Subnetworks for substation communications")]
     public tSubNetwork.HashMap subnetworks { get; set; default = new tSubNetwork.HashMap (); }
+    construct {
+      parse_children = false;
+    }
   }
 }
 

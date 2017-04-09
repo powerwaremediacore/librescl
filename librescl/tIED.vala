@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,18 +29,19 @@ namespace Lscl
 {
   public class tIED : tNaming, GXml.MappeableElement
   {
-    [Description (nick="Services", blurb="Available services")]
     public tServices services { get; set; }
-    [Description (blurb="Access point to IED servers")]
     public tAccessPoint.HashMap access_points  {get; set; default = new tAccessPoint.HashMap (); }
-    [Description (nick="type", blurb="IED type")]
+    [Description (nick="::type", blurb="IED type")]
     public string ied_type { get; set; }
-    [Description (nick="manufacturer", blurb="Manufacturer of the IED")]
+    [Description (nick="::manufacturer", blurb="Manufacturer of the IED")]
     public string manufacturer { get; set; }
-    [Description (nick="configVersion", blurb="Configuration Versions of the IED")]
+    [Description (nick="::configVersion", blurb="Configuration Versions of the IED")]
     public string config_version  { get; set; }
     // MappeableElement
     public string get_map_key () { return name; }
+    construct {
+      parse_children = false;
+    }
 
     public class HashMap : GomHashMap
     {
