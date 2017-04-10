@@ -429,7 +429,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.phc = new tPhysConnType ();
-				t.phc.set_value (tPredefinedPhysConnType.Enum.CONNECTION);
+				t.phc.set_enum (tPredefinedPhysConnType.Enum.CONNECTION);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -453,8 +453,8 @@ public class LsclTest.Enums
 				<NodeTest PhysConn = "REDCONN" />""");
 				t.deserialize (d);
 				assert (t.phc != null);
-				assert (t.phc.get_value () == tPredefinedPhysConnType.Enum.RED_CONN);
-				assert (t.phc.get_string () == "REDCONN");
+				assert (t.phc.get_enum () == tPredefinedPhysConnType.Enum.RED_CONN);
+				assert (t.phc.value == "REDCONN");
 			}
 			catch (GLib.Error e)
 			{
@@ -467,7 +467,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.phct = new tPTypePhysConn ();
-				t.phct.set_value (tPredefinedPTypePhysConn.Enum.CABLE);
+				t.phct.set_enum (tPredefinedPTypePhysConn.Enum.CABLE);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -491,8 +491,8 @@ public class LsclTest.Enums
 				<NodeTest PhysConnType = "PLUG" />""");
 				t.deserialize (d);
 				assert (t.phct != null);
-				assert (t.phct.get_value () == tPredefinedPTypePhysConn.Enum.PLUG);
-				assert (t.phct.get_string () == "PLUG");
+				assert (t.phct.get_enum () == tPredefinedPTypePhysConn.Enum.PLUG);
+				assert (t.phct.value == "PLUG");
 			}
 			catch (GLib.Error e)
 			{

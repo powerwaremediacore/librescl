@@ -27,26 +27,29 @@
 using GXml;
 namespace Lscl
 {
-  public class tConnectedAP : tUnNaming, SerializableMapDualKey<string,string>
+  public class tConnectedAP : tUnNaming, MappeableElementPairKey
   {
-    [Description(nick="Address",blurb="Network address communication parameters")]
+    [Description(nick="::Address",blurb="Network address communication parameters")]
     public tAddress address { get; set; }
-    [Description(nick="GSE",blurb="Generic Station Event control blocks")]
+    [Description(nick="::GSE",blurb="Generic Station Event control blocks")]
     public tGSE.DualKeyMap gses { get; set; default = new tGSE.DualKeyMap (); }
-    [Description(nick="SMV",blurb="Sample Value control blocks")]
+    [Description(nick="::SMV",blurb="Sample Value control blocks")]
     public tSMV.DualKeyMap smvs { get; set; default = new tSMV.DualKeyMap (); }
-    [Description(nick="PhysConn",blurb="Physical Connection")]
+    [Description(nick="::PhysConn",blurb="Physical Connection")]
     public tPhysConn phys_conn { get; set; }
-    [Description(nick="iedName",blurb="IED's name, connected to network")]
+    [Description(nick="::iedName",blurb="IED's name, connected to network")]
     public string ied_name { get; set; }
-    [Description(nick="apName",blurb="IED's Access Point's name, connected to network")]
+    [Description(nick="::apName",blurb="IED's Access Point's name, connected to network")]
     public string ap_name  { get; set; }
     // SerializableMapDualId
     public string get_map_primary_key () { return ied_name; }
     public string get_map_secondary_key () { return ap_name; }
 
-    public class DualKeyMap : Lscl.SerializableDualKeyMap<string,string,tConnectedAP> {
-			public new tConnectedAP get (string ied, string ap) { return base.get (ied, ap); }
-		}
+    public class DualKeyMap : GomHashPairedMap {
+      construct {
+        try { initialize (typeof (tConnectedAP)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
   }
 }

@@ -59,10 +59,12 @@ namespace Lscl
       _type = type;
     }
 
-    public class Array : Lscl.SerializableArrayList<tP> {
-			public new tP get (int index) { return base.get (index); }
-      public new tP[] to_array () { return ((Gee.Collection<tP>) this).to_array (); }
-		}
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tP)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
 
     public enum TypeEnum
     {

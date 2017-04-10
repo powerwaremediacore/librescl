@@ -1,7 +1,7 @@
 /* -*- Mode: vala; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2 -*-  */
 /* librescl
  *
- * Copyright (C) 2013. 2014 Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2013. 2014, 2017 Daniel Espinosa <esodan@gmail.com>
  *
  * librescl is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -127,13 +127,11 @@ public class LsclTest.ReadFile
         var history = scl.header.history;
         assert (history != null);
         assert (history.length == 2);
-        message (scl.header.write_string ());
         bool found1 = false;
         bool found2 = false;
         string hitems = "";
         for (int i = 0; i < history.length; i++) {
           tHitem hitem = history.get_item (i) as tHitem;
-          message ("hitem: "+hitem.to_string ());
           if (hitem.version =="0"
               && hitem.revision =="1"
               && hitem.when.value =="2013-11-14T10:56:00"
@@ -162,7 +160,6 @@ public class LsclTest.ReadFile
         string s = "<Hitem version=\"1\" revision=\"1\" when=\"2013-11-14T10:59:00\" who=\"esodan\" what=\"Added new fake history item\" />";
         var hi = new tHitem ();
         hi.read_from_string (s);
-        message (hi.write_string ());
         assert (hi.version == "1");
         assert (hi.revision == "1");
         assert (hi.when.value == "2013-11-14T10:59:00");
@@ -182,26 +179,26 @@ public class LsclTest.ReadFile
         var scl = new Scl ();
         scl.read_from_file (f);
         assert (scl.communication != null);
+        scl.communication.read_unparsed ();
         assert (scl.communication.subnetworks != null);
-        assert (scl.communication.subnetworks.deserialize_children ());
-        assert (scl.communication.subnetworks.size == 1);
+        assert (scl.communication.subnetworks.length == 1);
         tSubNetwork subnetwork = (tSubNetwork) scl.communication.subnetworks.@get ("Net1");
         assert (subnetwork != null);
         assert (subnetwork.desc == "Network1");
         assert (subnetwork.connected_aps != null);
-        assert (subnetwork.connected_aps.deserialize_children ());
-        tConnectedAP cap = subnetwork.connected_aps.@get ("IED1", "AccessPoint1");
+        subnetwork.read_unparsed ();
+        tConnectedAP cap = subnetwork.connected_aps.@get ("IED1", "AccessPoint1") as tConnectedAP;
         assert (cap != null);
         assert (cap.address != null);
         assert (cap.address.ps != null);
-        assert (cap.address.ps.deserialize_children ());
-        assert (cap.address.ps.size == 6);
+        assert (cap.address.ps.length == 6);
         bool foundip = false;
         bool foundsubnet = false;
         bool foundts = false;
         bool foundps = false;
         bool foundss = false;
-        foreach (tP p in cap.address.ps) {
+        for (int i = 0; i < cap.address.ps.length; i++) {
+          tP p = cap.address.ps.get_item (i) as tP;
           if (p.get_enum () == tP.TypeEnum.IP) {
             if (p.get_value () == "19A.168.1.1")
               foundip = true;
@@ -224,18 +221,17 @@ public class LsclTest.ReadFile
         assert (foundss);
         // GSE tests
         assert (cap.gses != null);
-        assert (cap.gses.deserialize_children ());
-        assert (cap.gses.size == 1);
-        var gse1 = cap.gses.@get ("LDevice1","gcb");
+        assert (cap.gses.length == 1);
+        var gse1 = cap.gses.@get ("LDevice1","gcb") as tGSE;
         assert (gse1 != null);
         assert (gse1.ld_inst == "LDevice1");
         assert (gse1.cb_name == "gcb");
         assert (gse1.address != null);
         assert (gse1.address.ps != null);
-        assert (gse1.address.ps.deserialize_children ());
         bool foundmac, foundvlanid, foundvlanp, foundappid;
         foundmac= foundvlanid= foundvlanp= foundappid = false;
-        foreach (tP gsep in gse1.address.ps) {
+        for (int i = 0; i < gse1.address.ps.length; i++) {
+          tP gsep = gse1.address.ps.get_item (i) as tP;
           if (gsep.get_enum () == tP.TypeEnum.VLAN_ID) {
             if (gsep.get_value () == "000")
             foundvlanid = true;
@@ -259,25 +255,24 @@ public class LsclTest.ReadFile
         assert(foundmac);
         // SMV tests
         assert (cap.smvs != null);
-        assert (cap.smvs.deserialize_children ());
-        assert (cap.smvs.size == 1);
-        var sv1 = cap.smvs.@get ("LDevice1","svcb");
+        assert (cap.smvs.length == 1);
+        var sv1 = cap.smvs.@get ("LDevice1","svcb") as tSMV;
         assert (sv1 != null);
         assert (sv1.ld_inst == "LDevice1");
         assert (sv1.cb_name == "svcb");
         assert (sv1.address != null);
-        assert (sv1.address.ps.deserialize_children ());
         assert (sv1.address.ps != null);
-         foreach (tP svp in sv1.address.ps) {
-           if (svp.get_enum () == tP.TypeEnum.VLAN_ID)
-             assert (svp.get_value () == "001");
-           if (svp.get_enum () == tP.TypeEnum.VLAN_PRIORITY)
-             assert (svp.get_value () == "1");
-            if (svp.get_enum () == tP.TypeEnum.MAC_ADDRESS)
-            assert (svp.get_value () == "01-0C-CD-01-00-03");
-           if (svp.get_enum () == tP.TypeEnum.APPID)
-            assert (svp.get_value () == "0002");
-         }
+        for (int i = 0; i < sv1.address.ps.length; i++) {
+         var svp = sv1.address.ps.get_item (i) as tP;
+         if (svp.get_enum () == tP.TypeEnum.VLAN_ID)
+           assert (svp.get_value () == "001");
+         if (svp.get_enum () == tP.TypeEnum.VLAN_PRIORITY)
+           assert (svp.get_value () == "1");
+          if (svp.get_enum () == tP.TypeEnum.MAC_ADDRESS)
+          assert (svp.get_value () == "01-0C-CD-01-00-03");
+         if (svp.get_enum () == tP.TypeEnum.APPID)
+          assert (svp.get_value () == "0002");
+        }
       }
       catch (GLib.Error e)
       {
@@ -296,12 +291,10 @@ public class LsclTest.ReadFile
         assert (dt.logical_node_types != null);
         // Logical Node Types
         var lnts = dt.logical_node_types;
-        lnts.deserialize_children ();
         assert (lnts.size == 7);
         // Data Object Types
         assert (dt.data_object_types != null);
         var dots = dt.data_object_types;
-        dots.deserialize_children ();
         assert (dots.size == 44);
         int k = 0;
         foreach (tDOType t1 in dots.values) {
@@ -1008,13 +1001,14 @@ public class LsclTest.ReadFile
         assert (cap.address != null);
         assert (cap.address.ps != null);
         cap.address.read_unparsed ();
-        foreach (tP p in cap.address.ps) {
+        for (int i = 0; i < cap.address.ps.length; i++) {
+          tP p = cap.address.ps.get_item (i) as tP;
           Test.message ("AP: "+p.to_string ());
         }
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });
-    Test.add_func ("/librescl/read-ied/logcontrol", 
+    Test.add_func ("/librescl/read-ied/logcontrol",
     () => {
       try {
         var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied-logcb-settingscb.cid");

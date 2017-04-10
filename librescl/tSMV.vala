@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,17 @@
 using GXml;
 namespace Lscl
 {
-  public class tSMV : tControlBlock, SerializableMapDualKey<string,string>
+  public class tSMV : tControlBlock, MappeableElementPairKey
   {
     public string get_map_primary_key  () { return ld_inst; }
     public string get_map_secondary_key () { return cb_name; }
 
-    public class DualKeyMap : SerializableDualKeyMap<string,string,tSMV>
-		{
-			public new tSMV @get (string ldinst, string cbname) {
-				return base.get (ldinst,cbname);
-			}
-		}
+    public class DualKeyMap : GomHashPairedMap {
+      construct {
+        try { initialize (typeof (tSMV)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
   }
 }
 

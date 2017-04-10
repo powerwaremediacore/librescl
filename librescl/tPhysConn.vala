@@ -27,38 +27,37 @@
 using GXml;
 namespace Lscl
 {
-  public class tPhysConn : tUnNaming, SerializableMapKey<string>
+  public class tPhysConn : tUnNaming, MappeableElement
   {
-    [Description (nick="P", blurb="")]
     public tPPhysConn.Array ps { get; set; default = new tPPhysConn.Array (); }
-    [Description (nick="type", blurb="Physical Connection type")]
+    [Description (nick="::type")]
     public tPhysConnType connection_type { get; set; }
 
     public string get_map_key ()
 	 {
 			if (ps == null) return "";
-			if (ps.size == 0) return "";
-			var p = ps.get (0); // Get first element in Ps
+			if (ps.length == 0) return "";
+			var p = ps.get_item (0) as tPPhysConn; // Get first element in Ps
 			if (p == null) return "";
 			if (p.ptype == null) return "";
-			if (p.ptype.get_string () == null) return "";
-			return p.ptype.get_string ();
+			if (p.ptype.value == null) return "";
+			return p.ptype.value;
 		}
-    public class HashMap : SerializableHashMap<string,tPhysConn> {
-			public new tPhysConn get (string type) { return base.get (type); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tPhysConn> list_values () { return (GLib.List<tPhysConn>) base.list_values (); }
-	 }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tConnectedAP)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
 	}
 
 	public class tPhysConnType : tPredefinedPhysConnType {}
-	public class tPredefinedPhysConnType : BaseEnum
+	public class tPredefinedPhysConnType : GomEnum
 	{
 		construct {
-			_enumtype = typeof (tPredefinedPhysConnType.Enum);
+			try { initialize_enum (typeof (tPredefinedPhysConnType.Enum)); }
+			catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-    public tPredefinedPhysConnType.Enum get_value () throws GLib.Error { return (tPredefinedPhysConnType.Enum) to_integer (); }
-    public void set_value (tPredefinedPhysConnType.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 			CONNECTION,
@@ -68,7 +67,7 @@ namespace Lscl
 
 	public class tPPhysConn : Serializable
 	{
-		[Description (nick="type", blurb="Physical Connection type")]
+		[Description (nick="::type", blurb="Physical Connection type")]
 		public tPTypePhysConn ptype { get; set; }
       construct {
         try { initialize ("P"); }
@@ -76,19 +75,20 @@ namespace Lscl
           warning ("Error: "+e.message);
         }
       }
-		public class Array : SerializableArrayList<tPPhysConn> {
-			public new tPPhysConn get (int index) { return base.get (index); }
-      public new tPPhysConn[] to_array () { return ((Gee.Collection<tPPhysConn>) this).to_array (); }
-		}
+		public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tPPhysConn)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
 	}
 	public class tPTypePhysConn : tPredefinedPTypePhysConn {}
-	public class tPredefinedPTypePhysConn : BaseEnum
+	public class tPredefinedPTypePhysConn : GomEnum
 	{
 		construct {
-			_enumtype = typeof (tPredefinedPTypePhysConn.Enum);
+			try { initialize_enum (typeof (tPredefinedPTypePhysConn.Enum)); }
+			catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-    public tPredefinedPTypePhysConn.Enum get_value () throws GLib.Error { return (tPredefinedPTypePhysConn.Enum) to_integer (); }
-    public void set_value (tPredefinedPTypePhysConn.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 			TYPE,

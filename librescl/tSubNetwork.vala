@@ -28,35 +28,19 @@ using GXml;
 
 namespace Lscl
 {
-  public class tSubNetwork : tNaming, GXml.SerializableMapKey<string>
-  {
-    [Description(nick="BitRate", blurb="Defining the bit rate in Mbit/s")]
+  public class tSubNetwork : tNaming, GXml.MappeableElement {
     public tBitRate bit_rate  { get; set; }
-    [Description(blurb="Defining the bit rate in Mbit/s")]
     public tConnectedAP.DualKeyMap connected_aps { get; set; }
-    [Description(nick="type", blurb="The SubNetwork protocol type")]
+    [Description(nick="::type", blurb="The SubNetwork protocol type")]
     public string network_type { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
-    // Serializable
-    /*
-    public override bool deserialize (GXml.Node node)
-                                    throws GLib.Error
-                                    requires (node is Element)
-    {
-      var element = (Element) node;
-      if (element.child_nodes.length > 0) {
-        if (connected_aps == null)
-          connected_aps = new tConnectedAP.DualKeyMap ();
-        connected_aps.deserialize (element);
+
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tSubNetwork)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
       }
-      return default_deserialize (node);
-    }*/
-    public class HashMap : SerializableHashMap<string,tSubNetwork>
-    {
-      public new tSubNetwork get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tSubNetwork> list_values () { return (GLib.List<tSubNetwork>) base.list_values (); }
     }
     public class tBitRate : tBitRateInMbPerSec
     {

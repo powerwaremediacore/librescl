@@ -58,7 +58,7 @@ namespace Lscl
        + "Revision: " + header.revision + "\n";
      if (communication != null) {
        if (communication.subnetworks != null)
-         str += "Subnetworks: "+ communication.subnetworks.size.to_string () + "\n";
+         str += "Subnetworks: "+ communication.subnetworks.length.to_string () + "\n";
      }
      if (ieds != null)
        str += "Total IED number: " + ieds.length.to_string () + "\n";

@@ -27,7 +27,7 @@
 using GXml;
 namespace Lscl
 {
-  public class tGSE : tControlBlock, SerializableMapDualKey<string,string>
+  public class tGSE : tControlBlock, MappeableElementPairKey
   {
     [Description(nick="MinTime", blurb="Minimal Time")]
     public tMinTime min_time { get; set; }
@@ -37,8 +37,11 @@ namespace Lscl
     public string get_map_primary_key  () { return ld_inst; }
     public string get_map_secondary_key () { return cb_name; }
 
-    public class DualKeyMap : SerializableDualKeyMap<string,string,tGSE> {
-      public new tGSE get (string ldinst, string cbname) { return base.get (ldinst, cbname); }
+    public class DualKeyMap : GomHashPairedMap {
+      construct {
+        try { initialize (typeof (tGSE)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
     public class tMinTime : tDurationInMilliSec
     {
