@@ -33,7 +33,7 @@ namespace Lscl
    * {link tLN.Collection} has three keys. First to use must be ln_class; second
    * use inst and third use prefix, when you set a Logical Node to this collection.
    */
-  public class tLN : tAnyLN, SerializableMapThreeKey<string,string,string>
+  public class tLN : tAnyLN, MappeableElementThreeKey
   {
 		private tLNClassEnum _ln_class;
 		construct {
@@ -46,24 +46,22 @@ namespace Lscl
     [Description(nick="prefix",blurb="")]
     public string prefix { get; set; default = ""; }
 
-    public string get_map_primary_key  () { return _ln_class.get_string (); }
-    public string get_map_secondary_key () { return inst; }
-    public string get_map_tertiary_key () { return prefix; }
+    public string get_map_pkey  () { return _ln_class.get_string (); }
+    public string get_map_skey () { return inst; }
+    public string get_map_tkey () { return prefix; }
 
     /**
      * Primary key should be the logical node class, secondary should be instance,
      * and tertiary key should be prefix.
      */
-    public class ThreeMap : Lscl.ThreeMap<string,string,string,tLN>
-    {
-			public new tLN get (string lnclass, string inst, string prefix) {
-				return base.get (lnclass, inst, prefix);
-			}
-			public tLN find (string prefix, string lnclass, string inst)
-      {
-        return @get (lnclass, inst, prefix);
+    public class ThreeMap : GomHashThreeMap {
+      construct {
+        try { initialize (typeof (tIED)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
       }
-      public new GLib.List<tLN> list_values () { return (GLib.List<tLN>) ((Lscl.ThreeMap) this).list_values (); }
+      public tLN find (string prefix, string lnclass, string inst) {
+        return @get (lnclass, inst, prefix) as tLN;
+      }
     }
   }
 }

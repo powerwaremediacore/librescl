@@ -803,8 +803,7 @@ public class LsclTest.ReadFile
         assert (ld.inst == "LDevice1");
         assert (ld.ln0 != null);
         assert (ld.logical_nodes != null);
-        assert (ld.logical_nodes.deserialize_children ());
-        assert (ld.logical_nodes.size == 6);
+        assert (ld.logical_nodes.length == 6);
       }
       catch (GLib.Error e)
       {

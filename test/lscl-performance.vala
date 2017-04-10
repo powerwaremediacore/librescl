@@ -66,7 +66,8 @@ public class Performance
         ln.inst = i.to_string ();
         lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
-      foreach (tLN ln in lns.values ()) {
+      for (int i = 0; i < lns.length; i++) {
+        var ln = lns.get_item (i) as tLN;
         Test.message (ln.to_string ());
       }
       time = Test.timer_elapsed ();
@@ -79,7 +80,8 @@ public class Performance
         ln.inst = j.to_string ();
         lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
-      foreach (tLN ln in lns.values ()) {
+      for (int i = 0; i < 5; i++) {
+        var ln = new tLN ();
         Test.message (ln.to_string ());
       }
       time = Test.timer_elapsed ();
@@ -92,7 +94,8 @@ public class Performance
         ln.inst = k.to_string ();
         lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
       }
-      foreach (tLN ln in lns.values ()) {
+      for (int i = 0; i < 5; i++) {
+        var ln = new tLN ();
         Test.message (ln.to_string ());
       }
       time = Test.timer_elapsed ();
