@@ -752,8 +752,7 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: No access points found for 'IED1' \n");
           assert_not_reached ();
         }
-        ied.access_points.deserialize_children ();
-        var ap = ied.access_points.get ("AccessPoint1");
+        var ap = ied.access_points.get ("AccessPoint1") as tAccessPoint;
         if (ap == null) {
           GLib.message (@"ERROR: No Access Points found for 'IED1'\n");
           assert_not_reached ();
@@ -824,7 +823,6 @@ public class LsclTest.ReadFile
         var ied = scl.ieds.get ("IED1") as tIED;
         assert (ied != null);
         assert (ied.access_points != null);
-        assert (ied.access_points.deserialize_children ());
         var ap = ied.access_points.get ("AccessPoint1") as tAccessPoint;
         assert (ap != null);
         assert (ap.server != null);

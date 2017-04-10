@@ -51,8 +51,7 @@ public class LsclTest.SaveFile
         assert (i != null);
         assert (i.name == "TEMPLATE");
         assert (i.access_points != null);
-        assert (i.access_points.deserialize_children ());
-        assert (i.access_points.size == 1);
+        assert (i.access_points.length == 1);
         var a = i.access_points.get ("AP");
         assert (a != null);
         f.delete ();

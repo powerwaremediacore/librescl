@@ -27,7 +27,7 @@
 using GXml;
 namespace Lscl
 {
-  public class tAccessPoint : tNaming, GXml.SerializableMapKey<string>
+  public class tAccessPoint : tNaming, GXml.MappeableElement
   {
     [Description(nick="router", blurb="This is a function of the communication network on the IED.")]
     public SerializableBool router { get; set; }
@@ -40,10 +40,11 @@ namespace Lscl
     // SerializableMapId
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string,tAccessPoint> {
-      public new tAccessPoint get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tAccessPoint> list_values () { return (GLib.List<tAccessPoint>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tAccessPoint)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

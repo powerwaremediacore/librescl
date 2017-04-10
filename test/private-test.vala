@@ -88,7 +88,7 @@ public class LsclTest.PrivateTest
         assert (ied.privates.size == 0);
         assert (ied.access_points != null);
         ied.read_unparsed ();
-        assert (ied.access_points.size == 1);
+        assert (ied.access_points.length == 1);
       }
       catch (GLib.Error e)
       {
