@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,13 +29,10 @@ namespace Lscl
 {
   public class tServer : tUnNaming 
   {
-    [Description(nick="Authentication", blurb="Defines the authentication possibilities or method(s) to be used.")]
     public tServerAuthentication authentication { get; set; }
-    [Description(blurb="Logical Devices Configured")]
-    public tLDevice.HashMap logical_devices { get; set; default = new tLDevice.HashMap (); }
-    [Description(nick="Association", blurb="")]
+    public tLDevice.HashMap logical_devices { get; set; }
     public tAssociation association { get; set; }
-    [Description(nick="timeout", blurb="Time out in seconds.")]
+    [Description(nick="::timeout", blurb="Time out in seconds.")]
     public string timeout { get; set; default = "30"; }
   }
 }

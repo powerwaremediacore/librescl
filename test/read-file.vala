@@ -797,8 +797,7 @@ public class LsclTest.ReadFile
         assert (server.association.ln_inst == "1");
         // Logical Device Tests
         assert (server.logical_devices != null);
-        assert (server.logical_devices.deserialize_children ());
-        var ld = server.logical_devices.@get ("LDevice1");
+        var ld = server.logical_devices.@get ("LDevice1") as tLDevice;
         assert (ld != null);
         assert (ld.inst == "LDevice1");
         assert (ld.ln0 != null);

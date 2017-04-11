@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,11 @@ namespace Lscl
 {
   public class tAccessControl : Serializable
   {
-    public class Array : SerializableArrayList<tAccessControl> {
-      public new tAccessControl get (int index) { return base.get (index); }
-      public new tAccessControl[] to_array () { return ((Gee.Collection<tAccessControl>) this).to_array (); }
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tAccessControl)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

@@ -30,12 +30,12 @@ namespace Lscl
   public class tIED : tNaming, GXml.MappeableElement
   {
     public tServices services { get; set; }
-    public tAccessPoint.HashMap access_points  {get; set; default = new tAccessPoint.HashMap (); }
-    [Description (nick="::type", blurb="IED type")]
+    public tAccessPoint.HashMap access_points  {get; set; }
+    [Description (nick="::type")]
     public string ied_type { get; set; }
-    [Description (nick="::manufacturer", blurb="Manufacturer of the IED")]
+    [Description (nick="::manufacturer")]
     public string manufacturer { get; set; }
-    [Description (nick="::configVersion", blurb="Configuration Versions of the IED")]
+    [Description (nick="::configVersion")]
     public string config_version  { get; set; }
     // MappeableElement
     public string get_map_key () { return name; }

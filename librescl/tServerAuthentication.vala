@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,21 +28,23 @@ using GXml;
 
 namespace Lscl
 {
-  public class tServerAuthentication : SerializableObjectModel
+  public class tServerAuthentication : Serializable
   {
-    [Description(nick="none", blurb="No authentication.")]
+    [Description(nick="::none")]
     public SerializableBool none { get; set; }
-    [Description(nick="password", blurb="Key for authentication.")]
+    [Description(nick="::password")]
     public SerializableBool password { get; set; }
-    [Description(nick="weak", blurb="A weak password for authentication.")]
+    [Description(nick="::weak")]
     public SerializableBool @weak { get; set; }
-    [Description(nick="strong", blurb="A strong password for authentication.")]
+    [Description(nick="::strong")]
     public SerializableBool strong { get; set; }
-    [Description(nick="certificate", blurb="A certificate for authentication.")]
+    [Description(nick="::certificate")]
     public SerializableBool certificate { get; set; }
 
-    public override string node_name () { return "Authentication"; }
-    public override string to_string () { return node_name (); }
+    construct {
+      try { initialize ("Authentication"); }
+      catch (GLib.Error e) { warning ("Error: "+e.message); }
+    }
   }
 }
 

@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,23 +27,22 @@
 using GXml;
 namespace Lscl
 {
-  public class tLDevice : tUnNaming, SerializableMapKey<string>
+  public class tLDevice : tUnNaming, MappeableElement
   {
-    [Description(nick="LN0",blurb="Logical Device's Logical Node")]
+    [Description(nick="::LN0",blurb="Logical Device's Logical Node")]
     public LN0 ln0 { get; set; }
-    [Description(blurb="Logical Nodes defined in the Logical Node")]
-    public tLN.ThreeMap logical_nodes { get; set; default = new tLN.ThreeMap (); }
-    [Description(nick="AccessControl",blurb="")]
-    public tAccessControl access_control { get; set; }
-    [Description(nick="inst",blurb="")]
+    [Description(nick="::inst",blurb="")]
     public string inst { get; set; }
-    // SerializableMapKey
+    public tLN.ThreeMap logical_nodes { get; set; default = new tLN.ThreeMap (); }
+    public tAccessControl access_control { get; set; }
+
     public string get_map_key () { return inst; }
-    // Serializable
-    public class HashMap : SerializableHashMap<string,tLDevice> {
-      public new tLDevice get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tLDevice> list_values () { return (GLib.List<tLDevice>) base.list_values (); }
+
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tLDevice)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

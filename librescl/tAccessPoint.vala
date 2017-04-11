@@ -33,11 +33,11 @@ namespace Lscl
     public SerializableBool router { get; set; }
     [Description(nick="clock", blurb="The presence and setting to true defines this IED to be a master clock at this bus.")]
     public SerializableBool clock { get; set; }
-    [Description(nick="Server", blurb="A communication entity within an IED.")]
+
     public tServer server { get; set; }
-    [Description(blurb="List of Logical Nodes related with access point")]
+
     public tLN.ThreeMap logical_nodes { get; set; }
-    // SerializableMapId
+
     public string get_map_key () { return name; }
 
     public class HashMap : GomHashMap {
