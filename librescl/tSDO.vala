@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,18 @@
 using GXml;
 namespace Lscl
 {
-	public class tSDO : tNaming, SerializableMapKey<string>
+	public class tSDO : tNaming, MappeableElement
 	{
-		[Description(nick="type", blurb="References the DOType defining the contents of the SDO.")]	
+		[Description(nick="::type")]
 		public string do_type { get; set; }
-		// SerializableMapId
+
 		public string get_map_key () { return name; }
 
-		public class HashMap : SerializableHashMap<string,tSDO> {
-			public new tSDO @get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tSDO> list_values () { return (GLib.List<tSDO>) base.list_values (); }
+		public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tSDO)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 		}
 	}
 }
