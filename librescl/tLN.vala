@@ -46,7 +46,7 @@ namespace Lscl
     [Description(nick="prefix",blurb="")]
     public string prefix { get; set; default = ""; }
 
-    public string get_map_pkey  () { return _ln_class.get_string (); }
+    public string get_map_pkey  () { return _ln_class.value; }
     public string get_map_skey () { return inst; }
     public string get_map_tkey () { return prefix; }
 

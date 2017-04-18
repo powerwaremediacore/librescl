@@ -39,7 +39,7 @@ namespace Lscl
     public tLNodeType.full (string iedtype, string lnclass, string id)
     {
       base.from_string (id);
-      ln_class.set_string (lnclass);
+      ln_class.value = lnclass;
       ied_type = iedtype;
     }
     // SerializableMapKey

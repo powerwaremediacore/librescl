@@ -32,7 +32,7 @@ namespace Lscl
 		private tLNClassEnum _lnclass;
 		construct {
 			_lnclass = new tLNClassEnum ();
-			_lnclass.set_string ("LLN0");
+			_lnclass.value = "LLN0";
 		}
     [Description(blurb="GSE Control Blocks")]
     public tGSEControl.HashMap gse_controls { get; set; default = new tGSEControl.HashMap (); }

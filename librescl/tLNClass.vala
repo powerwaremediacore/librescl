@@ -22,10 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using Gee;
+using GXml;
 
-public class Lscl.tLNClassEnum : Lscl.BaseValueList
+public class Lscl.tLNClassEnum : GomArrayString
 {
-	public override Gee.List<string> get_values ()
+	public new Gee.List<string> get_values ()
 	{
 	  var pd = new tPredefinedLNClassEnum ();
 		var l = new ArrayList<string> ();
@@ -35,9 +36,9 @@ public class Lscl.tLNClassEnum : Lscl.BaseValueList
 }
 
 
-public class Lscl.tPredefinedLNClassEnum : Lscl.BaseValueList
+public class Lscl.tPredefinedLNClassEnum : GomArrayString
 {
-	public override Gee.List<string> get_values ()
+	public new Gee.List<string> get_values ()
 	{
 		var phd = new tLPHDEnum ();
 		var ln0 = new tLPHDEnum ();
@@ -49,36 +50,36 @@ public class Lscl.tPredefinedLNClassEnum : Lscl.BaseValueList
 		return l;
 	}
 }
-public class Lscl.tLPHDEnum : Lscl.BaseValueList
+public class Lscl.tLPHDEnum : GomArrayString
 {
 	construct {
-		_vals = {"LPHD"};
+		_values = {"LPHD"};
 	}
-	public override Gee.List<string> get_values ()
+	public new Gee.List<string> get_values ()
 	{
 		var l = new ArrayList<string> ();
-		l.add (_vals[0]);
+		l.add (_values[0]);
 		return l;
 	}
 }
 
-public class Lscl.tLLN0Enum : Lscl.BaseValueList
+public class Lscl.tLLN0Enum : GomArrayString
 {
 	construct {
-		_vals = {"LLN0"};
+		_values = {"LLN0"};
 	}
-	public override Gee.List<string> get_values ()
+	public new Gee.List<string> get_values ()
 	{
 		var l = new ArrayList<string> ();
-		l.add (_vals[0]);
+		l.add (_values[0]);
 		return l;
 	}
 }
 
-public class Lscl.tDomainLNEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNEnum : GomArrayString
 {
-	construct { _vals = {}; }
-	public override Gee.List<string> get_values ()
+	construct { _values = {}; }
+	public new Gee.List<string> get_values ()
 	{
 		var a = new tDomainLNGroupAEnum ();
 		var c = new tDomainLNGroupCEnum ();
@@ -103,104 +104,199 @@ public class Lscl.tDomainLNEnum : Lscl.BaseValueList
 		l.add_all (x.get_values ());
 		l.add_all (y.get_values ());
 		l.add_all (z.get_values ());
-		if (extra != null) l.add_all (extra);
 		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupAEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupAEnum : GomArrayString
 {
 	construct {
-		_vals = {"ANCR","ARCO","ATCC","AVCO"};
+		_values = {"ANCR","ARCO","ATCC","AVCO"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupCEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupCEnum : GomArrayString
 {
 	construct {
-		_vals = {"CILO","CSWI","CALH","CCGR",
+		_values = {"CILO","CSWI","CALH","CCGR",
 		"CPOW"};
 	}
-}
-
-
-public class Lscl.tDomainLNGroupGEnum : Lscl.BaseValueList
-{
-	construct {
-		_vals = {"GAPC","GGIO","GSAL"};
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupIEnum : Lscl.BaseValueList
+
+public class Lscl.tDomainLNGroupGEnum : GomArrayString
 {
 	construct {
-		_vals = {"IHMI","IARC","ITCI","ITMI"};
+		_values = {"GAPC","GGIO","GSAL"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupMEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupIEnum : GomArrayString
 {
 	construct {
-		_vals = {"MMXU","MDIF",
+		_values = {"IHMI","IARC","ITCI","ITMI"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
+	}
+}
+
+public class Lscl.tDomainLNGroupMEnum : GomArrayString
+{
+	construct {
+		_values = {"MMXU","MDIF",
 		"MHAI","MHAN","MMTR","MMXN","MSQI","MSTA"};
 	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
+	}
 }
 
 
-public class Lscl.tDomainLNGroupPEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupPEnum : GomArrayString
 {
 	construct {
-		_vals = {"PDIF","PDIS","PDIR","PDOP",
+		_values = {"PDIF","PDIS","PDIR","PDOP",
 		"PDUP","PFRC","PHAR","PHIZ","PIOC","PMRI","PMSS","POPF","PPAM","PSCH",
 		"PSDE","PTEF","PTOC","PTOF","PTOV","PTRC","PTTR","PTUC","PTUV","PUPF",
 		"PTUF","PVOC","PVPH","PZSU"};
 	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
+	}
 }
 
-public class Lscl.tDomainLNGroupREnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupREnum : GomArrayString
 {
 	construct {
-		_vals = {"RSYN","RDRE","RADR","RBDR","RDRS","RBRF",
+		_values = {"RSYN","RDRE","RADR","RBDR","RDRS","RBRF",
 		"RDIR","RFLO","RPSB","RREC"};
 	}
-}
-
-
-public class Lscl.tDomainLNGroupSEnum : Lscl.BaseValueList
-{
-	construct {
-		_vals = {"SARC","SIMG","SIML","SPDC"};
-	}
-}
-
-public class Lscl.tDomainLNGroupTEnum : Lscl.BaseValueList
-{
-	construct {
-		_vals = {"TCTR","TVTR"};
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
 
-public class Lscl.tDomainLNGroupXEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupSEnum : GomArrayString
 {
 	construct {
-		_vals = {"XCBR","XSWI"};
+		_values = {"SARC","SIMG","SIML","SPDC"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupYEnum : Lscl.BaseValueList
+public class Lscl.tDomainLNGroupTEnum : GomArrayString
 {
 	construct {
-		_vals = {"YPTR","YEFN","YLTC","YPSH"};
+		_values = {"TCTR","TVTR"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 
-public class Lscl.tDomainLNGroupZEnum : Lscl.BaseValueList
+
+public class Lscl.tDomainLNGroupXEnum : GomArrayString
 {
 	construct {
-		_vals = {"ZAXN","ZBAT","ZBSH","ZCAB",
+		_values = {"XCBR","XSWI"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
+	}
+}
+
+public class Lscl.tDomainLNGroupYEnum : GomArrayString
+{
+	construct {
+		_values = {"YPTR","YEFN","YLTC","YPSH"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
+	}
+}
+
+public class Lscl.tDomainLNGroupZEnum : GomArrayString
+{
+	construct {
+		_values = {"ZAXN","ZBAT","ZBSH","ZCAB",
 		"ZCAP","ZCON","ZGEN","ZGIL","ZLIN","ZMOT","ZREA","ZRRC","ZSAR",
 		"ZTCF","ZTCR"};
+	}
+	public new Gee.List<string> get_values ()
+	{
+		var l = new ArrayList<string> ();
+		for (int i = 0; i < _values.length; i++) {
+		  l.add (_values[i]);
+		}
+		return l;
 	}
 }
 

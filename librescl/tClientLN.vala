@@ -56,7 +56,7 @@ namespace Lscl
       if (ap_ref != null) str += ap_ref + "/";
       if (ld_inst != null) str += ld_inst + "/";
       if (prefix != null) str += prefix;
-      if (ln_class.get_string () != null) str += ln_class.get_string ();
+      if (ln_class.value != null) str += ln_class.value;
       if (ln_inst != null) str += ln_inst;
       return str;
     }
