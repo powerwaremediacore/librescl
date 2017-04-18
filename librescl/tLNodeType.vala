@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,13 +27,12 @@
 using GXml;
 namespace Lscl
 {
-  public class tLNodeType : tIDNaming, SerializableMapKey<string>
+  public class tLNodeType : tIDNaming, MappeableElement
   {
-    [Description (blurb="Data Objects as Properties in this Logical Node Type")]
     public tDO.HashMap dos { get; set; default = new tDO.HashMap (); }
-    [Description (nick="iedType", blurb="Data Objects as Properties in this Logical Node Type")]
+    [Description (nick="::iedType")]
     public string ied_type { get; set; default=Defaults.IED_TYPE; }
-    [Description (nick="lnClass", blurb="Logical Node Class. Standard or custome one")]
+    [Description (nick="::lnClass")]
     public tLNClassEnum ln_class { get; set; }
 
     public tLNodeType.full (string iedtype, string lnclass, string id)
@@ -42,14 +41,14 @@ namespace Lscl
       ln_class.value = lnclass;
       ied_type = iedtype;
     }
-    // SerializableMapKey
     public string get_map_key () { return id; }
 
-    public class HashMap : Lscl.HashMap<string,tLNodeType>
+    public class HashMap : GomHashMap
 	 {
-		 public new tLNodeType get (string id) { return base.get (id); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tLNodeType> list_values () { return (GLib.List<tLNodeType>) base.list_values (); }
+      construct {
+        try { initialize (typeof (tLNodeType)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }

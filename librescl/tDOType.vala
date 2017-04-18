@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,23 +27,21 @@
 using GXml;
 namespace Lscl
 {
-  public class tDOType : tIDNaming, SerializableMapKey<string>
+  public class tDOType : tIDNaming, MappeableElement
   {
-    [Description(blurb="Data Objects")]
     public tSDO.HashMap sdos { get; set; default = new tSDO.HashMap (); }
-    [Description(blurb="Data Attributes")]
     public tDA.HashMap das { get; set; default = new tDA.HashMap (); }
-    [Description(nick="iedType",blurb="The type of the IED to which this DOType belongs")]
+    [Description(nick="::iedType")]
     public string ied_type { get; set; }
-    [Description(nick="cdc",blurb="The basic Common Data Class")]
+    [Description(nick="::cdc")]
     public tCDCEnum cdc { get; set; }
-    // SerializableMapKey
     public string get_map_key () { return id; }
-    public class HashMap : Lscl.HashMap<string,tDOType>
+    public class HashMap : GomHashMap
 	 {
-		 public new tDOType get (string id) { return base.get (id); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDOType> list_values () { return (GLib.List<tDOType>) base.list_values (); }
+      construct {
+        try { initialize (typeof (tDOType)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }

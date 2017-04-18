@@ -64,10 +64,10 @@ namespace Lscl
        str += "Total IED number: " + ieds.length.to_string () + "\n";
      if (data_type_templates != null) {
        if (data_type_templates.logical_node_types != null)
-         str += "Total LN Types: " + data_type_templates.logical_node_types.size.to_string ()
+         str += "Total LN Types: " + data_type_templates.logical_node_types.length.to_string ()
          + "\n";
        if (data_type_templates.data_object_types != null)
-         str += "Total DO Types: " + data_type_templates.data_object_types.size.to_string ()
+         str += "Total DO Types: " + data_type_templates.data_object_types.length.to_string ()
          + "\n";
        if (data_type_templates.data_attribute_types != null)
          str += "Total DA Types: " + data_type_templates.data_attribute_types.size.to_string ()

@@ -291,20 +291,24 @@ public class LsclTest.ReadFile
         assert (dt.logical_node_types != null);
         // Logical Node Types
         var lnts = dt.logical_node_types;
-        assert (lnts.size == 7);
+        assert (lnts.length == 7);
         // Data Object Types
         assert (dt.data_object_types != null);
         var dots = dt.data_object_types;
-        assert (dots.size == 44);
+        assert (dots.length == 44);
         int k = 0;
-        foreach (tDOType t1 in dots.values) {
+        for (int i = 0; i < dots.length; i++) {
+          tDOType t1 = dots.get_item (i) as tDOType;
+          if (t1 == null) continue;
           if (t1.ied_type == null)
             k++;
         }
         assert (k == 33);
         k=0;
-        foreach (tDOType t1 in dots.values) {
-          if (t1.ied_type == "")
+        for (int i = 0; i < dots.length; i++) {
+          tDOType t1 = dots.get_item (i) as tDOType;
+          if (t1 == null) continue;
+          if (t1.ied_type == null)
             k++;
         }
         assert (k == 11);
@@ -322,11 +326,12 @@ public class LsclTest.ReadFile
               cdc = cdcs[j];
           if (ied_types2[j] != null)
             ied = ied_types2[j];
-          var dot = dots.get (ids2[j]);
+          var dot = dots.get (ids2[j]) as tDOType;
           if (dot == null) {
             GLib.message (@"ERROR: Logical Node Type: $(ied)/$(ids2[j])/$(cdc) not found\n");
             k = 0;
-            foreach (tDOType t1 in dots.values) {
+            for (int i = 0; i < dots.length; i++) {
+              var t1 = dots.get_item (i) as tDOType;
               string t1cdc = "NULL";
               string t1ied = "NULL";
               string t1id = "NULL";
@@ -394,13 +399,12 @@ public class LsclTest.ReadFile
         var dt = scl.data_type_templates;
         assert (dt.logical_node_types != null);
         var lnts = dt.logical_node_types;
-        lnts.deserialize_children ();
-        assert (lnts.size == 7);
+        assert (lnts.length == 7);
         string[] ied_types = {"","",null,null,null,null,null};
         string[] ids = {"LLN01","LPHD1","XCBR5","CSWI7","CILO9","PTOC11","RREC13"};
         string[] lncs = {"LLN0","LPHD","XCBR","CSWI","CILO","CCGR","RREC"};
         for (int i = 0; i < ied_types.length; i++) {
-          var lnt = lnts.get (ids[i]);
+          var lnt = lnts.get (ids[i]) as tLNodeType;
           string ied = "NULL";
           if (ied_types[i] != null)
             ied = ied_types[i];
@@ -418,7 +422,7 @@ public class LsclTest.ReadFile
           }
         }
         // LNType - Data Objects Attributes
-        var lnt = lnts.get ("XCBR5");
+        var lnt = lnts.get ("XCBR5") as tLNodeType;
         if (lnt == null) {
           GLib.message (@"ERROR: Logical Node Type: ''/XCBR5 not found\n");
           assert_not_reached ();
@@ -481,13 +485,12 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         var dots = dt.data_object_types;
-        dots.deserialize_children ();
-        if (dots.size != 44) {
-          GLib.message (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.size)\n");
+        if (dots.length != 44) {
+          GLib.message (@"ERROR: wrong data object type templates number. Expected: 44 Got: $(dots.length)\n");
           assert_not_reached ();
         }
         // Data Attributes
-        var dot = dots.get ("LPHD1NamPlt");
+        var dot = dots.get ("LPHD1NamPlt") as tDOType;
         if (dot == null) {
           GLib.message (@"ERROR: Data Object Type: NULL/LPHD1NamPlt not found\n");
           assert_not_reached ();
