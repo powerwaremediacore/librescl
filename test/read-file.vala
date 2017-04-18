@@ -502,7 +502,6 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: Data Attribute definitions not found for Data Object Type: NULL/LPHD1NamPlt/LPL \n");
           assert_not_reached ();
         }
-        assert (dot.das.deserialize_children ());
         string[] danames = {"d","swRev","vendor"};
         //string[] dabtypes = {"VisString255","VisString255","VisString255"};
         //string[] davkinds = {"Set","Set","Set"};
@@ -511,7 +510,7 @@ public class LsclTest.ReadFile
         bool[] daqchgs = {false,false,true};
         bool[] dadupds = {true,false,false};
         for (int i = 0; i < danames.length; i++) {
-          var da = dot.das.get (danames[i]);
+          var da = dot.das.get (danames[i]) as tDA;
           if (da == null) {
             GLib.message (@"ERROR: Data Attribute: $(danames[i]) not found\n");
             assert_not_reached ();

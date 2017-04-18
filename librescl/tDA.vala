@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013-2015 Daniel Espinosa
+ *  Copyright (c) 2013-2015,2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,23 +27,24 @@
 using GXml;
 namespace Lscl
 {
-  public class tDA : tAbstractDataAttribute, SerializableMapKey<string>
+  public class tDA : tAbstractDataAttribute, MappeableElement
   {
-    [Description(nick="dchg", blurb="Data Change")]
+    [Description(nick="::dchg", blurb="Data Change")]
     public SerializableBool dchg { get; set; }
-    [Description(nick="qchg", blurb="Quallity Change")]
+    [Description(nick="::qchg", blurb="Quallity Change")]
     public SerializableBool qchg { get; set; }
-    [Description(nick="dupd", blurb="Data Update")]
+    [Description(nick="::dupd", blurb="Data Update")]
     public SerializableBool dupd { get; set; }
-    [Description(nick="fc", blurb="Functional Code")]
+    [Description(nick="::fc", blurb="Functional Code")]
     public tFC fc { get; set; }
-    // SerializableMapId
+
     public string get_map_key () { return name.get_string (); }
 
-    public class HashMap : SerializableHashMap<string,tDA> {
-			public new tDA @get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDA> list_values () { return (GLib.List<tDA>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDA)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }
