@@ -30,19 +30,19 @@ namespace Lscl
 {
   public class tAssociation : Serializable
   {
-    [Description(nick="kind", blurb="The kind of pre-configured association, pre-established or predefined")]
+    [Description(nick="::kind", blurb="The kind of pre-configured association, pre-established or predefined")]
     public tAssociationKind kind  { get; set; }
-    [Description(nick="associationID", blurb="The identification of a pre-configured association")]
+    [Description(nick="::associationID", blurb="The identification of a pre-configured association")]
     public string association_id { get; set; }
-    [Description(nick="iedName", blurb="The reference identifying the IED on which the client resides")]
+    [Description(nick="::iedName", blurb="The reference identifying the IED on which the client resides")]
     public string ied_name { get; set; }
-    [Description(nick="ldInst", blurb="The reference to the client logical device")]
+    [Description(nick="::ldInst", blurb="The reference to the client logical device")]
     public string ld_inst { get; set; }
-    [Description(nick="prefix",blurb="The LN prefix")]
+    [Description(nick="::prefix",blurb="The LN prefix")]
     public string prefix { get; set; default = ""; }
-    [Description(nick="lnClass", blurb="The class of the client LN")]
+    [Description(nick="::lnClass", blurb="The class of the client LN")]
     public tLNClassEnum ln_class { get; set; }
-    [Description(nick="lnInst", blurb="The instance number of the client LN")]
+    [Description(nick="::lnInst", blurb="The instance number of the client LN")]
     public string ln_inst { get; set; }
   }
 }

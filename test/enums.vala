@@ -74,7 +74,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.kind = new tAssociationKind ();
-				t.kind.set_value (tAssociationKind.Enum.PREESTABLISHED);
+				t.kind.set_enum (tAssociationKind.Enum.PREESTABLISHED);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -99,8 +99,8 @@ public class LsclTest.Enums
 				<NodeTest kind = "PREDEFINED" />""");
 				t.deserialize (d);
 				assert (t.kind != null);
-				assert (t.kind.get_value () == tAssociationKind.Enum.PREDEFINED);
-				assert (t.kind.get_string () == "PREDEFINED");
+				assert (t.kind.get_enum () == tAssociationKind.Enum.PREDEFINED);
+				assert (t.kind.value == "PREDEFINED");
 			}
 			catch (GLib.Error e)
 			{
