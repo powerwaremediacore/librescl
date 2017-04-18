@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,23 +27,24 @@
 using GXml;
 namespace Lscl
 {
-  public class tDO : tUnNaming, SerializableMapKey<string>
+  public class tDO : tUnNaming, MappeableElement
   {
     public tDO() {}
-    [Description(nick="name", blurb="")]
+    [Description(nick="::name", blurb="")]
     public string name { get; set; }
-    [Description(nick="type", blurb="The type references the id of a DOType definition.")]
+    [Description(nick="::type", blurb="The type references the id of a DOType definition.")]
     public string do_type { get; set; }
-    [Description(nick=" accessControl", blurb="Access control definition for this DO.")]
+    [Description(nick="::accessControl", blurb="Access control definition for this DO.")]
     public string access_control { get; set; }
-    [Description(nick="transient", blurb="If set to true, it indicates that the Transient definition applies.")]
-    public SerializableBool transient { get; set; }
+    [Description(nick="::transient", blurb="If set to true, it indicates that the Transient definition applies.")]
+    public GomBoolean transient { get; set; }
     // SerializableMapId
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string,tDO> {
-      public new tDO get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDO> list_values () { return (GLib.List<tDO>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDO)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

@@ -436,7 +436,6 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         assert (lnt.dos != null);
-        assert (lnt.dos.deserialize_children ());
         string[] doids = {"Pos","OpCnt","CBOpCap",
                           "BlkOpn","BlkCls","Loc",
                           "Mod","Beh","Health","NamPlt"};
@@ -447,7 +446,7 @@ public class LsclTest.ReadFile
                         false,false,true,
                         false,false,false,false};
         for (int i = 0; i < doids.length; i++) {
-          var dobject = lnt.dos.get (doids[i]);
+          var dobject = lnt.dos.get (doids[i]) as tDO;
           if (dobject == null) {
             GLib.message (@"ERROR: Data Object: $(doids[i]) not found\n");
             assert_not_reached ();
@@ -456,8 +455,8 @@ public class LsclTest.ReadFile
             GLib.message (@"ERROR: Data Object: $(doids[i]) has wrong type. Expected $(dotypes[i]), got: $(dobject.do_type)\n");
             assert_not_reached ();
           }
-          if (dobject.transient.get_value () != dotrns[i]) {
-            GLib.message (@"ERROR: Data Object: $(doids[i]) has wrong transient value. Expected $(dotrns[i]), got: $(dobject.transient)\n");
+          if (dobject.transient.get_boolean () != dotrns[i]) {
+            GLib.message (@"ERROR: Data Object: $(doids[i]) has wrong transient value. Expected $(dotrns[i]), got: $(dobject.transient.value)\n");
             assert_not_reached ();
           }
         }
