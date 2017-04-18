@@ -62,9 +62,9 @@ public class Performance
       for (int i = 0; i < 5; i++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class.set_string ("GGIO");
+        ln.ln_class.value = "GGIO";
         ln.inst = i.to_string ();
-        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.value, ln.inst, ln.prefix, ln);
       }
       for (int i = 0; i < lns.length; i++) {
         var ln = lns.get_item (i) as tLN;
@@ -76,9 +76,9 @@ public class Performance
       for (int j = 5; j < 25; j++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class.set_string ("GGIO");
+        ln.ln_class.value = "GGIO";
         ln.inst = j.to_string ();
-        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.value, ln.inst, ln.prefix, ln);
       }
       for (int i = 0; i < 5; i++) {
         var ln = new tLN ();
@@ -90,9 +90,9 @@ public class Performance
       for (int k = 25; k < 55; k++) {
         var ln = new tLN ();
         ln.prefix = "";
-        ln.ln_class.set_string ("GGIO");
+        ln.ln_class.value = "GGIO";
         ln.inst = k.to_string ();
-        lns.set (ln.ln_class.get_string (), ln.inst, ln.prefix, ln);
+        lns.set (ln.ln_class.value, ln.inst, ln.prefix, ln);
       }
       for (int i = 0; i < 5; i++) {
         var ln = new tLN ();

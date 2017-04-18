@@ -248,7 +248,7 @@ public class LsclTest.ReadFile
             if (gsep.get_value () == "0001")
             foundappid = true;
           }
-        }
+        } assert_not_reached ();
         assert(foundappid);
         assert(foundvlanid);
         assert(foundvlanp);
@@ -408,8 +408,8 @@ public class LsclTest.ReadFile
             GLib.message (@"ERROR: Logical Node Type: $(ied_types[i])/$(ids[i])/$(lncs[i]) not found\n");
             assert_not_reached ();
           }
-          if (lnt.ln_class.get_string () != lncs[i]) {
-            GLib.message (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(lncs[i]), got $(lnt.ln_class)\n");
+          if (lnt.ln_class.value != lncs[i]) {
+            GLib.message (@"ERROR: Incorrect Value for LNType: $(ied_types[i])/$(ids[i])/$(lncs[i]). Expected $(lncs[i]), got $(lnt.ln_class.value)\n");
             assert_not_reached ();
           }
           if (lnt.ied_type != ied_types[i]) {
@@ -427,8 +427,8 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: Incorrect IED Type for LNType: NULL/XCBR5/XCBR. Expected 'NULL', got: $(lnt.ied_type)\n");
           assert_not_reached ();
         }
-        if (lnt.ln_class.get_string () != "XCBR") {
-          GLib.message (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class)\n");
+        if (lnt.ln_class.value != "XCBR") {
+          GLib.message (@"ERROR: Incorrect LNClass for LNType: ''/XCBR5/XCBR. Expected 'XCBR', got: $(lnt.ln_class.value)\n");
           assert_not_reached ();
         }
         assert (lnt.dos != null);
@@ -793,7 +793,7 @@ public class LsclTest.ReadFile
         assert (server.association.ied_name == "None");
         assert (server.association.ld_inst == "NoneLd");
         assert (server.association.prefix == "");
-        assert (server.association.ln_class.get_string () == "XCBR");
+        assert (server.association.ln_class.value == "XCBR");
         assert (server.association.ln_inst == "1");
         // Logical Device Tests
         assert (server.logical_devices != null);
