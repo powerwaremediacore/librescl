@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,18 +28,19 @@ using Gee;
 using GXml;
 namespace Lscl
 {
-  public class tDAType : tIDNaming, SerializableMapKey<string>
+  public class tDAType : tIDNaming, MappeableElement
   {
-    [Description(blurb="Basic Data Attribute Types")]
     public tBDA.HashMap bdas { get; set; default = new tBDA.HashMap (); }
-    [Description(nick="iedType", blurb="it is used to define the relation of a specific LN type to an IED type.")]
+    [Description(nick="::iedType")]
     public string ied_type { get; set; }
-    // SerializableMapDualId
+
     public string get_map_key () { return id; }
-    public class HashMap : Lscl.HashMap<string,tDAType> {
-			public new tDAType @get (string id) { return base.get (id); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDAType> list_values () { return (GLib.List<tDAType>) base.list_values (); }
+
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDAType)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }

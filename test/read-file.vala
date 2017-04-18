@@ -364,8 +364,7 @@ public class LsclTest.ReadFile
         // Data Attribute Types
         assert (dt.data_attribute_types != null);
         var dats = dt.data_attribute_types;
-        dats.deserialize_children ();
-        assert (dats.size == 12);
+        assert (dats.length == 12);
         string[] ied_types3 = {"","",null,null,
                               null,null,null,null,
                                null,null,null,null};
@@ -560,12 +559,11 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         var dats = dt.data_attribute_types;
-        dats.deserialize_children ();
-        if (dats.size != 12) {
-          GLib.message (@"ERROR: wrong data object type templates number. Expected: 12 Got: $(dats.size)\n");
+        if (dats.length != 12) {
+          GLib.message (@"ERROR: wrong data object type templates number. Expected: 12 Got: $(dats.length)\n");
           assert_not_reached ();
         }
-        var dat = dats.get ("RRECRecModStruct");
+        var dat = dats.get ("RRECRecModStruct") as tDAType;
         if (dat == null) {
           GLib.message (@"ERROR: Data Attribute Type: /XCBR5ModctlModel not found\n");
           assert_not_reached ();
@@ -582,7 +580,7 @@ public class LsclTest.ReadFile
         Test.message ("DAT XML: "+dat.write_string ());
         Test.message ("Testing tDAType");
         for (int i = 0; i < bdas.length; i++) {
-          var bda = dat.bdas.get (bdas[i]);
+          var bda = dat.bdas.get (bdas[i]) as tBDA;
           if (bda == null) {
             GLib.message (@"ERROR: BDA: $(bdas[i]) not found\n");
             assert_not_reached ();
@@ -602,7 +600,7 @@ public class LsclTest.ReadFile
           }
         }
         Test.message ("Testing BDA");
-        var bda = dat.bdas.get ("Operated");
+        var bda = dat.bdas.get ("Operated") as tBDA;
         if (bda == null) {
           GLib.message (@"ERROR: BDA: Operated not found\n");
           assert_not_reached ();

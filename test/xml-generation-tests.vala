@@ -7,7 +7,7 @@
  *       Daniel Espinosa <esodan@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -278,50 +278,19 @@ class LsclTest.XmlGeneration
          {
            assert (iscl.data_type_templates != null);
            assert (iscl.data_type_templates.data_attribute_types != null);
-           assert (iscl.data_type_templates.data_attribute_types.deserialize_children ());
-           if (iscl.data_type_templates.data_attribute_types.duplicated != null) {
-             //var datd = iscl.data_type_templates.data_attribute_types.duplicated.size;
-             //GLib.message (@"INITIAL SCL: datypes size $(datd)\n");
-             foreach (tDAType d in iscl.data_type_templates.data_attribute_types.values)
-             {
-               if (d.child_nodes.length != 0) {
-                 //GLib.message (@"$(d.id): $(d.serialized_xml_node_value)\n");
-               }
-             }
-           }
          }
          var scl = new Scl ();
          (scl as GomElement).read_from_string (iscl.write_string ());
          assert (scl.data_type_templates != null);
          assert (scl.data_type_templates.data_attribute_types != null);
-         assert (scl.data_type_templates.data_attribute_types.size == 0);
-         assert (scl.data_type_templates.data_attribute_types.deserialize_children ());
-         assert (scl.data_type_templates.data_attribute_types.size == 12);
-         assert (scl.data_type_templates.data_attribute_types.duplicated != null);
-         assert (scl.data_type_templates.data_attribute_types.duplicated.size == 1);
-         //GLib.message (@"ORIGINAL:$idoc\n>>>>>><\n");
+         assert (scl.data_type_templates.data_attribute_types.length == 12);
          var dt = scl.data_type_templates;
          var dats = dt.data_attribute_types;
          assert (dats != null);
          // This return the one in main collection, no the duplicated one
-         var dat = dats.get ("RRECRecModStruct");
+         var dat = dats.get ("RRECRecModStruct") as tDAType;
          assert (dat != null);
          assert (dat.bdas != null);
-         assert (dat.bdas.deserialize_children ());
-         assert (dat.bdas.duplicated != null);
-         assert (dat.bdas.duplicated.size == 1);
-         GLib.message ("Duplicated size: "+dat.bdas.duplicated.size.to_string ());
-         var dup = dat.bdas.duplicated.get (0);
-         assert (dup != null);
-         assert (dup.name.get_string () == "Operated");
-         assert (dup.b_type.get_string ().down () == "BOOLEAN".down ());
-				 assert (dup.val_kind.get_value () == (Enumeration.parse (typeof (tValKind.Enum), "RO")).value);
-         assert (dup.count.get_value () == 2);
-         assert (dup.vals != null);
-         assert (dup.vals.deserialize_children ());
-         assert (dup.vals.size == 2);
-         assert (dup.vals[0].get_value () == "FALSE");
-         assert (dup.vals[1].get_value () == "TRUE");
        }
        catch (GLib.Error e)
        {

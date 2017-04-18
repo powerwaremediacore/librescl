@@ -29,7 +29,6 @@ namespace Lscl
 {
   public class tDO : tUnNaming, MappeableElement
   {
-    public tDO() {}
     [Description(nick="::name", blurb="")]
     public string name { get; set; }
     [Description(nick="::type", blurb="The type references the id of a DOType definition.")]
