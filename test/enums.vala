@@ -315,7 +315,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.fc = new tFC ();
-				t.fc.set_value (tFC.Enum.SE);
+				t.fc.set_enum (tFC.Enum.SE);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -339,8 +339,8 @@ public class LsclTest.Enums
 				<NodeTest FC = "mx" />""");
 				t.deserialize (d);
 				assert (t.fc != null);
-				assert (t.fc.get_value () == tFC.Enum.MX);
-				assert (t.fc.get_string () == "mx");
+				assert (t.fc.get_enum () == tFC.Enum.MX);
+				assert (t.fc.value == "mx");
 			}
 			catch (GLib.Error e)
 			{

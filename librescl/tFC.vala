@@ -6,7 +6,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015, 2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -21,13 +21,14 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-public class Lscl.tFC : Lscl.BaseEnum
+using GXml;
+
+public class Lscl.tFC : GomEnum
 {
-	construct {
-	_enumtype = typeof (tFC.Enum);
-	}
-  public tFC.Enum get_value () throws GLib.Error { return (tFC.Enum) to_integer (); }
-  public void set_value (tFC.Enum val) throws GLib.Error { parse_integer ((int) val); }
+  construct {
+    try { initialize_enum (typeof (tFC.Enum)); }
+    catch (GLib.Error e) { warning ("Error: "+e.message); }
+  }
 	public enum Enum
 	{
 		ST,

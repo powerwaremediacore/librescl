@@ -29,26 +29,27 @@ namespace Lscl
 {
   public class tFCDA : Serializable
   {
-    [Description(nick="ldInst", blurb="Logical Device instance")]
+    [Description(nick="::ldInst", blurb="Logical Device instance")]
     public string ld_inst { get; set; default=""; }
-    [Description(nick="LDevice",blurb="Logcial Device")]
     public tLDevice logical_device { get; set; }
-    [Description(nick="prefix",blurb="Prefix")]
+    [Description(nick="::prefix",blurb="Prefix")]
     public new string prefix { get; set; default = ""; }
-    [Description(nick="lnClass",blurb="Logical Node class")]
-    public string ln_class { get; set; }
-    [Description(nick="lnInst",blurb="Logical Node instance")]
+    [Description(nick="::lnClass",blurb="Logical Node class")]
+    public tLNClassEnum ln_class { get; set; }
+    [Description(nick="::lnInst",blurb="Logical Node instance")]
     public string ln_inst { get; set; }
-    [Description(nick="doName",blurb="Data Object name")]
+    [Description(nick="::doName",blurb="Data Object name")]
     public string do_name { get; set; }
-    [Description(nick="daName",blurb="Data Attribute name")]
+    [Description(nick="::daName",blurb="Data Attribute name")]
     public string da_name { get; set; }
-    [Description(nick="fc",blurb="Functional Code")]
+    [Description(nick="::fc",blurb="Functional Code")]
     public tFC fc { get; set; }
 
-    public class Array : SerializableArrayList<tFCDA> {
-      public new tFCDA get (int index)  { return base.get (index); }
-      public new tFCDA[] to_array () { return ((Gee.Collection<tFCDA>) this).to_array (); }
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tFCDA)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }
