@@ -34,8 +34,8 @@ namespace Lscl
 			_lnclass = new tLNClassEnum ();
 			_lnclass.value = "LLN0";
 		}
-    public tGSEControl.HashMap gse_controls { get; set; default = new tGSEControl.HashMap (); }
-    public tSampledValueControl.Array sampled_value_controls { get; set; default = new tSampledValueControl.Array (); }
+    public tGSEControl.HashMap gse_controls { get; set; }
+    public tSampledValueControl.Array sampled_value_controls { get; set; }
     public tSettingControl setting_control { get; set; }
     public tSCLControl scl_control { get; set; }
     [Description(nick="::Log",blurb="")]

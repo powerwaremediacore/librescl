@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@ namespace Lscl
 {
 	public class tSettingControl : tUnNaming
 	{
-		[Description(nick="numOfSGs", blurb="The number of setting groups available.")]
+		[Description(nick="::numOfSGs", blurb="The number of setting groups available.")]
 		public string num_of_sgs { get; set; default="1";}
-		[Description(nick="actSG", blurb="The number of the setting group to be activated when loading the configuration.")]
+		[Description(nick="::actSG", blurb="The number of the setting group to be activated when loading the configuration.")]
 		public string act_sg { get; set; default="1";}
 	}
 }

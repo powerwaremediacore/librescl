@@ -32,7 +32,7 @@ namespace Lscl
     public LN0 ln0 { get; set; }
     [Description(nick="::inst",blurb="")]
     public string inst { get; set; }
-    public tLN.ThreeMap logical_nodes { get; set; default = new tLN.ThreeMap (); }
+    public tLN.ThreeMap logical_nodes { get; set; }
     public tAccessControl access_control { get; set; }
 
     public string get_map_key () { return inst; }
