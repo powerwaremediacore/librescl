@@ -7,7 +7,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015, 2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -24,14 +24,13 @@
  */
 using GXml;
 
-public class Lscl.tGSEControlType : Lscl.BaseEnum
+public class Lscl.tGSEControlType : GomEnum
 {
 	construct {
-		_enumtype = typeof (tGSEControlType.Enum);
+		try { initialize_enum (typeof (tGSEControlType.Enum)); }
+		catch (GLib.Error e) { warning ("Error: "+e.message); }
 	}
-  public tGSEControlType.Enum get_value () throws GLib.Error { return (tGSEControlType.Enum) to_integer (); }
-  public void set_value (tGSEControlType.Enum val) throws GLib.Error { parse_integer ((int) val); }
-	public enum Enum 
+	public enum Enum
 	{
 		GSSE,
 		GOOSE

@@ -29,7 +29,6 @@ namespace Lscl
 {
   public class tLDevice : tUnNaming, MappeableElement
   {
-    [Description(nick="::LN0",blurb="Logical Device's Logical Node")]
     public LN0 ln0 { get; set; }
     [Description(nick="::inst",blurb="")]
     public string inst { get; set; }

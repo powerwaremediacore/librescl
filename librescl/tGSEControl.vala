@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,20 +27,20 @@
 using GXml;
 namespace Lscl
 {
-  public class tGSEControl : tControlWithIEDName, SerializableMapKey<string>
+  public class tGSEControl : tControlWithIEDName, MappeableElement
   {
-    [Description(nick="type",blurb="Control type")]
+    [Description(nick="::type",blurb="Control type")]
     public tGSEControlType control_type { get; set; }
-    [Description(nick="appID",blurb="Application ID")]
+    [Description(nick="::appID",blurb="Application ID")]
     public string app_id { get; set; }
 
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string,tGSEControl>
-	 {
-			public new tGSEControl get (string key) { return base.get (key); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tGSEControl> list_values () { return (GLib.List<tGSEControl>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tGSEControl)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }

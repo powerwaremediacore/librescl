@@ -31,15 +31,15 @@ namespace Lscl
   public class tServerAuthentication : Serializable
   {
     [Description(nick="::none")]
-    public SerializableBool none { get; set; }
+    public GomBoolean none { get; set; }
     [Description(nick="::password")]
-    public SerializableBool password { get; set; }
+    public GomBoolean password { get; set; }
     [Description(nick="::weak")]
-    public SerializableBool @weak { get; set; }
+    public GomBoolean @weak { get; set; }
     [Description(nick="::strong")]
-    public SerializableBool strong { get; set; }
+    public GomBoolean strong { get; set; }
     [Description(nick="::certificate")]
-    public SerializableBool certificate { get; set; }
+    public GomBoolean certificate { get; set; }
 
     construct {
       try { initialize ("Authentication"); }

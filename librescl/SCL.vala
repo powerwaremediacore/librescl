@@ -73,7 +73,7 @@ namespace Lscl
          str += "Total DA Types: " + data_type_templates.data_attribute_types.length.to_string ()
          + "\n";
        if (data_type_templates.enum_types != null)
-         str += "Total Enum Types: " + data_type_templates.enum_types.size.to_string ()
+         str += "Total Enum Types: " + data_type_templates.enum_types.length.to_string ()
          + "\n";
      }
      return str;

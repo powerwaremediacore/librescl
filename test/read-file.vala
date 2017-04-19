@@ -760,12 +760,12 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: Bad name for 'AccessPoint1' : $(ap.name)\n");
           assert_not_reached ();
         }
-        if (ap.router.get_value () != false) {
-          GLib.message (@"ERROR: Bad router for 'IED1.AccessPoint1' : $(ap.router)\n");
+        if (ap.router.get_boolean () != false) {
+          GLib.message (@"ERROR: Bad router for 'IED1.AccessPoint1' : $(ap.router.value)\n");
           assert_not_reached ();
         }
-        if (ap.clock.get_value () != true) {
-          GLib.message (@"ERROR: Bad clock for 'IED1.AccessPoint1' : $(ap.clock)\n");
+        if (ap.clock.get_boolean () != true) {
+          GLib.message (@"ERROR: Bad clock for 'IED1.AccessPoint1' : $(ap.clock.value)\n");
           assert_not_reached ();
         }
         if (ap.server == null) {
@@ -780,11 +780,11 @@ public class LsclTest.ReadFile
           assert_not_reached ();
         }
         // Tests for Authentication
-        assert (server.authentication.none.get_value () == true);
-        assert (server.authentication.password.get_value () == false);
-        assert (server.authentication.@weak.get_value () == false);
-        assert (server.authentication.strong.get_value () == false);
-        assert (server.authentication.certificate.get_value () == false);
+        assert (server.authentication.none.get_boolean () == true);
+        assert (server.authentication.password.get_boolean () == false);
+        assert (server.authentication.@weak.get_boolean () == false);
+        assert (server.authentication.strong.get_boolean () == false);
+        assert (server.authentication.certificate.get_boolean () == false);
         // TODO: Association Tests
         assert (server.association != null);
         assert (server.association.kind.get_enum () == tAssociationKind.Enum.PREESTABLISHED);
@@ -837,7 +837,7 @@ public class LsclTest.ReadFile
         var gsec = ld.ln0.gse_controls.@get ("gcb") as tGSEControl;
         assert (gsec != null);
         assert (gsec.name =="gcb");
-        assert(gsec.control_type.get_value () == tGSEControlType.Enum.GOOSE);
+        assert(gsec.control_type.get_enum () == tGSEControlType.Enum.GOOSE);
         assert (gsec.app_id == "DISPARO");
         assert (gsec.dat_set == "GOOSE1");
         assert (gsec.conf_rev == "1");

@@ -29,12 +29,14 @@ namespace Lscl
 {
   public class tEnumVal : NodeContent
   {
-    [Description(nick="ord", blurb="It contains the order of the values")]
+    [Description(nick="::ord")]
     public string ord { get; set; }
 
-    public class Array : SerializableArrayList<tEnumVal> {
-			public new tEnumVal get (int index) { return base.get (index); }
-      public new tEnumVal[] to_array () { return ((Gee.Collection<tEnumVal>) this).to_array (); }
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tEnumVal)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 		}
   }
   

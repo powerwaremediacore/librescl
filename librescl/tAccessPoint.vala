@@ -29,10 +29,10 @@ namespace Lscl
 {
   public class tAccessPoint : tNaming, GXml.MappeableElement
   {
-    [Description(nick="router", blurb="This is a function of the communication network on the IED.")]
-    public SerializableBool router { get; set; }
-    [Description(nick="clock", blurb="The presence and setting to true defines this IED to be a master clock at this bus.")]
-    public SerializableBool clock { get; set; }
+    [Description(nick="::router", blurb="This is a function of the communication network on the IED.")]
+    public GomBoolean router { get; set; }
+    [Description(nick="::clock", blurb="The presence and setting to true defines this IED to be a master clock at this bus.")]
+    public GomBoolean clock { get; set; }
 
     public tServer server { get; set; }
 

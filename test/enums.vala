@@ -353,7 +353,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.gsect = new tGSEControlType ();
-				t.gsect.set_value (tGSEControlType.Enum.GSSE);
+				t.gsect.set_enum (tGSEControlType.Enum.GSSE);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -377,8 +377,8 @@ public class LsclTest.Enums
 				<NodeTest GSEType = "goose" />""");
 				t.deserialize (d);
 				assert (t.gsect != null);
-				assert (t.gsect.get_value () == tGSEControlType.Enum.GOOSE);
-				assert (t.gsect.get_string () == "goose");
+				assert (t.gsect.get_enum () == tGSEControlType.Enum.GOOSE);
+				assert (t.gsect.value == "goose");
 			}
 			catch (GLib.Error e)
 			{

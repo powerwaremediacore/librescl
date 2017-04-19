@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,11 +39,11 @@ namespace Lscl
 		construct {
 			_ln_class = new tLNClassEnum ();
 		}
-    [Description(nick="lnClass",blurb="")]
+    [Description(nick="::lnClass",blurb="")]
     public tLNClassEnum ln_class { get { return _ln_class; } set { _ln_class = value; } }
-    [Description(nick="inst",blurb="")]
+    [Description(nick="::inst",blurb="")]
     public string inst { get; set; default = "1"; }
-    [Description(nick="prefix",blurb="")]
+    [Description(nick="::prefix",blurb="")]
     public string prefix { get; set; default = ""; }
 
     public string get_map_pkey  () { return _ln_class.value; }

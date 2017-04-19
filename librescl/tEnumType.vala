@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,22 +30,21 @@ using GXml;
 
 namespace Lscl
 {
-  public class tEnumType : tIDNaming, SerializableMapKey<string>
+  public class tEnumType : tIDNaming, MappeableElement
   {
-    [Description(nick="EnumVal",blurb="")]
-    public tEnumVal.Array enum_val { get; set; default = new tEnumVal.Array (); }
+    public tEnumVal.Array enum_val { get; set; }
 
     public void order ()
     {
       // TODO: Reorder using order
     }
-    // SerializableMapDualId
     public string get_map_key () { return id; }
-    public class HashMap : Lscl.HashMap<string,tEnumType>
+    public class HashMap : GomHashMap
 	 {
-		 public new tEnumType get (string id) { return base.get (id); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tEnumType> list_values () { return (GLib.List<tEnumType>) base.list_values (); }
+      construct {
+        try { initialize (typeof (tEnumType)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
 	 }
   }
 }

@@ -34,19 +34,15 @@ namespace Lscl
 			_lnclass = new tLNClassEnum ();
 			_lnclass.value = "LLN0";
 		}
-    [Description(blurb="GSE Control Blocks")]
     public tGSEControl.HashMap gse_controls { get; set; default = new tGSEControl.HashMap (); }
-    [Description(blurb="Sample Value Control Blocks")]
     public tSampledValueControl.Array sampled_value_controls { get; set; default = new tSampledValueControl.Array (); }
-    [Description(blurb="Setting Control Blocks")]
     public tSettingControl setting_control { get; set; }
-    [Description(nick="SCLControl",blurb="")]
     public tSCLControl scl_control { get; set; }
-    [Description(nick="Log",blurb="")]
+    [Description(nick="::Log",blurb="")]
     public tLog log { get; set; }
-    [Description(nick="lnClass",blurb="Allways set to LLN0")]
+    [Description(nick="::lnClass",blurb="Allways set to LLN0")]
     public tLNClassEnum ln_class { get { return _lnclass; } set {} }
-    [Description(nick="inst",blurb="LLN0 have no instances")]
+    [Description(nick="::inst",blurb="LLN0 have no instances")]
     public string inst { get { return ""; } set {} }
   }
 }
