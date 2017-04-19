@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,17 +29,17 @@ namespace Lscl
 {
   public class tAnyLN : tUnNaming 
   {
-    [Description(blurb="DataSet controls")]
+    [Description(blurb="::DataSet controls")]
     public tDataSet.HashMap data_sets { get; set; default = new tDataSet.HashMap (); }
-    [Description(blurb="Report Controls")]
+    [Description(blurb="::Report Controls")]
     public tReportControl.HashMap report_controls { get; set; default = new tReportControl.HashMap (); }
-    [Description(blurb="Log Controls")]
+    [Description(blurb="::Log Controls")]
     public tLogControl.HashMap log_controls { get; set; default = new tLogControl.HashMap (); }
-    [Description(blurb="Data Object Instances")]
+    [Description(blurb="::Data Object Instances")]
     public tDOI.HashMap dois { get; set; default = new tDOI.HashMap (); }
-    [Description(nick="Inputs", blurb="Input source")]
+    [Description(nick="Inputs", blurb="::Input source")]
     public tInputs inputs { get; set; }
-    [Description(nick="lnType", blurb="The instantiable type definition of this logical node.")]
+    [Description(nick="::lnType", blurb="::The instantiable type definition of this logical node.")]
     public string ln_type { get; set; }
 	}
 }

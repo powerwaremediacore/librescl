@@ -27,17 +27,17 @@
 using GXml;
 namespace Lscl
 {
-  public class tDataSet : tNaming, SerializableMapKey<string>
+  public class tDataSet : tNaming, MappeableElement
   {
-    [Description(blurb="")]
     public tFCDA.Array fcdas { get; set; }
 
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string,tDataSet> {
-      public new tDataSet get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDataSet> list_values () { return (GLib.List<tDataSet>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDataSet)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }
