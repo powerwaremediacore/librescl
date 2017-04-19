@@ -9,7 +9,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,32 +33,33 @@ namespace Lscl
 	 construct {
 			_property_edition.set ("smp-mod", Edition.SECOND);
 		}
-    [Description(nick="SmvOpts", blurb="Sampled Values Options")]
+    [Description(nick="::SmvOpts", blurb="Sampled Values Options")]
     public tSampledValueControlSmvOpts smv_opts  { get; set; }
-    [Description(nick="smvID", blurb="Idenitifier of the SMV, (Multicast CB or Unicast CB)")]
+    [Description(nick="::smvID", blurb="Idenitifier of the SMV, (Multicast CB or Unicast CB)")]
     public string smv_id  { get; set; }
-    [Description(nick="multicast", blurb="If it's false indicates Unicast SMV services")]
-    public SerializableBool multicast { get; set; }
-    [Description(nick="smpRate", blurb="Sample rate")]
-    public SerializableInt smp_rate  { get; set; }
-    [Description(nick="nofASDU", blurb="Number of ASDU (Application service data unit)")]
-    public SerializableInt nof_asdu  { get; set; }
+    [Description(nick="::multicast", blurb="If it's false indicates Unicast SMV services")]
+    public GomBoolean multicast { get; set; }
+    [Description(nick="::smpRate", blurb="Sample rate")]
+    public GomInt smp_rate  { get; set; }
+    [Description(nick="::nofASDU", blurb="Number of ASDU (Application service data unit)")]
+    public GomInt nof_asdu  { get; set; }
 		// Edition 2.0
-		[Description(nick="smpMod", blurb="Number of ASDU (Application service data unit)")]
+		[Description(nick="::smpMod", blurb="Number of ASDU (Application service data unit)")]
     public tSmpMod smp_mod  { get; set; }
 
-    public class Array : SerializableArrayList<tSampledValueControl> {
-			public new tSampledValueControl @get (int index) { return base.get (index); }
-      public new tSampledValueControl[] to_array () { return ((Gee.Collection<tSampledValueControl>) this).to_array (); }
+    public class Array : GomArrayList {
+    construct {
+      try { initialize (typeof (tSampledValueControl)); }
+      catch (GLib.Error e) { warning ("Error: "+e.message); }
+    }
 		}
   }
-	public class tSmpMod : BaseEnum
+	public class tSmpMod : GomEnum
 	{
 		construct {
-			_enumtype = typeof (tSmpMod.Enum);
+      try { initialize_enum (typeof (tSmpMod.Enum)); }
+      catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-		public tSmpMod.Enum get_value () throws GLib.Error { return (tSmpMod.Enum) to_integer (); }
-		public void set_value (tSmpMod.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 			SMP_PER_PERIOD,

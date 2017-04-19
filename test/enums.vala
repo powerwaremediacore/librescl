@@ -581,7 +581,7 @@ public class LsclTest.Enums
 			try {
 				var t = new EnumTest ();
 				t.smpm = new tSmpMod ();
-				t.smpm.set_value (tSmpMod.Enum.SMP_PER_SEC);
+				t.smpm.set_enum (tSmpMod.Enum.SMP_PER_SEC);
 				var d = new TDocument ();
 				t.serialize (d);
 				var r = d.root;
@@ -605,8 +605,8 @@ public class LsclTest.Enums
 				<NodeTest smpMod = "SECPERSMP" />""");
 				t.deserialize (d);
 				assert (t.smpm != null);
-				assert (t.smpm.get_value () == tSmpMod.Enum.SEC_PER_SMP);
-				assert (t.smpm.get_string () == "SECPERSMP");
+				assert (t.smpm.get_enum () == tSmpMod.Enum.SEC_PER_SMP);
+				assert (t.smpm.value == "SECPERSMP");
 			}
 			catch (GLib.Error e)
 			{
