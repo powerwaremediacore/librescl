@@ -16,9 +16,6 @@ sources = \
 	DeviceObject.vala \
 	DeviceObjectRefence.vala \
 	DeviceReport.vala \
-	DuplicatedHashMap.vala \
-	Collections.vala \
-	Enums.vala \
 	LN0.vala \
 	NodeContent.vala \
 	SCL.vala \

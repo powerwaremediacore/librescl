@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,11 +29,11 @@ namespace Lscl
 {
   public class tRptEnabled : tUnNaming
   {
-    [Description(nick="max", blurb="Defines the maximum number of report control blocks of this type")]
+    [Description(nick="::max", blurb="Defines the maximum number of report control blocks of this type")]
     public string max { get; set; default="1"; }
     /* Edition 2.0 */
-    [Description(nick="ClientLN", blurb="Logical Node client in the system of this report")]
-    public tClientLN.Array clients_ln { get; set; default = new tClientLN.Array (); }
+    [Description(nick="::ClientLN", blurb="Logical Node client in the system of this report")]
+    public tClientLN.Array clients_ln { get; set; }
 		public tRptEnabled ()
 		{
 			_property_edition.set ("clients-ln", Edition.SECOND);

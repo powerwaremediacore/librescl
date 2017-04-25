@@ -30,23 +30,23 @@ namespace Lscl
 {
   public class tReportControlOptFields : Serializable
   {
-    [Description(nick="seqNum", blurb="Current sequence number of the reports")]
-    public SerializableBool seq_num { get; set; }
-    [Description(nick="timeStamp", blurb="Represent a UTC time with the epoch of midnight (00:00:00) of 1970-01-01")]
-    public SerializableBool time_stamp { get; set; }
-    [Description(nick="dataSet", blurb="Identifies a DATA-SET that is contained in the LN")]
-    public SerializableBool data_set { get; set; }
-    [Description(nick="reasonCode", blurb="Reason for inclusion in the report")]
-    public SerializableBool reason_code { get; set; }
-    [Description(nick="dataRef", blurb="Data Object Reference")]
-    public SerializableBool data_ref { get; set; }
-    [Description(nick="entryID", blurb="Used to identify an entry in a sequence of events such as a log or a buffered report")]
-    public SerializableBool entry_id { get; set; }
-    [Description(nick="configRef", blurb="Configuration reference")]
-    public SerializableBool config_ref { get; set; }
+    [Description(nick="::seqNum", blurb="Current sequence number of the reports")]
+    public GomBoolean seq_num { get; set; }
+    [Description(nick="::timeStamp", blurb="Represent a UTC time with the epoch of midnight (00:00:00) of 1970-01-01")]
+    public GomBoolean time_stamp { get; set; }
+    [Description(nick="::dataSet", blurb="Identifies a DATA-SET that is contained in the LN")]
+    public GomBoolean data_set { get; set; }
+    [Description(nick="::reasonCode", blurb="Reason for inclusion in the report")]
+    public GomBoolean reason_code { get; set; }
+    [Description(nick="::dataRef", blurb="Data Object Reference")]
+    public GomBoolean data_ref { get; set; }
+    [Description(nick="::entryID", blurb="Used to identify an entry in a sequence of events such as a log or a buffered report")]
+    public GomBoolean entry_id { get; set; }
+    [Description(nick="::configRef", blurb="Configuration reference")]
+    public GomBoolean config_ref { get; set; }
     /*Edition 2.0 */
-    [Description(nick="bufOvfl", blurb="Configuration reference")]
-    public SerializableBool buf_ovfl { get; set; }
+    [Description(nick="::bufOvfl", blurb="Configuration reference")]
+    public GomBoolean buf_ovfl { get; set; }
 
 
     construct {

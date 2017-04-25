@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,27 +28,28 @@ using GXml;
 
 namespace Lscl
 {
-  public class tReportControl : tControlWithTriggerOpt, SerializableMapKey<string>
+  public class tReportControl : tControlWithTriggerOpt, MappeableElement
   {
-    [Description(nick="OptFields", blurb="Contains the list of client LNs for which this report shall be enabled")]
+    [Description(nick="::OptFields", blurb="Contains the list of client LNs for which this report shall be enabled")]
     public tReportControlOptFields opt_fields { get; set; }
-    [Description(nick="RptEnabled", blurb="Contains the list of client LNs for which this report shall be enabled")]
+    [Description(nick="::RptEnabled", blurb="Contains the list of client LNs for which this report shall be enabled")]
     public tRptEnabled rpt_enabled  { get; set; }
-    [Description(nick="rptID", blurb="Identifier for the report control block")]
+    [Description(nick="::rptID", blurb="Identifier for the report control block")]
     public string rpt_id  { get; set; }
-    [Description(nick="confRev", blurb="The configuration revision number of this report control block")]
+    [Description(nick="::confRev", blurb="The configuration revision number of this report control block")]
     public string conf_rev { get; set; default = "0"; }
-    [Description(nick="buffered",blurb="Specifies if reports are buffered or not")]
-    public SerializableBool buffered { get; set; }
-    [Description(nick="bufTime", blurb="Buffer time")]
+    [Description(nick="::buffered",blurb="Specifies if reports are buffered or not")]
+    public GomBoolean buffered { get; set; }
+    [Description(nick="::bufTime", blurb="Buffer time")]
     public string buf_time { get; set; default = "0"; }
 
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string, tReportControl>
+    public class HashMap : GomHashMap
     {
-      public new tReportControl @get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tReportControl> list_values () { return (GLib.List<tReportControl>) base.list_values (); }
+      construct {
+        try { initialize (typeof (tReportControl)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }
