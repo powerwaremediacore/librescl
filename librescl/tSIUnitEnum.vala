@@ -7,7 +7,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015-2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -24,7 +24,7 @@
  */
 using GXml;
 
-public class Lscl.tSIUnit : Lscl.BaseValueList
+public class Lscl.tSIUnit : GomArrayString
 {
 	private string[] _alternatives = {"none","m","kg","s","A","K","mol","cd","deg","rad","sr",
 		"Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
@@ -35,7 +35,7 @@ public class Lscl.tSIUnit : Lscl.BaseValueList
 			// Edition 2.0
 			"Hz/s","char","char/s","kgm²","dB"};
 	construct  {
-		_vals = { "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
+		_values = { "none","m","kg","s","A","K","mol","cd","deg","rad","sr",
 			"Gy","q","°C","Sv","F","C","S","H","V","ohm","J","N","Hz",
 			"lx","Lm","Wb","T","W","Pa","m²","m³","m/s","m/s²",
 			"m³/s","m/m³","M","kg/m³","m²/s","W/m K","J/K","ppm",
@@ -49,10 +49,6 @@ public class Lscl.tSIUnit : Lscl.BaseValueList
 	{
 		if (index < 0 || index > _alternatives.length) return "";
 		return _alternatives[index];
-	}
-	public void select (Enum v)
-	{
-		select_value_at ((int) v);
 	}
 	public enum Enum
 	{

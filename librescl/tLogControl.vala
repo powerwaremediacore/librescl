@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,24 +27,24 @@
 using GXml;
 namespace Lscl
 {
-  public class tLogControl : tControlWithTriggerOpt, SerializableMapKey<string>
+  public class tLogControl : tControlWithTriggerOpt, MappeableElement
   {
-    [Description (nick="logName", blurb="Reference to the LD, which is the owner of the log.")]
+    [Description (nick="::logName", blurb="Reference to the LD, which is the owner of the log.")]
     public string log_name { get; set; }
-    [Description (nick="logEna", blurb="Logging is enable if TRUE")]
-    public SerializableBool log_ena { get; set; }
-    [Description (nick="reasonCode", blurb="If true this Logging Control Block have Trigger Options")]
-    public SerializableBool reason_code { get; set; }
+    [Description (nick="::logEna", blurb="Logging is enable if TRUE")]
+    public GomBoolean log_ena { get; set; }
+    [Description (nick="::reasonCode", blurb="If true this Logging Control Block have Trigger Options")]
+    public GomBoolean reason_code { get; set; }
     // Edition 2.0
-    [Description (nick="ldInst", blurb="Logical Device instance for this log control block")]
+    [Description (nick="::ldInst", blurb="Logical Device instance for this log control block")]
     public string ld_inst { get; set; }
-    [Description (nick="prefix", blurb="Logical Node prefix")]
+    [Description (nick="::prefix", blurb="Logical Node prefix")]
     public string prefix { get; set; }
-    [Description (nick="lnClass", blurb="Logical Node class")]
+    [Description (nick="::lnClass", blurb="Logical Node class")]
     public tLNClassEnum ln_class { get; set; }
-    [Description (nick="lnInst", blurb="Logical Node instance")]
+    [Description (nick="::lnInst", blurb="Logical Node instance")]
     public string ln_inst { get; set; }
-    [Description(nick="bufTime", blurb="Buffer time")]
+    [Description(nick="::bufTime", blurb="Buffer time")]
     public string buf_time { get; set; default = "0"; }
 
     public tLogControl ()
@@ -57,10 +57,11 @@ namespace Lscl
     }
 
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string, tLogControl> {
-      public new tLogControl @get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tLogControl> list_values () { return (GLib.List<tLogControl>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tLogControl)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

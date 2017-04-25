@@ -31,15 +31,17 @@ namespace Lscl
 {
   public class tVal : NodeContent
   {
-    [Description(nick="sGroup", blurb="The number of the setting group to which this value belongs")]
+    [Description(nick="::sGroup", blurb="The number of the setting group to which this value belongs")]
     public string s_group  { get; set; }
-    [Description(nick="sGroupSpecified", blurb="It specifies setting group the value belongs to")]
-    public SerializableBool s_group_specified  { get; set; }
+    [Description(nick="::sGroupSpecified", blurb="It specifies setting group the value belongs to")]
+    public GomBoolean s_group_specified  { get; set; }
 
-    public class Array : SerializableArrayList<tVal> {
-			public new tVal get (int index) { return base.get (index); }
-      public new tVal[] to_array () { return ((Gee.Collection<tVal>) this).to_array (); }
-		}
+    public class Array :  GomArrayList {
+      construct {
+        try { initialize (typeof (tVal)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
   }
 
 }

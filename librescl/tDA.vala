@@ -38,7 +38,7 @@ namespace Lscl
     [Description(nick="::fc", blurb="Functional Code")]
     public tFC fc { get; set; }
 
-    public string get_map_key () { return name.get_string (); }
+    public string get_map_key () { return name.value; }
 
     public class HashMap : GomHashMap {
       construct {

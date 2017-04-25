@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013-2015 Daniel Espinosa
+ *  Copyright (c) 2013-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,21 +24,23 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-public class Lscl.tConductingEquipment : Lscl.tAbstractConductingEquipment 
+
+using GXml;
+
+public class Lscl.tConductingEquipment : Lscl.tAbstractConductingEquipment
 {
-  [Description(nick="type", blurb="Type of conducting equipment")]
+  [Description(nick="::type", blurb="Type of conducting equipment")]
   public tCommonConductingEquipment equipment_type { get; set; }
 }
 
 public class Lscl.tCommonConductingEquipment : Lscl.tPredefinedCommonConductingEquipment {}
-public class Lscl.tPredefinedCommonConductingEquipment : Lscl.BaseEnum
+public class Lscl.tPredefinedCommonConductingEquipment : GomEnum
 {
 	construct {
-		_enumtype = typeof (tPredefinedCommonConductingEquipment.Enum);
+		try { initialize_enum (typeof (Enum)); }
+		catch (GLib.Error e) { warning ("Error: "+e.message); }
 	}
-  public tPredefinedCommonConductingEquipment.Enum get_value () throws GLib.Error { return (tPredefinedCommonConductingEquipment.Enum) to_integer (); }
-  public void set_value (tPredefinedCommonConductingEquipment.Enum val) throws GLib.Error { parse_integer ((int) val); }
-	public enum Enum 
+	public enum Enum
 	{
 		CBR,
 		DIS,

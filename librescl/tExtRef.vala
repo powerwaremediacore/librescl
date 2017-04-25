@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2014 Daniel Espinosa
+ *  Copyright (c) 2014-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  * librescl is free software: you can redistribute it and/or modify it
@@ -29,47 +29,48 @@ namespace Lscl
 {
   public class tExtRef : Serializable
   {
-    [Description (nick="tIEDName")]
+    [Description (nick="::tIEDName")]
     public string ied_name { get; set; }
-    [Description (nick="ldInst")]
+    [Description (nick="::ldInst")]
     public string ld_inst { get; set; }
     public new string prefix { get; set; }
-    [Description (nick="lnClass")]
+    [Description (nick="::lnClass")]
     public tLNClassEnum ln_class { get; set; }
-    [Description (nick="lnInst")]
+    [Description (nick="::lnInst")]
     public string ln_inst { get; set; }
-    [Description (nick="doName")]
+    [Description (nick="::doName")]
     public string do_name { get; set; }
-    [Description (nick="daName")]
+    [Description (nick="::daName")]
     public string da_name { get; set; }
-    [Description (nick="intAddr")]
+    [Description (nick="::intAddr")]
     public string int_addr { get; set; }
-    [Description (nick="serviceType")]
+    [Description (nick="::serviceType")]
     public tServiceType service_type { get; set; }
-    [Description (nick="srcLDInst")]
+    [Description (nick="::srcLDInst")]
     public string src_ld_inst { get; set; }
-    [Description (nick="srcPrefix")]
+    [Description (nick="::srcPrefix")]
     public string src_prefix { get; set; }
-    [Description (nick="srcLNClass")]
+    [Description (nick="::srcLNClass")]
     public tLNClassEnum src_ln_class { get; set; }
-    [Description (nick="srcLNInst")]
+    [Description (nick="::srcLNInst")]
     public string src_ln_inst { get; set; }
-    [Description (nick="srcCBName")]
+    [Description (nick="::srcCBName")]
     public string src_cb_name { get; set; }
     
-    public class Array : SerializableArrayList<tExtRef> {
-      public new tExtRef get (int index) { return base.get (index); }
-      public new tExtRef[] to_array () { return ((Gee.Collection<tExtRef>) this).to_array (); }
+    public class Array : GomArrayList {
+      construct {
+        try { initialize (typeof (tExtRef)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
   // tExtRef.service_type must have just one of this enum value
-  public class tServiceType : BaseEnum
+  public class tServiceType : GomEnum
   {
     construct {
-		  _enumtype = typeof (tServiceType.Enum);
+      try { initialize_enum (typeof (Enum)); }
+      catch (GLib.Error e) { warning ("Error: "+e.message); }
 	  }
-    public tServiceType.Enum get_value () throws GLib.Error { return (tServiceType.Enum) to_integer (); }
-    public void set_value (tServiceType.Enum val) throws GLib.Error { parse_integer ((int) val); }
     public enum Enum
     {
       POLL,

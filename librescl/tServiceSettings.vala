@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,22 +25,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using GXml;
+
 namespace Lscl
 {
   public class tServiceSettings : Serializable
   {
-    [Description(nick="cbName", blurb="Control block name")]
+    [Description(nick="::cbName", blurb="Control block name")]
     public tServiceSettingsType cb_name { get; set; }
-    [Description(nick="datSet", blurb="Data set reference")]
+    [Description(nick="::datSet", blurb="Data set reference")]
     public tServiceSettingsType dat_set { get; set; }
   }
-  public class tServiceSettingsType : BaseEnum
+  public class tServiceSettingsType : GomEnum
   {
 		construct {
-			_enumtype = typeof (tServiceSettingsType.Enum);
+		  try { initialize_enum (typeof (Enum)); }
+		  catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-		public tServiceSettingsType.Enum get_value () throws GLib.Error { return (tServiceSettingsType.Enum) to_integer (); }
-		public void set_value (tServiceSettingsType.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 		  DYN,

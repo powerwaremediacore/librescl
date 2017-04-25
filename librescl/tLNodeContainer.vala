@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ namespace Lscl
     /**
      * Holds logical nodes. Use prefix + lnClass + lnInst as key.
      */
-    [Description(nick="LNode", blurb="Logical Nodes")]
+    [Description(nick="::LNode", blurb="Logical Nodes")]
     public tLNode.Array logical_nodes { get; set; }
 
     public tLNodeContainer()

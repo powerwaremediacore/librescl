@@ -7,7 +7,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013, 2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,9 +28,9 @@ namespace Lscl
 {
   public class tAbstractConductingEquipment : tEquipment
   {
-    [Description (nick="Terminal",blurb="")]
+    [Description (nick="::Terminal",blurb="")]
     public tTerminal terminal  { get; set; }
-    [Description (nick="SubEquipment",blurb="")]
+    [Description (nick="::SubEquipment",blurb="")]
     public tSubEquipment sub_equipment  { get; set; }
   }
 }

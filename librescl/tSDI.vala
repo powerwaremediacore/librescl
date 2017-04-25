@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,24 +27,25 @@
 using GXml;
 namespace Lscl
 {
-  public class tSDI : tUnNaming, SerializableMapKey<string>
+  public class tSDI : tUnNaming, MappeableElement
   {
-    [Description(nick="name", blurb="Name of the SDI (structure part)")]
+    [Description(nick="::name", blurb="Name of the SDI (structure part)")]
     public string name { get; set; }
-    [Description(nick="ix", blurb="Index of the SDI element in case of an array type.")]
+    [Description(nick="::ix", blurb="Index of the SDI element in case of an array type.")]
     public string ix { get; set; }
-    [Description(nick="ixSpecified", blurb="Index of the SDI element in case of an array type.")]
+    [Description(nick="::ixSpecified", blurb="Index of the SDI element in case of an array type.")]
     public SerializableBool ix_specified { get; set; }
-    [Description(nick="SDI", blurb="")]
+    [Description(nick="::SDI", blurb="")]
     public tSDI.HashMap sdis	{ get; set; default = new tSDI.HashMap (); }
-    [Description(nick="DAI", blurb="")]
+    [Description(nick="::DAI", blurb="")]
     public tDAI.HashMap dais { get; set; default = new tDAI.HashMap (); }
 
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string,tSDI> {
-      public new tSDI get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tSDI> list_values () { return (GLib.List<tSDI>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tSDI)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

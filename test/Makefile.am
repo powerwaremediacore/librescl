@@ -25,7 +25,6 @@ sources = \
 	read-file.vala \
 	save-file.vala \
 	lscl-performance.vala \
-	collectionstest.vala \
 	private-test.vala
 
 AM_VALAFLAGS = \

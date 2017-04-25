@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013-2015 Daniel Espinosa
+ *  Copyright (c) 2013-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,19 +30,18 @@ namespace Lscl
 {
 	public class tSubEquipment : tPowerSystemResource 
 	{
-		[Description(nick="phase", blurb="The phase to which the subdevice belongs.")]
+		[Description(nick="::phase", blurb="The phase to which the subdevice belongs.")]
 		public tPhase phase  { get; set; }
-		[Description(nick="virtual", blurb="A virtual equipment")]
-		public SerializableBool @virtual  { get; set; }
+		[Description(nick="::virtual", blurb="A virtual equipment")]
+		public GomBoolean @virtual  { get; set; }
 	}
 	
-	public class tPhase : BaseEnum
+	public class tPhase : GomEnum
 	{
 		construct {
-			_enumtype = typeof (tPhase.Enum);
+		  try { initialize_enum (typeof (Enum)); }
+		  catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-		public tPhase.Enum get_value () throws GLib.Error { return (tPhase.Enum) to_integer (); }
-		public void set_value (tPhase.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 			A,

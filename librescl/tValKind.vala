@@ -7,7 +7,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015-2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -24,13 +24,12 @@
  */
 using GXml;
 
-public class Lscl.tValKind : Lscl.BaseEnum
+public class Lscl.tValKind : GomEnum
 {
 	construct {
-		_enumtype = typeof (tValKind.Enum);
+		try { initialize_enum (typeof (tValKind.Enum)); }
+		catch (GLib.Error e) { warning ("Error: "+e.message); }
 	}
-  public tValKind.Enum get_value () throws GLib.Error { return (tValKind.Enum) to_integer (); }
-  public void set_value (tValKind.Enum val) throws GLib.Error { parse_integer ((int) val); }
 	public enum Enum
   {
     SPEC, //Spec,

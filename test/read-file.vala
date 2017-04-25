@@ -336,7 +336,7 @@ public class LsclTest.ReadFile
               string t1ied = "NULL";
               string t1id = "NULL";
               if (t1.cdc != null)
-                t1cdc = t1.cdc.get_string ();
+                t1cdc = t1.cdc.value;
               if (t1.ied_type != null)
                 t1ied = t1.ied_type;
               if (t1.id != null)
@@ -346,10 +346,10 @@ public class LsclTest.ReadFile
             }
             assert_not_reached ();
           }
-          if (dot.cdc.get_string () != cdcs[j]) {
+          if (dot.cdc.value != cdcs[j]) {
             string gcdc = "NULL";
             if (dot.cdc != null)
-              gcdc = dot.cdc.get_string ();
+              gcdc = dot.cdc.value;
             GLib.message (@"ERROR: Data Object Type: $(ied)/$(ids2[j])/$(cdc) CDC no match hope: $(gcdc) - got: $(cdc)\n");
             assert_not_reached ();
           }
@@ -493,8 +493,8 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: Data Object Type: NULL/LPHD1NamPlt not found\n");
           assert_not_reached ();
         }
-        if (dot.cdc.get_string () != "LPL") {
-          GLib.message (@"ERROR: Wrong CDC for Data Object Type: NULL/LPHD1NamPlt/LPL got: $(dot.cdc)\n");
+        if (dot.cdc.value != "LPL") {
+          GLib.message (@"ERROR: Wrong CDC for Data Object Type: NULL/LPHD1NamPlt/LPL got: $(dot.cdc.value)\n");
           assert_not_reached ();
         }
         if (dot.das == null) {
@@ -514,12 +514,12 @@ public class LsclTest.ReadFile
             GLib.message (@"ERROR: Data Attribute: $(danames[i]) not found\n");
             assert_not_reached ();
           }
-          if (da.name.get_string () != danames[i]) {
-            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong name. Expected $(danames[i]), got: $(da.name)\n");
+          if (da.name.value != danames[i]) {
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong name. Expected $(danames[i]), got: $(da.name.value)\n");
             assert_not_reached ();
           }
-          if (da.count.get_value () != dacounts[i]) {
-            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count)\n");
+          if (da.count.get_integer () != dacounts[i]) {
+            GLib.message (@"ERROR: Data Attribute: $(danames[i]) has wrong count. Expected $(dacounts[i]), got: $(da.count.get_integer ())\n");
             assert_not_reached ();
           }
           if (da.dchg.get_value () != dadchgs[i]) {
@@ -572,7 +572,6 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: Basic Data Attribute definitions not found for Data Attribute Type: /RRECRecModStruct \n");
           assert_not_reached ();
         }
-        dat.bdas.deserialize_children ();
         string[] bdas = {"SinglePhase","SingleBraker"};
         //string[] values = {"single_contact","single_contact"};
         tValKind.Enum[] vkinds = {tValKind.Enum.SET, tValKind.Enum.CONF};
@@ -585,17 +584,17 @@ public class LsclTest.ReadFile
             GLib.message (@"ERROR: BDA: $(bdas[i]) not found\n");
             assert_not_reached ();
           }
-          if (bda.name.get_string () != bdas[i]) {
-            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong name. Expected $(bdas[i]), got: $(bda.name)\n");
+          if (bda.name.value != bdas[i]) {
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong name. Expected $(bdas[i]), got: $(bda.name.value)\n");
             assert_not_reached ();
           }
-          if (bda.count.get_value () != counts[i]) {
-            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count)\n");
+          if (bda.count.get_integer () != counts[i]) {
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong count. Expected $(counts[i]), got: $(bda.count.value)\n");
             assert_not_reached ();
           }
-          Test.message ("Testing tDAType BDA: "+bda.name.get_string ()+bda.write_string ());
-          if (bda.val_kind.get_value () != (int) vkinds[i]) {
-            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind)\n");
+          Test.message ("Testing tDAType BDA: "+bda.name.value+bda.write_string ());
+          if (bda.val_kind.get_enum () != (int) vkinds[i]) {
+            GLib.message (@"ERROR: BDA: $(bdas[i]) has wrong valKind. Expected $(vkinds[i]), got: $(bda.val_kind.value)\n");
             assert_not_reached ();
           }
         }
@@ -605,58 +604,26 @@ public class LsclTest.ReadFile
           GLib.message (@"ERROR: BDA: Operated not found\n");
           assert_not_reached ();
         }
-        if (bda.name.get_string () != "Operated") {
-          GLib.message (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name)\n");
+        if (bda.name.value != "Operated") {
+          GLib.message (@"ERROR: BDA: Wrong value for name. Expected Operated, got: $(bda.name.value)\n");
           assert_not_reached ();
         }
-        if (bda.b_type.get_string ().down () != "BOOLEAN".down ()) {
-          GLib.message (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type)\n");
+        if (bda.b_type.value.down () != "BOOLEAN".down ()) {
+          GLib.message (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(bda.b_type.value)\n");
           assert_not_reached ();
         }
-        if (bda.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
-          GLib.message (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind)\n");
+        if (bda.val_kind.get_enum () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
+          GLib.message (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(bda.val_kind.value)\n");
           assert_not_reached ();
         }
-        if (bda.count.get_value () != 2) {
-          GLib.message (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count)\n");
+        if (bda.count.get_integer () != 2) {
+          GLib.message (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(bda.count.value)\n");
           assert_not_reached ();
         }
         string[] vals = {"TRUE","FALSE"};
         for (int j = 0; j < vals.length; j++) {
-          if ((bda.vals.get (j)).get_value () != vals[j]) {
-            GLib.message (@"ERROR: BDA: Wrong value for array element $j. Expected $(vals[j]), got: $((bda.vals.get (j)).get_value ())\n");
-            assert_not_reached ();
-          }
-        }
-        if (dat.bdas.duplicated.size != 1) {
-          GLib.message (@"ERROR: BDA: Wrong duplicated size. Expected 1, got: $(dat.bdas.duplicated.size)\n");
-          assert_not_reached ();
-        }
-        var dup = dat.bdas.duplicated.get (0);
-        if (dup == null) {
-          GLib.message (@"ERROR: BDA: No duplicated found!\n");
-          assert_not_reached ();
-        }
-        if (dup.name.get_string () != "Operated") {
-          GLib.message (@"ERROR: BDA: Duplicated bad name. Expected 'Operated', got: $(dup.name)\n");
-          assert_not_reached ();
-        }
-        if (dup.b_type.get_string ().down () != "BOOLEAN".down ()) {
-          GLib.message (@"ERROR: BDA: Wrong value for bType. Expected BOOLEAN, got: $(dup.b_type)\n");
-          assert_not_reached ();
-        }
-        if (dup.val_kind.get_value () != (Enumeration.parse (typeof (tValKind.Enum), "RO")).value) {
-          GLib.message (@"ERROR: BDA: Wrong value for valKind. Expected RO, got: $(dup.val_kind)\n");
-          assert_not_reached ();
-        }
-        if (dup.count.get_value () != 2) {
-          GLib.message (@"ERROR: BDA: Wrong value for count. Expected 2, got: $(dup.count)\n");
-          assert_not_reached ();
-        }
-        string[] vals2 = {"FALSE","TRUE"};
-        for (int k = 0; k < vals2.length; k++) {
-          if ((dup.vals.get (k)).get_value () != vals2[k]) {
-            GLib.message (@"ERROR: BDA: Wrong value for array element $k. Expected $(vals2[k]), got: $((dup.vals.get (k)).get_value ())\n");
+          if ((bda.vals.get_item (j) as tVal).get_value () != vals[j]) {
+            GLib.message (@"ERROR: BDA: Wrong value for array element $j. Expected $(vals[j]), got: $((bda.vals.get_item (j) as tVal).get_value ())\n");
             assert_not_reached ();
           }
         }
@@ -667,7 +634,7 @@ public class LsclTest.ReadFile
         assert_not_reached ();
       }
     });
-    Test.add_func ("/librescl/read-ied/ied", 
+    Test.add_func ("/librescl/read-ied/ied",
     () => {
       try {
         var f = GLib.File.new_for_path (LsclTest.TEST_DIR + "/tests-files/ied.cid");
@@ -726,16 +693,16 @@ public class LsclTest.ReadFile
         assert (ied.services.get_cb_values != null);
         assert (ied.services.conf_log_control == null);
         assert (ied.services.report_settings != null);
-        assert (ied.services.report_settings.cb_name.get_value () == tServiceSettingsType.Enum.FIX);
-        assert (ied.services.report_settings.dat_set.get_value () == tServiceSettingsType.Enum.FIX);
-        assert (ied.services.report_settings.rpt_id.get_value () == tServiceSettingsType.Enum.DYN);
-        assert (ied.services.report_settings.opt_fields.get_value () == tServiceSettingsType.Enum.DYN);
-        assert (ied.services.report_settings.buf_time.get_value () == tServiceSettingsType.Enum.DYN);
-        assert (ied.services.report_settings.trg_ops.get_value () == tServiceSettingsType.Enum.DYN);
-        assert (ied.services.report_settings.intg_pd.get_value () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.report_settings.cb_name.get_enum () == tServiceSettingsType.Enum.FIX);
+        assert (ied.services.report_settings.dat_set.get_enum () == tServiceSettingsType.Enum.FIX);
+        assert (ied.services.report_settings.rpt_id.get_enum () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.report_settings.opt_fields.get_enum () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.report_settings.buf_time.get_enum () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.report_settings.trg_ops.get_enum () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.report_settings.intg_pd.get_enum () == tServiceSettingsType.Enum.DYN);
         assert (ied.services.log_settings == null);
         assert (ied.services.gse_settings != null);
-        assert (ied.services.gse_settings.app_id.get_value () == tServiceSettingsType.Enum.DYN);
+        assert (ied.services.gse_settings.app_id.get_enum () == tServiceSettingsType.Enum.DYN);
         assert (ied.services.smv_settings == null);
         assert (ied.services.gse_dir == null);
         assert (ied.services.goose != null);
@@ -844,34 +811,34 @@ public class LsclTest.ReadFile
         // Data Object Information
         assert (ld.ln0.dois != null);
         ld.ln0.read_unparsed ();
-        assert (ld.ln0.dois.size == 4);
+        assert (ld.ln0.dois.length == 4);
         var doi1 = ld.ln0.dois.@get ("Mod") as tDOI;
         assert (doi1 != null);
         assert (doi1.sdis != null);
         doi1.read_unparsed ();
-        assert (doi1.sdis.size == 1);
+        assert (doi1.sdis.length == 1);
         var sdi11 = doi1.sdis.@get ("ctlModel") as tSDI;
         assert (sdi11 != null);
         assert (sdi11.dais != null);
         sdi11.read_unparsed ();
-        assert (sdi11.dais.size == 1);
+        assert (sdi11.dais.length == 1);
         var dai111 = sdi11.dais.@get ("ctlModels") as tDAI;
         assert (dai111 != null);
         assert (dai111.vals != null);
         dai111.read_unparsed ();
-        assert (dai111.vals.size == 1);
-        var val111 = dai111.vals.@get (0) as tVal;
+        assert (dai111.vals.length == 1);
+        var val111 = dai111.vals.get_item (0) as tVal;
         assert (val111 != null);
         var val111v = val111.get_value ();
         assert (val111v != null);
         assert (val111v == "status_only");
         assert (doi1.dais != null);
         doi1.read_unparsed ();
-        assert (doi1.dais.size == 3);
+        assert (doi1.dais.length == 3);
         var dai11 = doi1.dais.@get ("q") as tDAI;
         assert (dai11 != null);
         assert (dai11.name == "q");
-        assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
+        assert (dai11.val_kind.get_enum () == tValKind.Enum.SET);
         // DataSets
         assert (ld.ln0.data_sets != null);
         ld.ln0.read_unparsed ();
@@ -942,22 +909,22 @@ public class LsclTest.ReadFile
         assert (ln1 != null);
         assert (ln1.dois != null);
         ln1.read_unparsed ();
-        assert (ln1.dois.size == 10);
+        assert (ln1.dois.length == 10);
         var doi1 = ln1.dois.@get ("Beh") as tDOI;
         assert (doi1 != null);
         assert (doi1.sdis != null);
         doi1.read_unparsed ();
-        assert (doi1.sdis.size == 0);
+        assert (doi1.sdis.length == 0);
         assert (doi1.dais != null);
         doi1.read_unparsed ();
         var dai11 = doi1.dais.@get ("stVal") as tDAI;
         assert (dai11 != null);
         assert (dai11.name == "stVal");
-        assert (dai11.val_kind.get_value () == tValKind.Enum.SET);
+        assert (dai11.val_kind.get_enum () == tValKind.Enum.SET);
         assert (dai11.vals != null);
         dai11.read_unparsed ();
-        assert (dai11.vals.size == 1);
-        var val111 = dai11.vals.@get (0) as tDAI;
+        assert (dai11.vals.length == 1);
+        var val111 = dai11.vals.get_item (0) as tDAI;
         assert (val111 != null);
         var val111v = val111.get_value ();
         assert (val111v == "on");
@@ -1035,9 +1002,9 @@ public class LsclTest.ReadFile
         assert (logc != null);
         assert (logc.desc == "Test Logs");
         assert (logc.log_name == "LD");
-        assert (logc.log_ena.get_value () == true);
+        assert (logc.log_ena.get_boolean () == true);
         assert (logc.intg_pd == "5000");
-        assert (logc.reason_code.get_value () == true);
+        assert (logc.reason_code.get_boolean () == true);
       }
       catch (GLib.Error e) { Test.message (e.message); assert_not_reached (); }
     });

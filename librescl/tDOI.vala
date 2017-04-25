@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,25 +29,27 @@ namespace Lscl
 {
   public class tDOI : tUnNaming, SerializableMapKey<string>
   {
-    [Description(nick="name",blurb="")]
+    [Description(nick="::name",blurb="")]
     public string name { get; set; }
-    [Description(nick="ix",blurb="Index")]
+    [Description(nick="::ix",blurb="Index")]
     public string ix { get; set; }
-    [Description(nick="ixSpecified",blurb="Index specified")]
+    [Description(nick="::ixSpecified",blurb="Index specified")]
     public SerializableBool ix_specified { get; set; }
-    [Description(nick="accessControl",blurb="")]
+    [Description(nick="::accessControl",blurb="")]
     public string access_control { get; set; }
-    [Description(nick="SDI",blurb="")]
+    [Description(nick="::SDI",blurb="")]
     public tSDI.HashMap sdis { get; set; default = new tSDI.HashMap (); }
-    [Description(nick="DAI",blurb="")]
+    [Description(nick="::DAI",blurb="")]
     public tDAI.HashMap dais { get; set; default = new tDAI.HashMap (); }
 
     public string get_map_key () { return name; }
 
-    public class HashMap : SerializableHashMap<string, tDOI> {
-      public new tDOI get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDOI> list_values () { return (GLib.List<tDOI>) base.list_values (); }
+
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDOI)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

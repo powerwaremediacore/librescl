@@ -7,7 +7,7 @@
  *       Daniel Espinosa <daniel.espinosa@pwmc.mx>>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015-2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -24,22 +24,21 @@
  */
 using GXml;
 
-public class Lscl.tUnitMultiplier : Lscl.BaseValueList
+public class Lscl.tUnitMultiplier : GomArrayString
 {
 	private int[] _m = {0,-3,3,6,-6,-24,-21,-18,-15,-12,-9,-2,-1,1,
 											2,9,12,15,18,21,24};
 	construct {
-		_vals = { "Item","m","k","M","mu","y","z","a","f","p","n","c","d","da",
+		_values = { "Item","m","k","M","mu","y","z","a","f","p","n","c","d","da",
 						"h","G","T","P","E","Z","Y"};
 	}
-	public void select (Enum v) { select_value_at (v); }
 	/**
 	 * If {@param v} is out of range of supported values, this method always return 0.
 	 */
 	public int get_multiplier (Enum v)
 	{
 		int index = (Enum) v;
-		if (index < 0 || index > _m.length || index > _vals.length) return 0;
+		if (index < 0 || index > _m.length || index > _values.length) return 0;
 		return _m[v];
 	}
 	/**
@@ -47,8 +46,8 @@ public class Lscl.tUnitMultiplier : Lscl.BaseValueList
 	 */
 	public int get_multiplier_value ()
 	{
-		for (int i = 0; i < _vals.length; i++) {
-			if (_vals[i] == get_string ()) return get_multiplier ((Enum) i);
+		for (int i = 0; i < _values.length; i++) {
+			if (_values[i] == value) return get_multiplier ((Enum) i);
 		}
 		return 0;
 	}

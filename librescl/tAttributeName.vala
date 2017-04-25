@@ -1,7 +1,7 @@
 /* -*- Mode: vala; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2 -*- */
 /* SerializableValueList.vala
  *
- * Copyright (C) 2015  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2015-2017  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,15 +22,14 @@
 using GXml;
 
 public class Lscl.tAttributeName : tPredefinedAttributeName {}
-public class Lscl.tPredefinedAttributeName : Lscl.BaseValueList
+public class Lscl.tPredefinedAttributeName : GomArrayString
 {
 	construct {
-		_vals = {"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
+		_values = {"T", "Test", "Check", "SIUnit", "Oper", "SBO", "SBOw", "Cancel", "ctlVal",
  "operTm", "origin", "ctlNum", "stVal", "q", "t", "stSeld", "subEna", "subVal",
  "subQ", "subID", "ctlModel","sboTimeout","sboClass","minVal", "maxVal",
  "stepSize","d","dU","cdcNs","cdcName","dataNs"};
 	}
-  public void select (Enum v) { set_string (_vals[v]); }
 	public enum Enum
 	{
 		T,

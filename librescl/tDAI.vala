@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013, 2014 Daniel Espinosa
+ *  Copyright (c) 2013, 2014-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,26 +27,27 @@
 using GXml;
 namespace Lscl
 {
-  public class tDAI : tUnNaming, SerializableMapKey<string>
+  public class tDAI : tUnNaming, MappeableElement
   {
-    [Description(nick="Val", blurb="Array of values")]
+    [Description(nick="::Val", blurb="Array of values")]
     public tVal.Array vals { get; set; }
-    [Description(nick="name", blurb="Data Attribute's name")]
+    [Description(nick="::name", blurb="Data Attribute's name")]
     public string name { get; set; }
-    [Description(nick="sAddr", blurb="")]
+    [Description(nick="::sAddr", blurb="")]
     public string s_addr { get; set; }
-    [Description(nick="valKind", blurb="Value kind of")]
+    [Description(nick="::valKind", blurb="Value kind of")]
     public tValKind val_kind { get; set; }
-    [Description(nick="ix", blurb="")]
+    [Description(nick="::ix", blurb="")]
     public string ix { get; set; }
-    [Description(nick="ixSpecified", blurb="")]
-    public SerializableBool ix_specified { get; set; }
+    [Description(nick="::ixSpecified", blurb="")]
+    public GomBoolean ix_specified { get; set; }
 
     public string get_map_key () { return name; }
-    public class HashMap : SerializableHashMap<string,tDAI> {
-      public new tDAI @get (string name) { return base.get (name); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tDAI> list_values () { return (GLib.List<tDAI>) base.list_values (); }
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tDAI)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
     }
   }
 }

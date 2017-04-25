@@ -25,22 +25,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using GXml;
+
 namespace Lscl
 {
   public class tPowerTransformer : tEquipment
   {
-    [Description (nick="TransformerWinding", blurb="")]
+    [Description (nick="::TransformerWinding", blurb="")]
     public tTransformerWinding transformer_winding { get; set; }
-    [Description (nick="type", blurb="")]
+    [Description (nick="::type", blurb="")]
     public tPowerTransformerType transformer_type { get; set; }
   }
-	public class tPowerTransformerType : BaseEnum
+	public class tPowerTransformerType : GomEnum
 	{
 		construct {
-			_enumtype = typeof (tPowerTransformerType.Enum);
+		try { initialize_enum (typeof (Enum)); }
+		catch (GLib.Error e) { warning ("Error: "+e.message); }
 		}
-		public tPowerTransformerType.Enum get_value () throws GLib.Error { return (tPowerTransformerType.Enum) to_integer (); }
-		public void set_value (tPowerTransformerType.Enum val) throws GLib.Error { parse_integer ((int) val); }
 		public enum Enum
 		{
 		  PTR

@@ -7,7 +7,7 @@
  *       Daniel Espinosa <esodan@gmail.com>
  *
  *
- *  Copyright (c) 2015 Daniel Espinosa
+ *  Copyright (c) 2015-2017 Daniel Espinosa
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -23,15 +23,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using GXml;
+
 public class Lscl.tCDCEnum : Lscl.tPredefinedCDC {}
-public class Lscl.tPredefinedCDC : Lscl.BaseEnum
+public class Lscl.tPredefinedCDC : GomEnum
 {
 	construct {
-		_enumtype = typeof (tPredefinedCDC.Enum);
+		try { initialize_enum (typeof (Enum)); }
+		catch (GLib.Error e) { warning ("Error: "+e.message); }
 	}
-  public tPredefinedCDC.Enum get_value () throws GLib.Error { return (tPredefinedCDC.Enum) to_integer (); }
-  public void set_value (tPredefinedCDC.Enum val) throws GLib.Error { parse_integer ((int) val); }
-	public enum Enum 
+	public enum Enum
 	{
 		SPS,
 		DPS,

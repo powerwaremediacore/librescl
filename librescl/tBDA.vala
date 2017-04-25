@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013 Daniel Espinosa
+ *  Copyright (c) 2013,2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,17 +27,17 @@
 using GXml;
 namespace Lscl
 {
-  public class tBDA : tAbstractDataAttribute, SerializableMapKey<string>
+  public class tBDA : tAbstractDataAttribute, MappeableElement
   {
     // SerializableMapKey
-    public string get_map_key () { return name.get_string (); }
+    public string get_map_key () { return name.value; }
 
-    public class HashMap : Lscl.HashMap<string,tBDA>
-	 {
-			public new tBDA @get (string key) { return base.get (key); }
-      public new GLib.List<string> list_keys () { return (GLib.List<string>) base.list_keys (); }
-      public new GLib.List<tBDA> list_values () { return (GLib.List<tBDA>) base.list_values (); }
-		}
+    public class HashMap : GomHashMap {
+      construct {
+        try { initialize (typeof (tBDA)); }
+        catch (GLib.Error e) { warning ("Error: "+e.message); }
+      }
+    }
   }
 }
 

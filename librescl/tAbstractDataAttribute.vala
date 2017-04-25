@@ -8,7 +8,7 @@
  *       PowerMedia Consulting <pwmediaconsulting@gmail.com>
  *
  *
- *  Copyright (c) 2013-2015 Daniel Espinosa
+ *  Copyright (c) 2013-2017 Daniel Espinosa
  *  Copyright (c) 2014 PowerMedia Consulting
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,19 +32,19 @@ namespace Lscl
 		construct {
 			vals = new tVal.Array ();
 		}
-    [Description(blurb="Attribute's value.")]
+    [Description(blurb="::Attribute's value.")]
     public tVal.Array vals { get; set; }
-    [Description(nick="name", blurb="The attribute name.")]
+    [Description(nick="name", blurb="::The attribute name.")]
     public tAttributeName name { get; set; }
-    [Description(nick="sAddr", blurb="A short address of this BDA attribute.")]
+    [Description(nick="sAddr", blurb="::A short address of this BDA attribute.")]
     public string s_addr { get; set; }
-    [Description(nick="bType", blurb="The basic type of the attribute.")]
+    [Description(nick="bType", blurb="::The basic type of the attribute.")]
     public tBasicType b_type { get; set; }
-    [Description(nick="valKind", blurb="Determines how the value shall be interpreted if any is given.")]
+    [Description(nick="valKind", blurb="::Determines how the value shall be interpreted if any is given.")]
     public tValKind val_kind { get; set; }
-    [Description(nick="type", blurb="It's used to refer to the appropriate enumeration type or DAType definition.")]
+    [Description(nick="type", blurb="::It's used to refer to the appropriate enumeration type or DAType definition.")]
     public string data_type { get; set; }
-    [Description(nick="count", blurb="Shall state the number of array elements in the case where the attribute is an array.")]
-    public SerializableInt count { get; set; }
+    [Description(nick="count", blurb="::Shall state the number of array elements in the case where the attribute is an array.")]
+    public GomInt count { get; set; }
   }
 }
